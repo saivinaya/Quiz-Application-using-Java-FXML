@@ -6,6 +6,7 @@
 package quiz;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +16,7 @@ public class QuizDBImplementation implements QuizDBDAO{
     
     public void addQuestions(){};
     public void addUser(){};    
-    public void addStudentResults(){};
+    public void addStudentResults(StudentResults result){};
     public ArrayList<Question> selectQuestions(int numOfQuestions,String difficultyLevel){
     ArrayList<Question> questionList=null;
     return questionList;
@@ -24,5 +25,9 @@ public class QuizDBImplementation implements QuizDBDAO{
         ArrayList<User> user=null;
         return user;
     }   
+    public ArrayList<StudentResults> getStudentResults(Date date){
+    ArrayList<StudentResults> studentResults=null;
+    return studentResults;
+    }
     
 }
