@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.FXMLController">
+    <stylesheets>
+        <URL value="@fxml.css" />
+    </stylesheets>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="176.0" layoutY="21.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
+      <Pane layoutX="25.0" layoutY="63.0" prefHeight="323.0" prefWidth="547.0">
+         <children>
+            <TextField layoutX="24.0" layoutY="14.0" text="Question" />
+            <TextArea layoutX="24.0" layoutY="45.0" prefHeight="93.0" prefWidth="488.0" />
+            <VBox layoutX="24.0" layoutY="155.0" prefHeight="118.0" prefWidth="478.0">
+               <children>
+                  <RadioButton layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Choices" />
+                     </toggleGroup>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="5.0" />
+                     </padding>
+                  </RadioButton>
+                  <RadioButton layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" />
+                     </padding></RadioButton>
+                  <RadioButton layoutX="39.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" />
+                     </VBox.margin></RadioButton>
+                  <RadioButton layoutX="39.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" />
+                     </VBox.margin></RadioButton>
+               </children>
+            </VBox>
+            <Button layoutX="479.0" layoutY="282.0" mnemonicParsing="false" text="Next" />
+            <Button layoutX="14.0" layoutY="282.0" mnemonicParsing="false" text="Back" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
