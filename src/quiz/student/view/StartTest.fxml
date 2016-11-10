@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.StartTestController">
+   <children>
+      <Pane prefHeight="700.0" prefWidth="700.0">
+         <children>
+            <Label alignment="CENTER" layoutX="269.0" layoutY="51.0" prefHeight="13.0" prefWidth="190.0" text="Take Test">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox layoutX="289.0" layoutY="182.0" prefWidth="150.0" />
+            <Label layoutX="75.0" layoutY="182.0" prefHeight="27.0" prefWidth="150.0" text="Number of Questions :" />
+            <Label layoutX="75.0" layoutY="280.0" prefHeight="27.0" prefWidth="150.0" text="Difficulty Level:" />
+            <ChoiceBox layoutX="289.0" layoutY="280.0" prefWidth="150.0" />
+            <Button layoutX="519.0" layoutY="597.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" text="Begin Test" />
+            <Button layoutX="56.0" layoutY="597.0" mnemonicParsing="false" onAction="#goBackToStudentDashboard" prefHeight="38.0" prefWidth="103.0" text="Back" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
