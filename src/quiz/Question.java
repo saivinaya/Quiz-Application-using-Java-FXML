@@ -5,7 +5,7 @@ package quiz;
  *
  * @author Group
  */
-public abstract class Question {
+public class Question {
    //Fields: QuestionType,LevelOfDifficulty, Questiondesc, 
              //method abstract: validateAnswer
    

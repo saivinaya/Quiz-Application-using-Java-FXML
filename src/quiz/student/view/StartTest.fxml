@@ -16,11 +16,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="289.0" layoutY="182.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="numOfQuestions" layoutX="289.0" layoutY="182.0" onDragDetected="#onQuestionSelected" onMouseClicked="#onQuestionSelected" prefWidth="150.0" />
             <Label layoutX="75.0" layoutY="182.0" prefHeight="27.0" prefWidth="150.0" text="Number of Questions :" />
             <Label layoutX="75.0" layoutY="280.0" prefHeight="27.0" prefWidth="150.0" text="Difficulty Level:" />
-            <ChoiceBox layoutX="289.0" layoutY="280.0" prefWidth="150.0" />
-            <Button layoutX="519.0" layoutY="597.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" text="Begin Test" />
+            <ChoiceBox fx:id="diffLevel" layoutX="289.0" layoutY="280.0" onMouseClicked="#onDiffSelected" prefWidth="150.0" />
+            <Button layoutX="519.0" layoutY="597.0" mnemonicParsing="false" onAction="#onBeginTest" prefHeight="38.0" prefWidth="110.0" text="Begin Test" />
             <Button layoutX="56.0" layoutY="597.0" mnemonicParsing="false" onAction="#goBackToStudentDashboard" prefHeight="38.0" prefWidth="103.0" text="Back" />
          </children>
       </Pane>
