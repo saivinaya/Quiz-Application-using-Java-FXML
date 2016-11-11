@@ -7,7 +7,7 @@ package quiz;
 
 /**
  *
- * @author Hari
+ * @author Group
  */
 public class User {
     
