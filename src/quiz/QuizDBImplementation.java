@@ -30,4 +30,10 @@ public class QuizDBImplementation implements QuizDBDAO{
     return studentResults;
     }
     
+    public int[] getQuestionTypes(ArrayList<Question> questions)
+    {
+        int arrayqQuestionType[] = new int[4];
+        //array will be [no.of MC, MA, T or F, FIB]
+        return arrayqQuestionType;
+    }
 }

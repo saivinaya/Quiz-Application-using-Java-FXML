@@ -30,6 +30,7 @@ import quiz.QuizDBImplementation;
  */
 public class StartTestController implements Initializable {
     private QuizMain application;
+    private QuizDBImplementation fetchQuestions;
     
     ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy","Medium","Hard","Mixed");
     ObservableList<Integer> numOfQuestionsList = FXCollections.observableArrayList();
@@ -125,8 +126,10 @@ public class StartTestController implements Initializable {
         } 
         else 
         {
-            ArrayList<Question> questionsForTest = new ArrayList<Question>();
-            //QuizDBImplementation.selectQuestions(selectednumOfQuestions,selectedDifficulty);
+            ArrayList<Question> questionsForTest;
+            int arrayqQuestionType[] = new int[4];
+            questionsForTest = fetchQuestions.selectQuestions(selectednumOfQuestions,selectedDifficulty);
+            arrayqQuestionType = fetchQuestions.getQuestionTypes(questionsForTest);
         }
     }
 
