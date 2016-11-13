@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="517.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.AdminDashboardController">
+     <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Java Quiz" textAlignment="JUSTIFY">
+      <font>
+            <Font size="62.0" />
+         </font>
+      </Label>
+      <HBox layoutX="203.0" layoutY="154.0" prefHeight="46.0" prefWidth="510.0">
+         <children>
+            <Label prefHeight="50.0" prefWidth="103.0" text="Upload File" />
+            <TextField fx:id="userName" prefHeight="47.0" prefWidth="187.0" />
+            <Pane prefHeight="46.0" prefWidth="26.0" />
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="88.0" text="Browse" />
+         </children>
+      </HBox>
+      <HBox layoutX="203.0" layoutY="236.0" prefHeight="46.0" prefWidth="510.0">
+         <children>
+            <Label prefHeight="46.0" prefWidth="220.0" text="Add User" />
+            <Button fx:id="signIn" mnemonicParsing="false" prefHeight="46.0" prefWidth="325.0" text="Click here to SignUp New User" />
+         </children>
+      </HBox>
+      <HBox layoutX="48.0" layoutY="95.0" prefHeight="46.0" prefWidth="510.0">
+         <children>
+            <Label prefHeight="46.0" prefWidth="209.0" text="Welcome Admin User">
+                 <font>
+            <Font size="21.0" />
+         </font>
+            </Label>
+            <Pane prefHeight="46.0" prefWidth="26.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="203.0" layoutY="320.0" prefHeight="46.0" prefWidth="510.0">
+         <children>
+            <Label prefHeight="46.0" prefWidth="218.0" text="View  Student Performance" />
+            <Button fx:id="signIn1" mnemonicParsing="false" prefHeight="46.0" prefWidth="325.0" text="Click here to SignUp New User" />
+         </children>
+      </HBox>
+      <HBox layoutX="206.0" layoutY="403.0" prefHeight="46.0" prefWidth="510.0">
+         <children>
+            <Label prefHeight="50.0" prefWidth="196.0" text="View  Questions Uploaded" />
+            <Button fx:id="signIn11" mnemonicParsing="false" prefHeight="46.0" prefWidth="317.0" text="Click here to SignUp New User" />
+         </children>
+      </HBox>
+    </children>
+
+</AnchorPane>

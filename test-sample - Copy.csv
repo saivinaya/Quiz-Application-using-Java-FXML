@@ -1,0 +1,33 @@
+﻿MC,M,"What i is printed?   public class Test 
+{ public static void main(String[] args) {
+int j = 0;
+int i = ++j + j * 5;
+
+System.out.println(""What is i? ,"" + i);
+}
+}",6,correct,3,incorrect,1,incorrect,5,incorrect
+MA,H,"     What one of these, Java datatypes are 16 bits?    "   ,int,incorrect,short,correct,double,incorrect,char,correct
+TF,E,Java is an OOP Language,true
+FIB,E,The inventor of Java was ___ ,James Gosling
+MC,M,"Which of the following loops prints ""Welcome to Java,CMU Australia"" 10 times?
+
+A:
+for (int count = 1; count <= 10; count++) {
+  System.out.println(""Welcome to Java,CMU Australia"");
+}
+
+B:
+for (int count = 0; count < 10; count++) {
+  System.out.println(""Welcome to Java,CMU Australia"");
+}
+
+C:
+for (int count = 1; count < 10; count++) {
+  System.out.println(""Welcome to Java,CMU Australia"");
+}
+
+D:
+for (int count = 0; count <= 10; count++) {
+  System.out.println(""Welcome to Java,CMU Australia"");
+}" ,A. BD,incorrect,B. ABC,incorrect,C. AC,incorrect,D. AB,correct
+MC,E,Why is JavaFX preferred?    ,"A. JavaFX is much harder,complex to learn and use for new Java programmers.","  incorrect",B. JavaFX does not provide a multi-touch support for touch-enabled devices such as tablets and smart phones.  ,"  incorrect","C. JavaFX has a built-in 3D, animation support, video and audio playback, and runs as a standalone application or from a browser.     "    ,correct,   "D. JavaFX does not incorporate modern GUI technologies to enable you to develop rich Internet applications. "," incorrect"

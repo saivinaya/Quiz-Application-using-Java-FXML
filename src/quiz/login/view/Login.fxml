@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="875.0" stylesheets="@Login.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.LoginController">
     <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Welcome to Java Quiz" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Java Quiz" textAlignment="JUSTIFY">
          <font>
             <Font size="62.0" />
          </font>
@@ -17,16 +19,19 @@
       <HBox layoutX="203.0" layoutY="154.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="User Name" />
-            <TextField prefHeight="47.0" prefWidth="187.0" />
+            <TextField fx:id="userName" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
          </children>
       </HBox>
       <HBox layoutX="203.0" layoutY="236.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Password" />
-            <TextField prefHeight="47.0" prefWidth="187.0" />
+            <TextField fx:id="password" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
          </children>
       </HBox>
-      <Button layoutX="309.0" layoutY="341.0" mnemonicParsing="false" text="Sign In" />
+      <Button fx:id="signIn" layoutX="309.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSignIn" text="Sign In" />
       <Button layoutX="425.0" layoutY="341.0" mnemonicParsing="false" text="Sign Up" />
     </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </AnchorPane>
