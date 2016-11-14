@@ -139,4 +139,13 @@ public class MultiChoiceQuestion extends Question{
         this.userInput4 = userInput4;
     }
     
+    public boolean validateAnswer(MultiChoiceQuestion qObject)
+    {
+        if (qObject.isAns1() == qObject.isUserInput1() && qObject.isAns2() == qObject.isUserInput2() && qObject.isAns3() == qObject.isUserInput3() && qObject.isAns4() == qObject.isUserInput4())
+        {   return true;
+        }
+        else 
+        {   return false;
+        }
+    }
 }

@@ -29,5 +29,5 @@ for (int count = 1; count < 10; count++) {
 D:
 for (int count = 0; count <= 10; count++) {
   System.out.println(""Welcome to Java,CMU Australia"");
-}" ,"A. int [] myList = {"1", "2", "3"};",incorrect,B. ABC,incorrect,C. AC,incorrect,D. AB,correct
+}" ,A. BD,incorrect,B. ABC,incorrect,C. AC,incorrect,D. AB,correct
 MC,E,Why is JavaFX preferred?    ,"A. JavaFX is much harder,complex to learn and use for new Java programmers.","  incorrect",B. JavaFX does not provide a multi-touch support for touch-enabled devices such as tablets and smart phones.  ,"  incorrect","C. JavaFX has a built-in 3D, animation support, video and audio playback, and runs as a standalone application or from a browser.     "    ,correct,   "D. JavaFX does not incorporate modern GUI technologies to enable you to develop rich Internet applications. "," incorrect"

@@ -3,36 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package quiz.question.view;
+package quiz;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import quiz.FillInTheBlanks;
-import quiz.QuizMain;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author VinayaSaiD
  */
-public class FillInTheBlanksController implements Initializable {
-    private QuizMain application;
+public class FXMLController implements Initializable {
+
+    @FXML
+    private Label questionDescription;
+
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
-    public void setApp(QuizMain application, FillInTheBlanks qust){
-        this.application = application;
-        setup();
-    }
-
-    private void setup() {
-        
-    }
 }

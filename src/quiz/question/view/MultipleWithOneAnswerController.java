@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
+import quiz.MultiChoiceQuestion;
+import quiz.QuizMain;
 
 /**
  * FXML Controller class
@@ -17,16 +19,25 @@ import javafx.scene.control.ToggleGroup;
  * @author VinayaSaiD
  */
 public class MultipleWithOneAnswerController implements Initializable {
-
-    @FXML
-    private ToggleGroup Choices;
-
+     private QuizMain application;
     /**
      * Initializes the controller class.
      */
+     
+    @FXML
+    private ToggleGroup Choices;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
+    public void setApp(QuizMain application, MultiChoiceQuestion qust){
+        this.application = application;
+        setup();
+    }
+
+    private void setup() {
+        
+    }
 }

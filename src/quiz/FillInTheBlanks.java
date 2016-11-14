@@ -42,4 +42,15 @@ public class FillInTheBlanks extends Question{
         this.userInput = userInput;
     }
     
+    public boolean validateAnswer(FillInTheBlanks qObject)
+    {
+        if (qObject.getAns().trim().toLowerCase() == qObject.getUserInput().trim().toLowerCase())
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
 }

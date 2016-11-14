@@ -41,4 +41,16 @@ public class TrueOrFalseQuestion extends Question {
     public void setUserInput(boolean userInput) {
         this.userInput = userInput;
     }
+    
+    public boolean validateAnswer(TrueOrFalseQuestion qObject)
+    {
+        if (qObject.isAns() == qObject.isUserInput())
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
 }

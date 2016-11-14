@@ -8,6 +8,9 @@ package quiz.question.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import quiz.FillInTheBlanks;
+import quiz.QuizMain;
+import quiz.TrueOrFalseQuestion;
 
 /**
  * FXML Controller class
@@ -15,7 +18,7 @@ import javafx.fxml.Initializable;
  * @author VinayaSaiD
  */
 public class TrueOrFalseController implements Initializable {
-
+    private QuizMain application;
     /**
      * Initializes the controller class.
      */
@@ -24,4 +27,12 @@ public class TrueOrFalseController implements Initializable {
         // TODO
     }    
     
+    public void setApp(QuizMain application, TrueOrFalseQuestion qust){
+        this.application = application;
+        setup();
+    }
+
+    private void setup() {
+        
+    }
 }

@@ -8,6 +8,8 @@ package quiz.student.view;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,9 +21,16 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import quiz.FillInTheBlanks;
+import quiz.MultiChoiceQuestion;
 import quiz.Question;
 import quiz.QuizMain;
 import quiz.QuizDBImplementation;
+import quiz.TrueOrFalseQuestion;
+import quiz.question.view.FillInTheBlanksController;
+import quiz.question.view.MultipleWithMoreAnswersController;
+import quiz.question.view.MultipleWithOneAnswerController;
+import quiz.question.view.TrueOrFalseController;
 
 /**
  * FXML Controller class
@@ -31,6 +40,7 @@ import quiz.QuizDBImplementation;
 public class StartTestController implements Initializable {
     private QuizMain application;
     private QuizDBImplementation fetchQuestions;
+    public ArrayList<Question> questionsForTest = new ArrayList<Question>();
     
     ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy","Medium","Hard","Mixed");
     ObservableList<Integer> numOfQuestionsList = FXCollections.observableArrayList();
@@ -126,10 +136,66 @@ public class StartTestController implements Initializable {
         } 
         else 
         {
-            ArrayList<Question> questionsForTest;
             int arrayqQuestionType[] = new int[4];
             questionsForTest = fetchQuestions.selectQuestions(selectednumOfQuestions,selectedDifficulty);
             arrayqQuestionType = fetchQuestions.getQuestionTypes(questionsForTest);
+            
+            // iterate through the questions
+            for (int x=0; x<questionsForTest.size(); x++)
+            {
+                if (questionsForTest.get(x).getQuestionType() == "MC")
+                {
+                    showMCScreen((MultiChoiceQuestion) questionsForTest.get(x));
+                }
+                else if (questionsForTest.get(x).getQuestionType() == "MA")
+                {
+                    showMAScreen((MultiChoiceQuestion) questionsForTest.get(x));
+                }
+                else if (questionsForTest.get(x).getQuestionType() == "TF")
+                {
+                    showTFScreen((TrueOrFalseQuestion) questionsForTest.get(x));
+                }
+                else if (questionsForTest.get(x).getQuestionType() == "FIB") 
+                {
+                    showFIBScreen((FillInTheBlanks) questionsForTest.get(x));
+                }
+            }
+        }
+    }
+
+    private void showMCScreen(MultiChoiceQuestion qust) {
+        try {
+            MultipleWithOneAnswerController profile = (MultipleWithOneAnswerController) application.replaceSceneContent("student/view/MultipleWithOneAnswer.fxml");
+            profile.setApp(application,qust);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showMAScreen(MultiChoiceQuestion qust) {
+        try {
+            MultipleWithMoreAnswersController profile = (MultipleWithMoreAnswersController) application.replaceSceneContent("student/view/MultipleWithMoreAnswers.fxml");
+            profile.setApp(application,qust);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showTFScreen(TrueOrFalseQuestion qust) {
+        try {
+            TrueOrFalseController profile = (TrueOrFalseController) application.replaceSceneContent("student/view/TrueOrFalse.fxml");
+            profile.setApp(application,qust);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showFIBScreen(FillInTheBlanks qust) {
+        try {
+            FillInTheBlanksController profile = (FillInTheBlanksController) application.replaceSceneContent("student/view/FillInTheBlanks.fxml");
+            profile.setApp(application,qust);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
