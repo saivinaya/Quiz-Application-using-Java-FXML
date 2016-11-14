@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import quiz.MultiChoiceQuestion;
 import quiz.QuizMain;
@@ -20,6 +21,16 @@ import quiz.QuizMain;
  */
 public class MultipleWithMoreAnswersController implements Initializable {
     private QuizMain application;
+    @FXML
+    private Label questionDescription;
+    @FXML
+    private CheckBox choice1;
+    @FXML
+    private CheckBox choice2;
+    @FXML
+    private CheckBox choice3;
+    @FXML
+    private CheckBox choice4;
     /**
      * Initializes the controller class.
      */
@@ -32,10 +43,14 @@ public class MultipleWithMoreAnswersController implements Initializable {
     
     public void setApp(QuizMain application, MultiChoiceQuestion qust){
         this.application = application;
-        setup();
+        setup(qust);
     }
 
-    private void setup() {
-    
+    private void setup(MultiChoiceQuestion qust) {
+        questionDescription.setText(qust.getQuestiondesc());
+        choice1.setText(qust.getChoice1());
+        choice2.setText(qust.getChoice2());
+        choice3.setText(qust.getChoice3());
+        choice4.setText(qust.getChoice4());
     }
 }

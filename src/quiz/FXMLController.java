@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 public class FXMLController implements Initializable {
 
     @FXML
-    private Label questionDescription;
+    private Label qsDescription;
 
     /**
      * Initializes the controller class.

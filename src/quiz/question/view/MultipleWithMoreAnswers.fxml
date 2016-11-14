@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithMoreAnswersController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
@@ -18,22 +18,22 @@
          <children>
             <VBox layoutX="24.0" layoutY="155.0" prefHeight="118.0" prefWidth="478.0">
                <children>
-                  <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>

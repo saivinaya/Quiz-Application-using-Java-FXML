@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.TrueOrFalseController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
@@ -18,7 +18,7 @@
          <children>
             <VBox layoutX="24.0" layoutY="155.0" prefHeight="118.0" prefWidth="478.0">
                <children>
-                  <RadioButton layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" text="True">
+                  <RadioButton fx:id="optiontrue" layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" text="True">
                      <toggleGroup>
                         <ToggleGroup fx:id="Choices" />
                      </toggleGroup>
@@ -26,7 +26,7 @@
                         <Insets bottom="10.0" left="10.0" top="30.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" text="False" toggleGroup="$Choices">
+                  <RadioButton fx:id="optionfalse" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" text="False" toggleGroup="$Choices">
                      <padding>
                         <Insets bottom="30.0" left="10.0" top="10.0" />
                      </padding></RadioButton>

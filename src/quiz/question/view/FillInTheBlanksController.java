@@ -7,7 +7,9 @@ package quiz.question.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import quiz.FillInTheBlanks;
 import quiz.QuizMain;
 
@@ -21,6 +23,8 @@ public class FillInTheBlanksController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    @FXML
+    private Label questionDescription;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -29,10 +33,10 @@ public class FillInTheBlanksController implements Initializable {
     
     public void setApp(QuizMain application, FillInTheBlanks qust){
         this.application = application;
-        setup();
+        setup(qust);
     }
 
-    private void setup() {
-        
+    private void setup(FillInTheBlanks qust) {
+        questionDescription.setText(qust.getQuestiondesc());
     }
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithOneAnswerController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
@@ -18,7 +18,7 @@
          <children>
             <VBox layoutX="24.0" layoutY="155.0" prefHeight="118.0" prefWidth="478.0">
                <children>
-                  <RadioButton layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0">
+                  <RadioButton fx:id="choice1" layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0">
                      <toggleGroup>
                         <ToggleGroup fx:id="Choices" />
                      </toggleGroup>
@@ -26,15 +26,15 @@
                         <Insets bottom="10.0" left="10.0" top="5.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                  <RadioButton fx:id="choice2" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding></RadioButton>
-                  <RadioButton layoutX="39.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                  <RadioButton fx:id="choice3" layoutX="39.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" />
                      </VBox.margin></RadioButton>
-                  <RadioButton layoutX="39.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                  <RadioButton fx:id="choice4" layoutX="39.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" />
                      </VBox.margin></RadioButton>
