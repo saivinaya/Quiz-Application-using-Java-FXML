@@ -6,12 +6,17 @@
 package quiz.question.view;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import quiz.FillInTheBlanks;
+import quiz.Question;
 import quiz.QuizMain;
+import static quiz.student.view.StartTestController.*;
 
 /**
  * FXML Controller class
@@ -24,7 +29,7 @@ public class FillInTheBlanksController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private Label questionDescription;
+    private TextArea questionDescription;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -38,5 +43,11 @@ public class FillInTheBlanksController implements Initializable {
 
     private void setup(FillInTheBlanks qust) {
         questionDescription.setText(qust.getQuestiondesc());
+    }
+
+    @FXML
+    private void onNextButtonClick(ActionEvent event) {
+        String userAns = null;
+        ((FillInTheBlanks) questionsForTest.get(questionCounter)).setAns(userAns);
     }
 }

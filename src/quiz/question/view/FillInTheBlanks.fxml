@@ -16,10 +16,10 @@
       <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="176.0" layoutY="21.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
       <Pane layoutX="25.0" layoutY="63.0" prefHeight="323.0" prefWidth="547.0">
          <children>
-            <Button layoutX="479.0" layoutY="282.0" mnemonicParsing="false" text="Next" />
+            <Button layoutX="479.0" layoutY="282.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
             <Button layoutX="14.0" layoutY="282.0" mnemonicParsing="false" text="Back" />
             <Label layoutX="24.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" text="Question" />
-            <Label fx:id="questionDescription" layoutX="21.0" layoutY="41.0" prefHeight="116.0" prefWidth="501.0" />
+            <TextArea fx:id="questionDescription" editable="false" layoutX="24.0" layoutY="41.0" prefHeight="115.0" prefWidth="500.0" />
          </children>
       </Pane>
    </children>

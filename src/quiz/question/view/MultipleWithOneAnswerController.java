@@ -7,13 +7,17 @@ package quiz.question.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
+import javax.swing.JOptionPane;
 import quiz.MultiChoiceQuestion;
 import quiz.QuizMain;
+import static quiz.student.view.StartTestController.*;
 
 /**
  * FXML Controller class
@@ -29,7 +33,7 @@ public class MultipleWithOneAnswerController implements Initializable {
     @FXML
     private ToggleGroup Choices;
     @FXML
-    private Label questionDescription;
+    private TextArea questionDescription;
     @FXML
     private RadioButton choice1;
     @FXML
@@ -55,5 +59,20 @@ public class MultipleWithOneAnswerController implements Initializable {
         choice2.setText(qust.getChoice2());
         choice3.setText(qust.getChoice3());
         choice4.setText(qust.getChoice4());
+    }
+
+    @FXML
+    private void onNextButtonClick(ActionEvent event) {
+        if (!(choice1.isSelected()) && !(choice2.isSelected()) && !(choice3.isSelected()) && !(choice4.isSelected()))
+        {
+            JOptionPane.showMessageDialog(null, "You need to select an answer to proceed.","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else 
+        {
+            ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput1(choice1.isSelected());
+            ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput2(choice2.isSelected());
+            ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput3(choice3.isSelected());
+            ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput4(choice4.isSelected());
+        }
     }
 }

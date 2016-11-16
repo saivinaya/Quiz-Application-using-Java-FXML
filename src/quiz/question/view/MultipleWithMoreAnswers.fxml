@@ -40,10 +40,10 @@
                   </CheckBox>
                </children>
             </VBox>
-            <Button layoutX="479.0" layoutY="282.0" mnemonicParsing="false" text="Next" />
+            <Button layoutX="479.0" layoutY="282.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
             <Button layoutX="14.0" layoutY="282.0" mnemonicParsing="false" text="Back" />
-            <Label fx:id="questionDescription" layoutX="23.0" layoutY="41.0" prefHeight="118.0" prefWidth="501.0" />
             <Label layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" text="Question" />
+            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="115.0" prefWidth="500.0" />
          </children>
       </Pane>
    </children>

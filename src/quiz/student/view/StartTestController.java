@@ -40,12 +40,13 @@ import quiz.question.view.TrueOrFalseController;
 public class StartTestController implements Initializable {
     private QuizMain application;
     private QuizDBImplementation fetchQuestions;
-    public ArrayList<Question> questionsForTest = new ArrayList<Question>();
+    public static ArrayList<Question> questionsForTest = new ArrayList<Question>();
     
     ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy","Medium","Hard","Mixed");
     ObservableList<Integer> numOfQuestionsList = FXCollections.observableArrayList();
-    int selectednumOfQuestions = 0;
-    String selectedDifficulty = null; 
+    public static int selectednumOfQuestions = 0;
+    public String selectedDifficulty = null; 
+    public static int questionCounter = 0;
     
     Label errorMessage;
     
@@ -64,7 +65,7 @@ public class StartTestController implements Initializable {
         diffLevel.setValue("Select");
         diffLevel.setItems(diffLevelList);
         int questionsInDatabase = 20;
-        for (int a = 1;a<=questionsInDatabase;a++)
+        for (int a = 3;a<=questionsInDatabase;a++)
         {
             numOfQuestionsList.add(a);
         }
@@ -141,23 +142,23 @@ public class StartTestController implements Initializable {
             arrayqQuestionType = fetchQuestions.getQuestionTypes(questionsForTest);
             
             // iterate through the questions
-            for (int x=0; x<questionsForTest.size(); x++)
+            for (questionCounter=0; questionCounter<questionsForTest.size(); questionCounter++)
             {
-                if (questionsForTest.get(x).getQuestionType() == "MC")
+                if (questionsForTest.get(questionCounter).getQuestionType() == "MC")
                 {
-                    showMCScreen((MultiChoiceQuestion) questionsForTest.get(x));
+                    showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
                 }
-                else if (questionsForTest.get(x).getQuestionType() == "MA")
+                else if (questionsForTest.get(questionCounter).getQuestionType() == "MA")
                 {
-                    showMAScreen((MultiChoiceQuestion) questionsForTest.get(x));
+                    showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
                 }
-                else if (questionsForTest.get(x).getQuestionType() == "TF")
+                else if (questionsForTest.get(questionCounter).getQuestionType() == "TF")
                 {
-                    showTFScreen((TrueOrFalseQuestion) questionsForTest.get(x));
+                    showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
                 }
-                else if (questionsForTest.get(x).getQuestionType() == "FIB") 
+                else if (questionsForTest.get(questionCounter).getQuestionType() == "FIB") 
                 {
-                    showFIBScreen((FillInTheBlanks) questionsForTest.get(x));
+                    showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
                 }
             }
         }
