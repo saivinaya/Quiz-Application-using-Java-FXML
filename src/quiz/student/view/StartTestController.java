@@ -72,7 +72,7 @@ public class StartTestController implements Initializable {
         numOfQuestions.setItems(numOfQuestionsList);
     }    
     
-    public void setApp(QuizMain application){
+    public void setApp(QuizMain application) {
         this.application = application;
     }
 

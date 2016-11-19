@@ -15,36 +15,26 @@ public class User {
     private String password;
     private String uniRole;
 
-    public String getLoginName() {
-        return loginName;
+    public User(String loginName, String userName, String password, String uniRole) {
+        this.loginName = loginName;
+        this.userName = userName;
+        this.password = password;
+        this.uniRole = uniRole;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public String getLoginName() {
+        return loginName;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getUniRole() {
         return uniRole;
-    }
-
-    public void setUniRole(String uniRole) {
-        this.uniRole = uniRole;
-    }
-    
+    }  
 }

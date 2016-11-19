@@ -21,6 +21,7 @@ import quiz.QuizMain;
  * @author Hari
  */
 public class LoginController implements Initializable {
+
     private QuizMain application;
     @FXML
     TextField userName;
@@ -30,7 +31,6 @@ public class LoginController implements Initializable {
     Label errorMessage;
     @FXML
     private Button signIn;
-    
 
     /**
      * Initializes the controller class.
@@ -38,17 +38,20 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Loading Login page...");
-    }    
-    
-        public void setApp(QuizMain application){
+    }
+
+    public void setApp(QuizMain application) {
         this.application = application;
     }
+
     @FXML
-        public void onClickSignIn(){
+    public void onClickSignIn() {
         application.gotoAdminDashboard();
-        }
-       public void onClickSignUp(){
-        
-        }
-    
+    }
+
+    public void onClickSignUp() {
+        application.gotoSignUpScreen();
+
+    }
+
 }

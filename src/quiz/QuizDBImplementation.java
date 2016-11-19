@@ -109,10 +109,11 @@ public class QuizDBImplementation implements QuizDBDAO {
             preparedStatement.setString(2, user.getUserName());
             preparedStatement.setString(3, user.getPassword());
             preparedStatement.setString(4, user.getUniRole());
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            
         }
     }
 

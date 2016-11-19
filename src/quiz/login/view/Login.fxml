@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="700" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.LoginController">
     <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Java Quiz" textAlignment="JUSTIFY">
          <font>
@@ -18,18 +18,21 @@
       </Label>
       <HBox layoutX="203.0" layoutY="154.0" prefHeight="46.0" prefWidth="510.0">
          <children>
-            <Label prefHeight="50.0" prefWidth="103.0" text="User Name" />
-            <TextField fx:id="userName" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
+            <Label prefHeight="50.0" prefWidth="103.0" text="Login Name" />
+            <TextField fx:id="userName" prefHeight="47.0" prefWidth="187.0" promptText="Admin">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor></TextField>
          </children>
       </HBox>
       <HBox layoutX="203.0" layoutY="236.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Password" />
-            <TextField fx:id="password" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
+            <PasswordField prefHeight="45.0" prefWidth="187.0" />
          </children>
       </HBox>
       <Button fx:id="signIn" layoutX="309.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSignIn" text="Sign In" />
-      <Button layoutX="425.0" layoutY="341.0" mnemonicParsing="false" text="Sign Up" />
+      <Button fx:id="signup" layoutX="425.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSignUp" text="Sign Up" />
     </children>
    <opaqueInsets>
       <Insets />

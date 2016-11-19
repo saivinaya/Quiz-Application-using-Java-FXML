@@ -9,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="517.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.AdminDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="517.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.AdminDashboardController">
      <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Java Quiz" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Admin Dashboard" textAlignment="JUSTIFY">
       <font>
             <Font size="62.0" />
          </font>
@@ -32,7 +32,7 @@
       </HBox>
       <HBox layoutX="48.0" layoutY="95.0" prefHeight="46.0" prefWidth="510.0">
          <children>
-            <Label prefHeight="46.0" prefWidth="209.0" text="Welcome Admin User">
+            <Label prefHeight="46.0" prefWidth="209.0" text="Welcome Admin">
                  <font>
             <Font size="21.0" />
          </font>
