@@ -61,6 +61,9 @@ public class InstructionsPageController implements Initializable {
 
     @FXML
     private void onCancel(ActionEvent event) {
+        selectednumOfQuestions = 0;
+        selectedDifficulty = null;
+        questionCounter = 0;
         application.gotoStartTest();
     }
     

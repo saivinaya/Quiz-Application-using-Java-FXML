@@ -8,16 +8,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="quiz.student.view.InstructionsPageController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.InstructionsPageController">
    <children>
-      <Label layoutX="281.0" layoutY="145.0" prefHeight="47.0" prefWidth="138.0" text="INSTRUCTIONS">
+      <Label layoutX="257.0" layoutY="131.0" prefHeight="47.0" prefWidth="186.0" text="INSTRUCTIONS" textFill="#e40d0d">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="543.0" layoutY="594.0" mnemonicParsing="false" onAction="#onStartTest" prefHeight="40.0" prefWidth="96.0" text="Start Test" />
-      <Button layoutX="64.0" layoutY="594.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="40.0" prefWidth="96.0" text="Cancel" />
+      <Button layoutX="473.0" layoutY="585.0" mnemonicParsing="false" onAction="#onStartTest" prefHeight="50.0" prefWidth="120.0" text="Start Test" />
+      <Button layoutX="57.0" layoutY="585.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="50.0" prefWidth="120.0" text="Cancel" />
       <VBox layoutX="84.0" layoutY="241.0" prefHeight="277.0" prefWidth="558.0">
          <children>
             <Label prefHeight="63.0" prefWidth="557.0" text="1. You may not use your textbook, course notes, or receive help from a TA or any other outside source." wrapText="true" />

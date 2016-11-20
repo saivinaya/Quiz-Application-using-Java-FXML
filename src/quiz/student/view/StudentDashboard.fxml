@@ -9,17 +9,23 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.StudentDashboardController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="239.0" layoutY="29.0" prefHeight="25.0" prefWidth="242.0" text="Student Dashboard" textAlignment="CENTER" underline="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="54.0" prefHeight="44.0" prefWidth="356.0" text="Student Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font size="36.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="TOP" layoutX="48.0" layoutY="98.0" prefHeight="25.0" prefWidth="120.0" text="Welcome!" underline="true">
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="47.0" layoutY="152.0" prefHeight="51.0" prefWidth="217.0" text="Welcome" textFill="#b51010" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font size="30.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="209.0" layoutY="209.0" onAction="#startTestWindow" prefHeight="25.0" prefWidth="84.0" text="Take Test" />
-      <Hyperlink layoutX="209.0" layoutY="307.0" text="View Results " />
+      <Hyperlink layoutX="209.0" layoutY="290.0" onAction="#startTestWindow" prefHeight="51.0" prefWidth="229.0" text="Take Test">
+         <font>
+            <Font size="24.0" />
+         </font></Hyperlink>
+      <Hyperlink layoutX="209.0" layoutY="405.0" text="View Results ">
+         <font>
+            <Font size="24.0" />
+         </font></Hyperlink>
    </children>
 </AnchorPane>

@@ -118,6 +118,8 @@ public class StartTestController implements Initializable {
                     selectedDifficulty = diffLevelList.get(selectedDiffIndex);
                     //int questionsInDatabase = fetchQuestions.questionCount(selectedDifficulty);
                     int questionsInDatabase = 30;
+                    selectednumOfQuestions = 0;
+                    numOfQuestionsList.clear();
                     for (int a = 3; a <= questionsInDatabase; a++) {
                         numOfQuestionsList.add(a);
                     }
