@@ -27,10 +27,7 @@ import quiz.Question;
 import quiz.QuizMain;
 import quiz.QuizDBImplementation;
 import quiz.TrueOrFalseQuestion;
-import quiz.question.view.FillInTheBlanksController;
-import quiz.question.view.MultipleWithMoreAnswersController;
-import quiz.question.view.MultipleWithOneAnswerController;
-import quiz.question.view.TrueOrFalseController;
+import quiz.question.view.*;
 
 /**
  * FXML Controller class
@@ -38,133 +35,96 @@ import quiz.question.view.TrueOrFalseController;
  * @author VinayaSaiD
  */
 public class StartTestController implements Initializable {
+
     private QuizMain application;
     public QuizDBImplementation fetchQuestions;
     public static ArrayList<Question> questionsForTest = new ArrayList<Question>();
-    
-    ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy","Medium","Hard","Mixed");
+
+    ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy", "Medium", "Hard", "Mixed");
     ObservableList<Integer> numOfQuestionsList = FXCollections.observableArrayList();
     public static int selectednumOfQuestions = 0;
-    public String selectedDifficulty = null; 
+    public static String selectedDifficulty = null;
     public static int questionCounter = 0;
-    
+
     Label errorMessage;
-    
+
     @FXML
     private ChoiceBox diffLevel;
-    
+
     @FXML
     private ChoiceBox numOfQuestions;
-    
+
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("In the test");
         diffLevel.setValue("Select");
         diffLevel.setItems(diffLevelList);
         int questionsInDatabase = 20;
-        for (int a = 3;a<=questionsInDatabase;a++)
-        {
+        for (int a = 3; a <= questionsInDatabase; a++) {
             numOfQuestionsList.add(a);
         }
         numOfQuestions.setItems(numOfQuestionsList);
-    }    
-    
+    }
+
     public void setApp(QuizMain application) {
         this.application = application;
     }
 
     @FXML
     private void goBackToStudentDashboard(ActionEvent event) {
-        if (application == null){
+        if (application == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
             // NO-OP.
             errorMessage.setText("Hello");
-        } 
-        else 
-        {
+        } else {
             application.gotoStudentDashboard();
         }
     }
-    
+
     @FXML
     private void onQuestionSelected(MouseEvent event) {
-        if (application == null){
+        if (application == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
             // NO-OP.
             errorMessage.setText("Hello");
-        } 
-        else 
-        {
+        } else {
             numOfQuestions.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue observableValue, Number number, Number number2) {
-              selectednumOfQuestions = (Integer) number2 + 3;
-              System.out.println(selectednumOfQuestions);
-            }
-          });
+                @Override
+                public void changed(ObservableValue observableValue, Number number, Number number2) {
+                    selectednumOfQuestions = (Integer) number2 + 3;
+                    //System.out.println(selectednumOfQuestions);
+                }
+            });
         }
     }
-    
+
     @FXML
     private void onDiffSelected(MouseEvent event) {
-        if (application == null){
+        if (application == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
             errorMessage.setText("Hello");
-        } 
-        else 
-        {
+        } else {
             diffLevel.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue observableValue, Number number, Number number2) {
-               int selectedDiffIndex = (Integer) number2;
-              selectedDifficulty = diffLevelList.get(selectedDiffIndex);
-              System.out.println(selectedDifficulty);
-            }
-          });
+                @Override
+                public void changed(ObservableValue observableValue, Number number, Number number2) {
+                    int selectedDiffIndex = (Integer) number2;
+                    selectedDifficulty = diffLevelList.get(selectedDiffIndex);
+                    //System.out.println(selectedDifficulty);
+                }
+            });
         }
     }
-    
+
     @FXML
     private void onBeginTest(ActionEvent event) {
-        if (application == null){
+        if (application == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
             errorMessage.setText("Hello");
-        } 
-        else 
-        {
-            int arrayqQuestionType[] = new int[4];
-            questionsForTest=application.getQuestions(selectednumOfQuestions,selectedDifficulty);
-            // iterate through the questions
-            questionCounter=0;
-            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC"))
-            {
-                //System.out.println("1"+question.getQuestiondesc());
-                application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            }
-            else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA"))
-            {
-                //System.out.println("2"+question.getQuestiondesc());
-                application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            }
-            else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF"))
-            {
-                //System.out.println("3"+question.getQuestiondesc());
-                application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
-            }
-            else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) 
-            {
-                //System.out.println("4"+question.getQuestiondesc());
-                application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
-            }
+        } else {
+            application.gotoInstrctions();
         }
     }
-
-
-
 }
