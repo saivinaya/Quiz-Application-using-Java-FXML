@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -34,7 +35,7 @@ import static quiz.student.view.StartTestController.*;
 public class FillInTheBlanksController implements Initializable {
 
     private QuizMain application;
-    
+
     @FXML
     private TextArea questionDescription;
     @FXML
@@ -46,7 +47,8 @@ public class FillInTheBlanksController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        questionNumber.setText("Question " + (questionCounter+1) + " of " + (selectednumOfQuestions));
+        System.out.println("Entered the fill in");
+        questionNumber.setText("Question " + (questionCounter + 1) + " of " + (selectednumOfQuestions));
         userAnswer.setText(((FillInTheBlanks) questionsForTest.get(questionCounter)).getUserInput());
         if (questionCounter == 0) {
             backButton.setVisible(false);
@@ -63,13 +65,12 @@ public class FillInTheBlanksController implements Initializable {
     @FXML
     private void onNextButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
-        System.out.println(userAns);
-        if (userAns.equals(null)) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("You need to enter an answer to proceed.");
+        if (userAns == null || userAns.equals("")) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setContentText("You need to enter an answer to proceed.Or use 'Skip' to Skip the question.");
             alert.showAndWait();
         } else {
-            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setAns(userAns);
+            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(userAns);
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(false);
             application.gotoNextQuestion();
         }
@@ -88,11 +89,30 @@ public class FillInTheBlanksController implements Initializable {
             application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
         }
     }
-    
+
     @FXML
     private void onSkipButtonClick(ActionEvent event) {
-        ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
-        ((FillInTheBlanks) questionsForTest.get(questionCounter)).setAns(null);
-        application.gotoNextQuestion();
+        String userAns = userAnswer.getText();
+        System.out.println(userAns);
+        if (!(userAns == null)) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"You have given an answer.Do you wish to remove the answer and proceed.",ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
+                ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput("");
+                application.gotoNextQuestion();
+            }
+        } else {
+            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
+            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput("");
+            application.gotoNextQuestion();
+        }
+    }
+
+    @FXML
+    private void onTextEntered(ActionEvent event) {
+        String inputGiven;
+        inputGiven = userAnswer.getText();
+        ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(inputGiven);
     }
 }

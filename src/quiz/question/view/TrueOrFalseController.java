@@ -11,7 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -50,7 +52,7 @@ public class TrueOrFalseController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        questionNumber.setText("Question " + (questionCounter+1) + " of " + (selectednumOfQuestions));
+        questionNumber.setText("Question " + (questionCounter + 1) + " of " + (selectednumOfQuestions));
         optiontrue.setSelected(((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isUserInput());
         optiontrue.setSelected(((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isUserInput());
         if (questionCounter == 0) {
@@ -70,8 +72,8 @@ public class TrueOrFalseController implements Initializable {
     private void onNextButtonClick(ActionEvent event) {
         boolean userChoice = false;
         if (!(optiontrue.isSelected()) && !(optionfalse.isSelected())) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("You need to enter an answer to proceed.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("You need to select an answer to proceed.Or use 'Skip' to Skip the question");
             alert.showAndWait();
         } else {
             if (optiontrue.isSelected()) {
@@ -99,11 +101,21 @@ public class TrueOrFalseController implements Initializable {
             application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
         }
     }
-    
+
     @FXML
     private void onSkipButtonClick(ActionEvent event) {
-        ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
-        ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(false);
-        application.gotoNextQuestion();
+        if ((optiontrue.isSelected()) || (optionfalse.isSelected())) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"You selected an answer. Do you wish to remove the selection and proceed.",ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
+                ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(false);
+                application.gotoNextQuestion();
+            }
+        } else {
+            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
+            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(false);
+            application.gotoNextQuestion();
+        }
     }
 }

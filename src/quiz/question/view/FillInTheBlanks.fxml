@@ -14,13 +14,13 @@
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="13.0" layoutY="45.0" prefHeight="641.0" prefWidth="674.0">
+      <Pane layoutX="13.0" layoutY="52.0" prefHeight="641.0" prefWidth="674.0">
          <children>
             <Button layoutX="597.0" layoutY="571.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
             <Button fx:id="backButton" layoutX="24.0" layoutY="571.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
             <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="310.0" prefWidth="631.0" />
-            <TextField fx:id="userAnswer" layoutX="142.0" layoutY="461.0" prefHeight="36.0" prefWidth="357.0" />
+            <TextField fx:id="userAnswer" layoutX="142.0" layoutY="461.0" onMouseExited="#onTextEntered" prefHeight="36.0" prefWidth="357.0" />
             <Label layoutX="142.0" layoutY="434.0" prefHeight="27.0" prefWidth="195.0" text="Input your Answer below:">
                <font>
                   <Font size="14.0" />
