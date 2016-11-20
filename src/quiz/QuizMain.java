@@ -28,7 +28,7 @@ import quiz.security.Authenticator;
  */
 public class QuizMain extends Application {
 
-    public  Stage stage;
+    public Stage stage;
     private User loggedUser;
     private final double MINIMUM_WINDOW_WIDTH = 700.0;
     private final double MINIMUM_WINDOW_HEIGHT = 700.0;
@@ -48,9 +48,9 @@ public class QuizMain extends Application {
             stage.setTitle("Java Quiz");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
-             //uploadQuestions();
-             //gotoLogin();
-            gotoStudentDashboard();
+            uploadQuestions();
+            //gotoLogin();
+            //gotoStudentDashboard();
             primaryStage.show();
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,7 +58,7 @@ public class QuizMain extends Application {
     }
 
     public void gotoLogin() {
-         try {
+        try {
             System.out.println("test");
             LoginController profile = (LoginController) replaceSceneContent("login/view/Login.fxml");
             profile.setApp(this);
@@ -122,23 +122,23 @@ public class QuizMain extends Application {
 //            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+    public ArrayList<Question> getQuestions(int numOfQuestions, String difficultyLevel) {
+        QuizDBImplementation qzImpl = new QuizDBImplementation();
+        return qzImpl.selectQuestions(numOfQuestions, difficultyLevel);
 
-        public ArrayList<Question> getQuestions(int numOfQuestions, String difficultyLevel) {
-                QuizDBImplementation qzImpl = new QuizDBImplementation();
-            return qzImpl.selectQuestions(numOfQuestions,difficultyLevel);
-            
-        }
+    }
+
     public void uploadQuestions() {
         System.out.println("Inside upload q to db");
-                    QuizDBImplementation qzImpl = new QuizDBImplementation();
+        QuizDBImplementation qzImpl = new QuizDBImplementation();
 
         qzImpl.addQuestions("test-sample.csv");
     }
-    
-        public  void showMCScreen(MultiChoiceQuestion qust) {
+
+    public void showMCScreen(MultiChoiceQuestion qust) {
         try {
             MultipleWithOneAnswerController profile = (MultipleWithOneAnswerController) replaceSceneContent("question/view/MultipleWithOneAnswer.fxml");
-            profile.setApp(this,qust);
+            profile.setApp(this, qust);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -147,7 +147,7 @@ public class QuizMain extends Application {
     public void showMAScreen(MultiChoiceQuestion qust) {
         try {
             MultipleWithMoreAnswersController profile = (MultipleWithMoreAnswersController) replaceSceneContent("question/view/MultipleWithMoreAnswers.fxml");
-            profile.setApp(this,qust);
+            profile.setApp(this, qust);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -165,13 +165,13 @@ public class QuizMain extends Application {
     public void showFIBScreen(FillInTheBlanks qust) {
         try {
             FillInTheBlanksController profile = (FillInTheBlanksController) replaceSceneContent("question/view/FillInTheBlanks.fxml");
-            profile.setApp(this,qust);
+            profile.setApp(this, qust);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public  Initializable replaceSceneContent(String fxml) throws Exception {
+    public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         InputStream in = QuizMain.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -187,8 +187,7 @@ public class QuizMain extends Application {
         stage.sizeToScene();
         return (Initializable) loader.getController();
     }
-    
-    
+
     public void addUser(String loginName, String userName, String password, String uniRole) {
         System.out.println("in addUser");
         User usr = new User(loginName, userName, password, uniRole);
