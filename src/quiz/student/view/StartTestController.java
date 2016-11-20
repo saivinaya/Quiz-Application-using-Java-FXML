@@ -17,8 +17,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import quiz.FillInTheBlanks;
@@ -59,10 +61,11 @@ public class StartTestController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("In the test");
-        diffLevel.setValue("Select");
         diffLevel.setItems(diffLevelList);
-        int questionsInDatabase = 20;
+        System.out.println("before noof question");
+        numOfQuestions.setDisable(true);
+        //int questionsInDatabase = fetchQuestions.questionCount(selectedDifficulty);
+        int questionsInDatabase = 30;
         for (int a = 3; a <= questionsInDatabase; a++) {
             numOfQuestionsList.add(a);
         }
@@ -107,12 +110,15 @@ public class StartTestController implements Initializable {
             // We are running in isolated FXML, possibly in Scene Builder.
             errorMessage.setText("Hello");
         } else {
+            System.out.println("inside the onDiffSelected");
             diffLevel.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue observableValue, Number number, Number number2) {
+                    numOfQuestions.getSelectionModel().clearSelection();
                     int selectedDiffIndex = (Integer) number2;
                     selectedDifficulty = diffLevelList.get(selectedDiffIndex);
                     //System.out.println(selectedDifficulty);
+                    numOfQuestions.setDisable(false);
                 }
             });
         }
@@ -124,7 +130,27 @@ public class StartTestController implements Initializable {
             // We are running in isolated FXML, possibly in Scene Builder.
             errorMessage.setText("Hello");
         } else {
-            application.gotoInstrctions();
+            if (selectedDifficulty!=null && selectednumOfQuestions!=0)
+            {   application.gotoInstrctions();
+            }
+            else if (selectedDifficulty!=null)
+            {   // give a pop up saying "Difficulty Level needs to be selected"
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Difficulty Level needs to be selected.");
+                alert.showAndWait();
+            }
+            else if (selectednumOfQuestions!=0)
+            {   // give a pop up saying "Please select No.of Questions"
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please select No.of Questions");
+                alert.showAndWait();
+            }
+            else
+            {   // give a pop up saying "Both fields need to be selected before proceeding."
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Both fields need to be selected before proceeding.");
+                alert.showAndWait();
+            }
         }
     }
 }
