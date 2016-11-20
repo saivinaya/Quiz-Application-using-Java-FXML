@@ -9,20 +9,18 @@ package quiz;
  *
  * @author Hari
  */
-public class FillInTheBlanks extends Question{
+public class FillInTheBlanks extends Question {
     //fields: ans(String),userInput
-           //method validateAnswer
+    //method validateAnswer
 
     private String ans;
     private String userInput;
 
-    public FillInTheBlanks()
-    {
+    public FillInTheBlanks() {
     }
-    
-    public FillInTheBlanks(String QuestionType, String LevelOfDifficulty, String Questiondesc,String ans) 
-    {
-        super(QuestionType,LevelOfDifficulty,Questiondesc);
+
+    public FillInTheBlanks(String QuestionType, String LevelOfDifficulty, String Questiondesc, String ans) {
+        super(QuestionType, LevelOfDifficulty, Questiondesc);
         this.ans = ans;
     }
 
@@ -41,16 +39,17 @@ public class FillInTheBlanks extends Question{
     public void setUserInput(String userInput) {
         this.userInput = userInput;
     }
-    
-    public boolean validateAnswer(FillInTheBlanks qObject)
-    {
-        if (qObject.getAns().trim().toLowerCase() == qObject.getUserInput().trim().toLowerCase())
-        {
+
+    public boolean validateAnswer(FillInTheBlanks qObject) {
+        if (qObject.getAns().trim().toLowerCase() == qObject.getUserInput().trim().toLowerCase()) {
             return true;
-        }
-        else 
-        {
+        } else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}' + "FillInTheBlanks{" + "ans=" + ans + ", userInput=" + userInput + '}';
     }
 }

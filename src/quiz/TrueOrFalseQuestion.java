@@ -11,18 +11,16 @@ package quiz;
  */
 public class TrueOrFalseQuestion extends Question {
     //fields: ans (boolean),userInput
-           //method validateAnswer
+    //method validateAnswer
 
     private boolean ans;
     private boolean userInput;
 
-    public TrueOrFalseQuestion()
-    {
+    public TrueOrFalseQuestion() {
     }
-    
-    public TrueOrFalseQuestion(String QuestionType, String LevelOfDifficulty, String Questiondesc,boolean ans) 
-    {
-        super(QuestionType,LevelOfDifficulty,Questiondesc);
+
+    public TrueOrFalseQuestion(String QuestionType, String LevelOfDifficulty, String Questiondesc, boolean ans) {
+        super(QuestionType, LevelOfDifficulty, Questiondesc);
         this.ans = ans;
     }
 
@@ -41,16 +39,17 @@ public class TrueOrFalseQuestion extends Question {
     public void setUserInput(boolean userInput) {
         this.userInput = userInput;
     }
-    
-    public boolean validateAnswer(TrueOrFalseQuestion qObject)
-    {
-        if (qObject.isAns() == qObject.isUserInput())
-        {
+
+    public boolean validateAnswer(TrueOrFalseQuestion qObject) {
+        if (qObject.isAns() == qObject.isUserInput()) {
             return true;
-        }
-        else 
-        {
+        } else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}' + "TrueOrFalseQuestion{" + "ans=" + ans + ", userInput=" + userInput + '}';
     }
 }

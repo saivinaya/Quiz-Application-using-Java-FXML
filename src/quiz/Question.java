@@ -8,10 +8,10 @@ package quiz;
 public class Question {
    //Fields: QuestionType,LevelOfDifficulty, Questiondesc, 
              //method abstract: validateAnswer
-    private String QuestionType;
-    private String LevelOfDifficulty;
-    private String Questiondesc;
-    private boolean skipQuestion;
+    protected String QuestionType;
+    protected String LevelOfDifficulty;
+    protected String Questiondesc;
+    protected boolean skipQuestion;
 
     public Question()
     {
@@ -54,6 +54,10 @@ public class Question {
     public void setSkipQuestion(boolean skipQuestion) {
         this.skipQuestion = skipQuestion;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}';
+    }
     
 }

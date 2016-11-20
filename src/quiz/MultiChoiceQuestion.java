@@ -9,7 +9,7 @@ package quiz;
  *
  * @author Group
  */
-public class MultiChoiceQuestion extends Question{
+public class MultiChoiceQuestion extends Question {
 
     //Fields choice1, ans1, choice2, ans2, choice3, ans3, choice4, answer4, userInput1, userInput2, userInput3, userInput4
     //method validateAnswer
@@ -25,14 +25,12 @@ public class MultiChoiceQuestion extends Question{
     private boolean userInput2;
     private boolean userInput3;
     private boolean userInput4;
-    
-    public MultiChoiceQuestion()
-    {
+
+    public MultiChoiceQuestion() {
     }
-    
-    public MultiChoiceQuestion(String QuestionType, String LevelOfDifficulty, String Questiondesc,String choice1, String choice2, String choice3, String choice4, boolean ans1, boolean ans2, boolean ans3, boolean ans4)
-    {
-        super(QuestionType,LevelOfDifficulty,Questiondesc);
+
+    public MultiChoiceQuestion(String QuestionType, String LevelOfDifficulty, String Questiondesc, String choice1, String choice2, String choice3, String choice4, boolean ans1, boolean ans2, boolean ans3, boolean ans4) {
+        super(QuestionType, LevelOfDifficulty, Questiondesc);
         this.choice1 = choice1;
         this.choice2 = choice2;
         this.choice3 = choice3;
@@ -42,7 +40,7 @@ public class MultiChoiceQuestion extends Question{
         this.ans3 = ans3;
         this.ans4 = ans4;
     }
-    
+
     public String getChoice1() {
         return choice1;
     }
@@ -134,18 +132,21 @@ public class MultiChoiceQuestion extends Question{
     public boolean isUserInput4() {
         return userInput4;
     }
-    
+
     public void setUserInput4(boolean userInput4) {
         this.userInput4 = userInput4;
     }
-    
-    public boolean validateAnswer(MultiChoiceQuestion qObject)
-    {
-        if (qObject.isAns1() == qObject.isUserInput1() && qObject.isAns2() == qObject.isUserInput2() && qObject.isAns3() == qObject.isUserInput3() && qObject.isAns4() == qObject.isUserInput4())
-        {   return true;
+
+    public boolean validateAnswer(MultiChoiceQuestion qObject) {
+        if (qObject.isAns1() == qObject.isUserInput1() && qObject.isAns2() == qObject.isUserInput2() && qObject.isAns3() == qObject.isUserInput3() && qObject.isAns4() == qObject.isUserInput4()) {
+            return true;
+        } else {
+            return false;
         }
-        else 
-        {   return false;
-        }
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}' + "MultiChoiceQuestion{" + "choice1=" + choice1 + ", choice2=" + choice2 + ", choice3=" + choice3 + ", choice4=" + choice4 + ", ans1=" + ans1 + ", ans2=" + ans2 + ", ans3=" + ans3 + ", ans4=" + ans4 + ", userInput1=" + userInput1 + ", userInput2=" + userInput2 + ", userInput3=" + userInput3 + ", userInput4=" + userInput4 + '}';
     }
 }
