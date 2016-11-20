@@ -62,14 +62,13 @@ public class StartTestController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         diffLevel.setItems(diffLevelList);
-        System.out.println("before noof question");
         numOfQuestions.setDisable(true);
         //int questionsInDatabase = fetchQuestions.questionCount(selectedDifficulty);
-        int questionsInDatabase = 30;
-        for (int a = 3; a <= questionsInDatabase; a++) {
-            numOfQuestionsList.add(a);
-        }
-        numOfQuestions.setItems(numOfQuestionsList);
+//        int questionsInDatabase = 30;
+//        for (int a = 3; a <= questionsInDatabase; a++) {
+//            numOfQuestionsList.add(a);
+//        }
+//        numOfQuestions.setItems(numOfQuestionsList);
     }
 
     public void setApp(QuizMain application) {
@@ -110,14 +109,20 @@ public class StartTestController implements Initializable {
             // We are running in isolated FXML, possibly in Scene Builder.
             errorMessage.setText("Hello");
         } else {
-            System.out.println("inside the onDiffSelected");
+            
             diffLevel.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue observableValue, Number number, Number number2) {
                     numOfQuestions.getSelectionModel().clearSelection();
                     int selectedDiffIndex = (Integer) number2;
                     selectedDifficulty = diffLevelList.get(selectedDiffIndex);
-                    //System.out.println(selectedDifficulty);
+                    //int questionsInDatabase = fetchQuestions.questionCount(selectedDifficulty);
+                    int questionsInDatabase = 30;
+                    for (int a = 3; a <= questionsInDatabase; a++) {
+                        numOfQuestionsList.add(a);
+                    }
+                    numOfQuestions.setItems(numOfQuestionsList);
+                    numOfQuestions.getSelectionModel();
                     numOfQuestions.setDisable(false);
                 }
             });
@@ -135,19 +140,19 @@ public class StartTestController implements Initializable {
             }
             else if (selectedDifficulty!=null)
             {   // give a pop up saying "Difficulty Level needs to be selected"
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Difficulty Level needs to be selected.");
                 alert.showAndWait();
             }
             else if (selectednumOfQuestions!=0)
             {   // give a pop up saying "Please select No.of Questions"
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Please select No.of Questions");
                 alert.showAndWait();
             }
             else
             {   // give a pop up saying "Both fields need to be selected before proceeding."
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Both fields need to be selected before proceeding.");
                 alert.showAndWait();
             }
