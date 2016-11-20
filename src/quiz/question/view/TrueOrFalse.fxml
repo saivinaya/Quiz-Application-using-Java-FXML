@@ -37,6 +37,7 @@
                   </RadioButton>
                </children>
             </VBox>
+            <Button layoutX="512.0" layoutY="571.0" mnemonicParsing="false" onAction="#onSkipButtonClick" text="Skip" />
          </children>
       </Pane>
    </children>

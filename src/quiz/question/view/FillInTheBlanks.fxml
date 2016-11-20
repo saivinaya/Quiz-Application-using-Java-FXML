@@ -26,6 +26,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button layoutX="515.0" layoutY="571.0" mnemonicParsing="false" onAction="#onSkipButtonClick" text="Skip" />
          </children>
       </Pane>
       <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="226.0" layoutY="15.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />

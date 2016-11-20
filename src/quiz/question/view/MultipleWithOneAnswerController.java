@@ -10,11 +10,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javax.swing.JOptionPane;
 import quiz.FillInTheBlanks;
 import quiz.MultiChoiceQuestion;
@@ -62,10 +64,15 @@ public class MultipleWithOneAnswerController implements Initializable {
             backButton.setVisible(false);
         }
         questionDescription.setText(((MultiChoiceQuestion) questionsForTest.get(questionCounter)).getQuestiondesc());
+        questionDescription.setTooltip(new Tooltip("Question Description"));
         choice1.setText(((MultiChoiceQuestion) questionsForTest.get(questionCounter)).getChoice1());
+        choice1.setTooltip(new Tooltip("Choice 1"));
         choice2.setText(((MultiChoiceQuestion) questionsForTest.get(questionCounter)).getChoice2());
+        choice2.setTooltip(new Tooltip("Choice 2"));
         choice3.setText(((MultiChoiceQuestion) questionsForTest.get(questionCounter)).getChoice3());
+        choice3.setTooltip(new Tooltip("Choice 3"));
         choice4.setText(((MultiChoiceQuestion) questionsForTest.get(questionCounter)).getChoice4());
+        choice4.setTooltip(new Tooltip("Choice 4"));
     }
 
     public void setApp(QuizMain application, MultiChoiceQuestion qust) {
@@ -75,44 +82,40 @@ public class MultipleWithOneAnswerController implements Initializable {
     @FXML
     private void onNextButtonClick(ActionEvent event) {
         if (!(choice1.isSelected()) && !(choice2.isSelected()) && !(choice3.isSelected()) && !(choice4.isSelected())) {
-            JOptionPane.showMessageDialog(null, "You need to select an answer to proceed.", "Warning", JOptionPane.WARNING_MESSAGE);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("You need to enter an answer to proceed.");
+            alert.showAndWait();
         } else {
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput1(choice1.isSelected());
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput2(choice2.isSelected());
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput3(choice3.isSelected());
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput4(choice4.isSelected());
-        }
-        questionCounter = questionCounter + 1;
-        if (questionCounter < selectednumOfQuestions) {
-            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
-                application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
-                application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
-                application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
-                application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
-            }
-        } else {
-            application.gotoSubmitPage();
+            ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(false);
+        application.gotoNextQuestion();
         }
     }
 
     @FXML
     private void onBackButtonClick(ActionEvent event) {
-        if (questionCounter == 0) {
-            JOptionPane.showMessageDialog(null, "First Question. Cannot go back.", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            questionCounter = questionCounter - 1;
-            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
-                application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
-                application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
-                application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
-                application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
-            }
+        questionCounter = questionCounter - 1;
+        if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+            application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+        } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+            application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+        } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+            application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
+        } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+            application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
         }
+    }
+
+    @FXML
+    private void onSkipButtonClick(ActionEvent event) {
+        ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
+        ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput1(false);
+        ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput2(false);
+        ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput3(false);
+        ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput4(false);
+        application.gotoNextQuestion();
     }
 }

@@ -10,11 +10,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javax.swing.JOptionPane;
 import quiz.FillInTheBlanks;
 import quiz.MultiChoiceQuestion;
@@ -55,6 +57,9 @@ public class TrueOrFalseController implements Initializable {
             backButton.setVisible(false);
         }
         questionDescription.setText(((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).getQuestiondesc());
+        questionDescription.setTooltip(new Tooltip("Question Description"));
+        optiontrue.setTooltip(new Tooltip("True"));
+        optionfalse.setTooltip(new Tooltip("False"));
     }
 
     public void setApp(QuizMain application, TrueOrFalseQuestion qust) {
@@ -65,7 +70,9 @@ public class TrueOrFalseController implements Initializable {
     private void onNextButtonClick(ActionEvent event) {
         boolean userChoice = false;
         if (!(optiontrue.isSelected()) && !(optionfalse.isSelected())) {
-            JOptionPane.showMessageDialog(null, "You need to select an answer to proceed.", "Warning", JOptionPane.WARNING_MESSAGE);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("You need to enter an answer to proceed.");
+            alert.showAndWait();
         } else {
             if (optiontrue.isSelected()) {
                 userChoice = true;
@@ -74,39 +81,29 @@ public class TrueOrFalseController implements Initializable {
                 userChoice = false;
             }
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(userChoice);
-
-        }
-        questionCounter = questionCounter + 1;
-        if (questionCounter < selectednumOfQuestions) {
-            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
-                application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
-                application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
-                application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
-                application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
-            }
-        } else {
-            application.gotoSubmitPage();
+            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(false);
+            application.gotoNextQuestion();
         }
     }
 
     @FXML
     private void onBackButtonClick(ActionEvent event) {
-        if (questionCounter == 0) {
-            JOptionPane.showMessageDialog(null, "First Question. Cannot go back.", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            questionCounter = questionCounter - 1;
-            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
-                application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
-                application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
-                application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
-            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
-                application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
-            }
+        questionCounter = questionCounter - 1;
+        if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+            application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+        } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+            application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+        } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+            application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
+        } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+            application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
         }
+    }
+    
+    @FXML
+    private void onSkipButtonClick(ActionEvent event) {
+        ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
+        ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(false);
+        application.gotoNextQuestion();
     }
 }
