@@ -11,11 +11,12 @@ public class Question {
     private String QuestionType;
     private String LevelOfDifficulty;
     private String Questiondesc;
+    private boolean skipQuestion;
 
     public Question()
     {
     }
-   
+
     public Question(String QuestionType, String LevelOfDifficulty, String Questiondesc) {
         this.QuestionType = QuestionType;
         this.LevelOfDifficulty = LevelOfDifficulty;
@@ -45,6 +46,14 @@ public class Question {
     public void setQuestiondesc(String Questiondesc) {
         this.Questiondesc = Questiondesc;
     }
-   
+
+    public boolean isSkipQuestion() {
+        return skipQuestion;
+    }
+
+    public void setSkipQuestion(boolean skipQuestion) {
+        this.skipQuestion = skipQuestion;
+    }
+    
     
 }

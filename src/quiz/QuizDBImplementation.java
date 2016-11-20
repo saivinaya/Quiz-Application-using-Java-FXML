@@ -267,17 +267,18 @@ public class QuizDBImplementation implements QuizDBDAO {
     public int questionCount(String difficultyLevel) {
         int countRows = 0;
         String query;
-        if(difficultyLevel == "Mixed"){  // check input
+        if(difficultyLevel.equalsIgnoreCase("Mixed")){  // check input
             query = "SELECT COUNT(*) AS NUMQUESTIONS FROM QUESTION";
         }
         else{
-            query = "SELECT COUNT(*) AS NUMQUESTIONS FROM QUESTION WHERE DIFFICULTY_LEVEL=\'" + difficultyLevel + "\'"; //'E'";
+            query = "SELECT COUNT(*) AS NUMQUESTIONS FROM QUESTION WHERE DIFFICULTY_LEVEL=\'" + difficultyLevel.substring(0,1) + "\'"; //'E'";
         }
         try{
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
             rs.next();
+            //System.out.println("before reading the resultset");
             countRows = rs.getInt("NUMQUESTIONS");
             return countRows;
 
