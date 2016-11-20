@@ -21,6 +21,11 @@ import quiz.question.view.MultipleWithMoreAnswersController;
 import quiz.question.view.MultipleWithOneAnswerController;
 import quiz.question.view.TrueOrFalseController;
 import quiz.security.Authenticator;
+import quiz.student.view.InstructionsPageController;
+import static quiz.student.view.StartTestController.questionCounter;
+import static quiz.student.view.StartTestController.questionsForTest;
+import static quiz.student.view.StartTestController.selectednumOfQuestions;
+import quiz.student.view.SubmitPageController;
 
 /**
  *
@@ -48,9 +53,9 @@ public class QuizMain extends Application {
             stage.setTitle("Java Quiz");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
-            uploadQuestions();
+            //uploadQuestions();
             //gotoLogin();
-            //gotoStudentDashboard();
+            gotoStudentDashboard();
             primaryStage.show();
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,6 +113,24 @@ public class QuizMain extends Application {
     public void gotoStartTest() {
         try {
             StartTestController profile = (StartTestController) replaceSceneContent("student/view/StartTest.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void gotoInstrctions() {
+        try {
+            InstructionsPageController profile = (InstructionsPageController) replaceSceneContent("student/view/InstructionsPage.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void gotoSubmitPage() {
+        try {
+            SubmitPageController profile = (SubmitPageController) replaceSceneContent("student/view/SubmitPage.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -196,4 +219,20 @@ public class QuizMain extends Application {
         qzImpl.addUser(usr);
     }
 
+    public void gotoNextQuestion() {
+        questionCounter = questionCounter + 1;
+        if (questionCounter < selectednumOfQuestions) {
+            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+                showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+                showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+                showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
+            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+                showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
+            }
+        } else if (questionCounter == selectednumOfQuestions){
+            gotoSubmitPage();
+        }
+}
 }
