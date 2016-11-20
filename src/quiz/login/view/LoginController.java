@@ -24,11 +24,13 @@ public class LoginController implements Initializable {
 
     private QuizMain application;
     @FXML
-    TextField userName;
+    private TextField userName;
     @FXML
-    TextField password;
-    Button signin;
-    Label errorMessage;
+    private TextField password;
+    @FXML
+    private Button signin;
+    @FXML
+    private Label errorMessage;
     @FXML
     private Button signIn;
 

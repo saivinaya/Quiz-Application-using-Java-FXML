@@ -39,7 +39,7 @@ import quiz.question.view.TrueOrFalseController;
  */
 public class StartTestController implements Initializable {
     private QuizMain application;
-    private QuizDBImplementation fetchQuestions;
+    public QuizDBImplementation fetchQuestions;
     public static ArrayList<Question> questionsForTest = new ArrayList<Question>();
     
     ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy","Medium","Hard","Mixed");
@@ -62,6 +62,7 @@ public class StartTestController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("In the test");
         diffLevel.setValue("Select");
         diffLevel.setItems(diffLevelList);
         int questionsInDatabase = 20;
@@ -101,7 +102,7 @@ public class StartTestController implements Initializable {
             numOfQuestions.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue observableValue, Number number, Number number2) {
-              selectednumOfQuestions = (Integer) number2 + 1;
+              selectednumOfQuestions = (Integer) number2 + 3;
               System.out.println(selectednumOfQuestions);
             }
           });
@@ -138,66 +139,41 @@ public class StartTestController implements Initializable {
         else 
         {
             int arrayqQuestionType[] = new int[4];
-            questionsForTest = fetchQuestions.selectQuestions(selectednumOfQuestions,selectedDifficulty);
-            arrayqQuestionType = fetchQuestions.getQuestionTypes(questionsForTest);
-            
+            System.out.println("before invoking sql1" +selectednumOfQuestions+"difficulty"+selectedDifficulty);
+            questionsForTest=application.getQuestions(selectednumOfQuestions,selectedDifficulty);
+         //   questionsForTest = fetchQuestions.selectQuestions(selectednumOfQuestions,selectedDifficulty);
+          //  arrayqQuestionType = fetchQuestions.getQuestionTypes(questionsForTest);
+            System.out.println("Questions for test"+questionsForTest);
             // iterate through the questions
-            for (questionCounter=0; questionCounter<questionsForTest.size(); questionCounter++)
+//            for (questionCounter=0; questionCounter<questionsForTest.size(); questionCounter++)
+                
+                for (Question question:questionsForTest)
             {
-                if (questionsForTest.get(questionCounter).getQuestionType() == "MC")
+                System.out.println("in for loop");
+                if (question.getQuestionType().equals("MC"))
                 {
-                    showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+                    System.out.println("1"+question.getQuestiondesc());
+                    application.showMCScreen((MultiChoiceQuestion) question);
                 }
-                else if (questionsForTest.get(questionCounter).getQuestionType() == "MA")
+                else if (question.getQuestionType().equals("MA"))
                 {
-                    showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+                       System.out.println("2"+question.getQuestiondesc());
+                    application.showMAScreen((MultiChoiceQuestion) question);
                 }
-                else if (questionsForTest.get(questionCounter).getQuestionType() == "TF")
+                else if (question.getQuestionType().equals("TF"))
                 {
-                    showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
+                       System.out.println("3"+question.getQuestiondesc());
+                    application.showTFScreen((TrueOrFalseQuestion) question);
                 }
-                else if (questionsForTest.get(questionCounter).getQuestionType() == "FIB") 
+                else if (question.getQuestionType().equals("FIB")) 
                 {
-                    showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
+                       System.out.println("4"+question.getQuestiondesc());
+                    application.showFIBScreen((FillInTheBlanks) question);
                 }
             }
         }
     }
 
-    private void showMCScreen(MultiChoiceQuestion qust) {
-        try {
-            MultipleWithOneAnswerController profile = (MultipleWithOneAnswerController) application.replaceSceneContent("student/view/MultipleWithOneAnswer.fxml");
-            profile.setApp(application,qust);
-        } catch (Exception ex) {
-            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
-    private void showMAScreen(MultiChoiceQuestion qust) {
-        try {
-            MultipleWithMoreAnswersController profile = (MultipleWithMoreAnswersController) application.replaceSceneContent("student/view/MultipleWithMoreAnswers.fxml");
-            profile.setApp(application,qust);
-        } catch (Exception ex) {
-            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void showTFScreen(TrueOrFalseQuestion qust) {
-        try {
-            TrueOrFalseController profile = (TrueOrFalseController) application.replaceSceneContent("student/view/TrueOrFalse.fxml");
-            profile.setApp(application,qust);
-        } catch (Exception ex) {
-            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void showFIBScreen(FillInTheBlanks qust) {
-        try {
-            FillInTheBlanksController profile = (FillInTheBlanksController) application.replaceSceneContent("student/view/FillInTheBlanks.fxml");
-            profile.setApp(application,qust);
-        } catch (Exception ex) {
-            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
 }

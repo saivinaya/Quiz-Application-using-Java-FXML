@@ -19,10 +19,7 @@
       <HBox layoutX="203.0" layoutY="154.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Login Name" />
-            <TextField fx:id="userName" prefHeight="47.0" prefWidth="187.0" promptText="Admin">
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor></TextField>
+            <TextField fx:id="userName" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
          </children>
       </HBox>
       <HBox layoutX="203.0" layoutY="236.0" prefHeight="46.0" prefWidth="510.0">

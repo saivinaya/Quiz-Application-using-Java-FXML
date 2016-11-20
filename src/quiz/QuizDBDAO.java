@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public interface QuizDBDAO {
     
-    public void addQuestions(String fileName);
+    public String addQuestions(String fileName);
     public void addUser(User user);
     public void addStudentResults(StudentResults result);  
     public int questionCount(String difficultyLevel);

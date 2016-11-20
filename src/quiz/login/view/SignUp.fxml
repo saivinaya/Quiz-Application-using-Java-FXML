@@ -55,7 +55,7 @@
                 </ComboBox>
             </children>
         </HBox>
-       <Button layoutX="309.0" layoutY="439.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="31.0" prefWidth="59.0" text="Back" />
+       <Button layoutX="309.0" layoutY="439.0" mnemonicParsing="false" onAction="#onClickGotoLogin" prefHeight="31.0" prefWidth="59.0" text="Back" />
         <Button layoutX="425.0" layoutY="439.0" mnemonicParsing="false" onAction="#onClickSignUp" text="Sign Up" />
     </children>
     <opaqueInsets>
