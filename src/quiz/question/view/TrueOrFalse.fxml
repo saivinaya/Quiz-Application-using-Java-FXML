@@ -13,7 +13,7 @@
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="236.0" layoutY="33.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="226.0" layoutY="25.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
       <Pane layoutX="13.0" layoutY="60.0" prefHeight="641.0" prefWidth="674.0">
          <children>
             <Button layoutX="592.0" layoutY="571.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />

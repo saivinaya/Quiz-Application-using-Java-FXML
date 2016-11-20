@@ -19,9 +19,9 @@
             <Button fx:id="backButton" layoutX="24.0" layoutY="571.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
             <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="310.0" prefWidth="631.0" />
-            <VBox layoutX="72.0" layoutY="400.0" prefHeight="118.0" prefWidth="478.0">
+            <VBox layoutX="48.0" layoutY="400.0" prefHeight="118.0" prefWidth="570.0">
                <children>
-                  <RadioButton fx:id="choice1" layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0">
+                  <RadioButton fx:id="choice1" layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="525.0" wrapText="true">
                      <toggleGroup>
                         <ToggleGroup fx:id="Choices" />
                      </toggleGroup>
@@ -29,17 +29,17 @@
                         <Insets bottom="10.0" left="10.0" top="5.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton fx:id="choice2" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                  <RadioButton fx:id="choice2" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" toggleGroup="$Choices" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton fx:id="choice3" layoutX="39.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                  <RadioButton fx:id="choice3" layoutX="39.0" layoutY="223.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="525.0" toggleGroup="$Choices" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" />
                      </VBox.margin>
                   </RadioButton>
-                  <RadioButton fx:id="choice4" layoutX="39.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" toggleGroup="$Choices">
+                  <RadioButton fx:id="choice4" layoutX="39.0" layoutY="260.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="525.0" toggleGroup="$Choices" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" />
                      </VBox.margin>

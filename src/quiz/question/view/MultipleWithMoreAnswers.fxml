@@ -16,24 +16,24 @@
       <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="226.0" layoutY="24.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
       <Pane layoutX="13.0" layoutY="59.0" prefHeight="641.0" prefWidth="674.0">
          <children>
-            <VBox layoutX="72.0" layoutY="397.0" prefHeight="118.0" prefWidth="478.0">
+            <VBox layoutX="52.0" layoutY="397.0" prefHeight="118.0" prefWidth="570.0">
                <children>
-                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
+                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
