@@ -8,15 +8,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithMoreAnswersController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithMoreAnswersController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="176.0" layoutY="21.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
-      <Pane layoutX="25.0" layoutY="63.0" prefHeight="323.0" prefWidth="547.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="226.0" layoutY="24.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
+      <Pane layoutX="13.0" layoutY="59.0" prefHeight="641.0" prefWidth="674.0">
          <children>
-            <VBox layoutX="24.0" layoutY="155.0" prefHeight="118.0" prefWidth="478.0">
+            <VBox layoutX="82.0" layoutY="398.0" prefHeight="118.0" prefWidth="478.0">
                <children>
                   <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="18.0" prefWidth="419.0">
                      <padding>
@@ -40,10 +40,10 @@
                   </CheckBox>
                </children>
             </VBox>
-            <Button layoutX="479.0" layoutY="282.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
-            <Button layoutX="14.0" layoutY="282.0" mnemonicParsing="false" text="Back" />
+            <Button layoutX="595.0" layoutY="571.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
+            <Button layoutX="24.0" layoutY="571.0" mnemonicParsing="false" text="Back" />
             <Label layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" text="Question" />
-            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="115.0" prefWidth="500.0" />
+            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="310.0" prefWidth="631.0" />
          </children>
       </Pane>
    </children>

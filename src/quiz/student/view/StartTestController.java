@@ -139,37 +139,28 @@ public class StartTestController implements Initializable {
         else 
         {
             int arrayqQuestionType[] = new int[4];
-            System.out.println("before invoking sql1" +selectednumOfQuestions+"difficulty"+selectedDifficulty);
             questionsForTest=application.getQuestions(selectednumOfQuestions,selectedDifficulty);
-         //   questionsForTest = fetchQuestions.selectQuestions(selectednumOfQuestions,selectedDifficulty);
-          //  arrayqQuestionType = fetchQuestions.getQuestionTypes(questionsForTest);
-            System.out.println("Questions for test"+questionsForTest);
             // iterate through the questions
-//            for (questionCounter=0; questionCounter<questionsForTest.size(); questionCounter++)
-                
-                for (Question question:questionsForTest)
+            questionCounter=0;
+            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC"))
             {
-                System.out.println("in for loop");
-                if (question.getQuestionType().equals("MC"))
-                {
-                    System.out.println("1"+question.getQuestiondesc());
-                    application.showMCScreen((MultiChoiceQuestion) question);
-                }
-                else if (question.getQuestionType().equals("MA"))
-                {
-                       System.out.println("2"+question.getQuestiondesc());
-                    application.showMAScreen((MultiChoiceQuestion) question);
-                }
-                else if (question.getQuestionType().equals("TF"))
-                {
-                       System.out.println("3"+question.getQuestiondesc());
-                    application.showTFScreen((TrueOrFalseQuestion) question);
-                }
-                else if (question.getQuestionType().equals("FIB")) 
-                {
-                       System.out.println("4"+question.getQuestiondesc());
-                    application.showFIBScreen((FillInTheBlanks) question);
-                }
+                //System.out.println("1"+question.getQuestiondesc());
+                application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+            }
+            else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA"))
+            {
+                //System.out.println("2"+question.getQuestiondesc());
+                application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+            }
+            else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF"))
+            {
+                //System.out.println("3"+question.getQuestiondesc());
+                application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
+            }
+            else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) 
+            {
+                //System.out.println("4"+question.getQuestiondesc());
+                application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
             }
         }
     }
