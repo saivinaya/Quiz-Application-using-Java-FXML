@@ -289,7 +289,7 @@ public class QuizDBImplementation implements QuizDBDAO {
 
     public ArrayList<Question> selectQuestions(int numOfQuestions, String difficultyLevel) {
         
-        System.out.println("In the dao method");
+        //System.out.println("In the dao method");
         ArrayList<Question> questionList = new ArrayList<Question>();
         String query = "";
         if (difficultyLevel.equalsIgnoreCase("Mixed")){ // check input

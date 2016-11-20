@@ -17,8 +17,8 @@
       <Pane layoutX="13.0" layoutY="69.0" prefHeight="641.0" prefWidth="674.0">
          <children>
             <Button layoutX="595.0" layoutY="571.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
-            <Button layoutX="24.0" layoutY="571.0" mnemonicParsing="false" text="Back" />
-            <Label layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" text="Question" />
+            <Button fx:id="backButton" layoutX="24.0" layoutY="571.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" />
+            <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
             <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="310.0" prefWidth="631.0" />
             <VBox layoutX="79.0" layoutY="403.0" prefHeight="118.0" prefWidth="478.0">
                <children>

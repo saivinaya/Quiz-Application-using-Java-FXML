@@ -11,8 +11,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 import quiz.FillInTheBlanks;
 import quiz.MultiChoiceQuestion;
 import quiz.Question;
@@ -26,58 +29,72 @@ import static quiz.student.view.StartTestController.*;
  * @author VinayaSaiD
  */
 public class FillInTheBlanksController implements Initializable {
+
     private QuizMain application;
-    /**
-     * Initializes the controller class.
-     */
+    
     @FXML
     private TextArea questionDescription;
-    
+    @FXML
+    private TextField userAnswer;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Label questionNumber;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    public void setApp(QuizMain application, FillInTheBlanks qust){
-        this.application = application;
-        setup(qust);
+        questionNumber.setText("Question " + (questionCounter+1) + " of " + (selectednumOfQuestions));
+        userAnswer.setText(((FillInTheBlanks) questionsForTest.get(questionCounter)).getUserInput());
+        if (questionCounter == 0) {
+            backButton.setVisible(false);
+        }
+        questionDescription.setText(((FillInTheBlanks) questionsForTest.get(questionCounter)).getQuestiondesc());
     }
 
-    private void setup(FillInTheBlanks qust) {
-        questionDescription.setText(qust.getQuestiondesc());
+    public void setApp(QuizMain application, FillInTheBlanks qust) {
+        this.application = application;
     }
 
     @FXML
     private void onNextButtonClick(ActionEvent event) {
-        String userAns = null;
-        ((FillInTheBlanks) questionsForTest.get(questionCounter)).setAns(userAns);
-        questionCounter = questionCounter +1;
-        if (questionCounter < selectednumOfQuestions)
-        {
-        if (questionsForTest.get(questionCounter).getQuestionType().equals("MC"))
-        {
-            //System.out.println("1"+question.getQuestiondesc());
-            application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+        String userAns = userAnswer.getText();
+        System.out.println(userAns);
+        if (userAns.equals(null)) {
+            JOptionPane.showMessageDialog(null, "You need to enter an answer to proceed.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setAns(userAns);
+            questionCounter = questionCounter + 1;
+            if (questionCounter < selectednumOfQuestions) {
+                if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+                    application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+                } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+                    application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+                } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+                    application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
+                } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+                    application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
+                }
+            } else {
+                application.gotoSubmitPage();
+            }
         }
-        else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA"))
-        {
-            //System.out.println("2"+question.getQuestiondesc());
-            application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
-        }
-        else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF"))
-        {
-            //System.out.println("3"+question.getQuestiondesc());
-            application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
-        }
-        else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) 
-        {
-            //System.out.println("4"+question.getQuestiondesc());
-            application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
-        }
-        }
-        else
-        {
-            application.gotoStartTest();
+    }
+
+    @FXML
+    private void onBackButtonClick(ActionEvent event) {
+        if (questionCounter == 0) {
+            JOptionPane.showMessageDialog(null, "First Question. Cannot go back.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            questionCounter = questionCounter - 1;
+            if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+                application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+                application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
+            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+                application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
+            } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+                application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
+            }
         }
     }
 }
