@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="517.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.UploadFileController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Upload File" textAlignment="JUSTIFY">
+            <font>
+                <Font size="62.0" />
+            </font>
+        </Label>
+        <HBox layoutX="203.0" layoutY="253.0" prefHeight="46.0" prefWidth="510.0">
+            <children>
+                <Label prefHeight="50.0" prefWidth="103.0" text="Upload File" />
+                <TextField fx:id="fileName" prefHeight="47.0" prefWidth="187.0" />
+                <Pane prefHeight="46.0" prefWidth="26.0" />
+                <Button mnemonicParsing="false" onAction="#onClickChooseFile" prefHeight="44.0" prefWidth="88.0" text="Browse" />
+            </children>
+        </HBox>
+        <HBox layoutX="48.0" layoutY="95.0" prefHeight="46.0" prefWidth="510.0">
+            <children>
+                <Label prefHeight="46.0" prefWidth="209.0" text="Welcome Admin">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Label>
+                <Pane prefHeight="46.0" prefWidth="26.0" />
+            </children>
+        </HBox>
+        <HBox layoutX="285.0" layoutY="369.0" prefHeight="44.0" prefWidth="376.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onClickBackButton" prefHeight="44.0" prefWidth="88.0" text="Back" />
+                <Region prefHeight="44.0" prefWidth="59.0" />
+                <Button mnemonicParsing="false" onAction="#onClickFileUpload" prefHeight="44.0" prefWidth="88.0" text="Upload" />
+            </children>
+        </HBox>
+    </children>
+
+</AnchorPane>

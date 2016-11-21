@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package quiz.login.view;
+package quiz.admin.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import quiz.QuizMain;
 
@@ -21,13 +23,7 @@ import quiz.QuizMain;
 public class AdminDashboardController implements Initializable {
    private QuizMain application;
     @FXML
-    private TextField userName;
-    @FXML
-    private Button signIn;
-    @FXML
-    private Button signIn1;
-    @FXML
-    private Button signIn11;
+    private Label userLabel;
     
     /**
      * Initializes the controller class.
@@ -38,6 +34,20 @@ public class AdminDashboardController implements Initializable {
     }    
         public void setApp(QuizMain application){
         this.application = application;
+    }
+
+    @FXML
+    private void onClickUploadFile(ActionEvent event) {
+        application.gotoUploadFile();
+    }
+
+    @FXML
+    private void onClickSignUpUser(ActionEvent event) {
+        application.gotoSignUpScreen();
+    }
+
+    @FXML
+    private void onClickViewStudentPerformance(ActionEvent event) {
     }
     
     

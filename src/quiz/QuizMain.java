@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 import quiz.student.view.StartTestController;
 import quiz.student.view.StudentDashboardController;
 import quiz.login.view.LoginController;
-import quiz.login.view.AdminDashboardController;
+import quiz.admin.view.AdminDashboardController;
+import quiz.admin.view.UploadFileController;
 import quiz.login.view.SignUpController;
 import quiz.question.view.FillInTheBlanksController;
 import quiz.question.view.MultipleWithMoreAnswersController;
@@ -54,8 +55,8 @@ public class QuizMain extends Application {
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             //uploadQuestions();
-            //gotoLogin();
-            gotoStudentDashboard();
+            gotoLogin();
+            //gotoStudentDashboard();
             primaryStage.show();
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,9 +72,18 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        public void gotoUploadFile() {
+        try {
+            System.out.println("upload file");
+            UploadFileController profile = (UploadFileController) replaceSceneContent("admin/view/UploadFile.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-    public boolean userLogging(String userId, String password) {
-        if (Authenticator.validate(userId, password)) {
+    public boolean userLogging(String loginName, String password) {
+        if (Authenticator.validate(loginName, password)) {
             gotoAdminDashboard();
             return true;
         } else {
@@ -81,10 +91,18 @@ public class QuizMain extends Application {
         }
     }
 
+    public boolean userLogging(String loginName, String userName, String password1, String password2, String role) {
+        if (loginName == null | userName == null | password1 == null | password2 == null | role == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void gotoAdminDashboard() {
         try {
             System.out.println("in adminDashboard");
-            AdminDashboardController profile = (AdminDashboardController) replaceSceneContent("login/view/AdminDashboard.fxml");
+            AdminDashboardController profile = (AdminDashboardController) replaceSceneContent("admin/view/AdminDashboard.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -103,6 +121,7 @@ public class QuizMain extends Application {
 
     public void gotoStudentDashboard() {
         try {
+            System.out.println("in main student dashboard");
             StudentDashboardController profile = (StudentDashboardController) replaceSceneContent("student/view/StudentDashboard.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
@@ -118,7 +137,7 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void gotoInstrctions() {
         try {
             InstructionsPageController profile = (InstructionsPageController) replaceSceneContent("student/view/InstructionsPage.fxml");
@@ -127,7 +146,7 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void gotoSubmitPage() {
         try {
             SubmitPageController profile = (SubmitPageController) replaceSceneContent("student/view/SubmitPage.fxml");
@@ -151,11 +170,11 @@ public class QuizMain extends Application {
 
     }
 
-    public void uploadQuestions() {
+    public void uploadQuestions(String fileName) {
         System.out.println("Inside upload q to db");
         QuizDBImplementation qzImpl = new QuizDBImplementation();
-
-        qzImpl.addQuestions("test-sample.csv");
+        qzImpl.addQuestions(fileName);
+        //qzImpl.addQuestions("test-sample.csv");
     }
 
     public void showMCScreen(MultiChoiceQuestion qust) {
@@ -231,8 +250,8 @@ public class QuizMain extends Application {
             } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
                 showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
             }
-        } else if (questionCounter == selectednumOfQuestions){
+        } else if (questionCounter == selectednumOfQuestions) {
             gotoSubmitPage();
         }
-}
+    }
 }

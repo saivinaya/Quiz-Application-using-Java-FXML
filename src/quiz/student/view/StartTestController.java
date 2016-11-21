@@ -8,8 +8,6 @@ package quiz.student.view;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,16 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import quiz.FillInTheBlanks;
-import quiz.MultiChoiceQuestion;
 import quiz.Question;
 import quiz.QuizMain;
 import quiz.QuizDBImplementation;
-import quiz.TrueOrFalseQuestion;
-import quiz.question.view.*;
 
 /**
  * FXML Controller class
@@ -110,7 +102,8 @@ public class StartTestController implements Initializable {
                     numOfQuestions.getSelectionModel().clearSelection();
                     int selectedDiffIndex = (Integer) number2;
                     selectedDifficulty = diffLevelList.get(selectedDiffIndex);
-                    int questionsInDatabase = application.getNoofQuestions(selectedDifficulty);
+                    QuizDBImplementation impl=new QuizDBImplementation();
+                    int questionsInDatabase = impl.questionCount(selectedDifficulty);
                     //int questionsInDatabase = 30;
                     selectednumOfQuestions = 0;
                     numOfQuestionsList.clear();

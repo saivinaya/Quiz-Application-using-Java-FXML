@@ -42,7 +42,7 @@ public class QuizHelper {
             // TODO Auto-generated method stub
             //Class.forName("org.apache.derby.jdbc.ClientDriver");
             // Establish Derby connection with QuizDB embedded mode
-            String connectionString = "jdbc:derby://localhost:1527/QuizDB";
+            String connectionString = "jdbc:derby:QuizDB";
             String username = "app";
             String password = "app";
             conn = DriverManager.getConnection(connectionString, username, password);

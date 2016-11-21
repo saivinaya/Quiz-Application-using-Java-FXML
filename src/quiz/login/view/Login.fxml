@@ -19,13 +19,13 @@
       <HBox layoutX="203.0" layoutY="154.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Login Name" />
-            <TextField fx:id="userName" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
+            <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
          </children>
       </HBox>
       <HBox layoutX="203.0" layoutY="236.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Password" />
-            <PasswordField prefHeight="45.0" prefWidth="187.0" />
+            <PasswordField  fx:id="password" prefHeight="45.0" prefWidth="187.0" />
          </children>
       </HBox>
       <Button fx:id="signIn" layoutX="309.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSignIn" text="Sign In" />
