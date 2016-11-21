@@ -63,12 +63,6 @@ public class StartTestController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         diffLevel.setItems(diffLevelList);
         numOfQuestions.setDisable(true);
-        //int questionsInDatabase = fetchQuestions.questionCount(selectedDifficulty);
-//        int questionsInDatabase = 30;
-//        for (int a = 3; a <= questionsInDatabase; a++) {
-//            numOfQuestionsList.add(a);
-//        }
-//        numOfQuestions.setItems(numOfQuestionsList);
     }
 
     public void setApp(QuizMain application) {
@@ -116,8 +110,8 @@ public class StartTestController implements Initializable {
                     numOfQuestions.getSelectionModel().clearSelection();
                     int selectedDiffIndex = (Integer) number2;
                     selectedDifficulty = diffLevelList.get(selectedDiffIndex);
-                    //int questionsInDatabase = fetchQuestions.questionCount(selectedDifficulty);
-                    int questionsInDatabase = 30;
+                    int questionsInDatabase = application.getNoofQuestions(selectedDifficulty);
+                    //int questionsInDatabase = 30;
                     selectednumOfQuestions = 0;
                     numOfQuestionsList.clear();
                     for (int a = 3; a <= questionsInDatabase; a++) {
