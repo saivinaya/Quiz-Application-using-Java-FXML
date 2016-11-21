@@ -39,7 +39,11 @@ public class StartTestController implements Initializable {
     public static int selectednumOfQuestions = 0;
     public static String selectedDifficulty = null;
     public static int questionCounter = 0;
-
+    int noOfEasy;
+    int noOfMedium;
+    int noOfHard;
+    int noOfMixed;
+    
     Label errorMessage;
 
     @FXML
@@ -55,10 +59,16 @@ public class StartTestController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         diffLevel.setItems(diffLevelList);
         numOfQuestions.setDisable(true);
+        System.out.println("Before fetch");
+        
     }
 
     public void setApp(QuizMain application) {
         this.application = application;
+        noOfEasy = application.getNoofQuestions("Easy");
+        noOfMedium = application.getNoofQuestions("Medium");
+        noOfHard = application.getNoofQuestions("Hard");
+        noOfMixed = application.getNoofQuestions("Mixed");
     }
 
     @FXML
@@ -102,9 +112,19 @@ public class StartTestController implements Initializable {
                     numOfQuestions.getSelectionModel().clearSelection();
                     int selectedDiffIndex = (Integer) number2;
                     selectedDifficulty = diffLevelList.get(selectedDiffIndex);
-                    QuizDBImplementation impl=new QuizDBImplementation();
-                    int questionsInDatabase = impl.questionCount(selectedDifficulty);
-                    //int questionsInDatabase = 30;
+                    int questionsInDatabase = 3;
+                    if (selectedDifficulty.equalsIgnoreCase("Easy"))
+                    {   questionsInDatabase = noOfEasy;
+                    }
+                    else if (selectedDifficulty.equalsIgnoreCase("Medium"))
+                    {   questionsInDatabase = noOfMedium;
+                    }
+                    else if (selectedDifficulty.equalsIgnoreCase("Hard"))
+                    {   questionsInDatabase = noOfHard;
+                    }
+                    else if (selectedDifficulty.equalsIgnoreCase("Mixed"))
+                    {   questionsInDatabase = noOfMixed;
+                    }
                     selectednumOfQuestions = 0;
                     numOfQuestionsList.clear();
                     for (int a = 3; a <= questionsInDatabase; a++) {
