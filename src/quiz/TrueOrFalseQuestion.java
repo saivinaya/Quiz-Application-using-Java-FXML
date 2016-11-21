@@ -14,7 +14,8 @@ public class TrueOrFalseQuestion extends Question {
     //method validateAnswer
 
     private boolean ans;
-    private boolean userInput;
+    private boolean userInputTrue;
+    private boolean userInputFalse;
 
     public TrueOrFalseQuestion() {
     }
@@ -32,24 +33,46 @@ public class TrueOrFalseQuestion extends Question {
         this.ans = ans;
     }
 
-    public boolean isUserInput() {
-        return userInput;
+    public boolean isUserInputTrue() {
+        return userInputTrue;
     }
 
-    public void setUserInput(boolean userInput) {
-        this.userInput = userInput;
+    public void setUserInputTrue(boolean userInputTrue) {
+        this.userInputTrue = userInputTrue;
+    }
+
+    public boolean isUserInputFalse() {
+        return userInputFalse;
+    }
+
+    public void setUserInputFalse(boolean userInputFalse) {
+        this.userInputFalse = userInputFalse;
     }
 
     public boolean validateAnswer(TrueOrFalseQuestion qObject) {
-        if (qObject.isAns() == qObject.isUserInput()) {
-            return true;
-        } else {
-            return false;
+        if (qObject.isAns() == true) 
+        {   if (qObject.isUserInputTrue() == true)
+            {   return true;
+            }
+            else
+            {   return false;
+            }
+        } 
+        else if (qObject.isAns() == false) 
+        {   if (qObject.isUserInputFalse() == true)
+            {   return true;
+            }
+            else
+            {   return false;
+            }
+        }
+        else
+        {   return false;
         }
     }
 
     @Override
     public String toString() {
-        return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}' + "TrueOrFalseQuestion{" + "ans=" + ans + ", userInput=" + userInput + '}';
+        return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}' + "TrueOrFalseQuestion{" + "ans=" + ans + ", userInputTrue=" + userInputTrue + ", userInputFalse=" + userInputFalse + '}';
     }
 }

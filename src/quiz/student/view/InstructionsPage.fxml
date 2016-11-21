@@ -20,7 +20,7 @@
       <VBox layoutX="84.0" layoutY="241.0" prefHeight="277.0" prefWidth="558.0">
          <children>
             <Label prefHeight="63.0" prefWidth="557.0" text="1. You may not use your textbook, course notes, or receive help from a TA or any other outside source." wrapText="true" />
-            <Label prefHeight="32.0" prefWidth="557.0" text="2. You need to answer the question to proceed to the next question." wrapText="true" />
+            <Label prefHeight="53.0" prefWidth="557.0" text="2. You need to answer the question to proceed to the next question. Or use &quot;Skip&quot; Button to skip the question." wrapText="true" />
             <Label prefHeight="40.0" prefWidth="557.0" text="3. You can go back to previous question and change your answer any time." wrapText="true" />
             <Label prefHeight="46.0" prefWidth="557.0" text="4. Once you have reached the end of the test, please press Submit to Complete your test and get the results." wrapText="true" />
             <Label prefHeight="56.0" prefWidth="557.0" text="5. Your test is not saved if you exit the test in the middle. You need to start a new test." wrapText="true" />

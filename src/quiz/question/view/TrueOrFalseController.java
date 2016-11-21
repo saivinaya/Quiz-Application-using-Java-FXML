@@ -53,8 +53,8 @@ public class TrueOrFalseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         questionNumber.setText("Question " + (questionCounter + 1) + " of " + (selectednumOfQuestions));
-        optiontrue.setSelected(((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isUserInput());
-        optiontrue.setSelected(((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isUserInput());
+        optiontrue.setSelected((((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isUserInputTrue()));
+        optionfalse.setSelected((((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isUserInputFalse()));
         if (questionCounter == 0) {
             backButton.setVisible(false);
         }
@@ -76,13 +76,8 @@ public class TrueOrFalseController implements Initializable {
             alert.setContentText("You need to select an answer to proceed.Or use 'Skip' to Skip the question");
             alert.showAndWait();
         } else {
-            if (optiontrue.isSelected()) {
-                userChoice = true;
-            }
-            if (optionfalse.isSelected()) {
-                userChoice = false;
-            }
-            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(userChoice);
+            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputTrue(optiontrue.isSelected());
+            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputFalse(optionfalse.isSelected());
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(false);
             application.gotoNextQuestion();
         }
@@ -109,12 +104,14 @@ public class TrueOrFalseController implements Initializable {
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
-                ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(false);
+                ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputTrue(false);
+                ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputFalse(false);
                 application.gotoNextQuestion();
             }
         } else {
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
-            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInput(false);
+            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputTrue(false);
+            ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputFalse(false);
             application.gotoNextQuestion();
         }
     }
