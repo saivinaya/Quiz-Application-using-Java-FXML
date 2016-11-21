@@ -72,6 +72,13 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    public int getNoofQuestions(String difficultyLevel) {
+        QuizDBImplementation qzImpl = new QuizDBImplementation();
+        return qzImpl.questionCount(difficultyLevel);
+
+    }
         public void gotoUploadFile() {
         try {
             System.out.println("upload file");
