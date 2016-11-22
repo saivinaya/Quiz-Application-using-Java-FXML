@@ -20,7 +20,7 @@ import quiz.QuizMain;
 public class QuizSummaryViewController implements Initializable {
 
     private QuizMain application;
-    private int[] resultArray;
+    
     @FXML
     private Label totalQuestions;
     @FXML
@@ -33,6 +33,10 @@ public class QuizSummaryViewController implements Initializable {
     private Label totalScore;
     @FXML
     private Label testResult;
+    @FXML
+    private Label skipped;
+    @FXML
+    private Label wrongAnswer;
 
     /**
      * Initializes the controller class.
@@ -44,6 +48,21 @@ public class QuizSummaryViewController implements Initializable {
     
     public void setApp(QuizMain application, int[] rltArray) {
         this.application = application;
+        totalQuestions.setText(Integer.toString(rltArray[0]));
+        easyCorrect.setText(Integer.toString(rltArray[1]));
+        mediumCorrect.setText(Integer.toString(rltArray[2]));
+        hardCorrect.setText(Integer.toString(rltArray[3]));
+        skipped.setText(Integer.toString(rltArray[4]));
+        double score = rltArray[1] + rltArray[2] + rltArray[3];
+        double wrong = rltArray[0] - (score + rltArray[4]);
+        totalScore.setText(Double.toString(score));
+        wrongAnswer.setText(Double.toString(wrong));
+        if ((double) (score/rltArray[0]) > 0.4)
+        {   testResult.setText("Passed!");
+        }
+        else if ((double) (score/rltArray[0]) < 0.4)
+        {   testResult.setText("Failed!");
+        }
+        }
     }
     
-}
