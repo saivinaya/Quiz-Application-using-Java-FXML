@@ -360,7 +360,6 @@ public class QuizDBImplementation implements QuizDBDAO {
                  user = new User(loginName, userName, password, uniRole);
             }
         }catch(SQLException e){
-            
         }
         return user;
     }

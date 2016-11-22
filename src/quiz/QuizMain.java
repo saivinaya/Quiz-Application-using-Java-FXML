@@ -38,7 +38,8 @@ public class QuizMain extends Application {
     private User loggedUser;
     private final double MINIMUM_WINDOW_WIDTH = 700.0;
     private final double MINIMUM_WINDOW_HEIGHT = 700.0;
-
+    public static String loginName;
+    public static String role;
     /**
      * @param args the command line arguments
      */

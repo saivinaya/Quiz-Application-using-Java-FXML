@@ -7,12 +7,16 @@ package quiz.login.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import quiz.QuizDBImplementation;
 import quiz.QuizMain;
 import quiz.User;
@@ -42,6 +46,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Loading Login page...");
+        
     }
 
     public void setApp(QuizMain application) {
@@ -49,28 +54,41 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void onClickSignIn() {
-        QuizDBImplementation impl=new QuizDBImplementation();
+    public void onClickSignIn(ActionEvent ae) {
+        QuizDBImplementation impl = new QuizDBImplementation();
         System.out.println("in on click");
-        System.out.println("userName.getText()"+loginName.getText());
-         System.out.println("password.getText()"+password.getText());
-        try{ 
-        User user=impl.selectUser(loginName.getText(), password.getText());
-        
-        if(user.getUniRole().equals("Admin")){
-            System.out.println("in1");
-        application.gotoAdminDashboard();
-        }else {
-            System.out.println("in2");
-        application.gotoStudentDashboard();
-        }
-        }
-        catch(Exception exp){
-             Alert alert = new Alert(Alert.AlertType.ERROR);
+        System.out.println("userName.getText()" + loginName.getText());
+        System.out.println("password.getText()" + password.getText());
+        try {
+            User user = impl.selectUser(loginName.getText(), password.getText());
+
+            if (user.getUniRole().equals("Admin")) {
+                System.out.println("in1");
+                QuizMain.loginName = loginName.getText();
+                QuizMain.role = "Admin";
+                application.gotoAdminDashboard();
+            } else {
+                System.out.println("in2");
+                QuizMain.loginName = loginName.getText();
+                QuizMain.role = "Student";
+                application.gotoStudentDashboard();
+            }
+        } catch (NullPointerException exp) {
+            System.out.println(exp);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Incorrect username/password");
             alert.showAndWait();
         }
-        
+
+    }
+
+    private void setGlobalEventHandler(Node root) {
+        root.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
+            if (ev.getCode() == KeyCode.ENTER) {
+                signin.fire();
+                ev.consume();
+            }
+        });
     }
 
     public void onClickSignUp() {
