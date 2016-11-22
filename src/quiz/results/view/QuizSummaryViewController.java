@@ -55,8 +55,8 @@ public class QuizSummaryViewController implements Initializable {
         skipped.setText(Integer.toString(rltArray[4]));
         double score = rltArray[1] + rltArray[2] + rltArray[3];
         double wrong = rltArray[0] - (score + rltArray[4]);
-        totalScore.setText(Double.toString(score));
-        wrongAnswer.setText(Double.toString(wrong));
+        totalScore.setText(Integer.toString((int) score));
+        wrongAnswer.setText(Integer.toString((int) wrong));
         if ((double) (score/rltArray[0]) > 0.4)
         {   testResult.setText("Passed!");
         }
