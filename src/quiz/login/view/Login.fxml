@@ -11,25 +11,25 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.LoginController">
     <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="Java Quiz" textAlignment="JUSTIFY">
-         <font>
-            <Font size="62.0" />
-         </font>
-      </Label>
-      <HBox layoutX="203.0" layoutY="154.0" prefHeight="46.0" prefWidth="510.0">
+      <HBox layoutX="180.0" layoutY="243.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Login Name" />
-            <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" promptText="Admin" />
+            <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" promptText="User ID" />
          </children>
       </HBox>
-      <HBox layoutX="203.0" layoutY="236.0" prefHeight="46.0" prefWidth="510.0">
+      <HBox layoutX="182.0" layoutY="334.0" prefHeight="46.0" prefWidth="510.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Password" />
-            <PasswordField  fx:id="password" prefHeight="45.0" prefWidth="187.0" />
+            <PasswordField fx:id="password" prefHeight="45.0" prefWidth="187.0" promptText="Password" />
          </children>
       </HBox>
-      <Button fx:id="signIn" layoutX="309.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSignIn" text="Sign In" />
-      <Button fx:id="signup" layoutX="425.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSignUp" text="Sign Up" />
+      <Button fx:id="signIn" layoutX="269.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSignIn" prefHeight="35.0" prefWidth="75.0" text="Sign In" />
+      <Button fx:id="signup" layoutX="397.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="75.0" text="Sign Up" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="64.0" prefHeight="44.0" prefWidth="356.0" text="Quiz" textAlignment="CENTER" textFill="#4310da" underline="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
     </children>
    <opaqueInsets>
       <Insets />

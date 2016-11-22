@@ -12,51 +12,61 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.SignUpController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="90.0" prefWidth="887.0" text="SignUp New User" textAlignment="JUSTIFY">
-            <font>
-                <Font size="48.0" />
-            </font>
-        </Label>
-        <HBox layoutX="203.0" layoutY="108.0" prefHeight="46.0" prefWidth="510.0">
-            <children>
-                <Label prefHeight="46.0" prefWidth="149.0" text="User Name" />
-                <TextField fx:id="UserName" prefHeight="47.0" prefWidth="187.0" />
-            </children>
-        </HBox>
-        <HBox layoutX="203.0" layoutY="172.0" prefHeight="46.0" prefWidth="510.0">
-            <children>
-                <Label prefHeight="46.0" prefWidth="147.0" text="Login Name" />
-                <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" />
-            </children>
-        </HBox>
-        <HBox layoutX="203.0" layoutY="236.0" prefHeight="46.0" prefWidth="510.0">
-            <children>
-                <Label prefHeight="46.0" prefWidth="144.0" text="Password" />
-                <PasswordField fx:id="password1" prefHeight="47.0" prefWidth="187.0" />
-            </children>
-        </HBox>
-        <HBox layoutX="203.0" layoutY="300.0" prefHeight="46.0" prefWidth="510.0">
-            <children>
-                <Label prefHeight="46.0" prefWidth="143.0" text="Re-enter Password" />
-                <PasswordField fx:id="password2" prefHeight="47.0" prefWidth="187.0" />
-            </children>
-        </HBox>
-             
-        <HBox layoutX="197.0" layoutY="365.0" prefHeight="46.0" prefWidth="510.0">
-            <children>
-                <Label prefHeight="46.0" prefWidth="147.0" text="Role" />
-                <ComboBox id="role" fx:id="role" editable="true" prefHeight="50.0" prefWidth="150.0">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Student" />
-                            <String fx:value="Admin" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </children>
-        </HBox>
-       <Button layoutX="309.0" layoutY="439.0" mnemonicParsing="false" onAction="#onClickGotoLogin" prefHeight="31.0" prefWidth="59.0" text="Back" />
-        <Button layoutX="425.0" layoutY="439.0" mnemonicParsing="false" onAction="#onClickSignUp" text="Sign Up" />
+       <Button layoutX="263.0" layoutY="547.0" mnemonicParsing="false" onAction="#onClickGotoLogin" prefHeight="36.0" prefWidth="67.0" text="Back" />
+        <Button layoutX="427.0" layoutY="547.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="67.0" text="Sign Up" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="64.0" prefHeight="44.0" prefWidth="356.0" text="Sign Up - New User" textAlignment="CENTER" textFill="#4310da" underline="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <VBox layoutX="115.0" layoutY="154.0" prefHeight="356.0" prefWidth="491.0" spacing="30.0">
+         <children>
+              <HBox prefHeight="46.0" prefWidth="510.0">
+                  <children>
+                      <Label prefHeight="46.0" prefWidth="149.0" text="User Name" />
+                      <TextField fx:id="UserName" prefHeight="47.0" prefWidth="187.0" />
+                  </children>
+              </HBox>
+              <HBox prefHeight="46.0" prefWidth="510.0">
+                  <children>
+                      <Label prefHeight="46.0" prefWidth="147.0" text="Login Name" />
+                      <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" />
+                  </children>
+              </HBox>
+              <HBox prefHeight="46.0" prefWidth="510.0">
+                  <children>
+                      <Label prefHeight="46.0" prefWidth="144.0" text="Password" />
+                      <PasswordField fx:id="password1" prefHeight="47.0" prefWidth="187.0" />
+                  </children>
+              </HBox>
+              <HBox prefHeight="46.0" prefWidth="510.0">
+                  <children>
+                      <Label prefHeight="46.0" prefWidth="143.0" text="Re-enter Password" />
+                      <PasswordField fx:id="password2" prefHeight="47.0" prefWidth="187.0" />
+                  </children>
+              </HBox>
+                   
+              <HBox prefHeight="46.0" prefWidth="510.0">
+                  <children>
+                      <Label prefHeight="46.0" prefWidth="147.0" text="Role" />
+                      <ComboBox id="role" fx:id="role" editable="true" prefHeight="50.0" prefWidth="150.0">
+                          <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Student" />
+                                  <String fx:value="Admin" />
+                              </FXCollections>
+                          </items>
+                      </ComboBox>
+                  </children>
+              </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets bottom="20.0" left="20.0" top="20.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="20.0" />
+         </padding>
+      </VBox>
     </children>
     <opaqueInsets>
         <Insets />
