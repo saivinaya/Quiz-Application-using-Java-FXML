@@ -48,6 +48,7 @@ public class AdminDashboardController implements Initializable {
 
     @FXML
     private void onClickViewStudentPerformance(ActionEvent event) {
+        application.goTOStudentStats();
     }
     
     
