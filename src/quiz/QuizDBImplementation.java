@@ -364,6 +364,27 @@ public class QuizDBImplementation implements QuizDBDAO {
         }
         return user;
     }
+    
+        public User selectUser(String loginName) {
+        User user = null;
+        System.out.println("loginName"+loginName);
+        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName; 
+        try{
+            Connection conn = QuizHelper.setConnection();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                String userName = rs.getString("USER_NAME");
+                String uniRole = rs.getString("UNI_ROLE");
+                String password = rs.getString("PASSWORD");
+
+                 user = new User(loginName, userName, password, uniRole);
+            }
+        }catch(SQLException e){
+            
+        }
+        return user;
+    }
 
     public ArrayList<StudentResults> getStudentResults(Date date) {
         ArrayList<StudentResults> studentResults = null;

@@ -16,5 +16,6 @@ public interface QuizDBDAO {
     public int questionCount(String difficultyLevel);
     public ArrayList<Question> selectQuestions(int numOfQuestions,String difficultyLevel);
     public User selectUser(String loginName,String password);   
+    public User selectUser(String loginName);   
     public ArrayList<StudentResults> getStudentResults(Date date);
 }

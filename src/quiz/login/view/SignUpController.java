@@ -61,6 +61,8 @@ public class SignUpController implements Initializable {
     private void onClickSignUp(ActionEvent event) {
         System.out.println("in the proc");
 
+        QuizDBImplementation impl = new QuizDBImplementation();
+        User usr = null;
 
         try {
             if (!(role.getSelectionModel().getSelectedItem().toString().equals("Student") | role.getSelectionModel().getSelectedItem().toString().equals("Admin"))) {
@@ -73,15 +75,18 @@ public class SignUpController implements Initializable {
                     String userNameValue = UserName.getText();
                     String passwordValue = password1.getText();
                     String roleValue = role.getSelectionModel().getSelectedItem().toString();
-                    application.addUser(loginNameValue, userNameValue, passwordValue, roleValue);
-                    Alert alert = new Alert(AlertType.CONFIRMATION);
-                    alert.setContentText("New User Successfully Added. Please select back button for the login screen");
-                    alert.showAndWait();
-                    loginName.setText(null);
-                    UserName.setText(null);
-                    password1.setText(null);
-                    password2.setText(null);
-                    role.setValue(null);
+                    usr = impl.selectUser(loginNameValue);
+                    
+                        application.addUser(loginNameValue, userNameValue, passwordValue, roleValue);
+                        Alert alert = new Alert(AlertType.CONFIRMATION);
+                        alert.setContentText("New User Successfully Added. Please select back button for the login screen");
+                        alert.showAndWait();
+                        loginName.setText(null);
+                        UserName.setText(null);
+                        password1.setText(null);
+                        password2.setText(null);
+                        role.setValue(null);
+                    
                 } else {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setContentText("There is mismatch in password. Please ensure password in both the fields are same");
