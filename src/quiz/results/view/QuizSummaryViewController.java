@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import quiz.QuizMain;
 
 /**
  * FXML Controller class
@@ -18,6 +19,8 @@ import javafx.scene.control.Label;
  */
 public class QuizSummaryViewController implements Initializable {
 
+    private QuizMain application;
+    private int[] resultArray;
     @FXML
     private Label totalQuestions;
     @FXML
@@ -38,5 +41,9 @@ public class QuizSummaryViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void setApp(QuizMain application, int[] rltArray) {
+        this.application = application;
+    }
     
 }

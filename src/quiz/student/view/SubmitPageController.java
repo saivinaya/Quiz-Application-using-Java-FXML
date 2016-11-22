@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import quiz.FillInTheBlanks;
 import quiz.MultiChoiceQuestion;
+import quiz.QuizHelper;
 import quiz.QuizMain;
 import quiz.TrueOrFalseQuestion;
 import static quiz.student.view.StartTestController.*;
@@ -37,7 +38,9 @@ public class SubmitPageController implements Initializable {
     
     @FXML
     private void onSubmitButtonClick(ActionEvent event) {
-        
+        QuizHelper quizHp = new QuizHelper();
+        int[] resultArray = quizHp.evaluateQuizResult(questionsForTest);
+        application.gotoQuizSummaryPage(resultArray);
     }
 
     @FXML

@@ -21,6 +21,7 @@ import quiz.question.view.FillInTheBlanksController;
 import quiz.question.view.MultipleWithMoreAnswersController;
 import quiz.question.view.MultipleWithOneAnswerController;
 import quiz.question.view.TrueOrFalseController;
+import quiz.results.view.QuizSummaryViewController;
 import quiz.security.Authenticator;
 import quiz.student.view.InstructionsPageController;
 import static quiz.student.view.StartTestController.questionCounter;
@@ -158,6 +159,15 @@ public class QuizMain extends Application {
         try {
             SubmitPageController profile = (SubmitPageController) replaceSceneContent("student/view/SubmitPage.fxml");
             profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void gotoQuizSummaryPage(int[] resultArray) {
+        try {
+            QuizSummaryViewController profile = (QuizSummaryViewController) replaceSceneContent("results/view/QuizSummaryView.fxml");
+            profile.setApp(this,resultArray);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
