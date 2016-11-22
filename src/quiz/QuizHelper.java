@@ -39,29 +39,12 @@ public class QuizHelper {
     public static Connection setConnection() {
         Connection conn = null;
         try {
-            // TODO Auto-generated method stub
-            //Class.forName("org.apache.derby.jdbc.ClientDriver");
             // Establish Derby connection with QuizDB embedded mode
             String connectionString = "jdbc:derby:QuizDB";
             String username = "app";
             String password = "app";
             conn = DriverManager.getConnection(connectionString, username, password);
 
-            /*            Statement stmt = conn.createStatement();
-
-            DatabaseMetaData dbm = conn.getMetaData(); // creating metadata object to check if the table already exists;
-            ResultSet tables = dbm.getTables(null, null, "QUESTION", null);
-
-            // if table is not present in database then create the table
-            if (!tables.next()) {
-
-                stmt.executeUpdate("CREATE TABLE QUESTION( QUESTION_TYPE VARCHAR(30), QUESTION_DESCRIPTION CLOB, DIFFICULTY_LEVEL VARCHAR(10), CHOICE_1 CLOB,CHOICE_2 CLOB,CHOICE_3 CLOB,CHOICE_4 CLOB,ANSWER_1 BOOLEAN,ANSWER_2 BOOLEAN,ANSWER_3 BOOLEAN,ANSWER_4 BOOLEAN,T_OR_F_ANSWER BOOLEAN,FIB_ANSWER VARCHAR(300))");
-
-                System.out.print("\nCreated table Question");
-            } else {
-                stmt.executeUpdate("truncate table QUESTION");
-            }
-             */
         } catch (SQLException ex) {
             Logger.getLogger(QuizHelper.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
@@ -79,7 +62,11 @@ public class QuizHelper {
             throw new Exception("Error occured while executing file. "
                     + e.getMessage());
         }
-
     }
-
+    
+    public int[] evaluateQuizResult(ArrayList<Question> questionlist) {
+        int[] result = {0,0,0,0,0};
+        // result array shoud have {total questions, easy correct, medium correct, hard corrrect, skipped questions} in that order
+        return result;
+    }
 }

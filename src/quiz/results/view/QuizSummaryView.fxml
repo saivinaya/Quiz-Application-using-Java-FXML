@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="quiz.results.view.QuizSummaryViewController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="66.0" prefHeight="44.0" prefWidth="423.0" text="Quiz Result" textAlignment="CENTER" textFill="#4310da" underline="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="67.0" layoutY="172.0" prefHeight="51.0" prefWidth="217.0" text="Summary" textFill="#b51010" underline="true">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <VBox layoutX="127.0" layoutY="259.0" prefHeight="325.0" prefWidth="446.0" spacing="5.0">
+         <children>
+            <HBox prefHeight="38.0" prefWidth="338.0" spacing="50.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="170.0" text="Total Questions:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalQuestions" prefHeight="23.0" prefWidth="90.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="197.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="170.0" text="Correct Answers" textFill="#090dee">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="338.0" spacing="50.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="170.0" text="Easy:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="easyCorrect" prefHeight="23.0" prefWidth="90.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="338.0" spacing="50.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="170.0" text="Medium:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mediumCorrect" prefHeight="23.0" prefWidth="90.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="338.0" spacing="50.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="170.0" text="Hard:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hardCorrect" prefHeight="23.0" prefWidth="90.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="338.0" spacing="50.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="171.0" text="Wrong Answers:" textFill="#e40808">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hardCorrect" prefHeight="23.0" prefWidth="90.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="338.0" spacing="50.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="170.0" text="Total Score:" textFill="#fa6d05">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalScore" prefHeight="23.0" prefWidth="90.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <Label fx:id="testResult" layoutX="155.0" layoutY="584.0" prefHeight="44.0" prefWidth="392.0" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
