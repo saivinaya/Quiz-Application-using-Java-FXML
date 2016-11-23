@@ -22,7 +22,6 @@ import quiz.QuizMain;
 public class StudentDashboardController implements Initializable {
     private QuizMain application;
     
-    @FXML
     Label errorMessage;
     /**
      * Initializes the controller class.
@@ -36,7 +35,6 @@ public class StudentDashboardController implements Initializable {
     private void startTestWindow(ActionEvent event) {
         if (application == null){
             // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
             errorMessage.setText("Hello");
         } 
         else 
@@ -46,6 +44,23 @@ public class StudentDashboardController implements Initializable {
     }
     public void setApp(QuizMain application){
         this.application = application;
+    }
+
+    @FXML
+    private void studentResultDashboard(ActionEvent event) {
+        if (application == null){
+            // We are running in isolated FXML, possibly in Scene Builder.
+            errorMessage.setText("Hello");
+        } 
+        else 
+        {
+            application.gotoStudentResultDashboard();
+        }
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        application.logoutAccount();
     }
     
 }

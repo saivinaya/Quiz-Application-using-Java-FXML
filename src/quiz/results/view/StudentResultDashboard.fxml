@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="quiz.results.view.StudentResultDashboardController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="64.0" prefHeight="44.0" prefWidth="356.0" text="Results Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <VBox layoutX="143.0" layoutY="159.0" prefHeight="455.0" prefWidth="434.0" spacing="40.0">
+         <children>
+            <Hyperlink fx:id="testResult1" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult2" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult3" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult4" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult5" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult6" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult7" prefHeight="25.0" prefWidth="301.0" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

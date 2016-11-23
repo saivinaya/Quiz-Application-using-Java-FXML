@@ -27,7 +27,7 @@
                   <Font size="24.0" />
                </font>
             </Hyperlink>
-            <Hyperlink text="View Results ">
+            <Hyperlink onAction="#studentResultDashboard" text="View Results ">
                <font>
                   <Font size="24.0" />
                </font>
@@ -37,5 +37,6 @@
             <Insets left="40.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
+      <Button layoutX="547.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
    </children>
 </AnchorPane>
