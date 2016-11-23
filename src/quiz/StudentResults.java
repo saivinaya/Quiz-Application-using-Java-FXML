@@ -25,8 +25,20 @@ public class StudentResults {
     private int lodMediumCorrect;
     private int lodHardCorrect;
     private Date testDate;
-    
-    
+
+    public StudentResults(String loginName, int lodEasyQuestions, int lodMediumQuestions, int lodHardQuestions, int totalQuestions, int totalCorrect, int lodEasyCorrect, int lodMediumCorrect, int lodHardCorrect, Date testDate) {
+        this.loginName = loginName;
+        this.lodEasyQuestions = lodEasyQuestions;
+        this.lodMediumQuestions = lodMediumQuestions;
+        this.lodHardQuestions = lodHardQuestions;
+        this.totalQuestions = totalQuestions;
+        this.totalCorrect = totalCorrect;
+        this.lodEasyCorrect = lodEasyCorrect;
+        this.lodMediumCorrect = lodMediumCorrect;
+        this.lodHardCorrect = lodHardCorrect;
+        this.testDate = testDate;
+    }
+        
     public StudentResults(){
         
     }
