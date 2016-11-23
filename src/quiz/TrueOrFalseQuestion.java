@@ -49,17 +49,17 @@ public class TrueOrFalseQuestion extends Question {
         this.userInputFalse = userInputFalse;
     }
 
-    public boolean validateAnswer(TrueOrFalseQuestion qObject) {
-        if (qObject.isAns() == true) 
-        {   if (qObject.isUserInputTrue() == true)
+    public boolean validateAnswer() {
+        if (this.isAns() == true) 
+        {   if (this.isUserInputTrue() == true)
             {   return true;
             }
             else
             {   return false;
             }
         } 
-        else if (qObject.isAns() == false) 
-        {   if (qObject.isUserInputFalse() == true)
+        else if (this.isAns() == false) 
+        {   if (this.isUserInputFalse() == true)
             {   return true;
             }
             else

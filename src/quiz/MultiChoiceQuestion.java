@@ -137,8 +137,8 @@ public class MultiChoiceQuestion extends Question {
         this.userInput4 = userInput4;
     }
 
-    public boolean validateAnswer(MultiChoiceQuestion qObject) {
-        if (qObject.isAns1() == qObject.isUserInput1() && qObject.isAns2() == qObject.isUserInput2() && qObject.isAns3() == qObject.isUserInput3() && qObject.isAns4() == qObject.isUserInput4()) {
+    public boolean validateAnswer() {
+        if (this.isAns1() == this.isUserInput1() && this.isAns2() == this.isUserInput2() && this.isAns3() == this.isUserInput3() && this.isAns4() == this.isUserInput4()) {
             return true;
         } else {
             return false;
