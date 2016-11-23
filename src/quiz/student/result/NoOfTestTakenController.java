@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -66,7 +67,12 @@ public class NoOfTestTakenController implements Initializable {
 
     @FXML
     public void viewStats(ActionEvent e) {
-        
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            job.showPrintDialog(application.stage); // Window must be your main Stage
+            job.printPage(barChart);
+            job.endJob();
+        }
     }
 
     @FXML
