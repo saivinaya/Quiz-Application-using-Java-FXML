@@ -29,9 +29,9 @@ import static quiz.student.view.StartTestController.*;
 
 /**
  * This class is the controller class for the FillInTheBlanks fxml page; it has
- * initialize(), setApp() as base methods; onNextButtonClick(),
- * onBackButtonClick(), onSkipButtonClick() and onTextEntered() event related
- * methods.
+ * initialize(), setApp() as base methods; onNextButtonClick() to go to next
+ * question, onBackButtonClick() to go to previous question, onSkipButtonClick()
+ * to skip the question and onTextEntered() event related methods.
  *
  * @author VinayaSaiD
  */

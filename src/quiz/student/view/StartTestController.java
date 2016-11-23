@@ -24,8 +24,11 @@ import quiz.QuizMain;
 import quiz.QuizDBImplementation;
 
 /**
- * FXML Controller class
- *
+ * This class is the controller class for StartTest fxml page; it has 
+ * initialize(), setApp() as base methods; goBackToStudentDashboard() to go to the student dashboard screen
+ * onQuestionSelected() to save the input to selectednumOfQuestions
+ * onDiffSelected() to save the input to selectedDifficulty and get the number of that type questions and display it
+ * and onBeginTest() to go to the instructions page
  * @author VinayaSaiD
  */
 public class StartTestController implements Initializable {
@@ -57,14 +60,15 @@ public class StartTestController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Set the list for difficulty level
         diffLevel.setItems(diffLevelList);
+        // only once user selects the difficulty level, the no. of questions will be enabled
         numOfQuestions.setDisable(true);
-        System.out.println("Before fetch");
-        
     }
 
     public void setApp(QuizMain application) {
         this.application = application;
+        // getting how many questions are avaiable in each difficulty level
         noOfEasy = application.getNoofQuestions("Easy");
         noOfMedium = application.getNoofQuestions("Medium");
         noOfHard = application.getNoofQuestions("Hard");
@@ -75,9 +79,9 @@ public class StartTestController implements Initializable {
     private void goBackToStudentDashboard(ActionEvent event) {
         if (application == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
             errorMessage.setText("Hello");
         } else {
+            // need to go to student dashboard
             application.gotoStudentDashboard();
         }
     }
@@ -86,14 +90,14 @@ public class StartTestController implements Initializable {
     private void onQuestionSelected(MouseEvent event) {
         if (application == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
             errorMessage.setText("Hello");
         } else {
             numOfQuestions.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue observableValue, Number number, Number number2) {
+                    // need to set the value of selectednumOfQuestions  from user input
+                    // number2 is the index and as my list starts from 3, need to add 3 to get the actual number of questions
                     selectednumOfQuestions = (Integer) number2 + 3;
-                    //System.out.println(selectednumOfQuestions);
                 }
             });
         }
@@ -105,13 +109,13 @@ public class StartTestController implements Initializable {
             // We are running in isolated FXML, possibly in Scene Builder.
             errorMessage.setText("Hello");
         } else {
-            
             diffLevel.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue observableValue, Number number, Number number2) {
                     numOfQuestions.getSelectionModel().clearSelection();
                     int selectedDiffIndex = (Integer) number2;
                     selectedDifficulty = diffLevelList.get(selectedDiffIndex);
+                    // based on the difficulty level, need to give the number of questions
                     int questionsInDatabase = 3;
                     if (selectedDifficulty.equalsIgnoreCase("Easy"))
                     {   questionsInDatabase = noOfEasy;
@@ -127,11 +131,13 @@ public class StartTestController implements Initializable {
                     }
                     selectednumOfQuestions = 0;
                     numOfQuestionsList.clear();
+                    //minimum of 3 questions need to be answered to start a test
                     for (int a = 3; a <= questionsInDatabase; a++) {
                         numOfQuestionsList.add(a);
                     }
                     numOfQuestions.setItems(numOfQuestionsList);
                     numOfQuestions.getSelectionModel();
+                    // activate the number of questions menu
                     numOfQuestions.setDisable(false);
                 }
             });
@@ -144,15 +150,18 @@ public class StartTestController implements Initializable {
             // We are running in isolated FXML, possibly in Scene Builder.
             errorMessage.setText("Hello");
         } else {
+            // if the difficulty and no. of questions are choosen then only proceed
             if (selectedDifficulty!=null && selectednumOfQuestions!=0)
             {   application.gotoInstrctions();
             }
+            // if the difficulty is not choosen then give a warning to choose it
             else if (selectedDifficulty!=null)
             {   // give a pop up saying "Difficulty Level needs to be selected"
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Difficulty Level needs to be selected.");
                 alert.showAndWait();
             }
+            // if the no. of questions are not choosen then give a warning to choose it
             else if (selectednumOfQuestions!=0)
             {   // give a pop up saying "Please select No.of Questions"
                 Alert alert = new Alert(Alert.AlertType.WARNING);

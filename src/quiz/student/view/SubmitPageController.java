@@ -18,8 +18,9 @@ import quiz.TrueOrFalseQuestion;
 import static quiz.student.view.StartTestController.*;
 
 /**
- * FXML Controller class
- *
+ * This class is the controller class for SubmitPage fxml page; it has 
+ * initialize(), setApp() as base methods; onSubmitButtonClick() to submit the test and get the summary of the test
+ * onBackButtonClick() to go back to the last question screen
  * @author VinayaSaiD
  */
 public class SubmitPageController implements Initializable {
@@ -39,12 +40,15 @@ public class SubmitPageController implements Initializable {
     @FXML
     private void onSubmitButtonClick(ActionEvent event) {
         QuizHelper quizHp = new QuizHelper();
+        // evaluate the answers for all the questions using evaluateQuizResult() 
         int[] resultArray = quizHp.evaluateQuizResult(questionsForTest);
+        // go to the result summary page to show the result
         application.gotoQuizSummaryPage(resultArray);
     }
 
     @FXML
     private void onBackButtonClick(ActionEvent event) {
+        // decrement the counter by 1 to go to previous question and based on question type go to that page view
         questionCounter = questionCounter - 1;
         if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
             application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));

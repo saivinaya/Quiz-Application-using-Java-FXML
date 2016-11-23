@@ -27,8 +27,9 @@ import static quiz.student.view.StartTestController.*;
 
 /**
  * This class is the controller class for the MultipleWithOneAnswer fxml page;
- * it has initialize(), setApp() as base methods; onNextButtonClick(),
- * onBackButtonClick() and onSkipButtonClick() event related methods.
+ * it has initialize(), setApp() as base methods; onNextButtonClick() to go to
+ * next question, onBackButtonClick() to go to previous question and
+ * onSkipButtonClick() to skip the question event related methods.
  *
  * @author VinayaSaiD
  */
