@@ -1,20 +1,23 @@
-
 package quiz;
 
 /**
+ * This class is used to define the Question class, it is a super class for all
+ * the questions it has 4 fields "QuestionType", "LevelOfDifficulty",
+ * "Questiondesc" and "skipQuestion" which are protected and common to all
+ * questions, it has getters and setters for all these variables; it has
+ * toString() method which prints the entire Object as a string
  *
  * @author Group
  */
 public class Question {
-   //Fields: QuestionType,LevelOfDifficulty, Questiondesc, 
-             //method abstract: validateAnswer
+
     protected String QuestionType;
     protected String LevelOfDifficulty;
     protected String Questiondesc;
     protected boolean skipQuestion;
 
-    public Question()
-    {
+    //default constructor
+    public Question() {
     }
 
     public Question(String QuestionType, String LevelOfDifficulty, String Questiondesc) {
@@ -59,5 +62,5 @@ public class Question {
     public String toString() {
         return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}';
     }
-    
+
 }

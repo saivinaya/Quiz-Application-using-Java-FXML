@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -15,7 +16,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="TOP" layoutX="47.0" layoutY="152.0" prefHeight="51.0" prefWidth="217.0" text="Welcome" textFill="#b51010" underline="true">
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="47.0" layoutY="152.0" prefHeight="51.0" prefWidth="135.0" text="Welcome" textFill="#b51010" underline="true">
          <font>
             <Font size="30.0" />
          </font>
@@ -27,7 +28,7 @@
                   <Font size="24.0" />
                </font>
             </Hyperlink>
-            <Hyperlink text="View Results ">
+            <Hyperlink onAction="#studentResultDashboard" text="View Results ">
                <font>
                   <Font size="24.0" />
                </font>
@@ -37,5 +38,11 @@
             <Insets left="40.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
+      <Button layoutX="547.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Label fx:id="loginName" contentDisplay="TOP" layoutX="188.0" layoutY="152.0" prefHeight="51.0" prefWidth="214.0" textFill="#0f0f11">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

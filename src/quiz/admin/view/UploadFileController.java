@@ -80,4 +80,9 @@ public class UploadFileController implements Initializable {
 
     }
 
+    @FXML
+    private void logout(ActionEvent event) {
+        application.logoutAccount();
+    }
+
 }

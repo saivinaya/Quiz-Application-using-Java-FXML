@@ -6,17 +6,21 @@
 package quiz;
 
 /**
+ * This class is used to define the Fill in the blanks Questions, it extends
+ * Question class; it has 3 fields "ans", "userInputTrue" and "userInputFalse"
+ * which are private and hence has getters and setters; it has validateAnswer()
+ * method which validates the answers given by the user during the quiz; it has
+ * toString() method which prints the entire Object as a string
  *
- * @author Hari
+ * @author Group
  */
 public class TrueOrFalseQuestion extends Question {
-    //fields: ans (boolean),userInput
-    //method validateAnswer
 
     private boolean ans;
     private boolean userInputTrue;
     private boolean userInputFalse;
 
+    //default constructor
     public TrueOrFalseQuestion() {
     }
 
@@ -49,25 +53,22 @@ public class TrueOrFalseQuestion extends Question {
         this.userInputFalse = userInputFalse;
     }
 
-    public boolean validateAnswer(TrueOrFalseQuestion qObject) {
-        if (qObject.isAns() == true) 
-        {   if (qObject.isUserInputTrue() == true)
-            {   return true;
+    public boolean validateAnswer() {
+        // if the answer is true then userInputTrue must be true and if answer is false then userInputFalse must be true
+        if (this.isAns() == true) {
+            if (this.isUserInputTrue() == true) {
+                return true;
+            } else {
+                return false;
             }
-            else
-            {   return false;
+        } else if (this.isAns() == false) {
+            if (this.isUserInputFalse() == true) {
+                return true;
+            } else {
+                return false;
             }
-        } 
-        else if (qObject.isAns() == false) 
-        {   if (qObject.isUserInputFalse() == true)
-            {   return true;
-            }
-            else
-            {   return false;
-            }
-        }
-        else
-        {   return false;
+        } else {
+            return false;
         }
     }
 

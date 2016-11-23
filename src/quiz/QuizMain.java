@@ -22,12 +22,13 @@ import quiz.question.view.MultipleWithMoreAnswersController;
 import quiz.question.view.MultipleWithOneAnswerController;
 import quiz.question.view.TrueOrFalseController;
 import quiz.results.view.QuizSummaryViewController;
+import quiz.results.view.StudentResultDashboardController;
 import quiz.security.Authenticator;
 import quiz.student.result.NoOfTestTakenController;
 import quiz.student.result.StudentStatsController;
 import quiz.student.view.InstructionsPageController;
 import static quiz.student.view.StartTestController.questionCounter;
-import static quiz.student.view.StartTestController.questionsForTest;
+import static quiz.student.view.StartTestController.*;
 import static quiz.student.view.StartTestController.selectednumOfQuestions;
 import quiz.student.view.SubmitPageController;
 
@@ -194,15 +195,29 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void gotoStudentResultDashboard() {
+        try {
+            StudentResultDashboardController profile = (StudentResultDashboardController) replaceSceneContent("results/view/StudentResultDashboard.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }        
 
-//    public void gotoTestPage() {
-//        try {
-//            StartTestController profile = (StartTestController) replaceSceneContent("student/view/StartTest.fxml");
-//            profile.setApp(this);
-//        } catch (Exception ex) {
-//            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    public void logoutAccount() {
+        try {
+            questionsForTest.clear();
+            selectednumOfQuestions = 0;
+            selectedDifficulty = null;
+            questionCounter = 0;
+            LoginController profile = (LoginController) replaceSceneContent("login/view/Login.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }         
+
     public ArrayList<Question> getQuestions(int numOfQuestions, String difficultyLevel) {
         QuizDBImplementation qzImpl = new QuizDBImplementation();
         return qzImpl.selectQuestions(numOfQuestions, difficultyLevel);

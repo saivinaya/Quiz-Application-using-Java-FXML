@@ -16,12 +16,11 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="userLabel" layoutX="71.0" layoutY="175.0" prefHeight="46.0" prefWidth="385.0" text="Welcome " textFill="#b51010" underline="true" wrapText="true">
+      <Label fx:id="userLabel" layoutX="71.0" layoutY="175.0" prefHeight="46.0" prefWidth="142.0" text="Welcome " textFill="#b51010" underline="true" wrapText="true">
            <font>
       <Font size="30.0" />
    </font>
       </Label>
-      <Button layoutX="71.0" layoutY="600.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="76.0" text="Back" />
       <VBox layoutX="149.0" layoutY="245.0" prefHeight="291.0" prefWidth="433.0" spacing="40.0">
          <children>
             <Hyperlink onAction="#onClickSignUpUser" prefHeight="46.0" prefWidth="190.0" text="Add User">
@@ -44,6 +43,12 @@
             <Insets left="40.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
+      <Button layoutX="557.0" layoutY="23.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Label fx:id="loginName" layoutX="224.0" layoutY="175.0" prefHeight="46.0" prefWidth="220.0" textFill="#1b1919" wrapText="true">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
     </children>
 
 </AnchorPane>
