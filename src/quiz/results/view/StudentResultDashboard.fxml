@@ -9,8 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="quiz.results.view.StudentResultDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.results.view.StudentResultDashboardController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="64.0" prefHeight="44.0" prefWidth="356.0" text="Results Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
@@ -31,5 +30,6 @@
             <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
+      <Button layoutX="557.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
    </children>
 </AnchorPane>

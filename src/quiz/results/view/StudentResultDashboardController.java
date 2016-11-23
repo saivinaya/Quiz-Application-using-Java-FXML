@@ -7,6 +7,7 @@ package quiz.results.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
@@ -53,5 +54,9 @@ public class StudentResultDashboardController implements Initializable {
         testResult6.setText("Test 6");
         testResult7.setText("Test 7");
     }
-    
+
+    @FXML
+    private void logout(ActionEvent event) {
+        application.logoutAccount();
+    }
 }

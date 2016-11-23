@@ -21,7 +21,6 @@
       <Font size="30.0" />
    </font>
       </Label>
-      <Button layoutX="71.0" layoutY="600.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="76.0" text="Back" />
       <VBox layoutX="149.0" layoutY="245.0" prefHeight="291.0" prefWidth="433.0" spacing="40.0">
          <children>
             <Hyperlink onAction="#onClickSignUpUser" prefHeight="46.0" prefWidth="190.0" text="Add User">
@@ -44,6 +43,7 @@
             <Insets left="40.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
+      <Button layoutX="557.0" layoutY="23.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
     </children>
 
 </AnchorPane>
