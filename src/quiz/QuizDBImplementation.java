@@ -385,11 +385,34 @@ public class QuizDBImplementation implements QuizDBDAO {
         return user;
     }
 
-    public ArrayList<StudentResults> getStudentResults(Date date) {
-        ArrayList<StudentResults> studentResults = null;
-        return studentResults;
+    public ArrayList<StudentResults> getStudentResults() {
+        ArrayList<StudentResults> results = new ArrayList<StudentResults>();
+        String query = "\"SELECT * FROM TEST_RESULTS";
+        try{
+            Connection conn = QuizHelper.setConnection();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                String loginName = rs.getString("LOGIN_NAME");
+                int lodEasyQuestions = rs.getInt("LOD_EASY_QUESTIONS");
+                int lodMediumQuestions = rs.getInt("LOD_MEDIUM_QUESTIONS");
+                int lodHardQuestions = rs.getInt("LOD_HARD_QUESTIONS");
+                int totalQuestions = rs.getInt("TOTAL_QUESTIONS");
+                int lodEasyCorrect = rs.getInt("LOD_EASY_CORRECT");
+                int lodMediumCorrect = rs.getInt("LOD_MEDIUM_CORRECT");
+                int lodHardCorrect = rs.getInt("LOD_HARD_CORRECT");
+                int totalCorrect = lodEasyCorrect + lodMediumCorrect + lodHardCorrect;
+                Date testDate = rs.getDate("TEST_TAKEN_DATE");
+                StudentResults result = new StudentResults(loginName, lodEasyQuestions, lodMediumQuestions, lodHardQuestions, totalQuestions, totalCorrect, lodEasyCorrect, lodMediumCorrect, lodHardCorrect, testDate);
+                results.add(result);
+            }
+        }catch(SQLException e){
+            
+        }
+        
+        return results;
     }
-
+    
     public int[] getQuestionTypes(ArrayList<Question> questions) {
         int arrayqQuestionType[] = new int[4];
         //array will be [no.of MC, MA, T or F, FIB]
