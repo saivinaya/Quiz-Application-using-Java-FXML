@@ -23,7 +23,7 @@
             <PasswordField fx:id="password" prefHeight="45.0" prefWidth="187.0" promptText="Password" />
          </children>
       </HBox>
-      <Button fx:id="signIn" layoutX="269.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSignIn" prefHeight="35.0" prefWidth="75.0" text="Sign In" />
+      <Button fx:id="signIn" layoutX="269.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSignIn" onDragEntered="#onClickSignIn" prefHeight="35.0" prefWidth="75.0" text="Sign In" />
       <Button fx:id="signup" layoutX="397.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="75.0" text="Sign Up" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="64.0" prefHeight="44.0" prefWidth="356.0" text="Quiz" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>

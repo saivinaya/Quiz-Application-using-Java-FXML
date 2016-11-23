@@ -11,12 +11,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.AdminDashboardController">
      <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="65.0" prefHeight="44.0" prefWidth="356.0" text="Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="65.0" prefHeight="44.0" prefWidth="356.0" text="Admin Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="userLabel" layoutX="71.0" layoutY="175.0" prefHeight="46.0" prefWidth="163.0" text="Welcome " textFill="#b51010" underline="true" wrapText="true">
+      <Label fx:id="userLabel" layoutX="71.0" layoutY="175.0" prefHeight="46.0" prefWidth="385.0" text="Welcome " textFill="#b51010" underline="true" wrapText="true">
            <font>
       <Font size="30.0" />
    </font>

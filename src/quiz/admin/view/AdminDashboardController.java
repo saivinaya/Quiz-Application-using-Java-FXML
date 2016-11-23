@@ -30,6 +30,7 @@ public class AdminDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        userLabel.setText("Welcome "+QuizMain.loginName);
         System.out.println("Loading Admin");
     }    
         public void setApp(QuizMain application){
@@ -48,6 +49,7 @@ public class AdminDashboardController implements Initializable {
 
     @FXML
     private void onClickViewStudentPerformance(ActionEvent event) {
+        application.goTOStudentStats();
     }
     
     

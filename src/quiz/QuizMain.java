@@ -23,6 +23,8 @@ import quiz.question.view.MultipleWithOneAnswerController;
 import quiz.question.view.TrueOrFalseController;
 import quiz.results.view.QuizSummaryViewController;
 import quiz.security.Authenticator;
+import quiz.student.result.NoOfTestTakenController;
+import quiz.student.result.StudentStatsController;
 import quiz.student.view.InstructionsPageController;
 import static quiz.student.view.StartTestController.questionCounter;
 import static quiz.student.view.StartTestController.questionsForTest;
@@ -39,7 +41,8 @@ public class QuizMain extends Application {
     private User loggedUser;
     private final double MINIMUM_WINDOW_WIDTH = 700.0;
     private final double MINIMUM_WINDOW_HEIGHT = 700.0;
-
+    public static String loginName;
+    public static String role;
     /**
      * @param args the command line arguments
      */
@@ -84,6 +87,25 @@ public class QuizMain extends Application {
         try {
             System.out.println("upload file");
             UploadFileController profile = (UploadFileController) replaceSceneContent("admin/view/UploadFile.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        public void goTOStudentStats(){
+        try {
+            System.out.println("Inside goto");
+            StudentStatsController profile = (StudentStatsController) replaceSceneContent("student/result/StudentStats.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+        public void noOfTestsTaken(){
+        try {
+            System.out.println("Kuhu");
+            NoOfTestTakenController profile = (NoOfTestTakenController) replaceSceneContent("student/result/NoOfTestTaken.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);

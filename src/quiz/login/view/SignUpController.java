@@ -93,7 +93,7 @@ public class SignUpController implements Initializable {
                     alert.showAndWait();
                 }
             }
-        } catch (Exception exp) {
+        } catch (NullPointerException exp) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setContentText("Please ensure all the fields are populated. Try again");
             alert.showAndWait();
