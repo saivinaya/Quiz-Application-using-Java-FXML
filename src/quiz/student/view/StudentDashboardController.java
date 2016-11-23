@@ -23,6 +23,8 @@ public class StudentDashboardController implements Initializable {
     private QuizMain application;
     
     Label errorMessage;
+    @FXML
+    private Label loginName;
     /**
      * Initializes the controller class.
      */
@@ -44,6 +46,7 @@ public class StudentDashboardController implements Initializable {
     }
     public void setApp(QuizMain application){
         this.application = application;
+        loginName.setText(QuizMain.loginName);
     }
 
     @FXML
