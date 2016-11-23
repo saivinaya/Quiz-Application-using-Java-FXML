@@ -7,9 +7,12 @@ package quiz.results.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import quiz.QuizMain;
@@ -39,6 +42,8 @@ public class QuizSummaryViewController implements Initializable {
     private Label skipped;
     @FXML
     private Label wrongAnswer;
+    @FXML
+    private PieChart pieChart;
 
     /**
      * Initializes the controller class.
@@ -65,6 +70,17 @@ public class QuizSummaryViewController implements Initializable {
         else if ((double) (score/rltArray[0]) < 0.4)
         {   testResult.setText("Failed!");
         }
+        else
+        {   testResult.setText("Cannot Compute!");
+        }
+        ObservableList<PieChart.Data> pieChartData =
+            FXCollections.observableArrayList(
+            new PieChart.Data("Easy Questions Answered Correctly", rltArray[1]),
+            new PieChart.Data("Medium Questions Answered Correctly", rltArray[2]),
+            new PieChart.Data("Hard Questions Answered Correctly", rltArray[3]),
+            new PieChart.Data("Questions Skipped", rltArray[4]),
+            new PieChart.Data("Wrong Answers", (int) wrong));
+        pieChart.setData(pieChartData);
         }
 
     @FXML
