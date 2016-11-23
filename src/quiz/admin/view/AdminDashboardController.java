@@ -28,13 +28,19 @@ public class AdminDashboardController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         userLabel.setText("Welcome "+QuizMain.loginName);
-        System.out.println("Loading Admin");
     }    
-        public void setApp(QuizMain application){
+
+    /**
+     *
+     * @param application
+     */
+    public void setApp(QuizMain application){
         this.application = application;
     }
 

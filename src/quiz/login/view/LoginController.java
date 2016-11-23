@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package quiz.login.view;
 
 import java.net.URL;
@@ -42,40 +38,43 @@ public class LoginController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("Loading Login page...");
-        
+       
     }
 
+    /**
+     *
+     * @param application
+     */
     public void setApp(QuizMain application) {
         this.application = application;
     }
 
+    /**
+     *
+     * @param ae
+     */
     @FXML
     public void onClickSignIn(ActionEvent ae) {
         QuizDBImplementation impl = new QuizDBImplementation();
-        System.out.println("in on click");
-        System.out.println("userName.getText()" + loginName.getText());
-        System.out.println("password.getText()" + password.getText());
-        try {
+     try {
             User user = impl.selectUser(loginName.getText(), password.getText());
 
             if (user.getUniRole().equals("Admin")) {
-                System.out.println("in1");
-                QuizMain.loginName = loginName.getText();
+                QuizMain.loginName = user.getUserName();
                 QuizMain.role = "Admin";
                 application.gotoAdminDashboard();
             } 
              if (user.getUniRole().equals("Student")) {
-                System.out.println("in2");
                 QuizMain.loginName = loginName.getText();
                 QuizMain.role = "Student";
                 application.gotoStudentDashboard();
             }
         } catch (NullPointerException exp) {
-            System.out.println(exp);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Incorrect username/password");
             alert.showAndWait();
@@ -92,7 +91,11 @@ public class LoginController implements Initializable {
         });
     }
 
+    /**
+     *
+     */
     public void onClickSignUp() {
+          QuizMain.role = "Student";
         application.gotoSignUpScreen();
 
     }

@@ -70,7 +70,6 @@ public class QuizMain extends Application {
 
     public void gotoLogin() {
         try {
-            System.out.println("test");
             LoginController profile = (LoginController) replaceSceneContent("login/view/Login.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
@@ -86,7 +85,6 @@ public class QuizMain extends Application {
     }
         public void gotoUploadFile() {
         try {
-            System.out.println("upload file");
             UploadFileController profile = (UploadFileController) replaceSceneContent("admin/view/UploadFile.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
@@ -95,7 +93,6 @@ public class QuizMain extends Application {
     }
         public void goTOStudentStats(){
         try {
-            System.out.println("Inside goto");
             StudentStatsController profile = (StudentStatsController) replaceSceneContent("student/result/StudentStats.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
@@ -132,7 +129,6 @@ public class QuizMain extends Application {
 
     public void gotoAdminDashboard() {
         try {
-            System.out.println("in adminDashboard");
             AdminDashboardController profile = (AdminDashboardController) replaceSceneContent("admin/view/AdminDashboard.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
@@ -142,7 +138,6 @@ public class QuizMain extends Application {
 
     public void gotoSignUpScreen() {
         try {
-            System.out.println("in SignUpScreen");
             SignUpController profile = (SignUpController) replaceSceneContent("login/view/SignUp.fxml");
             profile.setApp(this);
         } catch (Exception ex) {

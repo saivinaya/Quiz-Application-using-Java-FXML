@@ -31,6 +31,7 @@ public class UploadFileController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param application
      */
     public void setApp(QuizMain application) {
         this.application = application;
@@ -47,13 +48,10 @@ public class UploadFileController implements Initializable {
 
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-           System.out.println("selectedFile.getPath()" + selectedFile.getPath());
-            System.out.println("selectedFile." + selectedFile.getAbsolutePath());
             fileName.setText(selectedFile.getAbsolutePath());
             selectedFileName=selectedFile.getName();
             selectedFileAbsolutePath = selectedFile.getAbsolutePath();
         } else {
-            System.out.println("No File Selected");
         }
 
     }

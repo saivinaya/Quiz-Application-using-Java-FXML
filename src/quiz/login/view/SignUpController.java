@@ -40,6 +40,10 @@ public class SignUpController implements Initializable {
     @FXML
     private ComboBox<String> role;
 
+    /**
+     *
+     * @param application
+     */
     public void setApp(QuizMain application) {
         this.application = application;
 
@@ -47,6 +51,8 @@ public class SignUpController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,13 +70,12 @@ public class SignUpController implements Initializable {
         } catch (Exception exp) {
             role.getItems().removeAll(role.getItems());
             role.getItems().addAll("Student");
-            role.getSelectionModel().select("Student");
+           // role.getSelectionModel().select("Student");
         }
     }
 
     @FXML
     private void onClickSignUp(ActionEvent event) {
-        System.out.println("in the proc");
 
         QuizDBImplementation impl = new QuizDBImplementation();
         boolean addFlag = true;
@@ -126,7 +131,6 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void onClickGotoLogin() {
-        System.out.println("In GotoScreen");
         try{
         if (QuizMain.role.equals("Admin")) {
             application.gotoAdminDashboard();
