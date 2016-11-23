@@ -40,7 +40,8 @@ public class QuizHelper {
         Connection conn = null;
         try {
             // Establish Derby connection with QuizDB embedded mode
-            String connectionString = "jdbc:derby:QuizDB";
+            //String connectionString = "jdbc:derby:QuizDB";
+            String connectionString="jdbc:derby://localhost:1527/QuizDB";
             String username = "app";
             String password = "app";
             conn = DriverManager.getConnection(connectionString, username, password);

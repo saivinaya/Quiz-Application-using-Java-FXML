@@ -7,23 +7,18 @@ package quiz.login.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import quiz.QuizDBImplementation;
 import quiz.QuizMain;
-import quiz.User;
-import static sun.security.krb5.KrbException.errorMessage;
 
 /**
  * FXML Controller class
@@ -43,10 +38,11 @@ public class SignUpController implements Initializable {
     @FXML
     private PasswordField password2;
     @FXML
-    private ComboBox<?> role;
+    private ComboBox<String> role;
 
     public void setApp(QuizMain application) {
         this.application = application;
+
     }
 
     /**
@@ -54,7 +50,22 @@ public class SignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+        try {
+            if (QuizMain.role.equals("Admin")) {
+                role.getItems().removeAll(role.getItems());
+                role.getItems().addAll("Student", "Admin");
+                role.getSelectionModel().select("Admin");
+            } else {
+                role.getItems().removeAll(role.getItems());
+                role.getItems().addAll("Student");
+                role.getSelectionModel().select("Student");
+            }
+        } catch (Exception exp) {
+            role.getItems().removeAll(role.getItems());
+            role.getItems().addAll("Student");
+            role.getSelectionModel().select("Student");
+        }
     }
 
     @FXML
@@ -62,36 +73,49 @@ public class SignUpController implements Initializable {
         System.out.println("in the proc");
 
         QuizDBImplementation impl = new QuizDBImplementation();
-        User usr = null;
+        boolean addFlag = true;
 
         try {
-            if (!(role.getSelectionModel().getSelectedItem().toString().equals("Student") | role.getSelectionModel().getSelectedItem().toString().equals("Admin"))) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setContentText("Please select value Student or Admin as the role from the dropdown list");
-                alert.showAndWait();
-            } else {
-                if (password1.getText().equals(password2.getText())) {
-                    String loginNameValue = loginName.getText();
-                    String userNameValue = UserName.getText();
-                    String passwordValue = password1.getText();
-                    String roleValue = role.getSelectionModel().getSelectedItem().toString();
-                    usr = impl.selectUser(loginNameValue);
-                    
-                        application.addUser(loginNameValue, userNameValue, passwordValue, roleValue);
-                        Alert alert = new Alert(AlertType.CONFIRMATION);
-                        alert.setContentText("New User Successfully Added. Please select back button for the login screen");
-                        alert.showAndWait();
-                        loginName.setText(null);
-                        UserName.setText(null);
-                        password1.setText(null);
-                        password2.setText(null);
-                        role.setValue(null);
-                    
-                } else {
+            if (!(loginName.getText().equals(null) & UserName.getText().equals(null) & password1.getText().equals(null) & password2.getText().equals(null))) {
+                if (!(role.getSelectionModel().getSelectedItem().toString().equals("Student") | role.getSelectionModel().getSelectedItem().toString().equals("Admin"))) {
                     Alert alert = new Alert(AlertType.ERROR);
-                    alert.setContentText("There is mismatch in password. Please ensure password in both the fields are same");
+                    alert.setContentText("Please select value Student or Admin as the role from the dropdown list");
                     alert.showAndWait();
+                } else {
+                    if (password1.getText().equals(password2.getText())) {
+                        String loginNameValue = loginName.getText();
+                        String userNameValue = UserName.getText();
+                        String passwordValue = password1.getText();
+                        String roleValue = role.getSelectionModel().getSelectedItem().toString();
+
+                        addFlag = impl.selectUser(loginNameValue);
+
+                        if (addFlag == true) {
+                            application.addUser(loginNameValue, userNameValue, passwordValue, roleValue);
+                            Alert alert = new Alert(AlertType.CONFIRMATION);
+                            alert.setContentText("New User Successfully Added. Please select back button for the login screen");
+                            alert.showAndWait();
+                            loginName.setText(null);
+                            UserName.setText(null);
+                            password1.setText(null);
+                            password2.setText(null);
+                            role.setValue(null);
+                        } else {
+                            Alert alert = new Alert(AlertType.ERROR);
+                            alert.setContentText("Login Name already used. Please try with a new Login Name");
+                            alert.showAndWait();
+                        }
+
+                    } else {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setContentText("There is mismatch in password. Please ensure password in both the fields are same");
+                        alert.showAndWait();
+                    }
                 }
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setContentText("Please ensure all the fields are populated. Try again");
+                alert.showAndWait();
             }
         } catch (NullPointerException exp) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -103,7 +127,14 @@ public class SignUpController implements Initializable {
     @FXML
     private void onClickGotoLogin() {
         System.out.println("In GotoScreen");
-        application.gotoLogin();
+        try{
+        if (QuizMain.role.equals("Admin")) {
+            application.gotoAdminDashboard();
+        } else {
+            application.gotoLogin();
+        }}catch(Exception exp){
+         application.gotoLogin();
+        }
     }
 
 }

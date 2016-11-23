@@ -24,15 +24,14 @@ public class AdminDashboardController implements Initializable {
    private QuizMain application;
     @FXML
     private Label userLabel;
-    @FXML
-    private Label loginName;
+
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loginName.setText(QuizMain.loginName);
+        userLabel.setText("Welcome "+QuizMain.loginName);
         System.out.println("Loading Admin");
     }    
         public void setApp(QuizMain application){

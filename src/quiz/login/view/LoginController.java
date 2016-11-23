@@ -67,7 +67,8 @@ public class LoginController implements Initializable {
                 QuizMain.loginName = loginName.getText();
                 QuizMain.role = "Admin";
                 application.gotoAdminDashboard();
-            } else {
+            } 
+             if (user.getUniRole().equals("Student")) {
                 System.out.println("in2");
                 QuizMain.loginName = loginName.getText();
                 QuizMain.role = "Student";

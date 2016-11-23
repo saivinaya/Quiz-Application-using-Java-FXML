@@ -50,12 +50,7 @@
                   <children>
                       <Label prefHeight="46.0" prefWidth="160.0" text="Role" />
                       <ComboBox id="role" fx:id="role" editable="true" prefHeight="50.0" prefWidth="150.0">
-                          <items>
-                              <FXCollections fx:factory="observableArrayList">
-                                  <String fx:value="Student" />
-                                  <String fx:value="Admin" />
-                              </FXCollections>
-                          </items>
+                          
                       </ComboBox>
                   </children>
               </HBox>
