@@ -6,16 +6,20 @@
 package quiz;
 
 /**
+ * This class is used to define the Fill in the blanks Questions, it extends
+ * Question class; it has 2 fields "ans" and "userInput" which are private and
+ * hence has getters and setters; it has validateAnswer() method which validates
+ * the answers given by the user during the quiz; it has toString() method which
+ * prints the entire Object as a string
  *
- * @author Hari
+ * @author Group
  */
 public class FillInTheBlanks extends Question {
-    //fields: ans(String),userInput
-    //method validateAnswer
 
     private String ans;
     private String userInput;
 
+    //default constructor
     public FillInTheBlanks() {
     }
 
@@ -41,7 +45,8 @@ public class FillInTheBlanks extends Question {
     }
 
     public boolean validateAnswer() {
-        if (this.getAns().trim().toLowerCase() == this.getUserInput().trim().toLowerCase()) {
+        // we need to avoid any trailing and leading empty spaces and also should not be case sensitive
+        if (this.getAns().trim().toLowerCase().equals(this.getUserInput().trim().toLowerCase())) {
             return true;
         } else {
             return false;

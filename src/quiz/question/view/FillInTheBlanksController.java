@@ -28,7 +28,10 @@ import quiz.TrueOrFalseQuestion;
 import static quiz.student.view.StartTestController.*;
 
 /**
- * FXML Controller class
+ * This class is the controller class for the FillInTheBlanks fxml page; it has
+ * initialize(), setApp() as base methods; onNextButtonClick(),
+ * onBackButtonClick(), onSkipButtonClick() and onTextEntered() event related
+ * methods.
  *
  * @author VinayaSaiD
  */
@@ -47,13 +50,17 @@ public class FillInTheBlanksController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("Entered the fill in");
+        // setting the question number label
         questionNumber.setText("Question " + (questionCounter + 1) + " of " + (selectednumOfQuestions));
+        // these are used when user presses back button,used to remember the previous user answers
         userAnswer.setText(((FillInTheBlanks) questionsForTest.get(questionCounter)).getUserInput());
+        // back button should not be visible for the first question
         if (questionCounter == 0) {
             backButton.setVisible(false);
         }
+        //set the Question description in the text field
         questionDescription.setText(((FillInTheBlanks) questionsForTest.get(questionCounter)).getQuestiondesc());
+        //setup tool tips
         questionDescription.setTooltip(new Tooltip("Question Description"));
         userAnswer.setTooltip(new Tooltip("Your Answer"));
     }
@@ -65,19 +72,23 @@ public class FillInTheBlanksController implements Initializable {
     @FXML
     private void onNextButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
+        // if the answer is no given need to throw a warning, skip can be used to not answer the question
         if (userAns == null || userAns.equals("")) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setContentText("You need to enter an answer to proceed.Or use 'Skip' to Skip the question.");
             alert.showAndWait();
-        } else {
+        } // else need to save the user input into the Question object
+        else {
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(userAns);
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(false);
+            // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }
     }
 
     @FXML
     private void onBackButtonClick(ActionEvent event) {
+        // reduce the counter by one and send it to the screen based on type of question
         questionCounter = questionCounter - 1;
         if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
             application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
@@ -93,18 +104,21 @@ public class FillInTheBlanksController implements Initializable {
     @FXML
     private void onSkipButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
-        System.out.println(userAns);
-        if (!(userAns == null)) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"You have given an answer.Do you wish to remove the answer and proceed.",ButtonType.YES, ButtonType.NO);
+        // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
+        if (!(userAns == null) || !(userAns.equals(""))) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You have given an answer.Do you wish to remove the answer and proceed.", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
                 ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput("");
+                // go to the next question using gotoNextQuestion() method
                 application.gotoNextQuestion();
             }
-        } else {
+        } // else make the tag SkipQuestion to true and proceed
+        else {
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput("");
+            // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }
     }
