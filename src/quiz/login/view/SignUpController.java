@@ -81,7 +81,7 @@ public class SignUpController implements Initializable {
         boolean addFlag = true;
 
         try {
-            if (!(loginName.getText().equals(null) & UserName.getText().equals(null) & password1.getText().equals(null) & password2.getText().equals(null))) {
+            if (!(loginName.getText().equals("") && UserName.getText().equals("") && password1.getText().equals("") && password2.getText().equals(""))) {
                 if (!(role.getSelectionModel().getSelectedItem().toString().equals("Student") | role.getSelectionModel().getSelectedItem().toString().equals("Admin"))) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setContentText("Please select value Student or Admin as the role from the dropdown list");
