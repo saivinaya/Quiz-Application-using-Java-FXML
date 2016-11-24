@@ -263,9 +263,10 @@ public class QuizDBImplementation implements QuizDBDAO {
             preparedStatement.setInt(6, result.getLodEasyCorrect());
             preparedStatement.setInt(7, result.getLodMediumCorrect());
             preparedStatement.setInt(8, result.getLodHardCorrect());
+            preparedStatement.setInt(9, result.getSkippedQuestions());
             java.util.Date utilDate = result.getTestDate();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            preparedStatement.setDate(9, sqlDate);
+            preparedStatement.setDate(10, sqlDate);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -413,9 +414,10 @@ public class QuizDBImplementation implements QuizDBDAO {
                 int lodEasyCorrect = rs.getInt("LOD_EASY_CORRECT");
                 int lodMediumCorrect = rs.getInt("LOD_MEDIUM_CORRECT");
                 int lodHardCorrect = rs.getInt("LOD_HARD_CORRECT");
+                int skipped = rs.getInt("SKIPPED_QUESTIONS");
                 int totalCorrect = lodEasyCorrect + lodMediumCorrect + lodHardCorrect;
                 Date testDate = rs.getDate("TEST_TAKEN_DATE");
-                StudentResults result = new StudentResults(loginName, lodEasyQuestions, lodMediumQuestions, lodHardQuestions, totalQuestions, totalCorrect, lodEasyCorrect, lodMediumCorrect, lodHardCorrect, testDate);
+                StudentResults result = new StudentResults(loginName, lodEasyQuestions, lodMediumQuestions, lodHardQuestions, totalQuestions, totalCorrect, lodEasyCorrect, lodMediumCorrect, lodHardCorrect, skipped, testDate);
                 results.add(result);
             }
         }catch(SQLException e){
@@ -462,35 +464,5 @@ public class QuizDBImplementation implements QuizDBDAO {
 		}
 	}
 	return sb.toString();        
-        
     }
-    
-       public int[] evaluation(List<Question> questions) {
-        int[] arrayCorrectQuestionType = new int[4];
-        int skipped = 0;
-        int easy = 0;
-        int medium = 0;
-        int hard = 0;
-        for (Question q : questions) {
-            if (q.isSkipQuestion()) {
-                skipped += 1;
-            } else if (q.validateAnswer()) {
-                String type = q.LevelOfDifficulty;
-                if (type.equalsIgnoreCase("E")) {
-                    easy += 1;
-                } else if (type.equalsIgnoreCase("M")) {
-                    medium += 1;
-                } else if (type.equalsIgnoreCase("H")) {
-                    hard += 1;
-                }
-            }
-        }
-        arrayCorrectQuestionType[0] = easy;
-        arrayCorrectQuestionType[1] = medium;
-        arrayCorrectQuestionType[2] = hard;
-        arrayCorrectQuestionType[3] = skipped;
- 
-        return arrayCorrectQuestionType;
-    }
-    
 }

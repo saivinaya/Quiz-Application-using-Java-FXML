@@ -15,6 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -72,10 +75,56 @@ public class QuizHelper {
         }
     }
     
-    public int[] evaluateQuizResult(ArrayList<Question> questionlist) {
-        int[] result = {0,0,0,0,0};
-        // result array shoud have {total questions, easy correct, medium correct, hard corrrect, skipped questions} in that order
-        return result;
+    public int[] evaluateQuizResult(ArrayList<Question> questions) {
+        int[] arrayCorrectQuestionType = new int[4];
+        int skipped = 0;
+        int easyCorrect = 0;
+        int mediumCorrect = 0;
+        int hardCorrect = 0;
+        int easy = 0;
+        int medium = 0;
+        int hard = 0;
+        int totalCorrect = 0;
+        for (Question q : questions) {
+            if (q.isSkipQuestion()) {
+                skipped += 1;
+            } else if (q.validateAnswer()) {
+                String type = q.LevelOfDifficulty;
+                if (type.equalsIgnoreCase("E")) {
+                    easyCorrect += 1;
+                } else if (type.equalsIgnoreCase("M")) {
+                    mediumCorrect += 1;
+                } else if (type.equalsIgnoreCase("H")) {
+                    hardCorrect += 1;
+                }
+            }
+        }
+        totalCorrect = easyCorrect + mediumCorrect + hardCorrect;
+        arrayCorrectQuestionType[0] = questions.size();
+        arrayCorrectQuestionType[1] = easyCorrect;
+        arrayCorrectQuestionType[2] = mediumCorrect;
+        arrayCorrectQuestionType[3] = hardCorrect;
+        arrayCorrectQuestionType[4] = skipped;
+        
+        for (Question q : questions){
+            String difficulty = q.getLevelOfDifficulty();
+            if (difficulty.equalsIgnoreCase("E")){
+                easy +=1;
+            }
+            else if (difficulty.equalsIgnoreCase("M")){
+                medium +=1;
+            }
+            else if (difficulty.equalsIgnoreCase("H")){
+                hard +=1;
+            }
+        }
+        String loginName = QuizMain.loginName;
+        Date testDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        StudentResults result = new StudentResults(loginName, easy, medium, hard, questions.size(), totalCorrect, easyCorrect, mediumCorrect, hardCorrect, skipped, testDate);
+        QuizDBImplementation storeData= new QuizDBImplementation();
+        storeData.addStudentResults(result);
+        return arrayCorrectQuestionType;
     }
     
         /**
