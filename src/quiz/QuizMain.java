@@ -219,7 +219,11 @@ public class QuizMain extends Application {
     public ArrayList<Question> getQuestions(int numOfQuestions, String difficultyLevel) {
         QuizDBImplementation qzImpl = new QuizDBImplementation();
         return qzImpl.selectQuestions(numOfQuestions, difficultyLevel);
-
+    }
+    
+    public int[] evaluateTest(ArrayList<Question> questions) {
+        QuizHelper qzHelp = new QuizHelper();
+        return qzHelp.evaluateQuizResult(questions);
     }
 
     public void uploadQuestions(String fileName) {

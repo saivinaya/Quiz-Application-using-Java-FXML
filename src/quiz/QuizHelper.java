@@ -76,7 +76,8 @@ public class QuizHelper {
     }
     
     public int[] evaluateQuizResult(ArrayList<Question> questions) {
-        int[] arrayCorrectQuestionType = new int[4];
+        System.out.println("sin evaluate test");
+        int[] arrayCorrectQuestionType = new int[5];
         int skipped = 0;
         int easyCorrect = 0;
         int mediumCorrect = 0;
@@ -105,7 +106,7 @@ public class QuizHelper {
         arrayCorrectQuestionType[2] = mediumCorrect;
         arrayCorrectQuestionType[3] = hardCorrect;
         arrayCorrectQuestionType[4] = skipped;
-        
+        System.out.println("second for loo start");
         for (Question q : questions){
             String difficulty = q.getLevelOfDifficulty();
             if (difficulty.equalsIgnoreCase("E")){
@@ -118,9 +119,9 @@ public class QuizHelper {
                 hard +=1;
             }
         }
+        System.out.println("Before storing data");
         String loginName = QuizMain.loginName;
         Date testDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         StudentResults result = new StudentResults(loginName, easy, medium, hard, questions.size(), totalCorrect, easyCorrect, mediumCorrect, hardCorrect, skipped, testDate);
         QuizDBImplementation storeData= new QuizDBImplementation();
         storeData.addStudentResults(result);
