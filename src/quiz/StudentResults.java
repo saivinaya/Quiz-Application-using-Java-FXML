@@ -24,9 +24,10 @@ public class StudentResults {
     private int lodEasyCorrect;
     private int lodMediumCorrect;
     private int lodHardCorrect;
+    private int skippedQuestions;
     private Date testDate;
 
-    public StudentResults(String loginName, int lodEasyQuestions, int lodMediumQuestions, int lodHardQuestions, int totalQuestions, int totalCorrect, int lodEasyCorrect, int lodMediumCorrect, int lodHardCorrect, Date testDate) {
+    public StudentResults(String loginName, int lodEasyQuestions, int lodMediumQuestions, int lodHardQuestions, int totalQuestions, int totalCorrect, int lodEasyCorrect, int lodMediumCorrect, int lodHardCorrect, int skippedQuestions,Date testDate) {
         this.loginName = loginName;
         this.lodEasyQuestions = lodEasyQuestions;
         this.lodMediumQuestions = lodMediumQuestions;
@@ -36,7 +37,16 @@ public class StudentResults {
         this.lodEasyCorrect = lodEasyCorrect;
         this.lodMediumCorrect = lodMediumCorrect;
         this.lodHardCorrect = lodHardCorrect;
+        this.skippedQuestions = skippedQuestions;
         this.testDate = testDate;
+    }
+
+    public int getSkippedQuestions() {
+        return skippedQuestions;
+    }
+
+    public void setSkippedQuestions(int skippedQuestions) {
+        this.skippedQuestions = skippedQuestions;
     }
         
     public StudentResults(){
