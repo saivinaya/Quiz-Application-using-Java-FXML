@@ -456,9 +456,36 @@ public class QuizDBImplementation implements QuizDBDAO {
         
     }
     
-    public void evaluation(List<Question> questions){
-        for (Question q : questions){
-           
+    public int[] evaluation(List<Question> questions) {
+        int[] arrayCorrectQuestionType = new int[5];
+        int skipped = 0;
+        int mc = 0;
+        int ma = 0;
+        int tf = 0;
+        int fib = 0;
+        for (Question q : questions) {
+            if (q.isSkipQuestion()) {
+                skipped += 1;
+            } else if (q.validateAnswer()) {
+                String type = q.getQuestionType();
+                if (type.equalsIgnoreCase("MC")) {
+                    mc += 1;
+                } else if (type.equalsIgnoreCase("MA")) {
+                    ma += 1;
+                } else if (type.equalsIgnoreCase("TF")) {
+                    tf += 1;
+                } else if (type.equalsIgnoreCase("FIB")) {
+                    fib += 1;
+                }
+            }
         }
+        arrayCorrectQuestionType[0] = mc;
+        arrayCorrectQuestionType[1] = ma;
+        arrayCorrectQuestionType[2] = tf;
+        arrayCorrectQuestionType[3] = fib;
+        arrayCorrectQuestionType[4] = skipped;
+        return arrayCorrectQuestionType;
     }
+ 
+    
 }

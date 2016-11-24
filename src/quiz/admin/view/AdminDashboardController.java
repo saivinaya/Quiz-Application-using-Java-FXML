@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package quiz.admin.view;
 
 import java.net.URL;
@@ -17,7 +12,7 @@ import quiz.QuizMain;
 
 /**
  * FXML Controller class
- *
+ * AdminDashboardController: This class is the controller for AdminDashboard.
  * @author Hari
  */
 public class AdminDashboardController implements Initializable {

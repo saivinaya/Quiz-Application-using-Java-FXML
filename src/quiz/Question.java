@@ -9,7 +9,7 @@ package quiz;
  *
  * @author Group
  */
-public class Question {
+public abstract class Question {
 
     protected String QuestionType;
     protected String LevelOfDifficulty;
@@ -62,5 +62,6 @@ public class Question {
     public String toString() {
         return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}';
     }
+    public abstract boolean validateAnswer();
 
 }
