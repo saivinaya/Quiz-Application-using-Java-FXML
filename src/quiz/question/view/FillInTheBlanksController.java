@@ -73,7 +73,7 @@ public class FillInTheBlanksController implements Initializable {
     private void onNextButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
         // if the answer is no given need to throw a warning, skip can be used to not answer the question
-        if (userAns == null || userAns.equals("")) {
+        if (userAns == null) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setContentText("You need to enter an answer to proceed.Or use 'Skip' to Skip the question.");
             alert.showAndWait();
@@ -105,19 +105,19 @@ public class FillInTheBlanksController implements Initializable {
     private void onSkipButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
         // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
-        if (!(userAns == null) || !(userAns.equals(""))) {
+        if (!(userAns == null)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You have given an answer.Do you wish to remove the answer and proceed.", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
-                ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput("");
+                ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(null);
                 // go to the next question using gotoNextQuestion() method
                 application.gotoNextQuestion();
             }
         } // else make the tag SkipQuestion to true and proceed
         else {
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
-            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput("");
+            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(null);
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }
