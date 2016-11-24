@@ -73,6 +73,9 @@ public class QuizDBImplementation implements QuizDBDAO {
 
     public String addQuestions(String fileName) {
         String consolidatedErrorMessage = "";
+        ArrayList<String> errorList=new ArrayList<>();
+        Date date=new Date();
+        String erroLogName="ErrorLog.txt";
         try {
             Connection con = QuizHelper.setConnection();
             if (con != null) {
@@ -131,20 +134,26 @@ public class QuizDBImplementation implements QuizDBDAO {
                             }
                             ps.executeBatch();
                         } else {
-                            consolidatedErrorMessage = consolidatedErrorMessage + lineNumber + ": " + errorMessage + "\n";
+                           // consolidatedErrorMessage = consolidatedErrorMessage + lineNumber + ": " + errorMessage + "\n";
+                            errorList.add(lineNumber + ": " + errorMessage);
                         }
                         lineNumber++;
                     }
 
-                    if (!consolidatedErrorMessage.isEmpty()) {
+                    if (errorList.size()>0) {
                         System.out.println("Following are the exceptions (line number: error message).Please fix the file and try again.");
                         System.out.println(consolidatedErrorMessage);
+                        QuizHelper qz=new QuizHelper();
+                        
+                        qz.FileWriter(erroLogName, errorList);
+                        QuizMain.fileLoadMessage="Errors";
                         //ps.executeBatch(); // rollback remaining records
                         con.rollback();
 
                     } else {
                         ps.executeBatch(); // insert valid records and commit
                         con.commit();
+                        QuizMain.fileLoadMessage="Success";
                     }
 
                 } catch (Exception e) {

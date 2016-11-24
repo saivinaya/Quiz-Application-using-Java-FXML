@@ -7,7 +7,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import au.com.bytecode.opencsv.CSVReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  *
@@ -70,4 +77,25 @@ public class QuizHelper {
         // result array shoud have {total questions, easy correct, medium correct, hard corrrect, skipped questions} in that order
         return result;
     }
+    
+        /**
+     * FileWriter: This method takes fileName and ArrayList of string as input
+     * and generates the output file
+     *
+     * @param fileName 
+     * @param1 Name of the file to print
+     * @param appendIndicator 
+     * @throws FileNotFoundException 
+     * @throws IOException 
+     * @param2 Content to be printed
+     * @param1 Name of the file to print
+     * @param content 
+     */
+    public void FileWriter(String fileName, ArrayList<String> content) throws FileNotFoundException, IOException {
+      //  File file = new java.io.File(fileName);
+        Path out = Paths.get(fileName);
+          
+        Files.write(out,content,Charset.defaultCharset(),StandardOpenOption.CREATE);
+        
+     }//end of method FileWriter
 }
