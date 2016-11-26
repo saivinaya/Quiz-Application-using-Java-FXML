@@ -251,7 +251,7 @@ public class QuizDBImplementation implements QuizDBDAO {
 
 
     public void addStudentResults(StudentResults result) {
-        String insertQuery = "insert into test_results values(?,?,?,?,?,?,?,?,?)";
+        String insertQuery = "insert into test_results values(?,?,?,?,?,?,?,?,?,?)";
         try {
             Connection conn = QuizHelper.setConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
@@ -400,7 +400,7 @@ public class QuizDBImplementation implements QuizDBDAO {
 
     public ArrayList<StudentResults> getStudentResults() {
         ArrayList<StudentResults> results = new ArrayList<StudentResults>();
-        String query = "\"SELECT * FROM TEST_RESULTS";
+        String query = "SELECT * FROM TEST_RESULTS";
         try{
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
