@@ -18,13 +18,13 @@
       </Label>
       <VBox layoutX="143.0" layoutY="159.0" prefHeight="455.0" prefWidth="434.0" spacing="40.0">
          <children>
-            <Hyperlink fx:id="testResult1" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult2" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult3" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult4" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult5" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult6" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult7" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult1" onAction="#test1Selected" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult2" onAction="#test2Selected" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult3" onAction="#test3Selected" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult4" onAction="#test4Selected" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult5" onAction="#test5Selected" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult6" onAction="#test6Selected" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult7" onAction="#test7Selected" prefHeight="25.0" prefWidth="301.0" />
          </children>
          <padding>
             <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />

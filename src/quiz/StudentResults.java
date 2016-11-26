@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author Hari
  */
-public class StudentResults {
+public class StudentResults implements Comparable<StudentResults>{
 
     private String loginName;
     private int lodEasyQuestions;
@@ -139,5 +139,10 @@ public class StudentResults {
         this.totalCorrect = totalCorrect;
     }
 
-
+    @Override
+    public int compareTo(StudentResults o) {
+      if (getTestDate() == null || o.getTestDate() == null)
+        return 0;
+      return getTestDate().compareTo(o.getTestDate());
+    }
 }
