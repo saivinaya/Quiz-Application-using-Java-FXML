@@ -421,9 +421,7 @@ public class QuizDBImplementation implements QuizDBDAO {
                 results.add(result);
             }
         }catch(SQLException e){
-            
         }
-        
         return results;
     }
     
@@ -464,5 +462,35 @@ public class QuizDBImplementation implements QuizDBDAO {
 		}
 	}
 	return sb.toString();        
+    }
+    
+    public ArrayList<StudentResults> getStudentResults(String name) {
+        ArrayList<StudentResults> results = new ArrayList<StudentResults>();
+        String query = "SELECT * FROM TEST_RESULTS";
+        try{
+            Connection conn = QuizHelper.setConnection();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                String loginName = rs.getString("LOGIN_NAME");
+                if (loginName.equals(name))
+                {
+                int lodEasyQuestions = rs.getInt("LOD_EASY_QUESTIONS");
+                int lodMediumQuestions = rs.getInt("LOD_MEDIUM_QUESTIONS");
+                int lodHardQuestions = rs.getInt("LOD_HARD_QUESTIONS");
+                int totalQuestions = rs.getInt("TOTAL_QUESTIONS");
+                int lodEasyCorrect = rs.getInt("LOD_EASY_CORRECT");
+                int lodMediumCorrect = rs.getInt("LOD_MEDIUM_CORRECT");
+                int lodHardCorrect = rs.getInt("LOD_HARD_CORRECT");
+                int skipped = rs.getInt("SKIPPED_QUESTIONS");
+                int totalCorrect = lodEasyCorrect + lodMediumCorrect + lodHardCorrect;
+                Date testDate = rs.getDate("TEST_TAKEN_DATE");
+                StudentResults result = new StudentResults(loginName, lodEasyQuestions, lodMediumQuestions, lodHardQuestions, totalQuestions, totalCorrect, lodEasyCorrect, lodMediumCorrect, lodHardCorrect, skipped, testDate);
+                results.add(result);
+                }
+            }
+        }catch(SQLException e){
+        }
+        return results;
     }
 }
