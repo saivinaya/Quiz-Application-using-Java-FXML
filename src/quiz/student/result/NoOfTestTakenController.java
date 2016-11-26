@@ -5,25 +5,32 @@
  */
 package quiz.student.result;
 
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.PrinterJob;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
-import org.w3c.dom.Document;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import quiz.QuizMain;
+
 
 /**
  *
@@ -67,12 +74,35 @@ public class NoOfTestTakenController implements Initializable {
 
     @FXML
     public void viewStats(ActionEvent e) {
-        PrinterJob job = PrinterJob.createPrinterJob();
-        if (job != null) {
-            job.showPrintDialog(application.stage); // Window must be your main Stage
-            job.printPage(barChart);
-            job.endJob();
-        }
+//        PrinterJob job = PrinterJob.createPrinterJob();
+//        if (job != null) {
+//            job.showPrintDialog(application.stage); // Window must be your main Stage
+//            job.printPage(barChart);
+//            job.endJob();
+//        }
+FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().add(new ExtensionFilter("PDF files", "*.pdf"));
+        
+            File file = chooser.showSaveDialog(application.stage);
+            if (file != null) {
+                try {
+                    WritableImage img = barChart.snapshot(null, null);
+                    ImageData imgData = ImageDataFactory.create(SwingFXUtils.fromFXImage(img, null), null);
+                    com.itextpdf.layout.element.Image pdfImg = new com.itextpdf.layout.element.Image(imgData);
+
+                    PdfWriter writer = new PdfWriter(new FileOutputStream(file));
+                    PdfDocument pdfDoc = new PdfDocument(writer);
+                    Document doc = new Document(pdfDoc);
+                    Paragraph preface = new Paragraph();
+                    preface.add(statsLabel.getText());
+                    doc.add(preface);
+                    doc.add(pdfImg);
+                    doc.close();
+                } catch (Exception exc) {
+                    exc.printStackTrace();
+                }               
+            }
+        
     }
 
     @FXML
