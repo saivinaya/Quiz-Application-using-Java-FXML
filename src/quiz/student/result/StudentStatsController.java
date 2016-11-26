@@ -115,6 +115,7 @@ public class StudentStatsController implements Initializable {
 
                 selectedPeriod = period.getSelectionModel().getSelectedItem().toString();
                 viewStats.setDisable(false);
+                
             }
         });
 
