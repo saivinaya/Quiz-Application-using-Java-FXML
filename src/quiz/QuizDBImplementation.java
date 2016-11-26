@@ -15,7 +15,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLNonTransientConnectionException;
 import java.sql.Statement;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -357,7 +356,7 @@ public class QuizDBImplementation implements QuizDBDAO {
         return questionList;
     }
 
-    public User selectUser(String loginName, String password){
+    public User selectUser(String loginName, String password) {
         User user = null;
         System.out.println("loginName"+loginName+"password"+password);
         String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName + "' AND PASSWORD = '" + password + "'"; 
