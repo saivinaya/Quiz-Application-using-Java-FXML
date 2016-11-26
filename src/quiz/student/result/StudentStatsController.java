@@ -123,9 +123,12 @@ public class StudentStatsController implements Initializable {
 
     @FXML
     public void viewStats(ActionEvent event) {
-        ArrayList<StudentResults> stud = new ArrayList<>();
-        this.arr = stud;
-        //setArrayValues();
+        QuizDBImplementation quiz = new QuizDBImplementation();
+        
+        this.arr = quiz.getStudentResults();
+        System.out.println(arr.size());
+        System.out.println(arr.toString());
+        setArrayValues();
 
         application.noOfTestsTaken();
 
@@ -203,6 +206,7 @@ public class StudentStatsController implements Initializable {
     public static Calendar toCalendar(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
+        System.out.println(cal.getWeekYear());
         return cal;
     }
 
@@ -211,17 +215,20 @@ public class StudentStatsController implements Initializable {
             Date d = arr.get(i).getTestDate();
 
             Calendar c = toCalendar(d);
-            int month = c.get(Calendar.MONTH);
+            int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+            int testMonth = Calendar.getInstance().get(c.MONTH);
+            System.out.println(currentMonth);
+            System.out.println(testMonth);
 
-            if (month == Calendar.getInstance().get(Calendar.MONTH)) {
+            if (testMonth == Calendar.getInstance().get(c.MONTH)) {
                 monthly.add(arr.get(i));
                 quarterly.add(arr.get(i));
                 yearly.add(arr.get(i));
 
-            } else if (month < Calendar.getInstance().get(Calendar.MONTH) - 2 && month > Calendar.getInstance().get(Calendar.MONTH)) {
+            } else if (testMonth < Calendar.getInstance().get(c.MONTH) - 2 && testMonth > Calendar.getInstance().get(c.MONTH)) {
                 quarterly.add(arr.get(i));
                 yearly.add(arr.get(i));
-            } else if (month < Calendar.getInstance().get(Calendar.MONTH) - 12 && month > Calendar.getInstance().get(Calendar.MONTH) - 2) {
+            } else if (testMonth < Calendar.getInstance().get(c.MONTH) - 12 && testMonth > Calendar.getInstance().get(c.MONTH) - 2) {
                 yearly.add(arr.get(i));
 
             }
