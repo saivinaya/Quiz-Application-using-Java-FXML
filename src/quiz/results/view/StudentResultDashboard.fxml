@@ -16,20 +16,22 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="143.0" layoutY="159.0" prefHeight="455.0" prefWidth="434.0" spacing="40.0">
+      <VBox layoutX="143.0" layoutY="140.0" prefHeight="455.0" prefWidth="434.0" spacing="40.0">
          <children>
-            <Hyperlink fx:id="testResult1" onAction="#test1Selected" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult2" onAction="#test2Selected" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult3" onAction="#test3Selected" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult4" onAction="#test4Selected" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult5" onAction="#test5Selected" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult6" onAction="#test6Selected" prefHeight="25.0" prefWidth="301.0" />
-            <Hyperlink fx:id="testResult7" onAction="#test7Selected" prefHeight="25.0" prefWidth="301.0" />
+            <Hyperlink fx:id="testResult1" onAction="#test1Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
+            <Hyperlink fx:id="testResult2" onAction="#test2Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
+            <Hyperlink fx:id="testResult3" onAction="#test3Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
+            <Hyperlink fx:id="testResult4" onAction="#test4Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
+            <Hyperlink fx:id="testResult5" onAction="#test5Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
+            <Hyperlink fx:id="testResult6" onAction="#test6Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
+            <Hyperlink fx:id="testResult7" onAction="#test7Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
          </children>
          <padding>
             <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
       <Button layoutX="557.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Label fx:id="textBottom" layoutX="395.0" layoutY="647.0" prefHeight="25.0" prefWidth="272.0" visible="false" />
+      <Button layoutX="44.0" layoutY="625.0" mnemonicParsing="false" onAction="#goBack" prefHeight="36.0" prefWidth="91.0" text="Back" />
    </children>
 </AnchorPane>

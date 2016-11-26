@@ -15,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import quiz.QuizDBImplementation;
 import quiz.QuizMain;
 import quiz.StudentResults;
 
@@ -41,25 +43,53 @@ public class StudentResultDashboardController implements Initializable {
     private Hyperlink testResult6;
     @FXML
     private Hyperlink testResult7;
+    @FXML
+    private Label textBottom;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
+
     public void setApp(QuizMain application) {
         this.application = application;
+        QuizDBImplementation qzImp = new QuizDBImplementation();
+        testTaken = qzImp.getStudentResults(QuizMain.loginName);
+        System.out.println(testTaken.get(0));
         Collections.sort(testTaken);
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        testResult1.setText("Test 1: "+ df.format(testTaken.get(0)));
-        testResult2.setText("Test 2: "+ df.format(testTaken.get(1)));
-        testResult3.setText("Test 3: "+ df.format(testTaken.get(2)));
-        testResult4.setText("Test 4: "+ df.format(testTaken.get(3)));
-        testResult5.setText("Test 5: "+ df.format(testTaken.get(4)));
-        testResult6.setText("Test 6: "+ df.format(testTaken.get(5)));
-        testResult7.setText("Test 7: "+ df.format(testTaken.get(6)));
+        if (testTaken.size() >= 1) {
+            testResult1.setVisible(true);
+            testResult1.setText("Test 1: " + df.format(testTaken.get(0).getTestDate()));
+        }
+        if (testTaken.size() >= 2) {
+            testResult2.setVisible(true);
+            testResult2.setText("Test 2: " + df.format(testTaken.get(1).getTestDate()));
+        }
+        if (testTaken.size() >= 3) {
+            testResult3.setVisible(true);
+            testResult3.setText("Test 3: " + df.format(testTaken.get(2).getTestDate()));
+        }
+        if (testTaken.size() >= 4) {
+            testResult4.setVisible(true);
+            testResult4.setText("Test 4: " + df.format(testTaken.get(3).getTestDate()));
+        }
+        if (testTaken.size() >= 5) {
+            testResult5.setVisible(true);
+            testResult5.setText("Test 5: " + df.format(testTaken.get(4).getTestDate()));
+        }
+        if (testTaken.size() >= 6) {
+            testResult6.setVisible(true);
+            testResult6.setText("Test 6: " + df.format(testTaken.get(5).getTestDate()));
+        }
+        if (testTaken.size() >= 7) {
+            testResult7.setVisible(true);
+            testResult7.setText("Test 7: " + df.format(testTaken.get(6).getTestDate()));
+            textBottom.setVisible(true);
+            textBottom.setText("Max of 7 Latest Test Results are shown.");
+        }
         Collections.sort(testTaken);
     }
 
@@ -72,58 +102,64 @@ public class StudentResultDashboardController implements Initializable {
     private void test1Selected(ActionEvent event) {
         int[] resultTest1 = new int[5];
         resultTest1 = testResultArray(testTaken.get(0));
-        application.gotoQuizSummaryPage(resultTest1);
+        application.gotoQuizSummaryPage(resultTest1,true);
     }
 
     @FXML
     private void test2Selected(ActionEvent event) {
         int[] resultTest2 = new int[5];
         resultTest2 = testResultArray(testTaken.get(1));
-        application.gotoQuizSummaryPage(resultTest2);
+        application.gotoQuizSummaryPage(resultTest2,true);
     }
 
     @FXML
     private void test3Selected(ActionEvent event) {
         int[] resultTest3 = new int[5];
         resultTest3 = testResultArray(testTaken.get(2));
-        application.gotoQuizSummaryPage(resultTest3);
+        application.gotoQuizSummaryPage(resultTest3,true);
     }
 
     @FXML
     private void test4Selected(ActionEvent event) {
         int[] resultTest4 = new int[5];
         resultTest4 = testResultArray(testTaken.get(3));
-        application.gotoQuizSummaryPage(resultTest4);
+        application.gotoQuizSummaryPage(resultTest4,true);
     }
 
     @FXML
     private void test5Selected(ActionEvent event) {
         int[] resultTest5 = new int[5];
         resultTest5 = testResultArray(testTaken.get(4));
-        application.gotoQuizSummaryPage(resultTest5);
+        application.gotoQuizSummaryPage(resultTest5,true);
     }
 
     @FXML
     private void test6Selected(ActionEvent event) {
         int[] resultTest6 = new int[5];
         resultTest6 = testResultArray(testTaken.get(5));
-        application.gotoQuizSummaryPage(resultTest6);
+        application.gotoQuizSummaryPage(resultTest6,true);
     }
 
     @FXML
     private void test7Selected(ActionEvent event) {
         int[] resultTest7 = new int[5];
         resultTest7 = testResultArray(testTaken.get(6));
-        application.gotoQuizSummaryPage(resultTest7);
+        application.gotoQuizSummaryPage(resultTest7,true);
     }
-    
-    public int[] testResultArray(StudentResults temp)
-    {   int[] resultTest = new int[5];
-        resultTest[0]=temp.getTotalQuestions();
-        resultTest[1]=temp.getLodEasyCorrect();
-        resultTest[2]=temp.getLodMediumCorrect();
-        resultTest[3]=temp.getLodHardCorrect();
-        resultTest[4]=temp.getSkippedQuestions();
+
+    public int[] testResultArray(StudentResults temp) {
+        int[] resultTest = new int[5];
+        resultTest[0] = temp.getTotalQuestions();
+        resultTest[1] = temp.getLodEasyCorrect();
+        resultTest[2] = temp.getLodMediumCorrect();
+        resultTest[3] = temp.getLodHardCorrect();
+        resultTest[4] = temp.getSkippedQuestions();
         return resultTest;
     }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+        application.gotoStudentDashboard();
+    }
+
 }

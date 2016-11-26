@@ -183,10 +183,10 @@ public class QuizMain extends Application {
         }
     }
     
-    public void gotoQuizSummaryPage(int[] resultArray) {
+    public void gotoQuizSummaryPage(int[] resultArray, boolean flag) {
         try {
             QuizSummaryViewController profile = (QuizSummaryViewController) replaceSceneContent("results/view/QuizSummaryView.fxml");
-            profile.setApp(this,resultArray);
+            profile.setApp(this,resultArray,flag);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }

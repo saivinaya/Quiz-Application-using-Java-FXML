@@ -46,6 +46,8 @@ public class QuizSummaryViewController implements Initializable {
     private Label wrongAnswer;
     @FXML
     private PieChart pieChart;
+    @FXML
+    private Button backResultDashboard;
 
     /**
      * Initializes the controller class.
@@ -55,8 +57,9 @@ public class QuizSummaryViewController implements Initializable {
         // TODO
     }
 
-    public void setApp(QuizMain application, int[] rltArray) {
+    public void setApp(QuizMain application, int[] rltArray, boolean flag) {
         this.application = application;
+        backResultDashboard.setVisible(flag);
         // to set the values from the array to labels to display the results on the screen
         totalQuestions.setText(Integer.toString(rltArray[0]));
         easyCorrect.setText(Integer.toString(rltArray[1]));
@@ -90,5 +93,16 @@ public class QuizSummaryViewController implements Initializable {
     @FXML
     private void goBackDashboard(ActionEvent event) {
         application.gotoStudentDashboard();
+    }
+
+    @FXML
+    private void goResultDashboard(ActionEvent event) {
+        application.gotoStudentResultDashboard();
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        // call the logoutAccount() to logout of the application
+        application.logoutAccount();
     }
 }

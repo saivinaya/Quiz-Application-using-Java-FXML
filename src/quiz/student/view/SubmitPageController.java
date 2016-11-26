@@ -44,7 +44,7 @@ public class SubmitPageController implements Initializable {
         System.out.println("before going to jose method");
         int[] resultArray = application.evaluateTest(questionsForTest);
         // go to the result summary page to show the result
-        application.gotoQuizSummaryPage(resultArray);
+        application.gotoQuizSummaryPage(resultArray, false);
     }
 
     @FXML
