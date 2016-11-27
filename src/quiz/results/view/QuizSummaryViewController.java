@@ -5,16 +5,29 @@
  */
 package quiz.results.view;
 
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import quiz.QuizMain;
 
 /**
@@ -48,6 +61,8 @@ public class QuizSummaryViewController implements Initializable {
     private PieChart pieChart;
     @FXML
     private Button backResultDashboard;
+    @FXML
+    private Pane resultFrame;
 
     /**
      * Initializes the controller class.
@@ -92,11 +107,13 @@ public class QuizSummaryViewController implements Initializable {
 
     @FXML
     private void goBackDashboard(ActionEvent event) {
+        // goto the main dashboard 
         application.gotoStudentDashboard();
     }
 
     @FXML
     private void goResultDashboard(ActionEvent event) {
+        // go to the students result dashboard
         application.gotoStudentResultDashboard();
     }
 
@@ -104,5 +121,28 @@ public class QuizSummaryViewController implements Initializable {
     private void logout(ActionEvent event) {
         // call the logoutAccount() to logout of the application
         application.logoutAccount();
+    }
+
+    @FXML
+    public void saveToPdf(ActionEvent e) {
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files", "*.pdf"));
+        File file = chooser.showSaveDialog(application.stage);
+        if (file != null) {
+            try {
+                // take the snapshot of the result frame and add it to the pdf
+                WritableImage img = resultFrame.snapshot(null, null);
+                ImageData imgData = ImageDataFactory.create(SwingFXUtils.fromFXImage(img, null), null);
+                com.itextpdf.layout.element.Image pdfImg = new com.itextpdf.layout.element.Image(imgData);
+
+                PdfWriter writer = new PdfWriter(new FileOutputStream(file));
+                PdfDocument pdfDoc = new PdfDocument(writer);
+                Document doc = new Document(pdfDoc);
+                doc.add(pdfImg);
+                doc.close();
+            } catch (Exception exc) {
+                exc.printStackTrace();
+            }
+        }
     }
 }
