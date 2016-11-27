@@ -46,7 +46,7 @@ public class FillInTheBlanks extends Question {
 
     public boolean validateAnswer() {
         // we need to avoid any trailing and leading empty spaces and also should not be case sensitive
-        if (this.getAns().trim().toLowerCase().equals(this.getUserInput().trim().toLowerCase())) {
+        if ((this.getAns().trim()).equals(this.getUserInput().trim())) {
             return true;
         } else {
             return false;
