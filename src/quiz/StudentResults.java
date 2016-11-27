@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author Hari
  */
-public class StudentResults implements Comparable<StudentResults>{
+public class StudentResults implements Comparable<StudentResults> {
 
     private String loginName;
     private int lodEasyQuestions;
@@ -27,7 +27,7 @@ public class StudentResults implements Comparable<StudentResults>{
     private int skippedQuestions;
     private Date testDate;
 
-    public StudentResults(String loginName, int lodEasyQuestions, int lodMediumQuestions, int lodHardQuestions, int totalQuestions, int totalCorrect, int lodEasyCorrect, int lodMediumCorrect, int lodHardCorrect, int skippedQuestions,Date testDate) {
+    public StudentResults(String loginName, int lodEasyQuestions, int lodMediumQuestions, int lodHardQuestions, int totalQuestions, int totalCorrect, int lodEasyCorrect, int lodMediumCorrect, int lodHardCorrect, int skippedQuestions, Date testDate) {
         this.loginName = loginName;
         this.lodEasyQuestions = lodEasyQuestions;
         this.lodMediumQuestions = lodMediumQuestions;
@@ -48,10 +48,11 @@ public class StudentResults implements Comparable<StudentResults>{
     public void setSkippedQuestions(int skippedQuestions) {
         this.skippedQuestions = skippedQuestions;
     }
-        
-    public StudentResults(){
-        
+
+    public StudentResults() {
+
     }
+
     public String getLoginName() {
         return loginName;
     }
@@ -124,7 +125,6 @@ public class StudentResults implements Comparable<StudentResults>{
         this.testDate = testDate;
     }
 
-    
     /**
      * @return the totalCorrect
      */
@@ -141,8 +141,16 @@ public class StudentResults implements Comparable<StudentResults>{
 
     @Override
     public int compareTo(StudentResults o) {
-      if (getTestDate() == null || o.getTestDate() == null)
-        return 0;
-      return getTestDate().compareTo(o.getTestDate());
+        if (getTestDate() == null || o.getTestDate() == null) {
+            return 0;
+        }
+        int compareValue = getTestDate().compareTo(o.getTestDate());
+        if (compareValue == 1) {
+            return -1;
+        } else if (compareValue == -1) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
