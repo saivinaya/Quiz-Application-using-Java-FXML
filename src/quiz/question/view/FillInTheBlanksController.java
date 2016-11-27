@@ -122,11 +122,4 @@ public class FillInTheBlanksController implements Initializable {
             application.gotoNextQuestion();
         }
     }
-
-    @FXML
-    private void onTextEntered(ActionEvent event) {
-        String inputGiven;
-        inputGiven = userAnswer.getText();
-        ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(inputGiven);
-    }
 }

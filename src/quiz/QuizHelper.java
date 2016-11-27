@@ -86,9 +86,11 @@ public class QuizHelper {
         int hard = 0;
         int totalCorrect = 0;
         for (Question q : questions) {
+            //System.out.println(q.getQuestiondesc() + "\n");
             if (q.isSkipQuestion()) {
                 skipped += 1;
             } else if (q.validateAnswer()) {
+                //System.out.println("Answer correct\n\n");
                 String type = q.LevelOfDifficulty;
                 if (type.equalsIgnoreCase("E")) {
                     easyCorrect += 1;
@@ -141,8 +143,6 @@ public class QuizHelper {
     public void FileWriter(String fileName, ArrayList<String> content) throws FileNotFoundException, IOException {
       //  File file = new java.io.File(fileName);
         Path out = Paths.get(fileName);
-          
         Files.write(out,content,Charset.defaultCharset(),StandardOpenOption.CREATE);
-        
      }//end of method FileWriter
 }

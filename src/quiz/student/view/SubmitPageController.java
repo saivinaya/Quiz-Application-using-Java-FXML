@@ -41,7 +41,6 @@ public class SubmitPageController implements Initializable {
     private void onSubmitButtonClick(ActionEvent event) {
         QuizHelper quizHp = new QuizHelper();
         // evaluate the answers for all the questions using evaluateQuizResult()
-        System.out.println("before going to jose method");
         int[] resultArray = application.evaluateTest(questionsForTest);
         // go to the result summary page to show the result
         application.gotoQuizSummaryPage(resultArray, false);
