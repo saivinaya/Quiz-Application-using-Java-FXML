@@ -39,6 +39,7 @@ import quiz.QuizMain;
 public class NoOfTestTakenController implements Initializable {
 
     private QuizMain application;
+    StudentStatsController stud = new StudentStatsController();
     /**
      * Initializes the controller class.
      */
@@ -55,20 +56,24 @@ public class NoOfTestTakenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if (StudentStatsController.selectedReport.equals("No Of Tests Taken")) {
+        
+        if (StudentStatsController.getSelectedReport().equals("No Of Tests Taken")) {
 
             barChart.getData().add(viewNoOfTests());
-        } else if (StudentStatsController.selectedReport.equals("Average Student Scores")) {
+        } else if (StudentStatsController.getSelectedReport().equals("Average Student Scores")) {
 
             barChart.getData().add(viewAvgScores());
-        } else if (StudentStatsController.selectedReport.equals("Scores by LOD")) {
+        } else if (StudentStatsController.getSelectedReport().equals("Scores by LOD")) {
 
             barChart.getData().add(scoresByLOD());
+        }else if (StudentStatsController.getSelectedReport().equals("No of Skipped Questions")) {
+
+            barChart.getData().add(viewNoOfSkippedQuestions());
         } else {
             barChart.getData().add(passAndFail());
         }
 
-        System.out.println("sjdnfsjnc");
+        
 
     }
 
@@ -120,24 +125,24 @@ FileChooser chooser = new FileChooser();
         XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
         series1.setName("Scores by LOD");
 
-        if (StudentStatsController.selectedPeriod.equals("Last Month")) {
+        if (StudentStatsController.getSelectedPeriod().equals("Last Month")) {
             statsLabel.setText("Average score of students based on LOD for last one month");
-            series1.getData().add(new XYChart.Data<String, Number>("Easy", StudentStatsController.avgEasyCorrect[0]));
-            series1.getData().add(new XYChart.Data<String, Number>("Medium", StudentStatsController.avgMedCorrect[0]));
-            series1.getData().add(new XYChart.Data<String, Number>("Hard", StudentStatsController.avgHardCorrect[0]));
-            series1.getData().add(new XYChart.Data<String, Number>("All", StudentStatsController.avgStudentScores[0]));
-        } else if (StudentStatsController.selectedPeriod.equals("Last Quarter")) {
+            series1.getData().add(new XYChart.Data<String, Number>("Easy", stud.getAvgEasyCorrect()[0]));
+            series1.getData().add(new XYChart.Data<String, Number>("Medium", stud.getAvgMedCorrect()[0]));
+            series1.getData().add(new XYChart.Data<String, Number>("Hard", stud.getAvgHardCorrect()[0]));
+            
+        } else if (StudentStatsController.getSelectedPeriod().equals("Last Quarter")) {
             statsLabel.setText("Average score of students based on LOD for last one quarter");
-            series1.getData().add(new XYChart.Data<String, Number>("Easy", StudentStatsController.avgEasyCorrect[1]));
-            series1.getData().add(new XYChart.Data<String, Number>("Medium", StudentStatsController.avgMedCorrect[1]));
-            series1.getData().add(new XYChart.Data<String, Number>("Hard", StudentStatsController.avgHardCorrect[1]));
-            series1.getData().add(new XYChart.Data<String, Number>("All", StudentStatsController.avgStudentScores[1]));
+            series1.getData().add(new XYChart.Data<String, Number>("Easy", stud.getAvgEasyCorrect()[1]));
+            series1.getData().add(new XYChart.Data<String, Number>("Medium", stud.getAvgMedCorrect()[1]));
+            series1.getData().add(new XYChart.Data<String, Number>("Hard", stud.getAvgHardCorrect()[1]));
+            
         } else {
             statsLabel.setText("Average score of students based on LOD for last one year");
-            series1.getData().add(new XYChart.Data<String, Number>("Easy", StudentStatsController.avgEasyCorrect[2]));
-            series1.getData().add(new XYChart.Data<String, Number>("Medium", StudentStatsController.avgMedCorrect[2]));
-            series1.getData().add(new XYChart.Data<String, Number>("Hard", StudentStatsController.avgHardCorrect[2]));
-            series1.getData().add(new XYChart.Data<String, Number>("All", StudentStatsController.avgStudentScores[2]));
+            series1.getData().add(new XYChart.Data<String, Number>("Easy", stud.getAvgEasyCorrect()[2]));
+            series1.getData().add(new XYChart.Data<String, Number>("Medium", stud.getAvgMedCorrect()[2]));
+            series1.getData().add(new XYChart.Data<String, Number>("Hard", stud.getAvgHardCorrect()[2]));
+            
         }
 
         return series1;
@@ -147,18 +152,18 @@ FileChooser chooser = new FileChooser();
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
         series1.setName("Pass/Fail data");
-        if (StudentStatsController.selectedPeriod.equals("Last Month")) {
+        if (StudentStatsController.getSelectedPeriod().equals("Last Month")) {
             statsLabel.setText("Total Pass/Fail students for last one month");
-            series1.getData().add(new XYChart.Data<String, Number>("Pass", StudentStatsController.passing[0]));
-            series1.getData().add(new XYChart.Data<String, Number>("Fail", StudentStatsController.failing[0]));
-        } else if (StudentStatsController.selectedPeriod.equals("Last Quarter")) {
+            series1.getData().add(new XYChart.Data<String, Number>("Pass", stud.getPassing()[0]));
+            series1.getData().add(new XYChart.Data<String, Number>("Fail", stud.getFailing()[0]));
+        } else if (StudentStatsController.getSelectedPeriod().equals("Last Quarter")) {
             statsLabel.setText("Total Pass/Fail students for last one quarter");
-            series1.getData().add(new XYChart.Data<String, Number>("Pass", StudentStatsController.passing[1]));
-            series1.getData().add(new XYChart.Data<String, Number>("Fail", StudentStatsController.failing[0]));
+            series1.getData().add(new XYChart.Data<String, Number>("Pass", stud.getPassing()[1]));
+            series1.getData().add(new XYChart.Data<String, Number>("Fail", stud.getFailing()[1]));
         } else {
             statsLabel.setText("Total Pass/Fail students for last one year");
-            series1.getData().add(new XYChart.Data<String, Number>("Pass", StudentStatsController.passing[1]));
-            series1.getData().add(new XYChart.Data<String, Number>("Fail", StudentStatsController.failing[0]));
+            series1.getData().add(new XYChart.Data<String, Number>("Pass", stud.getPassing()[2]));
+            series1.getData().add(new XYChart.Data<String, Number>("Fail", stud.getFailing()[2]));
         }
 
         return series1;
@@ -171,15 +176,35 @@ FileChooser chooser = new FileChooser();
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
         series1.setName("Number of tests taken");
-        if (StudentStatsController.selectedPeriod.equals("Last Month")) {
+        if (StudentStatsController.getSelectedPeriod().equals("Last Month")) {
             statsLabel.setText("Number of tests taken in last one month");
-            series1.getData().add(new XYChart.Data<String, Number>("Tests taken last month", StudentStatsController.noOfTestsTaken[0]));
-        } else if (StudentStatsController.selectedPeriod.equals("Last Quarter")) {
+            series1.getData().add(new XYChart.Data<String, Number>("Tests taken last month", stud.getNoOfTestsTaken()[0]));
+        } else if (StudentStatsController.getSelectedPeriod().equals("Last Quarter")) {
             statsLabel.setText("Number of tests taken in last one quarter");
-            series1.getData().add(new XYChart.Data<String, Number>("Tests taken last quarter", StudentStatsController.noOfTestsTaken[1]));
+            series1.getData().add(new XYChart.Data<String, Number>("Tests taken last quarter", stud.getNoOfTestsTaken()[1]));
         } else {
             statsLabel.setText("Number of tests taken in last one year");
-            series1.getData().add(new XYChart.Data<String, Number>("Tests taken Last Year", StudentStatsController.noOfTestsTaken[2]));
+            series1.getData().add(new XYChart.Data<String, Number>("Tests taken Last Year", stud.getNoOfTestsTaken()[2]));
+        }
+
+        return series1;
+    }
+    
+    public XYChart.Series<String, Number> viewNoOfSkippedQuestions() {
+
+        XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
+        XYChart.Series<String, Number> series2 = new XYChart.Series<String, Number>();
+        XYChart.Series<String, Number> series3 = new XYChart.Series<String, Number>();
+        series1.setName("Number of Skipped Questions");
+        if (StudentStatsController.getSelectedPeriod().equals("Last Month")) {
+            statsLabel.setText("Number of skipped questions in last one month");
+            series1.getData().add(new XYChart.Data<String, Number>("Tests taken last month", stud.getNumberOfSkippedQuestion()[0]));
+        } else if (StudentStatsController.getSelectedPeriod().equals("Last Quarter")) {
+            statsLabel.setText("Number of skipped questions in last one quarter");
+            series1.getData().add(new XYChart.Data<String, Number>("Tests taken last quarter", stud.getNumberOfSkippedQuestion()[1]));
+        } else {
+            statsLabel.setText("Number of skipped questions in last one year");
+            series1.getData().add(new XYChart.Data<String, Number>("Tests taken Last Year", stud.getNumberOfSkippedQuestion()[2]));
         }
 
         return series1;
@@ -187,20 +212,19 @@ FileChooser chooser = new FileChooser();
 
     public XYChart.Series<String, Number> viewAvgScores() {
 
-        final CategoryAxis xAxis = new CategoryAxis();
-        final NumberAxis yAxis = new NumberAxis();
+      
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
         series1.setName("Average Scores");
-        if (StudentStatsController.selectedPeriod.equals("Last Month")) {
+        if (StudentStatsController.getSelectedPeriod().equals("Last Month")) {
             statsLabel.setText("Average score of students for last one month");
-            series1.getData().add(new XYChart.Data<String, Number>("Average scores for last month", StudentStatsController.avgStudentScores[0]));
-        } else if (StudentStatsController.selectedPeriod.equals("Last Quarter")) {
+            series1.getData().add(new XYChart.Data<String, Number>("Average scores for last month", stud.getAvgStudentScores()[0]));
+        } else if (StudentStatsController.getSelectedPeriod().equals("Last Quarter")) {
             statsLabel.setText("Average score of students for last one quarter");
-            series1.getData().add(new XYChart.Data<String, Number>("Average scores for last quarter", StudentStatsController.avgStudentScores[1]));
+            series1.getData().add(new XYChart.Data<String, Number>("Average scores for last quarter", stud.getAvgStudentScores()[1]));
         } else {
             statsLabel.setText("Average score of students for last one year");
-            series1.getData().add(new XYChart.Data<String, Number>("Average scores for Last Year", StudentStatsController.avgStudentScores[2]));
+            series1.getData().add(new XYChart.Data<String, Number>("Average scores for Last Year", stud.getAvgStudentScores()[2]));
         }
 
         return series1;
