@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -35,28 +36,34 @@ import static quiz.student.view.StartTestController.selectedDifficulty;
  */
 public class StudentStatsController implements Initializable {
 
+    
+
+    
     private QuizMain application;
-    public QuizDBImplementation fetchQuestions;
-    public static ArrayList<Question> questionsForTest = new ArrayList<Question>();
+    private QuizDBImplementation fetchQuestions;
+    private static ArrayList<Question> questionsForTest = new ArrayList<Question>();
     private ArrayList<StudentResults> arr = new ArrayList<>();
     private ArrayList<StudentResults> monthly = new ArrayList<>();
     private ArrayList<StudentResults> quarterly = new ArrayList<>();
     private ArrayList<StudentResults> yearly = new ArrayList<>();
-    static int[] noOfTestsTaken = new int[3];
-    static double[] avgStudentScores = new double[3];
-    static double[] avgEasyCorrect = new double[3];
-    static double[] avgMedCorrect = new double[3];
-    static double[] avgHardCorrect = new double[3];
+    private static int[] noOfTestsTaken = new int[3];
+    private static double[] avgStudentScores = new double[3];
+    private static double[] avgEasyCorrect = new double[3];
+    private static double[] avgMedCorrect = new double[3];
+    private static double[] avgHardCorrect = new double[3];
+    private static int[] numberOfSkippedQuestion = new int[3];
+    
 
-    ObservableList<String> reportType = FXCollections.observableArrayList("No Of Tests Taken", "Average Student Scores", "Pass/Fail Stats", "Scores by LOD");
-    ObservableList<String> periodList = FXCollections.observableArrayList("Last Month", "Last Quarter", "Last Year");
-    static String selectedReport = null;
-    static String selectedPeriod = null;
-    static int[] scoresByLOD = new int[3];
-    static int[] passing = new int[3];
-    static int[] failing = new int[3];
+    private ObservableList<String> reportType = FXCollections.observableArrayList("No Of Tests Taken", "Average Student Scores", "Pass/Fail Stats", "Scores by LOD", "No of Skipped Questions");
+    private ObservableList<String> periodList = FXCollections.observableArrayList("Last Month", "Last Quarter", "Last Year");
+    private static String selectedReport = null;
+    private static String selectedPeriod = null;
+    private int[] scoresByLOD = new int[3];
+    private int[] passing = new int[3];
+    private int[] failing = new int[3];
+    private static int i = 0;
 
-    Label errorMessage;
+    private Label errorMessage;
 
     @FXML
     private ChoiceBox report;
@@ -68,40 +75,41 @@ public class StudentStatsController implements Initializable {
 
     @FXML
     private Button viewStats;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        System.out.println("Before fetch");
-        report.setItems(reportType);
-        period.setItems(periodList);
-        period.setDisable(true);
-        viewStats.setDisable(true);
+        
+        getReport().setItems(getReportType());
+        getPeriod().setItems(getPeriodList());
+        getPeriod().setDisable(true);
+        getViewStats().setDisable(true);
 
     }
 
     public void setApp(QuizMain application) {
-        this.application = application;
+        this.setApplication(application);
 
     }
 
     @FXML
     public void reportSelect(MouseEvent event) {
-        if (application == null) {
+        if (getApplication() == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
-            errorMessage.setText("Hello");
+            getErrorMessage().setText("Hello");
         } else {
 
-            report.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            getReport().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
 
-                    period.getSelectionModel().clearSelection();
-                    selectedReport = report.getSelectionModel().getSelectedItem().toString();
+                    getPeriod().getSelectionModel().clearSelection();
+                    setSelectedReport(getReport().getSelectionModel().getSelectedItem().toString());
 
-                    period.setDisable(false);
+                    getPeriod().setDisable(false);
                 }
             });
         }
@@ -109,13 +117,13 @@ public class StudentStatsController implements Initializable {
 
     @FXML
     public void onPeriodSelected(MouseEvent event) {
-        period.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        getPeriod().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
 
-                selectedPeriod = period.getSelectionModel().getSelectedItem().toString();
-                viewStats.setDisable(false);
-                
+                setSelectedPeriod(getPeriod().getSelectionModel().getSelectedItem().toString());
+                getViewStats().setDisable(false);
+
             }
         });
 
@@ -123,152 +131,192 @@ public class StudentStatsController implements Initializable {
 
     @FXML
     public void viewStats(ActionEvent event) {
-        QuizDBImplementation quiz = new QuizDBImplementation();
         
-        this.arr = quiz.getStudentResults();
-        System.out.println(arr.size());
-        System.out.println(arr.toString());
-        setArrayValues();
+        QuizDBImplementation quiz = new QuizDBImplementation();
+        ArrayList<StudentResults> tempArr = new ArrayList<>();
+        tempArr = quiz.getStudentResults();
+        if (i != tempArr.size()) {
+            
+          
+            this.setArr(quiz.getStudentResults());
+            
+            setArrayValues();
+            noOfSkippedQuestions();
+            noOfTestsTaken();
+            avgStudentScore();
+            scoresByLOD();
+            studentPassOrFail();
+            
+            i = arr.size();
 
-        application.noOfTestsTaken();
+        }
+
+        getApplication().noOfTestsTaken();
 
     }
 
     @FXML
     public void goBack(ActionEvent event) {
-        application.gotoAdminDashboard();
+        getApplication().gotoAdminDashboard();
     }
 
     public int[] noOfTestsTaken() {
-        getNoOfTestsTaken()[0] = monthly.size();
-        getNoOfTestsTaken()[1] = quarterly.size();
-        getNoOfTestsTaken()[2] = yearly.size();
-        return noOfTestsTaken;
+        for(int i =0; i < noOfTestsTaken.length ; i++){
+            noOfTestsTaken[i] = 0;
+        }
+
+        getNoOfTestsTaken()[0] = getMonthly().size();
+        getNoOfTestsTaken()[1] = getQuarterly().size();
+        getNoOfTestsTaken()[2] = getYearly().size();
+        return getNoOfTestsTaken();
     }
 
     public double[] avgStudentScore() {
-        for (int i = 0; i < monthly.size(); i++) {
-            avgStudentScores[0] += monthly.get(i).getTotalCorrect();
+        for(int i =0; i < avgStudentScores.length ; i++){
+            avgStudentScores[i] = 0;
+        }
+        for (int i = 0; i < getMonthly().size(); i++) {
+            getAvgStudentScores()[0] += getMonthly().get(i).getTotalCorrect();
 
         }
-        avgStudentScores[0] = avgStudentScores[0] / monthly.size();
-        for (int i = 0; i < quarterly.size(); i++) {
-            avgStudentScores[1] = quarterly.get(i).getTotalCorrect();
+        getAvgStudentScores()[0] = getAvgStudentScores()[0] / getMonthly().size();
+        for (int i = 0; i < getQuarterly().size(); i++) {
+            getAvgStudentScores()[1] = getQuarterly().get(i).getTotalCorrect();
 
         }
-        avgStudentScores[1] = avgStudentScores[1] / quarterly.size();
-        for (int i = 0; i < yearly.size(); i++) {
-            avgStudentScores[2] = yearly.get(i).getTotalCorrect();
+        getAvgStudentScores()[1] = getAvgStudentScores()[1] / getQuarterly().size();
+        for (int i = 0; i < getYearly().size(); i++) {
+            getAvgStudentScores()[2] = getYearly().get(i).getTotalCorrect();
 
         }
-        avgStudentScores[2] = avgStudentScores[2] / yearly.size();
-        return avgStudentScores;
+        getAvgStudentScores()[2] = getAvgStudentScores()[2] / getYearly().size();
+        return getAvgStudentScores();
+    }
+
+    public int[] noOfSkippedQuestions() {
+for(int i =0; i < numberOfSkippedQuestion.length ; i++){
+            numberOfSkippedQuestion[i] = 0;
+        }
+        for (int i = 0; i < getMonthly().size(); i++) {
+
+            getNumberOfSkippedQuestion()[0] += getMonthly().get(i).getSkippedQuestions();
+        }
+        for (int i = 0; i < getQuarterly().size(); i++) {
+            getNumberOfSkippedQuestion()[1] += getQuarterly().get(i).getSkippedQuestions();
+        }
+        for (int i = 0; i < getYearly().size(); i++) {
+            getNumberOfSkippedQuestion()[2] += getYearly().get(i).getSkippedQuestions();
+        }
+        return getNumberOfSkippedQuestion();
+
     }
 
     public void scoresByLOD() {
-        
-        for (int i = 0; i < monthly.size(); i++) {
-
-            avgEasyCorrect[0] += monthly.get(i).getLodEasyCorrect();
-            avgMedCorrect[0] += monthly.get(i).getLodMediumCorrect();
-            avgHardCorrect[0] += monthly.get(i).getLodHardCorrect();
+for(int i =0; i < avgEasyCorrect.length ; i++){
+            getAvgEasyCorrect()[i] = 0;
+            getAvgMedCorrect()[i] = 0;
+            getAvgHardCorrect()[i] = 0;
         }
-        
-        avgEasyCorrect[0] = avgEasyCorrect[0] / monthly.size();
-        avgMedCorrect[0] = avgMedCorrect[0] / monthly.size();
-        avgHardCorrect[0] = avgMedCorrect[0] / monthly.size();
-        
-        for (int i = 0; i < quarterly.size(); i++) {
+        for (int i = 0; i < getMonthly().size(); i++) {
 
-            avgEasyCorrect[1] += quarterly.get(i).getLodEasyCorrect();
-            avgMedCorrect[1] += quarterly.get(i).getLodMediumCorrect();
-            avgHardCorrect[1] += quarterly.get(i).getLodHardCorrect();
+            getAvgEasyCorrect()[0] += getMonthly().get(i).getLodEasyCorrect();
+            getAvgMedCorrect()[0] += getMonthly().get(i).getLodMediumCorrect();
+            getAvgHardCorrect()[0] += getMonthly().get(i).getLodHardCorrect();
         }
-        
-        avgEasyCorrect[1] = avgEasyCorrect[1] / quarterly.size();
-        avgMedCorrect[1] = avgMedCorrect[1] / quarterly.size();
-        avgHardCorrect[1] = avgMedCorrect[1] / quarterly.size();
-        
-        for (int i = 0; i < yearly.size(); i++) {
 
-            avgEasyCorrect[2] += yearly.get(i).getLodEasyCorrect();
-            avgMedCorrect[2] += yearly.get(i).getLodMediumCorrect();
-            avgHardCorrect[2] += yearly.get(i).getLodHardCorrect();
+        getAvgEasyCorrect()[0] = getAvgEasyCorrect()[0] / getMonthly().size();
+        getAvgMedCorrect()[0] = getAvgMedCorrect()[0] / getMonthly().size();
+        getAvgHardCorrect()[0] = getAvgMedCorrect()[0] / getMonthly().size();
+
+        for (int i = 0; i < getQuarterly().size(); i++) {
+
+            getAvgEasyCorrect()[1] += getQuarterly().get(i).getLodEasyCorrect();
+            getAvgMedCorrect()[1] += getQuarterly().get(i).getLodMediumCorrect();
+            getAvgHardCorrect()[1] += getQuarterly().get(i).getLodHardCorrect();
         }
-        
-        avgEasyCorrect[2] = avgEasyCorrect[2] / yearly.size();
-        avgMedCorrect[2] = avgMedCorrect[2] / yearly.size();
-        avgHardCorrect[2] = avgMedCorrect[2] / yearly.size();
-        
+
+        getAvgEasyCorrect()[1] = getAvgEasyCorrect()[1] / getQuarterly().size();
+        getAvgMedCorrect()[1] = getAvgMedCorrect()[1] / getQuarterly().size();
+        getAvgHardCorrect()[1] = getAvgMedCorrect()[1] / getQuarterly().size();
+
+        for (int i = 0; i < getYearly().size(); i++) {
+
+            getAvgEasyCorrect()[2] += getYearly().get(i).getLodEasyCorrect();
+            getAvgMedCorrect()[2] += getYearly().get(i).getLodMediumCorrect();
+            getAvgHardCorrect()[2] += getYearly().get(i).getLodHardCorrect();
+        }
+
+        getAvgEasyCorrect()[2] = getAvgEasyCorrect()[2] / getYearly().size();
+        getAvgMedCorrect()[2] = getAvgMedCorrect()[2] / getYearly().size();
+        getAvgHardCorrect()[2] = getAvgMedCorrect()[2] / getYearly().size();
 
     }
 
-    public static Calendar toCalendar(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        System.out.println(cal.getWeekYear());
-        return cal;
-    }
+    
 
     public void setArrayValues() {
-        for (int i = 0; i < arr.size(); i++) {
-            Date d = arr.get(i).getTestDate();
 
-            Calendar c = toCalendar(d);
-            int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
-            int testMonth = Calendar.getInstance().get(c.MONTH);
-            System.out.println(currentMonth);
-            System.out.println(testMonth);
+        for (int i = 0; i < getArr().size(); i++) {
+            Date d = getArr().get(i).getTestDate();
 
-            if (testMonth == Calendar.getInstance().get(c.MONTH)) {
-                monthly.add(arr.get(i));
-                quarterly.add(arr.get(i));
-                yearly.add(arr.get(i));
+            Date today = new Date();
+            Calendar cal = new GregorianCalendar();
+            cal.setTime(today);
+            cal.add(Calendar.DAY_OF_MONTH, -30);
+            Date today30 = cal.getTime();
+            cal.add(Calendar.DAY_OF_MONTH, -60);
+            Date today60 = cal.getTime();
+            cal.add(Calendar.DAY_OF_MONTH, -365);
+            Date today365 = cal.getTime();
 
-            } else if (testMonth < Calendar.getInstance().get(c.MONTH) - 2 && testMonth > Calendar.getInstance().get(c.MONTH)) {
-                quarterly.add(arr.get(i));
-                yearly.add(arr.get(i));
-            } else if (testMonth < Calendar.getInstance().get(c.MONTH) - 12 && testMonth > Calendar.getInstance().get(c.MONTH) - 2) {
-                yearly.add(arr.get(i));
+            if (d.compareTo(today30) > 0) {
+                getMonthly().add(getArr().get(i));
+                getQuarterly().add(getArr().get(i));
+                getYearly().add(getArr().get(i));
+
+            } else if (d.compareTo(today30) < 0 && d.compareTo(today60) > 0) {
+                getQuarterly().add(getArr().get(i));
+                getYearly().add(getArr().get(i));
+            } else if (d.compareTo(today60) < 0 && d.compareTo(today365) > 0) {
+                getYearly().add(getArr().get(i));
 
             }
 
         }
-        noOfTestsTaken();
-        avgStudentScore();
-        scoresByLOD();
-        studentPassOrFail();
+
     }
 
-    public void studentPassOrFail(){
+    public void studentPassOrFail() {
+        for(int i = 0; i < passing.length; i++){
+            passing[i] = 0;
+            failing[i] = 0;
+        }
         int monthPass = 0, quarterPass = 0, yearPass = 0;
-        for(int i = 0; i < monthly.size(); i++){
-            if((monthly.get(i).getTotalCorrect() * 10.0)/(monthly.get(i).getTotalQuestions() * 10.0) > 0.5){
+        for (int i = 0; i < getMonthly().size(); i++) {
+            if ((getMonthly().get(i).getTotalCorrect() * 10.0) / (getMonthly().get(i).getTotalQuestions() * 10.0) > 0.4) {
                 monthPass++;
             }
         }
-        passing[0] = monthPass;
-        failing[0] = monthly.size() - passing[0];
-        
-        for(int i = 0; i < quarterly.size(); i++){
-            if((quarterly.get(i).getTotalCorrect() * 10.0)/(quarterly.get(i).getTotalQuestions() * 10.0) > 0.5){
+        getPassing()[0] = monthPass;
+        getFailing()[0] = getMonthly().size() - getPassing()[0];
+
+        for (int i = 0; i < getQuarterly().size(); i++) {
+            if ((getQuarterly().get(i).getTotalCorrect() * 10.0) / (getQuarterly().get(i).getTotalQuestions() * 10.0) > 0.4) {
                 quarterPass++;
             }
         }
-        passing[1] = quarterPass;
-        failing[1] = quarterly.size() - passing[1];
-        
-        for(int i = 0; i < yearly.size(); i++){
-            if((yearly.get(i).getTotalCorrect() * 10.0)/(yearly.get(i).getTotalQuestions() * 10.0) > 0.5){
+        getPassing()[1] = quarterPass;
+        getFailing()[1] = getQuarterly().size() - getPassing()[1];
+
+        for (int i = 0; i < getYearly().size(); i++) {
+            if ((getYearly().get(i).getTotalCorrect() * 10.0) / (getYearly().get(i).getTotalQuestions() * 10.0) > 0.4) {
                 yearPass++;
             }
         }
-        passing[2] = yearPass;
-        failing[2] = yearly.size() - passing[2];
+        getPassing()[2] = yearPass;
+        getFailing()[2] = getYearly().size() - getPassing()[2];
     }
-    
-    
-    
+
     /**
      * @return the arr
      */
@@ -332,12 +380,7 @@ public class StudentStatsController implements Initializable {
         return noOfTestsTaken;
     }
 
-    /**
-     * @param noOfTestsTaken the noOfTestsTaken to set
-     */
-    public void setNoOfTestsTaken(int[] noOfTestsTaken) {
-        this.noOfTestsTaken = noOfTestsTaken;
-    }
+    
 
     /**
      * @return the avgStudentScores
@@ -350,7 +393,283 @@ public class StudentStatsController implements Initializable {
      * @param avgStudentScores the avgStudentScores to set
      */
     public void setAvgStudentScores(double[] avgStudentScores) {
-        this.avgStudentScores = avgStudentScores;
+        this.setAvgStudentScores(avgStudentScores);
     }
+
+    /**
+     * @return the application
+     */
+    public QuizMain getApplication() {
+        return application;
+    }
+
+    /**
+     * @param application the application to set
+     */
+    public void setApplication(QuizMain application) {
+        this.application = application;
+    }
+
+    /**
+     * @return the fetchQuestions
+     */
+    public QuizDBImplementation getFetchQuestions() {
+        return fetchQuestions;
+    }
+
+    /**
+     * @param fetchQuestions the fetchQuestions to set
+     */
+    public void setFetchQuestions(QuizDBImplementation fetchQuestions) {
+        this.fetchQuestions = fetchQuestions;
+    }
+
+   
+
+    /**
+     * @return the avgEasyCorrect
+     */
+    public double[] getAvgEasyCorrect() {
+        return avgEasyCorrect;
+    }
+
+    /**
+     * @param avgEasyCorrect the avgEasyCorrect to set
+     */
+    public void setAvgEasyCorrect(double[] avgEasyCorrect) {
+        this.avgEasyCorrect = avgEasyCorrect;
+    }
+
+    /**
+     * @return the avgMedCorrect
+     */
+    public double[] getAvgMedCorrect() {
+        return avgMedCorrect;
+    }
+
+    /**
+     * @param avgMedCorrect the avgMedCorrect to set
+     */
+    public void setAvgMedCorrect(double[] avgMedCorrect) {
+        this.avgMedCorrect = avgMedCorrect;
+    }
+
+    /**
+     * @return the avgHardCorrect
+     */
+    public double[] getAvgHardCorrect() {
+        return avgHardCorrect;
+    }
+
+    /**
+     * @param avgHardCorrect the avgHardCorrect to set
+     */
+    public void setAvgHardCorrect(double[] avgHardCorrect) {
+        this.avgHardCorrect = avgHardCorrect;
+    }
+
+    /**
+     * @return the numberOfSkippedQuestion
+     */
+    public int[] getNumberOfSkippedQuestion() {
+        return numberOfSkippedQuestion;
+    }
+
+    /**
+     * @param numberOfSkippedQuestion the numberOfSkippedQuestion to set
+     */
+    public void setNumberOfSkippedQuestion(int[] numberOfSkippedQuestion) {
+        this.setNumberOfSkippedQuestion(numberOfSkippedQuestion);
+    }
+
+    /**
+     * @return the reportType
+     */
+    public ObservableList<String> getReportType() {
+        return reportType;
+    }
+
+    /**
+     * @param reportType the reportType to set
+     */
+    public void setReportType(ObservableList<String> reportType) {
+        this.reportType = reportType;
+    }
+
+    /**
+     * @return the periodList
+     */
+    public ObservableList<String> getPeriodList() {
+        return periodList;
+    }
+
+    /**
+     * @param periodList the periodList to set
+     */
+    public void setPeriodList(ObservableList<String> periodList) {
+        this.periodList = periodList;
+    }
+
+    /**
+     * @return the scoresByLOD
+     */
+    public int[] getScoresByLOD() {
+        return scoresByLOD;
+    }
+
+    /**
+     * @param scoresByLOD the scoresByLOD to set
+     */
+    public void setScoresByLOD(int[] scoresByLOD) {
+        this.scoresByLOD = scoresByLOD;
+    }
+
+    /**
+     * @return the passing
+     */
+    public int[] getPassing() {
+        return passing;
+    }
+
+    /**
+     * @param passing the passing to set
+     */
+    public void setPassing(int[] passing) {
+        this.passing = passing;
+    }
+
+    /**
+     * @return the failing
+     */
+    public int[] getFailing() {
+        return failing;
+    }
+
+    /**
+     * @param failing the failing to set
+     */
+    public void setFailing(int[] failing) {
+        this.failing = failing;
+    }
+
+    /**
+     * @return the errorMessage
+     */
+    public Label getErrorMessage() {
+        return errorMessage;
+    }
+
+    /**
+     * @param errorMessage the errorMessage to set
+     */
+    public void setErrorMessage(Label errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    /**
+     * @return the report
+     */
+    public ChoiceBox getReport() {
+        return report;
+    }
+
+    /**
+     * @param report the report to set
+     */
+    public void setReport(ChoiceBox report) {
+        this.report = report;
+    }
+
+    /**
+     * @return the period
+     */
+    public ChoiceBox getPeriod() {
+        return period;
+    }
+
+    /**
+     * @param period the period to set
+     */
+    public void setPeriod(ChoiceBox period) {
+        this.period = period;
+    }
+
+    /**
+     * @return the Statistics
+     */
+    public Pane getStatistics() {
+        return Statistics;
+    }
+
+    /**
+     * @param Statistics the Statistics to set
+     */
+    public void setStatistics(Pane Statistics) {
+        this.Statistics = Statistics;
+    }
+
+    /**
+     * @return the viewStats
+     */
+    public Button getViewStats() {
+        return viewStats;
+    }
+
+    /**
+     * @param viewStats the viewStats to set
+     */
+    public void setViewStats(Button viewStats) {
+        this.viewStats = viewStats;
+    }
+    
+    /**
+     * @return the questionsForTest
+     */
+    public static ArrayList<Question> getQuestionsForTest() {
+        return questionsForTest;
+    }
+
+    /**
+     * @param aQuestionsForTest the questionsForTest to set
+     */
+    public static void setQuestionsForTest(ArrayList<Question> aQuestionsForTest) {
+        questionsForTest = aQuestionsForTest;
+    }
+
+    /**
+     * @param aNoOfTestsTaken the noOfTestsTaken to set
+     */
+    public void setNoOfTestsTaken(int[] aNoOfTestsTaken) {
+        noOfTestsTaken = aNoOfTestsTaken;
+    }
+
+    /**
+     * @return the selectedReport
+     */
+    public static String getSelectedReport() {
+        return selectedReport;
+    }
+
+    /**
+     * @param aSelectedReport the selectedReport to set
+     */
+    public static void setSelectedReport(String aSelectedReport) {
+        selectedReport = aSelectedReport;
+    }
+
+    /**
+     * @return the selectedPeriod
+     */
+    public static String getSelectedPeriod() {
+        return selectedPeriod;
+    }
+
+    /**
+     * @param aSelectedPeriod the selectedPeriod to set
+     */
+    public static void setSelectedPeriod(String aSelectedPeriod) {
+        selectedPeriod = aSelectedPeriod;
+    }
+
 
 }
