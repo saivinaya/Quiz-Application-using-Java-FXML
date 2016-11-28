@@ -5,6 +5,9 @@
  */
 package quiz.student.result;
 
+import com.itextpdf.io.font.FontConstants;
+import static com.itextpdf.io.font.FontConstants.BOLD;
+import static com.itextpdf.io.font.FontConstants.TIMES_BOLD;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -27,6 +30,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import quiz.QuizMain;
@@ -53,6 +57,8 @@ public class NoOfTestTakenController implements Initializable {
     private Button back;
     @FXML
     private Label statsLabel;
+    @FXML
+    private Label statsMainLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -94,13 +100,15 @@ FileChooser chooser = new FileChooser();
                     WritableImage img = barChart.snapshot(null, null);
                     ImageData imgData = ImageDataFactory.create(SwingFXUtils.fromFXImage(img, null), null);
                     com.itextpdf.layout.element.Image pdfImg = new com.itextpdf.layout.element.Image(imgData);
-
                     PdfWriter writer = new PdfWriter(new FileOutputStream(file));
                     PdfDocument pdfDoc = new PdfDocument(writer);
                     Document doc = new Document(pdfDoc);
                     Paragraph preface = new Paragraph();
+                    preface.add(statsMainLabel.getText());
+                    doc.add(preface.setBold());
                     preface.add(statsLabel.getText());
                     doc.add(preface);
+                    
                     doc.add(pdfImg);
                     doc.close();
                 } catch (Exception exc) {
