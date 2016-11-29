@@ -25,23 +25,28 @@ import java.util.logging.Logger;
 import org.apache.commons.lang.StringUtils;
 
 /**
+ * This class implements the QuizDBDAO interface
  *
  * @author Group
  */
 public class QuizDBImplementation implements QuizDBDAO {
 
+    //collection objects for respective purposes
     Map<String, List<Integer>> responseIndexForQnTypeMap = new LinkedHashMap<String, List<Integer>>();
     Map<String, String> qnTypeQueryMap = new LinkedHashMap<String, String>();
     Map<String, Integer> questionTypeCountMap = new LinkedHashMap<String, Integer>();
     Map<String, List<String>> responseTextMap = new LinkedHashMap<String, List<String>>();
     List<String> qnDifficultyLevel = new ArrayList<String>();
     Map<String, Integer> restrictionForResponseMap = new LinkedHashMap<String, Integer>();
-
+    //Question type constants
     private final String MC = "MC";
     private final String MA = "MA";
     private final String TF = "TF";
     private final String FIB = "FIB";
 
+    /**
+     * This method is used to define the maps and establish insert queries
+     */
     public void setConstantValues() {
 
         //responseIndexForQnTypeMap
@@ -71,11 +76,17 @@ public class QuizDBImplementation implements QuizDBDAO {
         restrictionForResponseMap.put(MC, 1);
     }
 
+    /**
+     * This method is used to import a CSV file to add data to Question table
+     *
+     * @param fileName CSV file path
+     * @return String
+     */
     public String addQuestions(String fileName) {
         String consolidatedErrorMessage = "";
-        ArrayList<String> errorList=new ArrayList<>();
-        Date date=new Date();
-        String erroLogName="ErrorLog.txt";
+        ArrayList<String> errorList = new ArrayList<>();
+        Date date = new Date();
+        String erroLogName = "ErrorLog.txt";
         try {
             Connection con = QuizHelper.setConnection();
             if (con != null) {
@@ -121,7 +132,7 @@ public class QuizDBImplementation implements QuizDBDAO {
                                             trimmedString = StringUtils.remove(trimmedString, "\"").trim();
                                         }
                                     }
-
+                                    //For correct/true, 1 will be set in DB otherwise 0.
                                     if (trimmedString.equalsIgnoreCase("correct") || trimmedString.equalsIgnoreCase("true")) {
                                         ps.setInt(i + 1, 1);
                                     } else if (trimmedString.equalsIgnoreCase("incorrect") || trimmedString.equalsIgnoreCase("false")) {
@@ -134,26 +145,26 @@ public class QuizDBImplementation implements QuizDBDAO {
                             }
                             ps.executeBatch();
                         } else {
-                           // consolidatedErrorMessage = consolidatedErrorMessage + lineNumber + ": " + errorMessage + "\n";
+                            // consolidatedErrorMessage = consolidatedErrorMessage + lineNumber + ": " + errorMessage + "\n";
                             errorList.add(lineNumber + ": " + errorMessage);
                         }
                         lineNumber++;
                     }
 
-                    if (errorList.size()>0) {
+                    if (errorList.size() > 0) {
                         System.out.println("Following are the exceptions (line number: error message).Please fix the file and try again.");
                         System.out.println(consolidatedErrorMessage);
-                        QuizHelper qz=new QuizHelper();
-                        
+                        QuizHelper qz = new QuizHelper();
+
                         qz.FileWriter(erroLogName, errorList);
-                        QuizMain.fileLoadMessage="Errors";
+                        QuizMain.fileLoadMessage = "Errors";
                         //ps.executeBatch(); // rollback remaining records
                         con.rollback();
 
                     } else {
                         ps.executeBatch(); // insert valid records and commit
                         con.commit();
-                        QuizMain.fileLoadMessage="Success";
+                        QuizMain.fileLoadMessage = "Success";
                     }
 
                 } catch (Exception e) {
@@ -180,6 +191,13 @@ public class QuizDBImplementation implements QuizDBDAO {
         return consolidatedErrorMessage;
     }
 
+    /**
+     * This method is defined to validate the input CSV file for correct data
+     * format
+     *
+     * @param nextLine String array of data read from CSV file
+     * @return String value
+     */
     public String validateCSVRecords(String[] nextLine) {
 
         String errorMessage = "";
@@ -204,14 +222,13 @@ public class QuizDBImplementation implements QuizDBDAO {
                     int responseCountForCorrect = 0;
                     List<String> responseTextList = responseTextMap.get(questionType);
                     for (int listValue : responseIndexList) {
+                        //trimming double quotes if present in response text
                         String trimmedString = StringUtils.remove(nextLine[listValue], "\"").trim().toLowerCase();
                         if (!responseTextList.contains(trimmedString)) {
                             errorMessage = "Incorrect answer type. Should be one of the following: " + responseTextList;
                             break;
-                        } else {
-                            if (trimmedString.equalsIgnoreCase("correct")) {
-                                responseCountForCorrect++;
-                            }
+                        } else if (trimmedString.equalsIgnoreCase("correct")) {
+                            responseCountForCorrect++;
                         }
                     }
 
@@ -233,6 +250,11 @@ public class QuizDBImplementation implements QuizDBDAO {
         return errorMessage;
     }
 
+    /**
+     * This method is defined to add the user details to the users table
+     *
+     * @param user input parameter of the type StudentResults
+     */
     public void addUser(User user) {
         String insertQuery = "insert into users values(?,?,?,?)";
         try {
@@ -249,6 +271,12 @@ public class QuizDBImplementation implements QuizDBDAO {
         }
     }
 
+    /**
+     * This method is defined to add the student results details to the
+     * test_results table
+     *
+     * @param result input parameter of the type StudentResults
+     */
 
     public void addStudentResults(StudentResults result) {
         String insertQuery = "insert into test_results values(?,?,?,?,?,?,?,?,?,?)";
@@ -273,7 +301,11 @@ public class QuizDBImplementation implements QuizDBDAO {
             e.printStackTrace();
         }
     }
-
+     /**
+     * questionCount: This method returns the number of questions available on the database.
+     * @param difficultyLevel A String indicating the difficulty level.
+     * @return An Integer with the number of questions available.
+     */
     public int questionCount(String difficultyLevel) {
         int countRows = 0;
         String query;
@@ -297,7 +329,12 @@ public class QuizDBImplementation implements QuizDBDAO {
         }
         return countRows;
     }
-
+     /**
+     * selectQuestions: This method returns an arrayList with question objects for the quiz.
+     * @param numOfQuestions An Integer with the number of questions to fetch.
+     * @param difficultyLevel A String indicating the difficulty level.
+     * @return An ArrayList with the questions for the quiz.
+     */
     public ArrayList<Question> selectQuestions(int numOfQuestions, String difficultyLevel) {
         
         //System.out.println("In the dao method");
@@ -356,6 +393,12 @@ public class QuizDBImplementation implements QuizDBDAO {
         return questionList;
     }
 
+    /**
+     * This method returns a user.
+     * @param loginName A string with the login name of the user. 
+     * @param password A string with the password of the user.
+     * @return An user object.
+     */
     public User selectUser(String loginName, String password) {
         User user = null;
         System.out.println("loginName"+loginName+"password"+password);
@@ -374,7 +417,12 @@ public class QuizDBImplementation implements QuizDBDAO {
         return user;
     }
     
-        public boolean selectUser(String loginName) {
+    /**
+     * This method returns false if the data exists.
+     * @param loginName A String with the login name of the user.
+     * @return A boolean returns false if the exists.
+     */
+    public boolean selectUser(String loginName) {
         User user = null;
         boolean returnFlag=true;//default flag
         System.out.println("loginName"+loginName);
@@ -397,7 +445,10 @@ public class QuizDBImplementation implements QuizDBDAO {
             System.out.println("returnflag" +returnFlag);
         return returnFlag;
     }
-
+     /**
+     * selectQuestions: This method returns an arrayList with all the studentResults stored in the database.
+     * @return An ArrayList with the student results in the database.
+     */
     public ArrayList<StudentResults> getStudentResults() {
         ArrayList<StudentResults> results = new ArrayList<StudentResults>();
         String query = "SELECT * FROM TEST_RESULTS";
@@ -424,7 +475,11 @@ public class QuizDBImplementation implements QuizDBDAO {
         }
         return results;
     }
-    
+     /**
+     * selectQuestions: This method returns an arrayList with all the studentResults stored in the database.
+     * @param questions  An arrayList with the questions in the quiz.
+     * @return An Array with the number of question according to its type.
+     */
     public int[] getQuestionTypes(ArrayList<Question> questions) {
         int arrayqQuestionType[] = new int[4];
         //array will be [no.of MC, MA, T or F, FIB]
@@ -450,7 +505,13 @@ public class QuizDBImplementation implements QuizDBDAO {
         arrayqQuestionType[3] = fib;
         return arrayqQuestionType;
     }
-    
+     /**
+     * selectQuestions: This method reads a clob and returns a String.
+     * @param c The clob that will be read.
+     * @return a String with the contents of the clob.
+     * @throws java.sql.SQLException
+     * @throws java.io.IOException
+     */
     public String readClob (Clob c) throws SQLException, IOException{
         StringBuffer sb = new StringBuffer((int)c.length());
         Reader reader = c.getCharacterStream();
@@ -463,7 +524,11 @@ public class QuizDBImplementation implements QuizDBDAO {
 	}
 	return sb.toString();        
     }
-    
+     /**
+     * selectQuestions: This method returns the result of a specific studentResult  
+     * @param name A string with the loginName
+     * @return An ArrayList with the student results of a specific user.
+     */
     public ArrayList<StudentResults> getStudentResults(String name) {
         ArrayList<StudentResults> results = new ArrayList<StudentResults>();
         String query = "SELECT * FROM TEST_RESULTS";
