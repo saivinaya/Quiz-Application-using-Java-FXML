@@ -87,4 +87,4 @@ public class UploadFileController implements Initializable {
         application.logoutAccount();
     }
 
-}//end of UploadFileController
+}//end of  UploadFileController
