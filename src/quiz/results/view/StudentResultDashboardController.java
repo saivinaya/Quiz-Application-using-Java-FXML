@@ -21,7 +21,12 @@ import quiz.QuizMain;
 import quiz.StudentResults;
 
 /**
- * FXML Controller class
+ * This class is the controller class for the StudentResultDashboard fxml page;
+ * it has initialize() method, setApp() is used to set the values to the links
+ * and display them according to number of tests taken; each hyperlink has an
+ * action event which goes to a summary of the respective test and
+ * testResultArray() to form the array for the input to the summary page,
+ * goBack() to back to main student dashboard
  *
  * @author VinayaSaiD
  */

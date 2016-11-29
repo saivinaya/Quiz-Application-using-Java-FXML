@@ -39,7 +39,8 @@ import static quiz.student.view.StartTestController.selectednumOfQuestions;
 /**
  * This class is the controller class for the QuizSummaryView fxml page; it has
  * initialize() method, setApp() is used to set the values to the labels and
- * also to build the pie chart to represent the data
+ * also to build the pie chart to represent the summary of a test taken and
+ * previous tests
  *
  * @author VinayaSaiD
  */
