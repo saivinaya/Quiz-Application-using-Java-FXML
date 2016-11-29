@@ -39,7 +39,7 @@
          </padding>
       </VBox>
       <Button layoutX="547.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
-      <Label fx:id="loginName" contentDisplay="TOP" layoutX="188.0" layoutY="152.0" prefHeight="51.0" prefWidth="214.0" textFill="#0f0f11">
+      <Label fx:id="loginName" contentDisplay="TOP" layoutX="188.0" layoutY="152.0" prefHeight="51.0" prefWidth="261.0" textFill="#b51010">
          <font>
             <Font size="30.0" />
          </font>
