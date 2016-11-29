@@ -67,15 +67,18 @@ public class NoOfTestTakenController implements Initializable {
         if (StudentStatsController.getSelectedReport().equals("No Of Tests Taken")) {
 
             barChart.getData().add(viewNoOfTests());
+            barChart.setCategoryGap(200);
         } else if (StudentStatsController.getSelectedReport().equals("Average Student Scores")) {
 
             barChart.getData().add(viewAvgScores());
+            barChart.setCategoryGap(200);
         } else if (StudentStatsController.getSelectedReport().equals("Scores by LOD")) {
 
             barChart.getData().add(scoresByLOD());
         }else if (StudentStatsController.getSelectedReport().equals("No of Skipped Questions")) {
 
             barChart.getData().add(viewNoOfSkippedQuestions());
+            barChart.setCategoryGap(200);
         } else {
             barChart.getData().add(passAndFail());
         }
