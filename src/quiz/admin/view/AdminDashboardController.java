@@ -21,6 +21,8 @@ public class AdminDashboardController implements Initializable {
     private QuizMain application;
     @FXML
     private Label userLabel;
+    @FXML
+    private Label loginName;
 
     /**
      * Initializes the controller class.
@@ -30,7 +32,7 @@ public class AdminDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        userLabel.setText("Welcome " + QuizMain.loginName);
+        loginName.setText(QuizMain.loginName);
     }
 
     /**
