@@ -27,11 +27,10 @@ import quiz.Question;
 import quiz.QuizMain;
 import quiz.QuizDBImplementation;
 import quiz.StudentResults;
-import static quiz.student.view.StartTestController.selectedDifficulty;
 
 /**
- * FXML Controller class
- *
+ * 
+ * This is controller class for StudentStats.fxml file
  * @author Kuhu
  */
 public class StudentStatsController implements Initializable {
@@ -94,7 +93,11 @@ public class StudentStatsController implements Initializable {
         this.setApplication(application);
 
     }
-
+    
+    /**
+     * This method populates value for report drop down
+     * @param event This event reacts to mouse click on drop down
+     */
     @FXML
     public void reportSelect(MouseEvent event) {
         if (getApplication() == null) {
@@ -114,7 +117,11 @@ public class StudentStatsController implements Initializable {
             });
         }
     }
-
+    
+    /**
+     * This method populates value for period selection drop down
+     * @param event This event reacts to mouse click on drop down
+     */
     @FXML
     public void onPeriodSelected(MouseEvent event) {
         getPeriod().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -128,7 +135,11 @@ public class StudentStatsController implements Initializable {
         });
 
     }
-
+    
+    /**
+     * This method navigates to Statistics page when you click on "View Stats" button
+     * @param event This event reacts to click on "view stats" button
+     */
     @FXML
     public void viewStats(ActionEvent event) {
         
@@ -154,12 +165,20 @@ public class StudentStatsController implements Initializable {
         getApplication().noOfTestsTaken();
 
     }
-
+    
+    /**
+     * This method navigates to previous page when you click on "back" button
+     * @param event This event reacts to click on "back" button
+     */
     @FXML
     public void goBack(ActionEvent event) {
         getApplication().gotoAdminDashboard();
     }
-
+    
+    /**
+     * This method calculates number of tests taken over several periods
+     * @return number of tests taken array
+     */
     public int[] noOfTestsTaken() {
         for(int i =0; i < noOfTestsTaken.length ; i++){
             noOfTestsTaken[i] = 0;
@@ -171,6 +190,10 @@ public class StudentStatsController implements Initializable {
         return getNoOfTestsTaken();
     }
 
+    /**
+     * This method calculates average student scores over several periods
+     * @return average student scores array
+     */
     public double[] avgStudentScore() {
         for(int i =0; i < avgStudentScores.length ; i++){
             avgStudentScores[i] = 0;
@@ -193,8 +216,12 @@ public class StudentStatsController implements Initializable {
         return getAvgStudentScores();
     }
 
+    /**
+     * This method calculates number of skipped questions over several periods
+     * @return number of skipped questions array
+     */
     public int[] noOfSkippedQuestions() {
-for(int i =0; i < numberOfSkippedQuestion.length ; i++){
+    for(int i =0; i < numberOfSkippedQuestion.length ; i++){
             numberOfSkippedQuestion[i] = 0;
         }
         for (int i = 0; i < getMonthly().size(); i++) {
@@ -210,6 +237,10 @@ for(int i =0; i < numberOfSkippedQuestion.length ; i++){
         return getNumberOfSkippedQuestion();
 
     }
+    
+    /**
+     * This method calculates scores by LOD over several periods
+     */
 
     public void scoresByLOD() {
 for(int i =0; i < avgEasyCorrect.length ; i++){
@@ -252,7 +283,9 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
 
     }
 
-    
+    /**
+     * This method sets all required arrays value that holds calculated results
+     */
 
     public void setArrayValues() {
 
@@ -286,6 +319,9 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
 
     }
 
+    /**
+     * This method calculates number of Pass/Fail students over several periods
+     */
     public void studentPassOrFail() {
         for(int i = 0; i < passing.length; i++){
             passing[i] = 0;
