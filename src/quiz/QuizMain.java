@@ -92,6 +92,10 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        
+        /**
+         * Navigates the user to StudentStats fxml page
+         */
         public void goTOStudentStats(){
         try {
             StudentStatsController profile = (StudentStatsController) replaceSceneContent("student/result/StudentStats.fxml");
@@ -100,10 +104,12 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
+        /**
+         * Navigates the user to NoOfTestTaken fxml page
+         */
         public void noOfTestsTaken(){
         try {
-            System.out.println("Kuhu");
+            
             NoOfTestTakenController profile = (NoOfTestTakenController) replaceSceneContent("student/result/NoOfTestTaken.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
