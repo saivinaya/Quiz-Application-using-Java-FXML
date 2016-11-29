@@ -98,6 +98,8 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method is for getting the number of questions for each difficulty
+     * level
      *
      * @param difficultyLevel
      * @return
@@ -172,7 +174,8 @@ public class QuizMain extends Application {
     }
 
     /**
-     *
+     * This method creates the instance of StudentDashboardController and loads
+     * the StudentDashboard.fxml
      */
     public void gotoStudentDashboard() {
         try {
@@ -185,7 +188,8 @@ public class QuizMain extends Application {
     }
 
     /**
-     *
+     * This method creates the instance of StartTestController and loads the
+     * StartTest.fxml
      */
     public void gotoStartTest() {
         try {
@@ -197,7 +201,8 @@ public class QuizMain extends Application {
     }
 
     /**
-     *
+     * This method creates the instance of InstructionsPageController and loads
+     * the InstructionsPage.fxml
      */
     public void gotoInstrctions() {
         try {
@@ -209,7 +214,8 @@ public class QuizMain extends Application {
     }
 
     /**
-     *
+     * This method creates the instance of SubmitPageController and loads the
+     * SubmitPage.fxml
      */
     public void gotoSubmitPage() {
         try {
@@ -221,9 +227,12 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method creates the instance of QuizSummaryViewController and loads
+     * the QuizSummaryView.fxml
      *
-     * @param resultArray
-     * @param flag
+     * @param resultArray is the result set for the test
+     * @param flag is to identify where the request is from Student Result
+     * dashboard or after the test is taken
      */
     public void gotoQuizSummaryPage(int[] resultArray, boolean flag) {
         try {
@@ -235,7 +244,8 @@ public class QuizMain extends Application {
     }
 
     /**
-     *
+     * This method creates the instance of StudentResultDashboardController and
+     * loads the StudentResultDashboard.fxml
      */
     public void gotoStudentResultDashboard() {
         try {
@@ -247,7 +257,8 @@ public class QuizMain extends Application {
     }
 
     /**
-     *
+     * This method creates is used to logout of the account and clear all the
+     * static variables
      */
     public void logoutAccount() {
         try {
@@ -267,6 +278,8 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method is used to get the set of questions after selecting the
+     * number of questions and difficulty level
      *
      * @param numOfQuestions
      * @param difficultyLevel
@@ -278,8 +291,10 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method is to evaluate the answers given and the input is the
+     * ArrayList of questions
      *
-     * @param questions
+     * @param questions is an ArrayList of questions along with user inputs
      * @return
      */
     public int[] evaluateTest(ArrayList<Question> questions) {
@@ -299,6 +314,8 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method creates the instance of MultipleWithOneAnswerController and
+     * loads the MultipleWithOneAnswer.fxml
      *
      * @param qust
      */
@@ -312,6 +329,8 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method creates the instance of MultipleWithMoreAnswersController and
+     * loads the MultipleWithMoreAnswers.fxml
      *
      * @param qust
      */
@@ -325,6 +344,8 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method creates the instance of TrueOrFalseController and loads the
+     * TrueOrFalse.fxml
      *
      * @param qust
      */
@@ -338,6 +359,8 @@ public class QuizMain extends Application {
     }
 
     /**
+     * This method creates the instance of FillInTheBlanksController and loads
+     * the FillInTheBlanks.fxml
      *
      * @param qust
      */
@@ -389,7 +412,8 @@ public class QuizMain extends Application {
     }
 
     /**
-     *
+     * This method is used to go to the next question and load the appropriate
+     * page according to the question type
      */
     public void gotoNextQuestion() {
         questionCounter = questionCounter + 1;
