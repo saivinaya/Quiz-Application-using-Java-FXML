@@ -1,4 +1,3 @@
-
 package quiz.admin.view;
 
 import java.io.File;
@@ -27,6 +26,7 @@ public class UploadFileController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param application
      */
     public void setApp(QuizMain application) {
@@ -45,7 +45,7 @@ public class UploadFileController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             fileName.setText(selectedFile.getAbsolutePath());
-            selectedFileName=selectedFile.getName();
+            selectedFileName = selectedFile.getName();
             selectedFileAbsolutePath = selectedFile.getAbsolutePath();
         } else {
         }
@@ -59,26 +59,31 @@ public class UploadFileController implements Initializable {
 
     @FXML
     private void onClickFileUpload(ActionEvent event) {
-        
-       try{
-        application.uploadQuestions(selectedFileAbsolutePath);
-       }catch(Exception exp){
-           Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        try {
+            if (fileName.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please select the file to upload");
+                alert.showAndWait();
+            } else {
+                application.uploadQuestions(selectedFileAbsolutePath);
+            }
+        } catch (Exception exp) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Error in File Upload. Please check if the file is in correct format");
             alert.showAndWait();
-       }
-       if(QuizMain.fileLoadMessage.equals("Errors")){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("File "+selectedFileName+" has errors. Please cross check if the format is correct");
+        }
+        if (QuizMain.fileLoadMessage.equals("Errors")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("File " + selectedFileName + " has errors. Please cross check if the format is correct");
             alert.showAndWait();
             fileName.setText(null);
-       }
-       else{
-       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("File "+selectedFileName+" has been successfully Uploaded");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("File " + selectedFileName + " has been successfully Uploaded");
             alert.showAndWait();
             fileName.setText(null);
-               }
+        }
 
     }
 
