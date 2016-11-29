@@ -48,6 +48,8 @@ public class NoOfTestTakenController implements Initializable {
     @FXML
     private Pane Statistics;
     @FXML
+    private Pane Display;
+    @FXML
     private Button exportAsPDF;
     @FXML
     private Button back;
@@ -100,17 +102,12 @@ FileChooser chooser = new FileChooser();
             File file = chooser.showSaveDialog(application.stage);
             if (file != null) {
                 try {
-                    WritableImage img = barChart.snapshot(null, null);
+                    WritableImage img = Display.snapshot(null, null);
                     ImageData imgData = ImageDataFactory.create(SwingFXUtils.fromFXImage(img, null), null);
                     com.itextpdf.layout.element.Image pdfImg = new com.itextpdf.layout.element.Image(imgData);
                     PdfWriter writer = new PdfWriter(new FileOutputStream(file));
                     PdfDocument pdfDoc = new PdfDocument(writer);
                     Document doc = new Document(pdfDoc);
-                    Paragraph preface = new Paragraph();
-                    preface.add(statsMainLabel.getText());
-                    doc.add(preface.setBold());
-                    preface.add(statsLabel.getText());
-                    doc.add(preface);
                     
                     doc.add(pdfImg);
                     doc.close();
