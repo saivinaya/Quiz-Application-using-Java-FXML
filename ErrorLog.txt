@@ -3,3 +3,4 @@
 50: Incorrect answer type. Should be one of the following: [true, false]
 51: Atleast one of the options should be marked correct for the question type - MA
 53: Only one of the options can be marked correct for the question type - MC
+ MC

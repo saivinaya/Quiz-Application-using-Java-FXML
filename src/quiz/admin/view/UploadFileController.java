@@ -67,22 +67,22 @@ public class UploadFileController implements Initializable {
                 alert.showAndWait();
             } else {
                 application.uploadQuestions(selectedFileAbsolutePath);
+                if (QuizMain.fileLoadMessage.equals("Errors")) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("File " + selectedFileName + " has errors. Please cross check if the format is correct");
+                    alert.showAndWait();
+                    fileName.setText(null);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setContentText("File " + selectedFileName + " has been successfully Uploaded");
+                    alert.showAndWait();
+                    fileName.setText(null);
+                }
             }
         } catch (Exception exp) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Error in File Upload. Please check if the file is in correct format");
             alert.showAndWait();
-        }
-        if (QuizMain.fileLoadMessage.equals("Errors")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("File " + selectedFileName + " has errors. Please cross check if the format is correct");
-            alert.showAndWait();
-            fileName.setText(null);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("File " + selectedFileName + " has been successfully Uploaded");
-            alert.showAndWait();
-            fileName.setText(null);
         }
 
     }
