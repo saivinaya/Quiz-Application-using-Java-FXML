@@ -5,9 +5,6 @@
  */
 package quiz.student.result;
 
-import com.itextpdf.io.font.FontConstants;
-import static com.itextpdf.io.font.FontConstants.BOLD;
-import static com.itextpdf.io.font.FontConstants.TIMES_BOLD;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -30,14 +27,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import quiz.QuizMain;
 
 
 /**
- *
+ * This is controller class for NoOfTestTakenController.fxml file
  * @author Kuhu
  */
 public class NoOfTestTakenController implements Initializable {
@@ -60,6 +56,11 @@ public class NoOfTestTakenController implements Initializable {
     @FXML
     private Label statsMainLabel;
 
+    /**
+     * This method initiates barchart according to user input
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -83,14 +84,13 @@ public class NoOfTestTakenController implements Initializable {
 
     }
 
+    /**
+     * This method exports the statistics to pdf
+     * @param e 
+     */
     @FXML
     public void viewStats(ActionEvent e) {
-//        PrinterJob job = PrinterJob.createPrinterJob();
-//        if (job != null) {
-//            job.showPrintDialog(application.stage); // Window must be your main Stage
-//            job.printPage(barChart);
-//            job.endJob();
-//        }
+
 FileChooser chooser = new FileChooser();
         chooser.getExtensionFilters().add(new ExtensionFilter("PDF files", "*.pdf"));
         
@@ -117,7 +117,10 @@ FileChooser chooser = new FileChooser();
             }
         
     }
-
+    
+    /**
+     * This method goes back to previous page
+     */
     @FXML
     public void goBack() {
         application.goTOStudentStats();
@@ -128,6 +131,10 @@ FileChooser chooser = new FileChooser();
 
     }
 
+    /**
+     * This method generates values to be added to barchart for scores by LOD report
+     * @return 
+     */
     private XYChart.Series<String, Number> scoresByLOD() {
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
@@ -156,7 +163,11 @@ FileChooser chooser = new FileChooser();
         return series1;
     }
 
-    protected XYChart.Series<String, Number> passAndFail() {
+    /**
+     * This method generates values to be added to barchart for Pass/Fail report
+     * @return 
+     */
+    private XYChart.Series<String, Number> passAndFail() {
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
         series1.setName("Pass/Fail data");
@@ -177,6 +188,10 @@ FileChooser chooser = new FileChooser();
         return series1;
     }
 
+    /**
+     * This method generates values to be added to barchart for number of tests report
+     * @return 
+     */
     public XYChart.Series<String, Number> viewNoOfTests() {
 
         final CategoryAxis xAxis = new CategoryAxis();
@@ -198,6 +213,11 @@ FileChooser chooser = new FileChooser();
         return series1;
     }
     
+    /**
+     * This method generates values to be added to barchart for number of skipped questions report
+     * @return 
+     */
+    
     public XYChart.Series<String, Number> viewNoOfSkippedQuestions() {
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
@@ -217,6 +237,11 @@ FileChooser chooser = new FileChooser();
 
         return series1;
     }
+    
+    /**
+     * This method generates values to be added to barchart for average scores report
+     * @return 
+     */
 
     public XYChart.Series<String, Number> viewAvgScores() {
 
