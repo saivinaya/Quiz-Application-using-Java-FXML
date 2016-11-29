@@ -105,6 +105,7 @@ public class MultipleWithOneAnswerController implements Initializable {
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput2(choice2.isSelected());
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput3(choice3.isSelected());
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput4(choice4.isSelected());
+            // to decrease the  skip counter as it is answered
             if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
             {   if (numSkip > 0) {
                     numSkip -= 1;
@@ -122,6 +123,7 @@ public class MultipleWithOneAnswerController implements Initializable {
         // reduce the counter by one and send it to the screen based on type of question
         questionCounter = questionCounter - 1;
         if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+            // to decrease the  skip counter as it is going back and not to recount
             if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
             {   if (numSkip > 0) {
                     numSkip -= 1;
@@ -129,6 +131,7 @@ public class MultipleWithOneAnswerController implements Initializable {
             }
             application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+            // to decrease the  skip counter as it is going back and not to recount
             if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
             {   if (numSkip > 0) {
                     numSkip -= 1;
@@ -136,6 +139,7 @@ public class MultipleWithOneAnswerController implements Initializable {
             }
             application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+            // to decrease the  skip counter as it is going back and not to recount
             if (((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
             {   if (numSkip > 0) {
                     numSkip -= 1;
@@ -143,6 +147,7 @@ public class MultipleWithOneAnswerController implements Initializable {
             }
             application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+            // to decrease the  skip counter as it is going back and not to recount
             if (((FillInTheBlanks) questionsForTest.get(questionCounter)).isSkipQuestion())
             {   if (numSkip > 0) {
                     numSkip -= 1;
@@ -154,12 +159,13 @@ public class MultipleWithOneAnswerController implements Initializable {
 
     @FXML
     private void onSkipButtonClick(ActionEvent event) {
-        // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
+        // warning if more than 20% are skipped
         if (numSkip >= maxSkip)
         {
             Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip manimum of maxSkip questions only.", ButtonType.OK);
             alert.showAndWait();
         }
+        // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
         else if ((choice1.isSelected()) || (choice2.isSelected()) || (choice3.isSelected()) || (choice4.isSelected())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You selected an answer. Do you wish to remove the selection and proceed.", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
