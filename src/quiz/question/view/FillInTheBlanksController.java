@@ -80,6 +80,11 @@ public class FillInTheBlanksController implements Initializable {
         } // else need to save the user input into the Question object
         else {
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(userAns);
+            if (((FillInTheBlanks) questionsForTest.get(questionCounter)).isSkipQuestion()) {
+                if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(false);
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
@@ -91,12 +96,32 @@ public class FillInTheBlanksController implements Initializable {
         // reduce the counter by one and send it to the screen based on type of question
         questionCounter = questionCounter - 1;
         if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+            if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion()) {
+                if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+            if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion()) {
+                if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+            if (((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isSkipQuestion()) {
+                if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+            if (((FillInTheBlanks) questionsForTest.get(questionCounter)).isSkipQuestion()) {
+                if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
         }
     }
@@ -104,13 +129,17 @@ public class FillInTheBlanksController implements Initializable {
     @FXML
     private void onSkipButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
-        // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
-        if (!(userAns == null)) {
+        if (numSkip >= maxSkip) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip manimum of maxSkip questions only.", ButtonType.OK);
+            alert.showAndWait();
+        } // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
+        else if (!(userAns == null)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You have given an answer.Do you wish to remove the answer and proceed.", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
                 ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(null);
+                numSkip += 1;
                 // go to the next question using gotoNextQuestion() method
                 application.gotoNextQuestion();
             }
@@ -118,6 +147,7 @@ public class FillInTheBlanksController implements Initializable {
         else {
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
             ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(null);
+            numSkip += 1;
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }

@@ -29,6 +29,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import quiz.QuizMain;
+import static quiz.student.view.StartTestController.maxSkip;
+import static quiz.student.view.StartTestController.numSkip;
+import static quiz.student.view.StartTestController.questionCounter;
+import static quiz.student.view.StartTestController.questionsForTest;
+import static quiz.student.view.StartTestController.selectedDifficulty;
+import static quiz.student.view.StartTestController.selectednumOfQuestions;
 
 /**
  * This class is the controller class for the QuizSummaryView fxml page; it has
@@ -103,6 +109,12 @@ public class QuizSummaryViewController implements Initializable {
                         new PieChart.Data("Questions Skipped", rltArray[4]),
                         new PieChart.Data("Wrong Answers", (int) wrong));
         pieChart.setData(pieChartData);
+        questionsForTest.clear();
+        selectednumOfQuestions = 0;
+        selectedDifficulty = null;
+        questionCounter = 0;
+        numSkip = 0;
+        maxSkip = 0;
     }
 
     @FXML

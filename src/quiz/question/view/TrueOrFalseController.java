@@ -87,6 +87,11 @@ public class TrueOrFalseController implements Initializable {
         else {
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputTrue(optiontrue.isSelected());
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputFalse(optionfalse.isSelected());
+            if (((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(false);
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
@@ -98,26 +103,52 @@ public class TrueOrFalseController implements Initializable {
         // reduce the counter by one and send it to the screen based on type of question
         questionCounter = questionCounter - 1;
         if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+            if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+            if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+            if (((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+            if (((FillInTheBlanks) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
         }
     }
 
     @FXML
     private void onSkipButtonClick(ActionEvent event) {
+        if (numSkip >= maxSkip)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip manimum of maxSkip questions only.", ButtonType.OK);
+            alert.showAndWait();
+        }
         // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
-        if ((optiontrue.isSelected()) || (optionfalse.isSelected())) {
+        else if ((optiontrue.isSelected()) || (optionfalse.isSelected())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You selected an answer. Do you wish to remove the selection and proceed.", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
                 ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputTrue(false);
                 ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputFalse(false);
+                numSkip += 1;
                 // go to the next question using gotoNextQuestion() method
                 application.gotoNextQuestion();
             }
@@ -126,6 +157,7 @@ public class TrueOrFalseController implements Initializable {
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputTrue(false);
             ((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).setUserInputFalse(false);
+            numSkip += 1;
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }

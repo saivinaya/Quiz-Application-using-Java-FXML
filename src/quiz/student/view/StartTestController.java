@@ -36,6 +36,8 @@ public class StartTestController implements Initializable {
     private QuizMain application;
     public QuizDBImplementation fetchQuestions;
     public static ArrayList<Question> questionsForTest = new ArrayList<Question>();
+    public static int maxSkip = 0;
+    public static int numSkip = 0;
 
     ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy", "Medium", "Hard", "Mixed");
     ObservableList<Integer> numOfQuestionsList = FXCollections.observableArrayList();
@@ -152,7 +154,8 @@ public class StartTestController implements Initializable {
         } else {
             // if the difficulty and no. of questions are choosen then only proceed
             if (selectedDifficulty!=null && selectednumOfQuestions!=0)
-            {   application.gotoInstrctions();
+            {   maxSkip = (int) Math.ceil(selectednumOfQuestions * 0.2);
+                application.gotoInstrctions();
             }
             // if the difficulty is not choosen then give a warning to choose it
             else if (selectedDifficulty!=null)

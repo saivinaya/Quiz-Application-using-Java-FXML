@@ -105,7 +105,13 @@ public class MultipleWithOneAnswerController implements Initializable {
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput2(choice2.isSelected());
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput3(choice3.isSelected());
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput4(choice4.isSelected());
+            if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(false);
+            
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }
@@ -116,12 +122,32 @@ public class MultipleWithOneAnswerController implements Initializable {
         // reduce the counter by one and send it to the screen based on type of question
         questionCounter = questionCounter - 1;
         if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
+            if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showMCScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("MA")) {
+            if (((MultiChoiceQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showMAScreen((MultiChoiceQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("TF")) {
+            if (((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showTFScreen((TrueOrFalseQuestion) questionsForTest.get(questionCounter));
         } else if (questionsForTest.get(questionCounter).getQuestionType().equals("FIB")) {
+            if (((FillInTheBlanks) questionsForTest.get(questionCounter)).isSkipQuestion())
+            {   if (numSkip > 0) {
+                    numSkip -= 1;
+                }
+            }
             application.showFIBScreen((FillInTheBlanks) questionsForTest.get(questionCounter));
         }
     }
@@ -129,10 +155,16 @@ public class MultipleWithOneAnswerController implements Initializable {
     @FXML
     private void onSkipButtonClick(ActionEvent event) {
         // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
-        if ((choice1.isSelected()) || (choice2.isSelected()) || (choice3.isSelected()) || (choice4.isSelected())) {
+        if (numSkip >= maxSkip)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip manimum of maxSkip questions only.", ButtonType.OK);
+            alert.showAndWait();
+        }
+        else if ((choice1.isSelected()) || (choice2.isSelected()) || (choice3.isSelected()) || (choice4.isSelected())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You selected an answer. Do you wish to remove the selection and proceed.", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
+                numSkip += 1;
                 ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setSkipQuestion(true);
                 ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput1(false);
                 ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput2(false);
@@ -148,6 +180,7 @@ public class MultipleWithOneAnswerController implements Initializable {
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput2(false);
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput3(false);
             ((MultiChoiceQuestion) questionsForTest.get(questionCounter)).setUserInput4(false);
+            numSkip += 1;
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }

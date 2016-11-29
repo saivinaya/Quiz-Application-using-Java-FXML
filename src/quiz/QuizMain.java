@@ -207,6 +207,8 @@ public class QuizMain extends Application {
             selectednumOfQuestions = 0;
             selectedDifficulty = null;
             questionCounter = 0;
+            numSkip = 0;
+            maxSkip = 0;
             loginName=null;
             role=null;
             LoginController profile = (LoginController) replaceSceneContent("login/view/Login.fxml");
