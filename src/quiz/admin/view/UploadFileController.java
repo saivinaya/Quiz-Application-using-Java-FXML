@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package quiz.admin.view;
 
 import java.io.File;
@@ -17,7 +13,7 @@ import javafx.stage.FileChooser;
 import quiz.QuizMain;
 
 /**
- * FXML Controller class
+ * UploadFileController: This class is used while uploading files to database
  *
  * @author Hari
  */
@@ -91,4 +87,4 @@ public class UploadFileController implements Initializable {
         application.logoutAccount();
     }
 
-}
+}//end of UploadFileController

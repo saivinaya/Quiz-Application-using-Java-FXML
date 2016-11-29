@@ -1,3 +1,4 @@
+//QuizMain.java
 package quiz;
 
 import java.io.InputStream;
@@ -23,7 +24,6 @@ import quiz.question.view.MultipleWithOneAnswerController;
 import quiz.question.view.TrueOrFalseController;
 import quiz.results.view.QuizSummaryViewController;
 import quiz.results.view.StudentResultDashboardController;
-import quiz.security.Authenticator;
 import quiz.student.result.NoOfTestTakenController;
 import quiz.student.result.StudentStatsController;
 import quiz.student.view.InstructionsPageController;
@@ -38,13 +38,29 @@ import quiz.student.view.SubmitPageController;
  */
 public class QuizMain extends Application {
 
+    /**
+     * Initial frame parameters
+     */
     public Stage stage;
     private User loggedUser;
     private final double MINIMUM_WINDOW_WIDTH = 700.0;
     private final double MINIMUM_WINDOW_HEIGHT = 700.0;
+
+    /**
+     * Login Name which would be used across the application
+     */
     public static String loginName;
+
+    /**
+     * Role of the user, used across the application
+     */
     public static String role;
+
+    /**
+     * Message conveyed to the user upon file load
+     */
     public static String fileLoadMessage;
+
     /**
      * @param args the command line arguments
      */
@@ -60,15 +76,18 @@ public class QuizMain extends Application {
             stage.setTitle("Java Quiz");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
-            //uploadQuestions();
+            //call the login page
             gotoLogin();
-            //gotoStudentDashboard();
             primaryStage.show();
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    /**
+     * gotoLogin: This is the initializes the loginController and the login page
+     * is displayed to the user using Login.fxml
+     */
     public void gotoLogin() {
         try {
             LoginController profile = (LoginController) replaceSceneContent("login/view/Login.fxml");
@@ -77,14 +96,23 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
+    /**
+     *
+     * @param difficultyLevel
+     * @return
+     */
     public int getNoofQuestions(String difficultyLevel) {
         QuizDBImplementation qzImpl = new QuizDBImplementation();
         return qzImpl.questionCount(difficultyLevel);
 
     }
-        public void gotoUploadFile() {
+
+    /**
+     * gotoUploadFile: This method creates the instance of UploadFileController
+     * and loads the UploadFile.fxml
+     */
+    public void gotoUploadFile() {
         try {
             UploadFileController profile = (UploadFileController) replaceSceneContent("admin/view/UploadFile.fxml");
             profile.setApp(this);
@@ -92,11 +120,11 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
-        /**
-         * Navigates the user to StudentStats fxml page
-         */
-        public void goTOStudentStats(){
+
+    /**
+     * Navigates the user to StudentStats fxml page
+     */
+    public void goTOStudentStats() {
         try {
             StudentStatsController profile = (StudentStatsController) replaceSceneContent("student/result/StudentStats.fxml");
             profile.setApp(this);
@@ -104,12 +132,13 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        /**
-         * Navigates the user to NoOfTestTaken fxml page
-         */
-        public void noOfTestsTaken(){
+
+    /**
+     * Navigates the user to NoOfTestTaken fxml page
+     */
+    public void noOfTestsTaken() {
         try {
-            
+
             NoOfTestTakenController profile = (NoOfTestTakenController) replaceSceneContent("student/result/NoOfTestTaken.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
@@ -117,23 +146,10 @@ public class QuizMain extends Application {
         }
     }
 
-    public boolean userLogging(String loginName, String password) {
-        if (Authenticator.validate(loginName, password)) {
-            gotoAdminDashboard();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean userLogging(String loginName, String userName, String password1, String password2, String role) {
-        if (loginName == null | userName == null | password1 == null | password2 == null | role == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
+    /**
+     * gotoAdminDashboard: This method creates instance of
+     * AdminDashboardController and loads the AdminDashboard.fxml page
+     */
     public void gotoAdminDashboard() {
         try {
             AdminDashboardController profile = (AdminDashboardController) replaceSceneContent("admin/view/AdminDashboard.fxml");
@@ -143,6 +159,9 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     * gotoSignUpScreen: This method loads the SignUp.fxml
+     */
     public void gotoSignUpScreen() {
         try {
             SignUpController profile = (SignUpController) replaceSceneContent("login/view/SignUp.fxml");
@@ -152,6 +171,9 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     */
     public void gotoStudentDashboard() {
         try {
             System.out.println("in main student dashboard");
@@ -162,6 +184,9 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     */
     public void gotoStartTest() {
         try {
             StartTestController profile = (StartTestController) replaceSceneContent("student/view/StartTest.fxml");
@@ -171,6 +196,9 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     */
     public void gotoInstrctions() {
         try {
             InstructionsPageController profile = (InstructionsPageController) replaceSceneContent("student/view/InstructionsPage.fxml");
@@ -180,6 +208,9 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     */
     public void gotoSubmitPage() {
         try {
             SubmitPageController profile = (SubmitPageController) replaceSceneContent("student/view/SubmitPage.fxml");
@@ -188,16 +219,24 @@ public class QuizMain extends Application {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    /**
+     *
+     * @param resultArray
+     * @param flag
+     */
     public void gotoQuizSummaryPage(int[] resultArray, boolean flag) {
         try {
             QuizSummaryViewController profile = (QuizSummaryViewController) replaceSceneContent("results/view/QuizSummaryView.fxml");
-            profile.setApp(this,resultArray,flag);
+            profile.setApp(this, resultArray, flag);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    /**
+     *
+     */
     public void gotoStudentResultDashboard() {
         try {
             StudentResultDashboardController profile = (StudentResultDashboardController) replaceSceneContent("results/view/StudentResultDashboard.fxml");
@@ -205,8 +244,11 @@ public class QuizMain extends Application {
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }        
+    }
 
+    /**
+     *
+     */
     public void logoutAccount() {
         try {
             questionsForTest.clear();
@@ -215,25 +257,40 @@ public class QuizMain extends Application {
             questionCounter = 0;
             numSkip = 0;
             maxSkip = 0;
-            loginName=null;
-            role=null;
+            loginName = null;
+            role = null;
             LoginController profile = (LoginController) replaceSceneContent("login/view/Login.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }         
+    }
 
+    /**
+     *
+     * @param numOfQuestions
+     * @param difficultyLevel
+     * @return
+     */
     public ArrayList<Question> getQuestions(int numOfQuestions, String difficultyLevel) {
         QuizDBImplementation qzImpl = new QuizDBImplementation();
         return qzImpl.selectQuestions(numOfQuestions, difficultyLevel);
     }
-    
+
+    /**
+     *
+     * @param questions
+     * @return
+     */
     public int[] evaluateTest(ArrayList<Question> questions) {
         QuizHelper qzHelp = new QuizHelper();
         return qzHelp.evaluateQuizResult(questions);
     }
 
+    /**
+     *
+     * @param fileName
+     */
     public void uploadQuestions(String fileName) {
         System.out.println("Inside upload q to db");
         QuizDBImplementation qzImpl = new QuizDBImplementation();
@@ -241,6 +298,10 @@ public class QuizMain extends Application {
         //qzImpl.addQuestions("test-sample.csv");
     }
 
+    /**
+     *
+     * @param qust
+     */
     public void showMCScreen(MultiChoiceQuestion qust) {
         try {
             MultipleWithOneAnswerController profile = (MultipleWithOneAnswerController) replaceSceneContent("question/view/MultipleWithOneAnswer.fxml");
@@ -250,6 +311,10 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     * @param qust
+     */
     public void showMAScreen(MultiChoiceQuestion qust) {
         try {
             MultipleWithMoreAnswersController profile = (MultipleWithMoreAnswersController) replaceSceneContent("question/view/MultipleWithMoreAnswers.fxml");
@@ -259,6 +324,10 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     * @param qust
+     */
     public void showTFScreen(TrueOrFalseQuestion qust) {
         try {
             TrueOrFalseController profile = (TrueOrFalseController) replaceSceneContent("question/view/TrueOrFalse.fxml");
@@ -268,6 +337,10 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     * @param qust
+     */
     public void showFIBScreen(FillInTheBlanks qust) {
         try {
             FillInTheBlanksController profile = (FillInTheBlanksController) replaceSceneContent("question/view/FillInTheBlanks.fxml");
@@ -277,6 +350,12 @@ public class QuizMain extends Application {
         }
     }
 
+    /**
+     *
+     * @param fxml
+     * @return
+     * @throws Exception
+     */
     public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         InputStream in = QuizMain.class.getResourceAsStream(fxml);
@@ -294,6 +373,13 @@ public class QuizMain extends Application {
         return (Initializable) loader.getController();
     }
 
+    /**
+     *
+     * @param loginName
+     * @param userName
+     * @param password
+     * @param uniRole
+     */
     public void addUser(String loginName, String userName, String password, String uniRole) {
         System.out.println("in addUser");
         User usr = new User(loginName, userName, password, uniRole);
@@ -302,6 +388,9 @@ public class QuizMain extends Application {
         qzImpl.addUser(usr);
     }
 
+    /**
+     *
+     */
     public void gotoNextQuestion() {
         questionCounter = questionCounter + 1;
         if (questionCounter < selectednumOfQuestions) {
@@ -318,4 +407,4 @@ public class QuizMain extends Application {
             gotoSubmitPage();
         }
     }
-}
+}//end of QuizMain

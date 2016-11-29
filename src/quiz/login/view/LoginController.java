@@ -1,4 +1,3 @@
-
 package quiz.login.view;
 
 import java.net.URL;
@@ -18,7 +17,7 @@ import quiz.QuizMain;
 import quiz.User;
 
 /**
- * FXML Controller class
+ * LoginController: This is the controller class for the login page.
  *
  * @author Hari
  */
@@ -38,15 +37,17 @@ public class LoginController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+
     }
 
     /**
+     * setApp: This method sets the application
      *
      * @param application
      */
@@ -55,21 +56,25 @@ public class LoginController implements Initializable {
     }
 
     /**
+     * onClickSignIn: This methods gets the login name and password from the
+     * user and checks if the entry is already present in database. IF present
+     * then directs the user to corresponding page based on the role
      *
      * @param ae
      */
     @FXML
     public void onClickSignIn(ActionEvent ae) {
         QuizDBImplementation impl = new QuizDBImplementation();
-     try {
+        try {
             User user = impl.selectUser(loginName.getText(), password.getText());
-
+            //load admin dashboard if role is that of admin
             if (user.getUniRole().equals("Admin")) {
                 QuizMain.loginName = user.getUserName();
                 QuizMain.role = "Admin";
                 application.gotoAdminDashboard();
-            } 
-             if (user.getUniRole().equals("Student")) {
+            }
+            //load student dashboard if the role is that of student
+            if (user.getUniRole().equals("Student")) {
                 QuizMain.loginName = loginName.getText();
                 QuizMain.role = "Student";
                 application.gotoStudentDashboard();
@@ -80,24 +85,14 @@ public class LoginController implements Initializable {
             alert.showAndWait();
         }
 
-    }
-
-    private void setGlobalEventHandler(Node root) {
-        root.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
-            if (ev.getCode() == KeyCode.ENTER) {
-                signin.fire();
-                ev.consume();
-            }
-        });
-    }
+    }//end of onClickSignIn
 
     /**
-     *
+     * onClickSignUp: loads the signup page
      */
     public void onClickSignUp() {
-          QuizMain.role = "Student";
+        QuizMain.role = "Student";
         application.gotoSignUpScreen();
+    }//end of onClickSignUp
 
-    }
-
-}
+}//end of LoginController

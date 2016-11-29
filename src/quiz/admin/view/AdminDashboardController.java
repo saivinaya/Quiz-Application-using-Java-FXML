@@ -11,31 +11,33 @@ import javafx.scene.control.TextField;
 import quiz.QuizMain;
 
 /**
- * FXML Controller class
+ *
  * AdminDashboardController: This class is the controller for AdminDashboard.
+ *
  * @author Hari
  */
 public class AdminDashboardController implements Initializable {
-   private QuizMain application;
+
+    private QuizMain application;
     @FXML
     private Label userLabel;
 
-    
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        userLabel.setText("Welcome "+QuizMain.loginName);
-    }    
+        userLabel.setText("Welcome " + QuizMain.loginName);
+    }
 
     /**
      *
      * @param application
      */
-    public void setApp(QuizMain application){
+    public void setApp(QuizMain application) {
         this.application = application;
     }
 
@@ -58,6 +60,5 @@ public class AdminDashboardController implements Initializable {
     private void logout(ActionEvent event) {
         application.logoutAccount();
     }
-    
-    
-}
+
+}//end of AdminDashboardController
