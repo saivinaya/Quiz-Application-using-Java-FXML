@@ -57,9 +57,9 @@ public class StudentStatsController implements Initializable {
     private ObservableList<String> periodList = FXCollections.observableArrayList("Last Month", "Last Quarter", "Last Year");
     private static String selectedReport = null;
     private static String selectedPeriod = null;
-    private int[] scoresByLOD = new int[3];
-    private int[] passing = new int[3];
-    private int[] failing = new int[3];
+    private static int[] scoresByLOD = new int[3];
+    private static int[] passing = new int[3];
+    private static int[] failing = new int[3];
     private static int i = 0;
 
     private Label errorMessage;
