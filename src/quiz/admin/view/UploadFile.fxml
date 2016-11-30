@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.UploadFileController">
+<AnchorPane id="AnchorPane" prefHeight="850" prefWidth="850" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.UploadFileController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="202.0" layoutY="72.0" prefHeight="46.0" prefWidth="309.0" text="Upload File" textAlignment="JUSTIFY" textFill="#4210da">
             <font>
