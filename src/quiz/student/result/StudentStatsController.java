@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -29,15 +30,13 @@ import quiz.QuizDBImplementation;
 import quiz.StudentResults;
 
 /**
- * 
+ *
  * This is controller class for StudentStats.fxml file
+ *
  * @author Kuhu
  */
 public class StudentStatsController implements Initializable {
 
-    
-
-    
     private QuizMain application;
     private QuizDBImplementation fetchQuestions;
     private static ArrayList<Question> questionsForTest = new ArrayList<Question>();
@@ -51,12 +50,13 @@ public class StudentStatsController implements Initializable {
     private static double[] avgMedCorrect = new double[3];
     private static double[] avgHardCorrect = new double[3];
     private static int[] numberOfSkippedQuestion = new int[3];
-    
 
-    private ObservableList<String> reportType = FXCollections.observableArrayList("No Of Tests Taken", "Average Student Scores", "Pass/Fail Stats", "Scores by LOD", "No of Skipped Questions");
+    private ObservableList<String> reportType = FXCollections.observableArrayList("No Of Tests Taken", "Average Student Scores", "Pass/Fail Stats", "Average scores by LOD", "No of Skipped Questions");
     private ObservableList<String> periodList = FXCollections.observableArrayList("Last Month", "Last Quarter", "Last Year");
+    private ObservableList<String> studList = FXCollections.observableArrayList();
     private static String selectedReport = null;
     private static String selectedPeriod = null;
+    private static String selectedStudent = null;
     private static int[] scoresByLOD = new int[3];
     private static int[] passing = new int[3];
     private static int[] failing = new int[3];
@@ -69,6 +69,10 @@ public class StudentStatsController implements Initializable {
 
     @FXML
     private ChoiceBox period;
+
+    @FXML
+    private ChoiceBox studDrop;
+
     @FXML
     private Pane Statistics;
 
@@ -81,11 +85,30 @@ public class StudentStatsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
         getReport().setItems(getReportType());
         getPeriod().setItems(getPeriodList());
+        report.setDisable(true);
         getPeriod().setDisable(true);
         getViewStats().setDisable(true);
+
+        QuizDBImplementation quiz = new QuizDBImplementation();
+        ArrayList<StudentResults> tempArr = new ArrayList<>();
+        tempArr = quiz.getStudentResults();
+        HashMap<String, Integer> student = new HashMap<>();
+        for (int i = 0; i < tempArr.size(); i++) {
+            if (student.containsKey(tempArr.get(i).getLoginName())) {
+                student.put(tempArr.get(i).getLoginName(), student.get(tempArr.get(i).getLoginName()) + 1);
+            } else {
+                student.put(tempArr.get(i).getLoginName(), 1);
+            }
+        }
+
+        studList.add(0, "All");
+        for (String s : student.keySet()) {
+            studList.add(s);
+        }
+
+        studDrop.setItems(studList);
 
     }
 
@@ -93,9 +116,10 @@ public class StudentStatsController implements Initializable {
         this.setApplication(application);
 
     }
-    
+
     /**
      * This method populates value for report drop down
+     *
      * @param event This event reacts to mouse click on drop down
      */
     @FXML
@@ -117,9 +141,33 @@ public class StudentStatsController implements Initializable {
             });
         }
     }
-    
+
+    /**
+     * This method populates value for studDrop down
+     *
+     * @param event This event reacts to mouse click on drop down
+     */
+    @FXML
+    public void studentSelect(MouseEvent event) {
+        if (getApplication() == null) {
+            // We are running in isolated FXML, possibly in Scene Builder.
+            getErrorMessage().setText("Hello");
+        } else {
+
+            studDrop.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+
+                    selectedStudent = studDrop.getSelectionModel().getSelectedItem().toString();
+                    report.setDisable(false);
+                }
+            });
+        }
+    }
+
     /**
      * This method populates value for period selection drop down
+     *
      * @param event This event reacts to mouse click on drop down
      */
     @FXML
@@ -135,52 +183,57 @@ public class StudentStatsController implements Initializable {
         });
 
     }
-    
+
     /**
-     * This method navigates to Statistics page when you click on "View Stats" button
+     * This method navigates to Statistics page when you click on "View Stats"
+     * button
+     *
      * @param event This event reacts to click on "view stats" button
      */
     @FXML
     public void viewStats(ActionEvent event) {
-        
+
         QuizDBImplementation quiz = new QuizDBImplementation();
         ArrayList<StudentResults> tempArr = new ArrayList<>();
         tempArr = quiz.getStudentResults();
-        if (i != tempArr.size()) {
-            
-          
-            this.setArr(quiz.getStudentResults());
-            
-            setArrayValues();
-            noOfSkippedQuestions();
-            noOfTestsTaken();
-            avgStudentScore();
-            scoresByLOD();
-            studentPassOrFail();
-            
-            i = arr.size();
 
+        if (selectedStudent.equals("All")) {
+            this.setArr(quiz.getStudentResults());
+        } else {
+            for (int i = 0; i < tempArr.size(); i++) {
+                if (tempArr.get(i).getLoginName().equals(selectedStudent)) {
+                    arr.add(tempArr.get(i));
+                }
+            }
         }
+        setArrayValues();
+        noOfSkippedQuestions();
+        noOfTestsTaken();
+        avgStudentScore();
+        scoresByLOD();
+        studentPassOrFail();
 
         application.noOfTestsTaken();
 
     }
-    
+
     /**
      * This method navigates to previous page when you click on "back" button
+     *
      * @param event This event reacts to click on "back" button
      */
     @FXML
     public void goBack(ActionEvent event) {
         getApplication().gotoAdminDashboard();
     }
-    
+
     /**
      * This method calculates number of tests taken over several periods
+     *
      * @return number of tests taken array
      */
     public int[] noOfTestsTaken() {
-        for(int i =0; i < noOfTestsTaken.length ; i++){
+        for (int i = 0; i < noOfTestsTaken.length; i++) {
             noOfTestsTaken[i] = 0;
         }
 
@@ -192,10 +245,11 @@ public class StudentStatsController implements Initializable {
 
     /**
      * This method calculates average student scores over several periods
+     *
      * @return average student scores array
      */
     public double[] avgStudentScore() {
-        for(int i =0; i < avgStudentScores.length ; i++){
+        for (int i = 0; i < avgStudentScores.length; i++) {
             avgStudentScores[i] = 0;
         }
         for (int i = 0; i < getMonthly().size(); i++) {
@@ -218,10 +272,11 @@ public class StudentStatsController implements Initializable {
 
     /**
      * This method calculates number of skipped questions over several periods
+     *
      * @return number of skipped questions array
      */
     public int[] noOfSkippedQuestions() {
-    for(int i =0; i < numberOfSkippedQuestion.length ; i++){
+        for (int i = 0; i < numberOfSkippedQuestion.length; i++) {
             numberOfSkippedQuestion[i] = 0;
         }
         for (int i = 0; i < getMonthly().size(); i++) {
@@ -237,13 +292,12 @@ public class StudentStatsController implements Initializable {
         return getNumberOfSkippedQuestion();
 
     }
-    
+
     /**
      * This method calculates scores by LOD over several periods
      */
-
     public void scoresByLOD() {
-for(int i =0; i < avgEasyCorrect.length ; i++){
+        for (int i = 0; i < avgEasyCorrect.length; i++) {
             getAvgEasyCorrect()[i] = 0;
             getAvgMedCorrect()[i] = 0;
             getAvgHardCorrect()[i] = 0;
@@ -286,7 +340,6 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
     /**
      * This method sets all required arrays value that holds calculated results
      */
-
     public void setArrayValues() {
 
         for (int i = 0; i < getArr().size(); i++) {
@@ -323,7 +376,7 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
      * This method calculates number of Pass/Fail students over several periods
      */
     public void studentPassOrFail() {
-        for(int i = 0; i < passing.length; i++){
+        for (int i = 0; i < passing.length; i++) {
             passing[i] = 0;
             failing[i] = 0;
         }
@@ -416,8 +469,6 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
         return noOfTestsTaken;
     }
 
-    
-
     /**
      * @return the avgStudentScores
      */
@@ -459,8 +510,6 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
     public void setFetchQuestions(QuizDBImplementation fetchQuestions) {
         this.fetchQuestions = fetchQuestions;
     }
-
-   
 
     /**
      * @return the avgEasyCorrect
@@ -657,7 +706,7 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
     public void setViewStats(Button viewStats) {
         this.viewStats = viewStats;
     }
-    
+
     /**
      * @return the questionsForTest
      */
@@ -706,6 +755,5 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
     public static void setSelectedPeriod(String aSelectedPeriod) {
         selectedPeriod = aSelectedPeriod;
     }
-
 
 }
