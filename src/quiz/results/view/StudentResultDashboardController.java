@@ -63,7 +63,7 @@ public class StudentResultDashboardController implements Initializable {
         QuizDBImplementation qzImp = new QuizDBImplementation();
         testTaken = qzImp.getStudentResults(QuizMain.loginName);
         Collections.sort(testTaken);
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         if (testTaken.size() == 0) {
             textBottom.setVisible(true);
             textBottom.setText("No tests taken yet. Go back and take the tests to view the results.");
