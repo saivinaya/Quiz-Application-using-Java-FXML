@@ -16,9 +16,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import quiz.Question;
 import quiz.QuizMain;
 import quiz.QuizDBImplementation;
@@ -39,7 +42,7 @@ public class StartTestController implements Initializable {
     public static int maxSkip = 0;
     public static int numSkip = 0;
 
-    ObservableList<String> diffLevelList = FXCollections.observableArrayList("Easy", "Medium", "Hard", "Mixed");
+    ObservableList<String> diffLevelList = FXCollections.observableArrayList();
     ObservableList<Integer> numOfQuestionsList = FXCollections.observableArrayList();
     public static int selectednumOfQuestions = 0;
     public static String selectedDifficulty = null;
@@ -56,6 +59,16 @@ public class StartTestController implements Initializable {
 
     @FXML
     private ChoiceBox numOfQuestions;
+    @FXML
+    private Pane allPane;
+    @FXML
+    private HBox buttonPane;
+    @FXML
+    private Pane optionsPane;
+    @FXML
+    private Label noQuestions;
+    @FXML
+    private Button beginTest;
 
     /**
      * Initializes the controller class.
@@ -75,6 +88,23 @@ public class StartTestController implements Initializable {
         noOfMedium = application.getNoofQuestions("Medium");
         noOfHard = application.getNoofQuestions("Hard");
         noOfMixed = application.getNoofQuestions("Mixed");
+        if (noOfEasy > 3)
+        {   diffLevelList.add("Easy");
+        }
+        if (noOfMedium > 3)
+        {   diffLevelList.add("Medium");
+        }
+        if (noOfHard > 3)
+        {   diffLevelList.add("Hard");
+        }
+        if (noOfMixed > 3)
+        {   diffLevelList.add("Mixed");
+        }
+        if (noOfEasy < 3 && noOfMedium < 3 && noOfHard < 3 && noOfMixed < 3)
+        {   beginTest.setVisible(false);
+            optionsPane.setVisible(false);
+            noQuestions.setVisible(true);
+        }
     }
 
     @FXML
