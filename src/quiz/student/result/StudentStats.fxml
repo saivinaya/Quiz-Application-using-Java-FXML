@@ -28,6 +28,8 @@
             <ChoiceBox fx:id="report" layoutX="330.0" layoutY="273.0" onMouseClicked="#reportSelect" prefHeight="27.0" prefWidth="162.0" />
             <Button fx:id="viewStats" layoutX="473.0" layoutY="586.0" mnemonicParsing="false" onAction="#viewStats" prefHeight="50.0" prefWidth="120.0" text="View Stats" />
             <Button layoutX="56.0" layoutY="586.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="120.0" text="Back" />
+            <Label layoutX="108.0" layoutY="201.0" text="Select Student:" />
+            <ChoiceBox fx:id="studDrop" layoutX="330.0" onMouseClicked="#studentSelect" layoutY="196.0" prefHeight="31.0" prefWidth="162.0" />
          </children>
       </Pane>
    </children>
