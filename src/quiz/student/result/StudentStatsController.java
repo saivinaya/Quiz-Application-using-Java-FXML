@@ -162,7 +162,7 @@ public class StudentStatsController implements Initializable {
 
         }
 
-        getApplication().noOfTestsTaken();
+        application.noOfTestsTaken();
 
     }
     
@@ -329,28 +329,28 @@ for(int i =0; i < avgEasyCorrect.length ; i++){
         }
         int monthPass = 0, quarterPass = 0, yearPass = 0;
         for (int i = 0; i < getMonthly().size(); i++) {
-            if ((getMonthly().get(i).getTotalCorrect() * 10.0) / (getMonthly().get(i).getTotalQuestions() * 10.0) > 0.4) {
+            if (((getMonthly().get(i).getTotalCorrect() * 10.0) / (getMonthly().get(i).getTotalQuestions() * 10.0)) > 0.4) {
                 monthPass++;
             }
         }
-        getPassing()[0] = monthPass;
-        getFailing()[0] = getMonthly().size() - getPassing()[0];
+        passing[0] = monthPass;
+        failing[0] = monthly.size() - passing[0];
 
         for (int i = 0; i < getQuarterly().size(); i++) {
-            if ((getQuarterly().get(i).getTotalCorrect() * 10.0) / (getQuarterly().get(i).getTotalQuestions() * 10.0) > 0.4) {
+            if (((getQuarterly().get(i).getTotalCorrect() * 10.0) / (getQuarterly().get(i).getTotalQuestions() * 10.0)) > 0.4) {
                 quarterPass++;
             }
         }
-        getPassing()[1] = quarterPass;
-        getFailing()[1] = getQuarterly().size() - getPassing()[1];
+        passing[1] = quarterPass;
+        failing[1] = quarterly.size() - passing[1];
 
         for (int i = 0; i < getYearly().size(); i++) {
-            if ((getYearly().get(i).getTotalCorrect() * 10.0) / (getYearly().get(i).getTotalQuestions() * 10.0) > 0.4) {
+            if (((getYearly().get(i).getTotalCorrect() * 10.0) / (getYearly().get(i).getTotalQuestions() * 10.0)) > 0.4) {
                 yearPass++;
             }
         }
-        getPassing()[2] = yearPass;
-        getFailing()[2] = getYearly().size() - getPassing()[2];
+        passing[2] = yearPass;
+        failing[2] = yearly.size() - passing[2];
     }
 
     /**
