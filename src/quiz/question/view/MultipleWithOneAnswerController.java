@@ -56,6 +56,8 @@ public class MultipleWithOneAnswerController implements Initializable {
     private Button backButton;
     @FXML
     private Label questionNumber;
+    @FXML
+    private Button nextButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,6 +71,9 @@ public class MultipleWithOneAnswerController implements Initializable {
         // back button should not be visible for the first question
         if (questionCounter == 0) {
             backButton.setVisible(false);
+        }
+        if (!(choice1.isSelected()) && !(choice2.isSelected()) && !(choice3.isSelected()) && !(choice4.isSelected())){
+            nextButton.setDisable(true);
         }
         //set the Question description in the text field
         questionDescription.setText(((MultiChoiceQuestion) questionsForTest.get(questionCounter)).getQuestiondesc());
@@ -189,6 +194,16 @@ public class MultipleWithOneAnswerController implements Initializable {
             numSkip += 1;
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
+        }
+    }
+
+    @FXML
+    private void onAnswerSelected(ActionEvent event) {
+        if (!(choice1.isSelected()) && !(choice2.isSelected()) && !(choice3.isSelected()) && !(choice4.isSelected())) {
+            nextButton.setDisable(true);
+        }
+        else{
+        nextButton.setDisable(false);
         }
     }
 }

@@ -196,7 +196,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </VBox>
-                  <PieChart fx:id="pieChart" prefHeight="525.0" prefWidth="456.0" />
+                  <PieChart fx:id="pieChart" prefHeight="525.0" prefWidth="465.0" />
                </children>
             </HBox>
          </children>

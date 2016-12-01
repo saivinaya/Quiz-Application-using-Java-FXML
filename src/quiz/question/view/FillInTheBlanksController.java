@@ -47,6 +47,8 @@ public class FillInTheBlanksController implements Initializable {
     private Button backButton;
     @FXML
     private Label questionNumber;
+    @FXML
+    private Button nextButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -58,6 +60,10 @@ public class FillInTheBlanksController implements Initializable {
         if (questionCounter == 0) {
             backButton.setVisible(false);
         }
+//        String userAns = userAnswer.getText();
+//        if (userAns == null) {
+//            nextButton.setDisable(true);
+//        }
         //set the Question description in the text field
         questionDescription.setText(((FillInTheBlanks) questionsForTest.get(questionCounter)).getQuestiondesc());
         //setup tool tips
@@ -158,4 +164,15 @@ public class FillInTheBlanksController implements Initializable {
             application.gotoNextQuestion();
         }
     }
+
+//    @FXML
+//    private void onAnswer(ActionEvent event) {
+//        String userAns = userAnswer.getText();
+//        if (userAns == null) {
+//            nextButton.setDisable(true);
+//        }
+//        else{
+//        nextButton.setDisable(false);
+//        }
+//    }
 }

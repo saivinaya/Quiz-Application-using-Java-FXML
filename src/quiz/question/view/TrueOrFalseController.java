@@ -49,6 +49,8 @@ public class TrueOrFalseController implements Initializable {
     private Button backButton;
     @FXML
     private Label questionNumber;
+    @FXML
+    private Button nextButton;
 
     /**
      * Initializes the controller class.
@@ -63,6 +65,9 @@ public class TrueOrFalseController implements Initializable {
         // back button should not be visible for the first question
         if (questionCounter == 0) {
             backButton.setVisible(false);
+        }
+        if (!(optiontrue.isSelected()) && !(optionfalse.isSelected())){
+            nextButton.setDisable(true);
         }
         //set the Question description in the text field
         questionDescription.setText(((TrueOrFalseQuestion) questionsForTest.get(questionCounter)).getQuestiondesc());
@@ -166,6 +171,16 @@ public class TrueOrFalseController implements Initializable {
             numSkip += 1;
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
+        }
+    }
+
+    @FXML
+    private void onAnswerSelected(ActionEvent event) {
+        if (!(optiontrue.isSelected()) && !(optionfalse.isSelected())){
+            nextButton.setDisable(true);
+        }
+        else{
+            nextButton.setDisable(false);
         }
     }
 }
