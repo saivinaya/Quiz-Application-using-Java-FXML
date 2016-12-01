@@ -31,10 +31,8 @@ public abstract class Question {
      */
     protected boolean skipQuestion;
 
-    //default constructor
-
     /**
-     *
+     * //default constructor
      */
     public Question() {
     }

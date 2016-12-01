@@ -30,10 +30,8 @@ public class MultiChoiceQuestion extends Question {
     private boolean userInput3;
     private boolean userInput4;
 
-    //default constructor
-
     /**
-     *
+     * //default constructor
      */
     public MultiChoiceQuestion() {
     }

@@ -20,10 +20,8 @@ public class TrueOrFalseQuestion extends Question {
     private boolean userInputTrue;
     private boolean userInputFalse;
 
-    //default constructor
-
     /**
-     *
+     * //default constructor
      */
     public TrueOrFalseQuestion() {
     }
