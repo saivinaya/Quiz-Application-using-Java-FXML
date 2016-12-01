@@ -9,14 +9,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850" prefWidth="850" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.UploadFileController">
+<AnchorPane id="AnchorPane" prefHeight="850" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.UploadFileController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="196.0" prefHeight="46.0" prefWidth="309.0" text="Upload File" textAlignment="JUSTIFY" textFill="#4210da">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="204.0" prefHeight="46.0" prefWidth="309.0" text="Upload File" textAlignment="JUSTIFY" textFill="#4210da">
             <font>
                 <Font size="36.0" />
             </font>
         </Label>
-        <HBox layoutX="173.0" layoutY="425.0" prefHeight="46.0" prefWidth="505.0">
+        <HBox layoutX="248.0" layoutY="433.0" prefHeight="46.0" prefWidth="505.0">
             <children>
                 <Label prefHeight="50.0" prefWidth="103.0" text="Upload File" />
                 <TextField fx:id="fileName" prefHeight="47.0" prefWidth="187.0" />
@@ -24,15 +24,15 @@
                 <Button mnemonicParsing="false" onAction="#onClickChooseFile" prefHeight="44.0" prefWidth="88.0" text="Browse" />
             </children>
         </HBox>
-        <HBox layoutX="302.0" layoutY="540.0" prefHeight="44.0" prefWidth="291.0">
+        <HBox layoutX="377.0" layoutY="548.0" prefHeight="44.0" prefWidth="291.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#onClickBackButton" prefHeight="44.0" prefWidth="88.0" text="Back" />
                 <Region prefHeight="44.0" prefWidth="59.0" />
                 <Button mnemonicParsing="false" onAction="#onClickFileUpload" prefHeight="44.0" prefWidth="88.0" text="Upload" />
             </children>
         </HBox>
-      <Button layoutX="678.0" layoutY="27.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
-      <Label alignment="CENTER" layoutX="218.0" layoutY="341.0" prefHeight="20.0" prefWidth="362.0" text="Please Browse the file you want to Upload" textAlignment="CENTER">
+      <Button layoutX="802.0" layoutY="26.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Label alignment="CENTER" layoutX="293.0" layoutY="349.0" prefHeight="20.0" prefWidth="362.0" text="Please Browse the file you want to Upload" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
