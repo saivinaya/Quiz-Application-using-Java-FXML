@@ -83,9 +83,10 @@ public class QuizMain extends Application {
             if (newValue)
                 stage.setMaximized(false);
         });
-            //call the login page
+            // create the tables if not present and add the admin to the users table
             QuizHelper qzhelp= new QuizHelper();
             qzhelp.createTable();
+            //call the login page
             gotoLogin();
             primaryStage.show();
         } catch (Exception ex) {
@@ -201,7 +202,6 @@ public class QuizMain extends Application {
      */
     public void gotoStudentDashboard() {
         try {
-            System.out.println("in main student dashboard");
             StudentDashboardController profile = (StudentDashboardController) replaceSceneContent("student/view/StudentDashboard.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
@@ -329,7 +329,6 @@ public class QuizMain extends Application {
      * @param fileName
      */
     public void uploadQuestions(String fileName) {
-        System.out.println("Inside upload q to db");
         QuizDBImplementation qzImpl = new QuizDBImplementation();
         qzImpl.addQuestions(fileName);
         //qzImpl.addQuestions("test-sample.csv");
@@ -427,9 +426,7 @@ public class QuizMain extends Application {
      * @param uniRole
      */
     public void addUser(String loginName, String userName, String password, String uniRole) {
-        System.out.println("in addUser");
         User usr = new User(loginName, userName, password, uniRole);
-        System.out.println("AddUser");
         QuizDBImplementation qzImpl = new QuizDBImplementation();
         qzImpl.addUser(usr);
     }

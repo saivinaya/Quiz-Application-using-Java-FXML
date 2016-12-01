@@ -171,12 +171,12 @@ public class QuizHelper {
      *
      * @param fileName 
      * @param1 Name of the file to print
-     * @param appendIndicator 
+     * @param appendIndicator to append the data
      * @throws FileNotFoundException 
      * @throws IOException 
      * @param2 Content to be printed
      * @param1 Name of the file to print
-     * @param content 
+     * @param content to know the content
      */
     public void FileWriter(String fileName, ArrayList<String> content) throws FileNotFoundException, IOException {
       //  File file = new java.io.File(fileName);
