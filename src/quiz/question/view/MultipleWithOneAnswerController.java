@@ -72,6 +72,7 @@ public class MultipleWithOneAnswerController implements Initializable {
         if (questionCounter == 0) {
             backButton.setVisible(false);
         }
+        // disabling the next button if non of the answer is choosen
         if (!(choice1.isSelected()) && !(choice2.isSelected()) && !(choice3.isSelected()) && !(choice4.isSelected())){
             nextButton.setDisable(true);
         }

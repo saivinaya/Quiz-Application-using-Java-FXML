@@ -66,6 +66,7 @@ public class TrueOrFalseController implements Initializable {
         if (questionCounter == 0) {
             backButton.setVisible(false);
         }
+        // disabling the next button if non of the answer is choosen
         if (!(optiontrue.isSelected()) && !(optionfalse.isSelected())){
             nextButton.setDisable(true);
         }
