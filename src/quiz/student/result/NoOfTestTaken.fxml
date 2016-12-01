@@ -14,7 +14,7 @@
          <children>
             <Button fx:id="exportAsPDF" layoutX="692.0" layoutY="721.0" mnemonicParsing="false" onAction="#viewStats" prefHeight="50.0" prefWidth="120.0" text="Export As PDF" />
             <Button fx:id="back" layoutX="275.0" layoutY="721.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="120.0" text="Back" />
-            <AnchorPane fx:id="Display" layoutX="16.0" layoutY="19.0" prefHeight="695.0" prefWidth="977.0">
+            <AnchorPane fx:id="Display" layoutX="12.0" layoutY="74.0" prefHeight="638.0" prefWidth="977.0">
                <children>
                   <Label fx:id="statsLabel" layoutX="78.0" layoutY="73.0" prefHeight="33.0" prefWidth="500.0" textAlignment="JUSTIFY" textFill="#f04141" />
                   <BarChart fx:id="barChart" layoutX="84.0" layoutY="106.0" prefHeight="522.0" prefWidth="838.0">
@@ -34,5 +34,6 @@
                </children></AnchorPane>
          </children>
       </Pane>
+      <Button layoutX="836.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
    </children>
 </AnchorPane>
