@@ -20,7 +20,7 @@
             <Button fx:id="backButton" layoutX="119.0" layoutY="704.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="36.0" prefWidth="61.0" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
             <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="378.0" prefWidth="939.0" />
-            <TextField fx:id="userAnswer" layoutX="263.0" layoutY="587.0" prefHeight="36.0" prefWidth="465.0" promptText="Enter your Answer" />
+            <TextField fx:id="userAnswer" layoutX="263.0" layoutY="587.0" onKeyReleased="#onAnswer" prefHeight="36.0" prefWidth="465.0" promptText="Enter your Answer" />
             <Label layoutX="263.0" layoutY="545.0" prefHeight="27.0" prefWidth="195.0" text="Input your Answer below:">
                <font>
                   <Font size="14.0" />

@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.KeyEvent;
 import javax.swing.JOptionPane;
 import quiz.FillInTheBlanks;
 import quiz.MultiChoiceQuestion;
@@ -60,10 +61,11 @@ public class FillInTheBlanksController implements Initializable {
         if (questionCounter == 0) {
             backButton.setVisible(false);
         }
-//        String userAns = userAnswer.getText();
-//        if (userAns == null) {
-//            nextButton.setDisable(true);
-//        }
+        // disabling the next button
+        String userAns = userAnswer.getText();
+        if (userAns == null) {
+            nextButton.setDisable(true);
+        }
         //set the Question description in the text field
         questionDescription.setText(((FillInTheBlanks) questionsForTest.get(questionCounter)).getQuestiondesc());
         //setup tool tips
@@ -79,7 +81,7 @@ public class FillInTheBlanksController implements Initializable {
     private void onNextButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
         // if the answer is no given need to throw a warning, skip can be used to not answer the question
-        if (userAns == null) {
+        if (userAns.isEmpty()) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setContentText("You need to enter an answer to proceed.Or use 'Skip' to Skip the question.");
             alert.showAndWait();
@@ -145,7 +147,7 @@ public class FillInTheBlanksController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip maximum of " + maxSkip + " questions only.", ButtonType.OK);
             alert.showAndWait();
         } // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
-        else if (!(userAns == null)) {
+        else if (!(userAns.isEmpty())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You have given an answer.Do you wish to remove the answer and proceed.", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
@@ -165,14 +167,14 @@ public class FillInTheBlanksController implements Initializable {
         }
     }
 
-//    @FXML
-//    private void onAnswer(ActionEvent event) {
-//        String userAns = userAnswer.getText();
-//        if (userAns == null) {
-//            nextButton.setDisable(true);
-//        }
-//        else{
-//        nextButton.setDisable(false);
-//        }
-//    }
+    @FXML
+    private void onAnswer(KeyEvent event) {
+        String userAns = userAnswer.getText();
+        if (userAns.isEmpty()) {
+            nextButton.setDisable(true);
+        }
+        else{
+        nextButton.setDisable(false);
+        }
+    }
 }
