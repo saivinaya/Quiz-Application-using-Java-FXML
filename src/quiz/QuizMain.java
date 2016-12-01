@@ -77,6 +77,11 @@ public class QuizMain extends Application {
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.centerOnScreen();
+            //disabling the option to maximize screen
+            stage.maximizedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue)
+                stage.setMaximized(false);
+        });
             //call the login page
             gotoLogin();
             primaryStage.show();

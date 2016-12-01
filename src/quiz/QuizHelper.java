@@ -20,32 +20,55 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
- *
+ * QuizHelper: This is the common helper class for this application
  * @author Group
  */
 public class QuizHelper {
 
+    /**
+     * define  the delimiter for text file
+     */
     public static char delimiter = ',';
 
     // method1: read file and return a string array list of records in the file
+
+    /**
+     * getFileData
+     * @param FileName
+     * @return
+     */
     public ArrayList<String> getFileData(String FileName) {
         ArrayList<String> fileList = null;
 
         return fileList;
     }
-    // method2: takes string array list and  write to pdf file
 
+
+    /**
+     *printToPDF:takes string array list and  write to pdf file
+     * @param fileList
+     */
     public void printToPDF(ArrayList<String> fileList) {
 
     }
-    // method3: take input string and validate the input data based on requirement.  use regexpressions for the same
+     
 
+    /**
+     * validateInputString:take input string and validate the input data based on requirement.  use regexpressions for the same
+     * @param input
+     * @param type
+     * @return
+     */
     public boolean validateInputString(String input, String type) {
         boolean isCorrect = true;
 
         return isCorrect;
     }
 
+    /**
+     * setConnection: set the connection used across the application
+     * @return
+     */
     public static Connection setConnection() {
         Connection conn = null;
         try {
@@ -64,6 +87,12 @@ public class QuizHelper {
         return conn;
     }
 
+    /**
+     * loadCSV: Read CSV files
+     * @param csvFile
+     * @return
+     * @throws Exception
+     */
     public static CSVReader loadCSV(String csvFile) throws Exception {
         try {
             CSVReader csvReader = new CSVReader(new FileReader(csvFile), delimiter);
@@ -75,6 +104,11 @@ public class QuizHelper {
         }
     }
     
+    /**
+     * evaluateQuizResult: check the results of the quiz
+     * @param questions
+     * @return
+     */
     public int[] evaluateQuizResult(ArrayList<Question> questions) {
         int[] arrayCorrectQuestionType = new int[5];
         int skipped = 0;
@@ -145,4 +179,4 @@ public class QuizHelper {
         Path out = Paths.get(fileName);
         Files.write(out,content,Charset.defaultCharset(),StandardOpenOption.CREATE);
      }//end of method FileWriter
-}
+}//end of QuizHelper

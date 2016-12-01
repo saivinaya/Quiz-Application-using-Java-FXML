@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//QuizDBImplementation.java
 package quiz;
 
 import au.com.bytecode.opencsv.CSVReader;
@@ -277,7 +273,6 @@ public class QuizDBImplementation implements QuizDBDAO {
      *
      * @param result input parameter of the type StudentResults
      */
-
     public void addStudentResults(StudentResults result) {
         String insertQuery = "insert into test_results values(?,?,?,?,?,?,?,?,?,?)";
         try {
@@ -301,21 +296,23 @@ public class QuizDBImplementation implements QuizDBDAO {
             e.printStackTrace();
         }
     }
-     /**
-     * questionCount: This method returns the number of questions available on the database.
+
+    /**
+     * questionCount: This method returns the number of questions available on
+     * the database.
+     *
      * @param difficultyLevel A String indicating the difficulty level.
      * @return An Integer with the number of questions available.
      */
     public int questionCount(String difficultyLevel) {
         int countRows = 0;
         String query;
-        if(difficultyLevel.equalsIgnoreCase("Mixed")){  // check input
+        if (difficultyLevel.equalsIgnoreCase("Mixed")) {  // check input
             query = "SELECT COUNT(*) AS NUMQUESTIONS FROM QUESTION";
+        } else {
+            query = "SELECT COUNT(*) AS NUMQUESTIONS FROM QUESTION WHERE DIFFICULTY_LEVEL=\'" + difficultyLevel.substring(0, 1) + "\'"; //'E'";
         }
-        else{
-            query = "SELECT COUNT(*) AS NUMQUESTIONS FROM QUESTION WHERE DIFFICULTY_LEVEL=\'" + difficultyLevel.substring(0,1) + "\'"; //'E'";
-        }
-        try{
+        try {
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
@@ -324,38 +321,41 @@ public class QuizDBImplementation implements QuizDBDAO {
             countRows = rs.getInt("NUMQUESTIONS");
             return countRows;
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return countRows;
     }
-     /**
-     * selectQuestions: This method returns an arrayList with question objects for the quiz.
+
+    /**
+     * selectQuestions: This method returns an arrayList with question objects
+     * for the quiz.
+     *
      * @param numOfQuestions An Integer with the number of questions to fetch.
      * @param difficultyLevel A String indicating the difficulty level.
      * @return An ArrayList with the questions for the quiz.
      */
     public ArrayList<Question> selectQuestions(int numOfQuestions, String difficultyLevel) {
-        
+
         //System.out.println("In the dao method");
         ArrayList<Question> questionList = new ArrayList<Question>();
         String query = "";
-        if (difficultyLevel.equalsIgnoreCase("Mixed")){ // check input
+        if (difficultyLevel.equalsIgnoreCase("Mixed")) { // check input
             query = "SELECT * FROM QUESTION ORDER BY RANDOM() FETCH FIRST " + numOfQuestions + " ROWS ONLY";
-        } else{
+        } else {
             difficultyLevel = difficultyLevel.substring(0, 1).toUpperCase();
-            query = "SELECT * FROM QUESTION WHERE DIFFICULTY_LEVEL= \'" + difficultyLevel+ "\' ORDER BY RANDOM() FETCH FIRST " + numOfQuestions + " ROWS ONLY";
+            query = "SELECT * FROM QUESTION WHERE DIFFICULTY_LEVEL= \'" + difficultyLevel + "\' ORDER BY RANDOM() FETCH FIRST " + numOfQuestions + " ROWS ONLY";
         }
-        try{
+        try {
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 String questionType = rs.getString("QUESTION_TYPE");
                 String description = readClob(rs.getClob("QUESTION_DESCRIPTION"));
                 String difficulty = rs.getString("DIFFICULTY_LEVEL");
                 //System.out.println(questionType);
-                if (questionType.equalsIgnoreCase("MA") || questionType.equalsIgnoreCase("MC")){
+                if (questionType.equalsIgnoreCase("MA") || questionType.equalsIgnoreCase("MC")) {
                     String choice1 = rs.getString("CHOICE_1");
                     String choice2 = rs.getString("CHOICE_2");
                     String choice3 = rs.getString("CHOICE_3");
@@ -366,28 +366,26 @@ public class QuizDBImplementation implements QuizDBDAO {
                     boolean ans4 = rs.getBoolean("ANSWER_4");
                     Question q = new MultiChoiceQuestion(questionType, difficulty, description, choice1, choice2, choice3, choice4, ans1, ans2, ans3, ans4);
                     questionList.add(q);
-                }else if (questionType.equalsIgnoreCase("TF")){
+                } else if (questionType.equalsIgnoreCase("TF")) {
                     boolean ans = rs.getBoolean("T_OR_F_ANSWER");
                     Question q = new TrueOrFalseQuestion(questionType, difficulty, description, ans);
                     questionList.add(q);
-                }else if (questionType.equalsIgnoreCase("FIB")){
+                } else if (questionType.equalsIgnoreCase("FIB")) {
                     String ans = rs.getString("FIB_ANSWER");
                     Question q = new FillInTheBlanks(questionType, difficulty, description, ans);
                     questionList.add(q);
-                }else{
-                   //String x = questionType;
-                   //System.out.println(x);
-                   //System.out.println(questionType.charAt(1));
-                   //System.out.println(x.equalsIgnoreCase("MC"));
-                   //System.out.println(x.length());
+                } else {
+                    //String x = questionType;
+                    //System.out.println(x);
+                    //System.out.println(questionType.charAt(1));
+                    //System.out.println(x.equalsIgnoreCase("MC"));
+                    //System.out.println(x.length());
                 }
-                
-
             }
             //System.out.println(questionList.size());
-        }catch(SQLException e){
-            
-        } catch (IOException ex) {   
+        } catch (SQLException e) {
+
+        } catch (IOException ex) {
             Logger.getLogger(QuizDBImplementation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return questionList;
@@ -395,64 +393,68 @@ public class QuizDBImplementation implements QuizDBDAO {
 
     /**
      * This method returns a user.
-     * @param loginName A string with the login name of the user. 
+     *
+     * @param loginName A string with the login name of the user.
      * @param password A string with the password of the user.
      * @return An user object.
      */
     public User selectUser(String loginName, String password) {
         User user = null;
-        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName + "' AND PASSWORD = '" + password + "'"; 
-        try{
+        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName + "' AND PASSWORD = '" + password + "'";
+        try {
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 String userName = rs.getString("USER_NAME");
                 String uniRole = rs.getString("UNI_ROLE");
-                 user = new User(loginName, userName, password, uniRole);
+                user = new User(loginName, userName, password, uniRole);
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
         }
         return user;
     }
-    
+
     /**
      * This method returns false if the data exists.
+     *
      * @param loginName A String with the login name of the user.
      * @return A boolean returns false if the exists.
      */
     public boolean selectUser(String loginName) {
         User user = null;
-        boolean returnFlag=true;//default flag
-        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName+"'"; 
-        try{
+        boolean returnFlag = true;//default flag
+        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName + "'";
+        try {
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 //set the flag to false if data exists
-                returnFlag=false;
+                returnFlag = false;
             }
-            
-           
-        }catch(SQLException e){
-            
+
+        } catch (SQLException e) {
+
         }
-            System.out.println("returnflag" +returnFlag);
+        System.out.println("returnflag" + returnFlag);
         return returnFlag;
     }
-     /**
-     * selectQuestions: This method returns an arrayList with all the studentResults stored in the database.
+
+    /**
+     * selectQuestions: This method returns an arrayList with all the
+     * studentResults stored in the database.
+     *
      * @return An ArrayList with the student results in the database.
      */
     public ArrayList<StudentResults> getStudentResults() {
         ArrayList<StudentResults> results = new ArrayList<StudentResults>();
         String query = "SELECT * FROM TEST_RESULTS";
-        try{
+        try {
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 String loginName = rs.getString("LOGIN_NAME");
                 int lodEasyQuestions = rs.getInt("LOD_EASY_QUESTIONS");
                 int lodMediumQuestions = rs.getInt("LOD_MEDIUM_QUESTIONS");
@@ -467,13 +469,16 @@ public class QuizDBImplementation implements QuizDBDAO {
                 StudentResults result = new StudentResults(loginName, lodEasyQuestions, lodMediumQuestions, lodHardQuestions, totalQuestions, totalCorrect, lodEasyCorrect, lodMediumCorrect, lodHardCorrect, skipped, testDate);
                 results.add(result);
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
         }
         return results;
     }
-     /**
-     * selectQuestions: This method returns an arrayList with all the studentResults stored in the database.
-     * @param questions  An arrayList with the questions in the quiz.
+
+    /**
+     * selectQuestions: This method returns an arrayList with all the
+     * studentResults stored in the database.
+     *
+     * @param questions An arrayList with the questions in the quiz.
      * @return An Array with the number of question according to its type.
      */
     public int[] getQuestionTypes(ArrayList<Question> questions) {
@@ -483,17 +488,17 @@ public class QuizDBImplementation implements QuizDBDAO {
         int ma = 0;
         int tf = 0;
         int fib = 0;
-        for(Question q : questions){
+        for (Question q : questions) {
             String type = q.getQuestionType();
-            if (type.equalsIgnoreCase("MC")){
+            if (type.equalsIgnoreCase("MC")) {
                 mc += 1;
-            }else if (type.equalsIgnoreCase("MA")){
+            } else if (type.equalsIgnoreCase("MA")) {
                 ma += 1;
-            }else if (type.equalsIgnoreCase("TF")){
+            } else if (type.equalsIgnoreCase("TF")) {
                 tf += 1;
-            }else if (type.equalsIgnoreCase("FIB")){
-                fib +=1;
-            }   
+            } else if (type.equalsIgnoreCase("FIB")) {
+                fib += 1;
+            }
         }
         arrayqQuestionType[0] = mc;
         arrayqQuestionType[1] = ma;
@@ -501,57 +506,61 @@ public class QuizDBImplementation implements QuizDBDAO {
         arrayqQuestionType[3] = fib;
         return arrayqQuestionType;
     }
-     /**
+
+    /**
      * selectQuestions: This method reads a clob and returns a String.
+     *
      * @param c The clob that will be read.
      * @return a String with the contents of the clob.
      * @throws java.sql.SQLException
      * @throws java.io.IOException
      */
-    public String readClob (Clob c) throws SQLException, IOException{
-        StringBuffer sb = new StringBuffer((int)c.length());
+    public String readClob(Clob c) throws SQLException, IOException {
+        StringBuffer sb = new StringBuffer((int) c.length());
         Reader reader = c.getCharacterStream();
-	char[] charBuff = new char[1000];
-	int n = 0;
-	while ((n = reader.read(charBuff, 0, charBuff.length)) != -1) {
-		if (n > 0) {
-			sb.append(charBuff, 0, n);
-		}
-	}
-	return sb.toString();        
+        char[] charBuff = new char[1000];
+        int n = 0;
+        while ((n = reader.read(charBuff, 0, charBuff.length)) != -1) {
+            if (n > 0) {
+                sb.append(charBuff, 0, n);
+            }
+        }
+        return sb.toString();
     }
-     /**
-     * selectQuestions: This method returns the result of a specific studentResult  
+
+    /**
+     * selectQuestions: This method returns the result of a specific
+     * studentResult
+     *
      * @param name A string with the loginName
      * @return An ArrayList with the student results of a specific user.
      */
     public ArrayList<StudentResults> getStudentResults(String name) {
         ArrayList<StudentResults> results = new ArrayList<StudentResults>();
         String query = "SELECT * FROM TEST_RESULTS";
-        try{
+        try {
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 String loginName = rs.getString("LOGIN_NAME");
-                if (loginName.equals(name))
-                {
-                int lodEasyQuestions = rs.getInt("LOD_EASY_QUESTIONS");
-                int lodMediumQuestions = rs.getInt("LOD_MEDIUM_QUESTIONS");
-                int lodHardQuestions = rs.getInt("LOD_HARD_QUESTIONS");
-                int totalQuestions = rs.getInt("TOTAL_QUESTIONS");
-                int lodEasyCorrect = rs.getInt("LOD_EASY_CORRECT");
-                int lodMediumCorrect = rs.getInt("LOD_MEDIUM_CORRECT");
-                int lodHardCorrect = rs.getInt("LOD_HARD_CORRECT");
-                int skipped = rs.getInt("SKIPPED_QUESTIONS");
-                int totalCorrect = lodEasyCorrect + lodMediumCorrect + lodHardCorrect;
-                Date testDate = rs.getDate("TEST_TAKEN_DATE");
-                StudentResults result = new StudentResults(loginName, lodEasyQuestions, lodMediumQuestions, lodHardQuestions, totalQuestions, totalCorrect, lodEasyCorrect, lodMediumCorrect, lodHardCorrect, skipped, testDate);
-                results.add(result);
+                if (loginName.equals(name)) {
+                    int lodEasyQuestions = rs.getInt("LOD_EASY_QUESTIONS");
+                    int lodMediumQuestions = rs.getInt("LOD_MEDIUM_QUESTIONS");
+                    int lodHardQuestions = rs.getInt("LOD_HARD_QUESTIONS");
+                    int totalQuestions = rs.getInt("TOTAL_QUESTIONS");
+                    int lodEasyCorrect = rs.getInt("LOD_EASY_CORRECT");
+                    int lodMediumCorrect = rs.getInt("LOD_MEDIUM_CORRECT");
+                    int lodHardCorrect = rs.getInt("LOD_HARD_CORRECT");
+                    int skipped = rs.getInt("SKIPPED_QUESTIONS");
+                    int totalCorrect = lodEasyCorrect + lodMediumCorrect + lodHardCorrect;
+                    Date testDate = rs.getDate("TEST_TAKEN_DATE");
+                    StudentResults result = new StudentResults(loginName, lodEasyQuestions, lodMediumQuestions, lodHardQuestions, totalQuestions, totalCorrect, lodEasyCorrect, lodMediumCorrect, lodHardCorrect, skipped, testDate);
+                    results.add(result);
                 }
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
         }
         return results;
     }
-}
+}//end of QuizDBImplementation
