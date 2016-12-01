@@ -9,27 +9,30 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.result.StudentStatsController">
    <children>
-      <Pane fx:id="Statistics" prefHeight="700.0" prefWidth="700.0">
+      <Pane fx:id="Statistics" prefHeight="850.0" prefWidth="850.0">
          <children>
-            <Label alignment="CENTER" layoutX="204.0" layoutY="88.0" prefHeight="45.0" prefWidth="252.0" text="Student Statistics" textFill="#3c11c9">
+            <Label alignment="CENTER" layoutX="324.0" layoutY="155.0" prefHeight="45.0" prefWidth="252.0" text="Student Statistics" textFill="#3c11c9">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="period" layoutX="330.0" layoutY="370.0" onMouseClicked="#onPeriodSelected" prefHeight="27.0" prefWidth="162.0" />
-            <Label layoutX="108.0" layoutY="370.0" prefHeight="27.0" prefWidth="202.0" text="Select Period:">
+            <ChoiceBox fx:id="period" layoutX="470.0" layoutY="519.0" onMouseClicked="#onPeriodSelected" prefHeight="27.0" prefWidth="162.0" />
+            <Label layoutX="248.0" layoutY="519.0" prefHeight="27.0" prefWidth="202.0" text="Select Period:">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label layoutX="108.0" layoutY="273.0" prefHeight="27.0" prefWidth="150.0" text="Select Report:">
+            <Label layoutX="248.0" layoutY="422.0" prefHeight="27.0" prefWidth="150.0" text="Select Report:">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <ChoiceBox fx:id="report" layoutX="330.0" layoutY="273.0" onMouseClicked="#reportSelect" prefHeight="27.0" prefWidth="162.0" />
-            <Button fx:id="viewStats" layoutX="473.0" layoutY="586.0" mnemonicParsing="false" onAction="#viewStats" prefHeight="50.0" prefWidth="120.0" text="View Stats" />
-            <Button layoutX="56.0" layoutY="586.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="120.0" text="Back" />
-            <Label layoutX="108.0" layoutY="201.0" text="Select Student:" />
-            <ChoiceBox fx:id="studDrop" layoutX="330.0" onMouseClicked="#studentSelect" layoutY="196.0" prefHeight="31.0" prefWidth="162.0" />
+            <ChoiceBox fx:id="report" layoutX="470.0" layoutY="422.0" onMouseClicked="#reportSelect" prefHeight="27.0" prefWidth="162.0" />
+            <Button fx:id="viewStats" layoutX="605.0" layoutY="710.0" mnemonicParsing="false" onAction="#viewStats" prefHeight="50.0" prefWidth="120.0" text="View Stats" />
+            <Button layoutX="188.0" layoutY="710.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="120.0" text="Back" />
+            <Label layoutX="248.0" layoutY="323.0" text="Select Student:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <ChoiceBox fx:id="studDrop" layoutX="470.0" layoutY="318.0" onMouseClicked="#studentSelect" prefHeight="31.0" prefWidth="162.0" />
          </children>
       </Pane>
    </children>
