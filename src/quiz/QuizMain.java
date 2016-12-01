@@ -43,7 +43,7 @@ public class QuizMain extends Application {
      */
     public Stage stage;
     private User loggedUser;
-    private final double MINIMUM_WINDOW_WIDTH = 850.0;
+    private final double MINIMUM_WINDOW_WIDTH = 1000.0;
     private final double MINIMUM_WINDOW_HEIGHT = 850.0;
 
     /**

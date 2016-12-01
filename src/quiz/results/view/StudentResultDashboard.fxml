@@ -9,14 +9,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.results.view.StudentResultDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.results.view.StudentResultDashboardController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="258.0" layoutY="82.0" prefHeight="44.0" prefWidth="356.0" text="Results Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="79.0" prefHeight="44.0" prefWidth="356.0" text="Results Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="131.0" layoutY="193.0" prefHeight="513.0" prefWidth="622.0" spacing="40.0">
+      <VBox layoutX="77.0" layoutY="193.0" prefHeight="513.0" prefWidth="832.0" spacing="40.0">
          <children>
             <Hyperlink fx:id="testResult1" onAction="#test1Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
             <Hyperlink fx:id="testResult2" onAction="#test2Selected" prefHeight="25.0" prefWidth="301.0" visible="false" />
@@ -30,8 +30,8 @@
             <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Button layoutX="680.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
-      <Label fx:id="textBottom" alignment="CENTER" layoutX="157.0" layoutY="148.0" prefHeight="25.0" prefWidth="558.0" textAlignment="CENTER" />
-      <Button layoutX="122.0" layoutY="736.0" mnemonicParsing="false" onAction="#goBack" prefHeight="36.0" prefWidth="91.0" text="Back" />
+      <Button layoutX="816.0" layoutY="23.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Label fx:id="textBottom" alignment="CENTER" layoutX="221.0" layoutY="155.0" prefHeight="25.0" prefWidth="558.0" textAlignment="CENTER" />
+      <Button layoutX="455.0" layoutY="751.0" mnemonicParsing="false" onAction="#goBack" prefHeight="36.0" prefWidth="91.0" text="Back" />
    </children>
 </AnchorPane>

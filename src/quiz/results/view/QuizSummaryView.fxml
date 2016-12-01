@@ -9,15 +9,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.results.view.QuizSummaryViewController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.results.view.QuizSummaryViewController">
    <children>
-      <Button layoutX="617.0" layoutY="769.0" mnemonicParsing="false" onAction="#saveToPdf" prefHeight="36.0" prefWidth="184.0" text="Export to PDF" />
-      <Button layoutX="51.0" layoutY="769.0" mnemonicParsing="false" onAction="#goBackDashboard" prefHeight="36.0" prefWidth="184.0" text="Go to Main Dashboard" />
-      <Button fx:id="backResultDashboard" layoutX="333.0" layoutY="769.0" mnemonicParsing="false" onAction="#goResultDashboard" prefHeight="36.0" prefWidth="184.0" text="Go to Results Dashboard" visible="false" />
-      <Button layoutX="681.0" layoutY="23.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
-      <Pane fx:id="resultFrame" layoutX="15.0" layoutY="66.0" prefHeight="668.0" prefWidth="821.0">
+      <Button layoutX="696.0" layoutY="767.0" mnemonicParsing="false" onAction="#saveToPdf" prefHeight="36.0" prefWidth="184.0" text="Export to PDF" />
+      <Button layoutX="130.0" layoutY="767.0" mnemonicParsing="false" onAction="#goBackDashboard" prefHeight="36.0" prefWidth="184.0" text="Go to Main Dashboard" />
+      <Button fx:id="backResultDashboard" layoutX="412.0" layoutY="767.0" mnemonicParsing="false" onAction="#goResultDashboard" prefHeight="36.0" prefWidth="184.0" text="Go to Results Dashboard" visible="false" />
+      <Button layoutX="817.0" layoutY="23.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Pane fx:id="resultFrame" layoutX="15.0" layoutY="66.0" prefHeight="679.0" prefWidth="980.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="23.0" prefHeight="44.0" prefWidth="423.0" text="Quiz Result" textAlignment="CENTER" textFill="#4310da" underline="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="24.0" prefHeight="44.0" prefWidth="423.0" text="Quiz Result" textAlignment="CENTER" textFill="#4310da" underline="true">
                <font>
                   <Font size="36.0" />
                </font>
@@ -27,9 +27,9 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <HBox layoutX="29.0" layoutY="141.0" prefHeight="494.0" prefWidth="784.0">
+            <HBox layoutX="29.0" layoutY="141.0" prefHeight="525.0" prefWidth="925.0">
                <children>
-                  <VBox prefHeight="508.0" prefWidth="387.0" spacing="5.0">
+                  <VBox prefHeight="525.0" prefWidth="469.0" spacing="5.0">
                      <children>
                         <HBox prefHeight="38.0" prefWidth="338.0" spacing="20.0">
                            <children>
@@ -196,7 +196,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </VBox>
-                  <PieChart fx:id="pieChart" prefHeight="494.0" prefWidth="388.0" />
+                  <PieChart fx:id="pieChart" prefHeight="525.0" prefWidth="456.0" />
                </children>
             </HBox>
          </children>
