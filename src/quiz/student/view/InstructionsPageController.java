@@ -6,6 +6,7 @@
 package quiz.student.view;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +47,7 @@ public class InstructionsPageController implements Initializable {
             errorMessage.setText("Hello");
         } else {
             questionsForTest = application.getQuestions(selectednumOfQuestions, selectedDifficulty);
+            Collections.shuffle(questionsForTest);
             // start the question couter to 0 and go to the page based on question type
             questionCounter = 0;
             if (questionsForTest.get(questionCounter).getQuestionType().equals("MC")) {
