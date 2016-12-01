@@ -17,13 +17,13 @@
       <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="382.0" layoutY="33.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
       <Pane layoutX="13.0" layoutY="60.0" prefHeight="789.0" prefWidth="986.0">
          <children>
-            <Button layoutX="809.0" layoutY="700.0" mnemonicParsing="false" onAction="#onNextButtonClick" prefHeight="35.0" prefWidth="58.0" text="Next" />
+            <Button fx:id="nextButton" layoutX="809.0" layoutY="700.0" mnemonicParsing="false" onAction="#onNextButtonClick" prefHeight="35.0" prefWidth="58.0" text="Next" />
             <Button fx:id="backButton" layoutX="103.0" layoutY="700.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="35.0" prefWidth="65.0" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
             <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="400.0" prefWidth="913.0" />
             <VBox layoutX="254.0" layoutY="508.0" prefHeight="118.0" prefWidth="478.0">
                <children>
-                  <RadioButton fx:id="optiontrue" layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" text="True">
+                  <RadioButton fx:id="optiontrue" layoutX="39.0" layoutY="142.0" mnemonicParsing="false" onAction="#onAnswerSelected" prefHeight="25.0" prefWidth="420.0" text="True">
                      <toggleGroup>
                         <ToggleGroup fx:id="Choices" />
                      </toggleGroup>
@@ -31,7 +31,7 @@
                         <Insets bottom="10.0" left="10.0" top="30.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton fx:id="optionfalse" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="420.0" text="False" toggleGroup="$Choices">
+                  <RadioButton fx:id="optionfalse" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" onAction="#onAnswerSelected" prefHeight="25.0" prefWidth="420.0" text="False" toggleGroup="$Choices">
                      <padding>
                         <Insets bottom="30.0" left="10.0" top="10.0" />
                      </padding>

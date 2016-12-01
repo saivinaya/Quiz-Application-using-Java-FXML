@@ -19,29 +19,29 @@
          <children>
             <VBox layoutX="31.0" layoutY="453.0" prefHeight="235.0" prefWidth="907.0" spacing="10.0">
                <children>
-                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="49.0" prefWidth="905.0" wrapText="true">
+                  <CheckBox fx:id="choice1" mnemonicParsing="false" onAction="#onAnswerSelected" prefHeight="49.0" prefWidth="905.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="50.0" prefWidth="905.0" wrapText="true">
+                  <CheckBox fx:id="choice2" mnemonicParsing="false" onAction="#onAnswerSelected" prefHeight="50.0" prefWidth="905.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="48.0" prefWidth="906.0" wrapText="true">
+                  <CheckBox fx:id="choice3" mnemonicParsing="false" onAction="#onAnswerSelected" prefHeight="48.0" prefWidth="906.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="48.0" prefWidth="907.0" wrapText="true">
+                  <CheckBox fx:id="choice4" mnemonicParsing="false" onAction="#onAnswerSelected" prefHeight="48.0" prefWidth="907.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
                </children>
             </VBox>
-            <Button layoutX="813.0" layoutY="699.0" mnemonicParsing="false" onAction="#onNextButtonClick" prefHeight="34.0" prefWidth="58.0" text="Next" />
+            <Button fx:id="nextButton" layoutX="813.0" layoutY="699.0" mnemonicParsing="false" onAction="#onNextButtonClick" prefHeight="34.0" prefWidth="58.0" text="Next" />
             <Button fx:id="backButton" layoutX="127.0" layoutY="699.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="34.0" prefWidth="58.0" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
             <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="392.0" prefWidth="917.0" />
