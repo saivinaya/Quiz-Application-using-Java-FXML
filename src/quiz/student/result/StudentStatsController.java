@@ -206,6 +206,10 @@ public class StudentStatsController implements Initializable {
                 }
             }
         }
+        if(arr.size()==0){
+            application.noData();
+        }
+        else{
         setArrayValues();
         noOfSkippedQuestions();
         noOfTestsTaken();
@@ -214,6 +218,8 @@ public class StudentStatsController implements Initializable {
         studentPassOrFail();
 
         application.noOfTestsTaken();
+        }
+        
 
     }
 
