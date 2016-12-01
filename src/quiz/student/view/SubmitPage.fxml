@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.SubmitPageController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.SubmitPageController">
    <children>
-      <Label layoutX="127.0" layoutY="265.0" prefHeight="52.0" prefWidth="462.0" text="You have Reached the end of your Test. Do you want to Submit the test?" />
-      <Button layoutX="370.0" layoutY="323.0" mnemonicParsing="false" onAction="#onSubmitButtonClick" text="Submit" />
-      <Button layoutX="271.0" layoutY="323.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="27.0" prefWidth="62.0" text="Back" />
+      <Label layoutX="116.0" layoutY="343.0" prefHeight="64.0" prefWidth="664.0" text="You have Reached the end of your Test. Do you want to Submit the test?" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button layoutX="479.0" layoutY="419.0" mnemonicParsing="false" onAction="#onSubmitButtonClick" prefHeight="38.0" prefWidth="74.0" text="Submit" />
+      <Button layoutX="328.0" layoutY="419.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="38.0" prefWidth="74.0" text="Back" />
    </children>
 </AnchorPane>

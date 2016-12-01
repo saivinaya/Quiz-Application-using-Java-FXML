@@ -8,43 +8,43 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithMoreAnswersController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithMoreAnswersController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="226.0" layoutY="24.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
-      <Pane layoutX="13.0" layoutY="59.0" prefHeight="641.0" prefWidth="674.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="307.0" layoutY="32.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
+      <Pane layoutX="13.0" layoutY="59.0" prefHeight="789.0" prefWidth="836.0">
          <children>
-            <VBox layoutX="52.0" layoutY="397.0" prefHeight="118.0" prefWidth="570.0">
+            <VBox layoutX="57.0" layoutY="458.0" prefHeight="235.0" prefWidth="725.0" spacing="10.0">
                <children>
-                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
+                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="49.0" prefWidth="725.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
+                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="44.0" prefWidth="726.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
+                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="48.0" prefWidth="725.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="28.0" prefWidth="525.0" wrapText="true">
+                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="48.0" prefWidth="725.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
                </children>
             </VBox>
-            <Button layoutX="595.0" layoutY="571.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
-            <Button fx:id="backButton" layoutX="24.0" layoutY="571.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" />
+            <Button layoutX="682.0" layoutY="712.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
+            <Button fx:id="backButton" layoutX="111.0" layoutY="712.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
-            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="310.0" prefWidth="631.0" />
-            <Button layoutX="515.0" layoutY="571.0" mnemonicParsing="false" onAction="#onSkipButtonClick" text="Skip" />
+            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="392.0" prefWidth="781.0" />
+            <Button layoutX="602.0" layoutY="712.0" mnemonicParsing="false" onAction="#onSkipButtonClick" text="Skip" />
          </children>
       </Pane>
    </children>
