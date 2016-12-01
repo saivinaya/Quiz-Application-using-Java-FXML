@@ -62,6 +62,10 @@ public class NoData implements Initializable {
         application.goTOStudentStats();
     }
 
+    /**
+     *
+     * @param application
+     */
     public void setApp(QuizMain application) {
         this.application = application;
 

@@ -125,6 +125,10 @@ FileChooser chooser = new FileChooser();
         application.goTOStudentStats();
     }
 
+    /**
+     *
+     * @param application
+     */
     public void setApp(QuizMain application) {
         this.application = application;
 
