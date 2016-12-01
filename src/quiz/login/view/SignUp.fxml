@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850" prefWidth="850" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.SignUpController">
+<AnchorPane id="AnchorPane" prefHeight="850" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.SignUpController">
     <children>
-       <Button layoutX="323.0" layoutY="695.0" mnemonicParsing="false" onAction="#onClickGotoLogin" prefHeight="35.0" prefWidth="88.0" text="Back" />
-        <Button layoutX="466.0" layoutY="694.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="88.0" text="Sign Up" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="110.0" prefHeight="44.0" prefWidth="356.0" text="Sign Up - New User" textAlignment="CENTER" textFill="#4310da" underline="true">
+       <Button layoutX="376.0" layoutY="684.0" mnemonicParsing="false" onAction="#onClickGotoLogin" prefHeight="35.0" prefWidth="88.0" text="Back" />
+        <Button layoutX="519.0" layoutY="683.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="88.0" text="Sign Up" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="111.0" prefHeight="44.0" prefWidth="356.0" text="Sign Up - New User" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="161.0" layoutY="212.0" prefHeight="436.0" prefWidth="567.0" spacing="30.0">
+      <VBox layoutX="273.0" layoutY="223.0" prefHeight="436.0" prefWidth="554.0" spacing="30.0">
          <children>
               <HBox prefHeight="46.0" prefWidth="510.0">
                   <children>

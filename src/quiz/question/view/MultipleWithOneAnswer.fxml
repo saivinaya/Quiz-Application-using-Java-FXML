@@ -8,18 +8,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithOneAnswerController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.MultipleWithOneAnswerController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="13.0" layoutY="59.0" prefHeight="794.0" prefWidth="839.0">
+      <Pane layoutX="13.0" layoutY="59.0" prefHeight="794.0" prefWidth="987.0">
          <children>
-            <Button layoutX="682.0" layoutY="708.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
-            <Button fx:id="backButton" layoutX="111.0" layoutY="708.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" />
+            <Button layoutX="807.0" layoutY="698.0" mnemonicParsing="false" onAction="#onNextButtonClick" prefHeight="34.0" prefWidth="56.0" text="Next" />
+            <Button fx:id="backButton" layoutX="124.0" layoutY="698.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="34.0" prefWidth="56.0" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
-            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="397.0" prefWidth="784.0" />
-            <VBox layoutX="55.0" layoutY="461.0" prefHeight="232.0" prefWidth="742.0" spacing="5.0">
+            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="397.0" prefWidth="921.0" />
+            <VBox layoutX="55.0" layoutY="461.0" prefHeight="232.0" prefWidth="896.0" spacing="5.0">
                <children>
                   <RadioButton fx:id="choice1" layoutX="39.0" layoutY="142.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="742.0" wrapText="true">
                      <toggleGroup>
@@ -46,9 +46,9 @@
                   </RadioButton>
                </children>
             </VBox>
-            <Button layoutX="602.0" layoutY="708.0" mnemonicParsing="false" onAction="#onSkipButtonClick" text="Skip" />
+            <Button layoutX="715.0" layoutY="698.0" mnemonicParsing="false" onAction="#onSkipButtonClick" prefHeight="34.0" prefWidth="56.0" text="Skip" />
          </children>
       </Pane>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="302.0" layoutY="32.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="376.0" layoutY="32.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
    </children>
 </AnchorPane>

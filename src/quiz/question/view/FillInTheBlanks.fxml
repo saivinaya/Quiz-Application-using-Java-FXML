@@ -9,26 +9,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.FillInTheBlanksController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.FillInTheBlanksController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="13.0" layoutY="52.0" prefHeight="799.0" prefWidth="833.0">
+      <Pane layoutX="13.0" layoutY="52.0" prefHeight="799.0" prefWidth="991.0">
          <children>
-            <Button layoutX="680.0" layoutY="727.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
-            <Button fx:id="backButton" layoutX="107.0" layoutY="727.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" />
+            <Button layoutX="801.0" layoutY="704.0" mnemonicParsing="false" onAction="#onNextButtonClick" prefHeight="36.0" prefWidth="61.0" text="Next" />
+            <Button fx:id="backButton" layoutX="119.0" layoutY="704.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="36.0" prefWidth="61.0" text="Back" />
             <Label fx:id="questionNumber" layoutX="26.0" layoutY="14.0" prefHeight="27.0" prefWidth="154.0" />
-            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="378.0" prefWidth="787.0" />
-            <TextField fx:id="userAnswer" layoutX="238.0" layoutY="590.0" prefHeight="36.0" prefWidth="357.0" promptText="Enter your Answer" />
-            <Label layoutX="238.0" layoutY="548.0" prefHeight="27.0" prefWidth="195.0" text="Input your Answer below:">
+            <TextArea fx:id="questionDescription" editable="false" layoutX="26.0" layoutY="41.0" prefHeight="378.0" prefWidth="939.0" />
+            <TextField fx:id="userAnswer" layoutX="263.0" layoutY="587.0" prefHeight="36.0" prefWidth="465.0" promptText="Enter your Answer" />
+            <Label layoutX="263.0" layoutY="545.0" prefHeight="27.0" prefWidth="195.0" text="Input your Answer below:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="598.0" layoutY="727.0" mnemonicParsing="false" onAction="#onSkipButtonClick" text="Skip" />
+            <Button layoutX="708.0" layoutY="704.0" mnemonicParsing="false" onAction="#onSkipButtonClick" prefHeight="36.0" prefWidth="61.0" text="Skip" />
          </children>
       </Pane>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="305.0" layoutY="14.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="378.0" layoutY="25.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
    </children>
 </AnchorPane>
