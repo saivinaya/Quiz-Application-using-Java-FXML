@@ -143,7 +143,21 @@ public class FillInTheBlanksController implements Initializable {
     private void onSkipButtonClick(ActionEvent event) {
         String userAns = userAnswer.getText();
         // warning if more than 20% are skipped
-        if (numSkip >= maxSkip) {
+        if(userAns == null){
+            if (numSkip >= maxSkip) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip maximum of " + maxSkip + " questions only.", ButtonType.OK);
+            alert.showAndWait();
+        }
+            else {
+            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setSkipQuestion(true);
+            ((FillInTheBlanks) questionsForTest.get(questionCounter)).setUserInput(null);
+            numSkip += 1;
+            // go to the next question using gotoNextQuestion() method
+            application.gotoNextQuestion();
+        }
+        }
+        else{
+            if(numSkip >= maxSkip) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip maximum of " + maxSkip + " questions only.", ButtonType.OK);
             alert.showAndWait();
         } // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
@@ -165,6 +179,7 @@ public class FillInTheBlanksController implements Initializable {
             // go to the next question using gotoNextQuestion() method
             application.gotoNextQuestion();
         }
+    }
     }
 
     @FXML
