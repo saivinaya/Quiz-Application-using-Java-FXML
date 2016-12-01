@@ -59,8 +59,8 @@ public class NoOfTestTakenController implements Initializable {
 
     /**
      * This method initiates barchart according to user input
-     * @param url
-     * @param rb 
+     * @param url URL
+     * @param rb ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,7 +90,7 @@ public class NoOfTestTakenController implements Initializable {
 
     /**
      * This method exports the statistics to pdf
-     * @param e 
+     * @param e ActionEvent
      */
     @FXML
     public void viewStats(ActionEvent e) {
@@ -189,7 +189,7 @@ FileChooser chooser = new FileChooser();
 
     /**
      * This method generates values to be added to barchart for number of tests report
-     * @return 
+     * @return XYChart
      */
     public XYChart.Series<String, Number> viewNoOfTests() {
 
@@ -214,7 +214,7 @@ FileChooser chooser = new FileChooser();
     
     /**
      * This method generates values to be added to barchart for number of skipped questions report
-     * @return 
+     * @return XYChart
      */
     
     public XYChart.Series<String, Number> viewNoOfSkippedQuestions() {
@@ -239,7 +239,7 @@ FileChooser chooser = new FileChooser();
     
     /**
      * This method generates values to be added to barchart for average scores report
-     * @return 
+     * @return XYChart
      */
 
     public XYChart.Series<String, Number> viewAvgScores() {
