@@ -24,6 +24,7 @@ import quiz.question.view.MultipleWithOneAnswerController;
 import quiz.question.view.TrueOrFalseController;
 import quiz.results.view.QuizSummaryViewController;
 import quiz.results.view.StudentResultDashboardController;
+import quiz.student.result.NoData;
 import quiz.student.result.NoOfTestTakenController;
 import quiz.student.result.StudentStatsController;
 import quiz.student.view.InstructionsPageController;
@@ -148,6 +149,19 @@ public class QuizMain extends Application {
         try {
 
             NoOfTestTakenController profile = (NoOfTestTakenController) replaceSceneContent("student/result/NoOfTestTaken.fxml");
+            profile.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Navigates the user to NoData fxml page
+     */
+    public void noData() {
+        try {
+
+            NoData profile = (NoData) replaceSceneContent("student/result/NoData.fxml");
             profile.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(QuizMain.class.getName()).log(Level.SEVERE, null, ex);
