@@ -15,7 +15,7 @@
       <HBox layoutX="319.0" layoutY="356.0" prefHeight="46.0" prefWidth="398.0">
          <children>
             <Label prefHeight="46.0" prefWidth="104.0" text="Login Name" />
-            <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" promptText="User ID" />
+            <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" promptText="Login Name" />
          </children>
       </HBox>
       <HBox layoutX="319.0" layoutY="435.0" prefHeight="46.0" prefWidth="377.0">

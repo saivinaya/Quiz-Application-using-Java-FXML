@@ -83,7 +83,7 @@ public class LoginController implements Initializable {
             }
         } catch (NullPointerException exp) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Incorrect username/password");
+            alert.setContentText("Incorrect Login Name/Password");
             alert.showAndWait();
         }
 
