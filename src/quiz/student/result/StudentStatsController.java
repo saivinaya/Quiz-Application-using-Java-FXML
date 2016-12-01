@@ -755,5 +755,11 @@ public class StudentStatsController implements Initializable {
     public static void setSelectedPeriod(String aSelectedPeriod) {
         selectedPeriod = aSelectedPeriod;
     }
+    
+    @FXML
+    private void logout(ActionEvent event) {
+        // call the logoutAccount() to logout of the application
+        application.logoutAccount();
+    }
 
 }

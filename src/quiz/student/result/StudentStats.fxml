@@ -35,5 +35,6 @@
             <ChoiceBox fx:id="studDrop" layoutX="470.0" layoutY="318.0" onMouseClicked="#studentSelect" prefHeight="31.0" prefWidth="162.0" />
          </children>
       </Pane>
+      <Button layoutX="707.0" layoutY="30.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
    </children>
 </AnchorPane>
