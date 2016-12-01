@@ -16,24 +16,24 @@
       <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="380.0" layoutY="32.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
       <Pane layoutX="13.0" layoutY="59.0" prefHeight="789.0" prefWidth="982.0">
          <children>
-            <VBox layoutX="57.0" layoutY="458.0" prefHeight="235.0" prefWidth="884.0" spacing="10.0">
+            <VBox layoutX="31.0" layoutY="453.0" prefHeight="235.0" prefWidth="907.0" spacing="10.0">
                <children>
-                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="49.0" prefWidth="725.0" wrapText="true">
+                  <CheckBox fx:id="choice1" mnemonicParsing="false" prefHeight="49.0" prefWidth="905.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="44.0" prefWidth="726.0" wrapText="true">
+                  <CheckBox fx:id="choice2" mnemonicParsing="false" prefHeight="50.0" prefWidth="905.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="48.0" prefWidth="725.0" wrapText="true">
+                  <CheckBox fx:id="choice3" mnemonicParsing="false" prefHeight="48.0" prefWidth="906.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
                   </CheckBox>
-                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="48.0" prefWidth="725.0" wrapText="true">
+                  <CheckBox fx:id="choice4" mnemonicParsing="false" prefHeight="48.0" prefWidth="907.0" wrapText="true">
                      <padding>
                         <Insets bottom="10.0" left="10.0" />
                      </padding>
