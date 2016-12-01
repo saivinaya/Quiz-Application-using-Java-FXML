@@ -44,10 +44,10 @@ public class NoData implements Initializable {
     private Label statsMainLabel;
 
     /**
-     * This method initiatializes the class
+     * This method initializes the class
      *
-     * @param url
-     * @param rb
+     * @param url URL
+     * @param rb ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
