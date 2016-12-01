@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.results.view.QuizSummaryViewController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" styleClass="background" stylesheets="@../../login/view/Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.results.view.QuizSummaryViewController">
    <children>
       <Button layoutX="696.0" layoutY="767.0" mnemonicParsing="false" onAction="#saveToPdf" prefHeight="36.0" prefWidth="184.0" text="Export to PDF" />
       <Button layoutX="130.0" layoutY="767.0" mnemonicParsing="false" onAction="#goBackDashboard" prefHeight="36.0" prefWidth="184.0" text="Go to Main Dashboard" />
