@@ -153,7 +153,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  total correct questions
-     * @param totalCorrect
+     * @param totalCorrect total correct questions
      */
     public void setTotalCorrect(int totalCorrect) {
         this.totalCorrect = totalCorrect;
@@ -169,7 +169,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  easy correct questions
-     * @param lodEasyCorrect
+     * @param lodEasyCorrect easy correct questions
      */
     public void setLodEasyCorrect(int lodEasyCorrect) {
         this.lodEasyCorrect = lodEasyCorrect;
@@ -184,7 +184,7 @@ public class StudentResults implements Comparable<StudentResults> {
     }
 /**
      * set  medium correct questions
-     * @param lodMediumCorrect
+     * @param lodMediumCorrect medium correct questions
      */
     public void setLodMediumCorrect(int lodMediumCorrect) {
         this.lodMediumCorrect = lodMediumCorrect;
@@ -198,7 +198,7 @@ public class StudentResults implements Comparable<StudentResults> {
     }
 /**
      * set  hard correct questions
-     * @param lodHardCorrect
+     * @param lodHardCorrect hard correct questions
      */
     public void setLodHardCorrect(int lodHardCorrect) {
         this.lodHardCorrect = lodHardCorrect;
@@ -213,7 +213,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  skipped questions
-     * @param skippedQuestions
+     * @param skippedQuestions skipped questions
      */
     public void setSkippedQuestions(int skippedQuestions) {
         this.skippedQuestions = skippedQuestions;
@@ -227,7 +227,7 @@ public class StudentResults implements Comparable<StudentResults> {
     }
 /**
      * set  test date
-     * @param testDate
+     * @param testDate test date
      */
     public void setTestDate(Date testDate) {
         this.testDate = testDate;
@@ -236,8 +236,8 @@ public class StudentResults implements Comparable<StudentResults> {
     
     /**
      * compares two objects with respect to date
-     * @param o
-     * @return 
+     * @param o StudentResults Object
+     * @return  an integer ; 1, -1 or 0
      */
     @Override
     public int compareTo(StudentResults o) {

@@ -120,7 +120,7 @@ public abstract class Question {
 
     /**
      *
-     * @return
+     * @return the boolean value based on the answer by user
      */
     public abstract boolean validateAnswer();
 
