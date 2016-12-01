@@ -179,6 +179,10 @@ public class QuizHelper {
         Files.write(out,content,Charset.defaultCharset(),StandardOpenOption.CREATE);
      }//end of method FileWriter
     
+    /**
+     *
+     * @throws SQLException
+     */
     public void createTable() throws SQLException
     {
         try{
