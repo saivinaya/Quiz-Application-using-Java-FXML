@@ -94,6 +94,11 @@ public class MultipleWithOneAnswerController implements Initializable {
         choice4.setTooltip(new Tooltip("Choice 4"));
     }
 
+    /**
+     *
+     * @param application
+     * @param qust
+     */
     public void setApp(QuizMain application, MultiChoiceQuestion qust) {
         this.application = application;
     }

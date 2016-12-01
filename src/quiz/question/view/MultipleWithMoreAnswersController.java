@@ -54,6 +54,8 @@ public class MultipleWithMoreAnswersController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,6 +92,11 @@ public class MultipleWithMoreAnswersController implements Initializable {
         choice4.setTooltip(new Tooltip("Choice 4"));
     }
 
+    /**
+     *
+     * @param application
+     * @param qust
+     */
     public void setApp(QuizMain application, MultiChoiceQuestion qust) {
         this.application = application;
     }

@@ -54,6 +54,8 @@ public class TrueOrFalseController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -78,6 +80,11 @@ public class TrueOrFalseController implements Initializable {
         optionfalse.setTooltip(new Tooltip("False"));
     }
 
+    /**
+     *
+     * @param application
+     * @param qust
+     */
     public void setApp(QuizMain application, TrueOrFalseQuestion qust) {
         this.application = application;
     }

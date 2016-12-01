@@ -73,6 +73,11 @@ public class FillInTheBlanksController implements Initializable {
         userAnswer.setTooltip(new Tooltip("Your Answer"));
     }
 
+    /**
+     *
+     * @param application
+     * @param qust
+     */
     public void setApp(QuizMain application, FillInTheBlanks qust) {
         this.application = application;
     }
