@@ -28,6 +28,7 @@ import quiz.Question;
 import quiz.QuizMain;
 import quiz.QuizDBImplementation;
 import quiz.StudentResults;
+import quiz.User;
 
 /**
  *
@@ -90,8 +91,9 @@ public class StudentStatsController implements Initializable {
         report.setDisable(true);
         getPeriod().setDisable(true);
         getViewStats().setDisable(true);
-
-        QuizDBImplementation quiz = new QuizDBImplementation();
+        QuizMain quizMain = new QuizMain();
+        if(quizMain.getLoggedUser().getUniRole().equals("admin")){
+            QuizDBImplementation quiz = new QuizDBImplementation();
         ArrayList<StudentResults> tempArr = new ArrayList<>();
         tempArr = quiz.getStudentResults();
         HashMap<String, Integer> student = new HashMap<>();
@@ -109,9 +111,38 @@ public class StudentStatsController implements Initializable {
         }
 
         studDrop.setItems(studList);
+        }
+        else{
+        QuizDBImplementation quiz = new QuizDBImplementation();
+        ArrayList<StudentResults> tempArr = new ArrayList<>();
+        tempArr = quiz.getStudentResults();
+        HashMap<String, Integer> student = new HashMap<>();
+        for (int i = 0; i < tempArr.size(); i++) {
+            if(tempArr.get(i).getLoginName().equals(quizMain.getLoggedUser().getLoginName())){
+               if (student.containsKey(tempArr.get(i).getLoginName())) {
+                student.put(tempArr.get(i).getLoginName(), student.get(tempArr.get(i).getLoginName()) + 1);
+            } else {
+                student.put(tempArr.get(i).getLoginName(), 1);
+            } 
+            }
+            
+        }
+        
+        for (String s : student.keySet()) {
+            
+            studList.add(s);
+        }
+
+        studDrop.setItems(studList);
+        }
+        
 
     }
-
+    
+    /**
+     * This sets main application
+     * @param application 
+     */
     public void setApp(QuizMain application) {
         this.setApplication(application);
 
