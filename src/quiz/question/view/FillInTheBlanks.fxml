@@ -30,6 +30,5 @@
             <Button layoutX="708.0" layoutY="704.0" mnemonicParsing="false" onAction="#onSkipButtonClick" prefHeight="36.0" prefWidth="61.0" text="Skip" />
          </children>
       </Pane>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="378.0" layoutY="25.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
    </children>
 </AnchorPane>
