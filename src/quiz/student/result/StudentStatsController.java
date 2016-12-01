@@ -355,8 +355,8 @@ public class StudentStatsController implements Initializable {
 
         getAvgEasyCorrect()[0] = getAvgEasyCorrect()[0] / getMonthly().size();
         getAvgMedCorrect()[0] = getAvgMedCorrect()[0] / getMonthly().size();
-        getAvgHardCorrect()[0] = getAvgMedCorrect()[0] / getMonthly().size();
-
+        getAvgHardCorrect()[0] = getAvgHardCorrect()[0] / getMonthly().size();
+        
         for (int i = 0; i < getQuarterly().size(); i++) {
 
             getAvgEasyCorrect()[1] += getQuarterly().get(i).getLodEasyCorrect();
@@ -366,7 +366,7 @@ public class StudentStatsController implements Initializable {
 
         getAvgEasyCorrect()[1] = getAvgEasyCorrect()[1] / getQuarterly().size();
         getAvgMedCorrect()[1] = getAvgMedCorrect()[1] / getQuarterly().size();
-        getAvgHardCorrect()[1] = getAvgMedCorrect()[1] / getQuarterly().size();
+        getAvgHardCorrect()[1] = getAvgHardCorrect()[1] / getQuarterly().size();
 
         for (int i = 0; i < getYearly().size(); i++) {
 
@@ -377,7 +377,7 @@ public class StudentStatsController implements Initializable {
 
         getAvgEasyCorrect()[2] = getAvgEasyCorrect()[2] / getYearly().size();
         getAvgMedCorrect()[2] = getAvgMedCorrect()[2] / getYearly().size();
-        getAvgHardCorrect()[2] = getAvgMedCorrect()[2] / getYearly().size();
+        getAvgHardCorrect()[2] = getAvgHardCorrect()[2] / getYearly().size();
 
     }
 
