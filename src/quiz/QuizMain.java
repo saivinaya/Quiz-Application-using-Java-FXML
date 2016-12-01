@@ -390,7 +390,7 @@ public class QuizMain extends Application {
         } finally {
             in.close();
         }
-        Scene scene = new Scene(page, 800, 600);
+        Scene scene = new Scene(page, MINIMUM_WINDOW_WIDTH, MINIMUM_WINDOW_HEIGHT);
         stage.setScene(scene);
         stage.sizeToScene();
         return (Initializable) loader.getController();
