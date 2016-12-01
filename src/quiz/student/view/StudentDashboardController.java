@@ -11,7 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import quiz.QuizDBImplementation;
 import quiz.QuizMain;
+import static quiz.results.view.StudentResultDashboardController.testTaken;
 
 /**
  * This class is the controller class for StudentDashboard fxml page; it has
@@ -78,7 +80,14 @@ public class StudentDashboardController implements Initializable {
 
     @FXML
     private void ResultDashboard(ActionEvent event) {
+        QuizDBImplementation qzImp = new QuizDBImplementation();
+        testTaken = qzImp.getStudentResults(QuizMain.loginName);
+        if (testTaken.size() == 0) {
+            application.noData();
+        } 
+        else {
         application.goTOStudentStats();
+        }
     }
 
 }
