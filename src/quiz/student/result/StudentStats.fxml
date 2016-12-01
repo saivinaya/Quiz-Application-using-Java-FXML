@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.result.StudentStatsController">
    <children>
-      <Pane fx:id="Statistics" prefHeight="850.0" prefWidth="1000.0">
+      <Pane fx:id="Statistics" prefHeight="850.0" prefWidth="1000.0" styleClass="background" stylesheets="@../../login/view/Login.css">
          <children>
             <Label alignment="CENTER" layoutX="384.0" layoutY="160.0" prefHeight="45.0" prefWidth="252.0" text="Student Statistics" textFill="#3c11c9">
                <font>

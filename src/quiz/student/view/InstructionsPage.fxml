@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.InstructionsPageController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" styleClass="background" stylesheets="@../../login/view/Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.InstructionsPageController">
    <children>
       <Label layoutX="407.0" layoutY="196.0" prefHeight="47.0" prefWidth="186.0" text="INSTRUCTIONS" textFill="#e40d0d">
          <font>

@@ -14,6 +14,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import quiz.QuizDBImplementation;
 import quiz.QuizMain;
 
@@ -38,7 +40,7 @@ public class SignUpController implements Initializable {
     private PasswordField password2;
     @FXML
     private ComboBox<String> role;
-
+    
     /**
      * setApp: used to set the fxml
      *
@@ -57,6 +59,7 @@ public class SignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ;
         //IF the user is admin then the drop down options are Student and Admin
         try {
             if (QuizMain.role.equals("Admin")) {

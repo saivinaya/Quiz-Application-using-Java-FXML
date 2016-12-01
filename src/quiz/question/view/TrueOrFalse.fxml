@@ -8,9 +8,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.TrueOrFalseController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.question.view.TrueOrFalseController">
     <stylesheets>
         <URL value="@fxml.css" />
+      <URL value="@../../login/view/Login.css" />
     </stylesheets>
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="382.0" layoutY="33.0" prefHeight="27.0" prefWidth="249.0" text="QUIZ" underline="true" />
@@ -41,4 +42,8 @@
          </children>
       </Pane>
    </children>
+   <styleClass>
+      <String fx:value="mainFxmlClass" />
+      <String fx:value="background" />
+   </styleClass>
 </AnchorPane>
