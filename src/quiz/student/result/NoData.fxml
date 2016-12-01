@@ -16,7 +16,10 @@
             <AnchorPane fx:id="Display" layoutX="12.0" layoutY="74.0" prefHeight="638.0" prefWidth="977.0">
                <children>
                   <Label fx:id="statsLabel" layoutX="78.0" layoutY="73.0" prefHeight="33.0" prefWidth="500.0" textAlignment="JUSTIFY" textFill="#f04141" />
-                  <Label contentDisplay="CENTER" layoutX="410.0" layoutY="226.0" prefHeight="120.0" prefWidth="157.0" text="No data to display!!!" textAlignment="CENTER" />
+                  <Label contentDisplay="CENTER" layoutX="389.0" layoutY="259.0" prefHeight="120.0" prefWidth="228.0" text="No data to display." textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
                   <Label fx:id="statsMainLabel" alignment="CENTER" layoutX="377.0" layoutY="45.0" prefHeight="45.0" prefWidth="252.0" text="Student Statistics" textFill="#3c11c9" underline="true">
                      <font>
                         <Font size="30.0" />
