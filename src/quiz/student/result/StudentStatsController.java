@@ -756,6 +756,10 @@ public class StudentStatsController implements Initializable {
         selectedPeriod = aSelectedPeriod;
     }
     
+    /**
+     * User goes to login page
+     * @param event 
+     */
     @FXML
     private void logout(ActionEvent event) {
         // call the logoutAccount() to logout of the application
