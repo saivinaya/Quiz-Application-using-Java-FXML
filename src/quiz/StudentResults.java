@@ -10,8 +10,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
- * @author Hari
+ * This is student Results class
+ * @author Kuhu
  */
 public class StudentResults implements Comparable<StudentResults> {
 
@@ -26,7 +26,20 @@ public class StudentResults implements Comparable<StudentResults> {
     private int lodHardCorrect;
     private int skippedQuestions;
     private Date testDate;
-
+/**
+ * Constructor that set StudentResults values
+ * @param loginName name
+ * @param lodEasyQuestions number of easy questions
+ * @param lodMediumQuestions number of medium questions
+ * @param lodHardQuestions number of hard questions
+ * @param totalQuestions number of total questions
+ * @param totalCorrect number of total correct questions
+ * @param lodEasyCorrect number of total easy correct questions
+ * @param lodMediumCorrect number of total medium correct questions
+ * @param lodHardCorrect number of total hard correct questions
+ * @param skippedQuestions number of total skipped questions
+ * @param testDate 
+ */
     public StudentResults(String loginName, int lodEasyQuestions, int lodMediumQuestions, int lodHardQuestions, int totalQuestions, int totalCorrect, int lodEasyCorrect, int lodMediumCorrect, int lodHardCorrect, int skippedQuestions, Date testDate) {
         this.loginName = loginName;
         this.lodEasyQuestions = lodEasyQuestions;
@@ -41,104 +54,180 @@ public class StudentResults implements Comparable<StudentResults> {
         this.testDate = testDate;
     }
 
-    public int getSkippedQuestions() {
-        return skippedQuestions;
-    }
-
-    public void setSkippedQuestions(int skippedQuestions) {
-        this.skippedQuestions = skippedQuestions;
-    }
-
+    
+/**
+ * No-arg constructor
+ */
     public StudentResults() {
 
     }
-
+    
+    /**
+     * get login name
+     * @return login name
+     */
     public String getLoginName() {
         return loginName;
     }
 
+    /**
+     * set login name
+     */
     public void setLoginName(String loginName) {
         this.loginName = loginName;
     }
 
+    /**
+     * get  lod easy
+     * @return lod easy
+     */
     public int getLodEasyQuestions() {
         return lodEasyQuestions;
     }
 
+    /**
+     * set  lod easy
+     */
     public void setLodEasyQuestions(int lodEasyQuestions) {
         this.lodEasyQuestions = lodEasyQuestions;
     }
 
+    /**
+     * get  lod medium
+     * @return lod easy
+     */
     public int getLodMediumQuestions() {
         return lodMediumQuestions;
     }
 
+    /**
+     * set  lod medium
+     */
     public void setLodMediumQuestions(int lodMediumQuestions) {
         this.lodMediumQuestions = lodMediumQuestions;
     }
 
+    /**
+     * get  lod hard
+     * @return lod hard
+     */
     public int getLodHardQuestions() {
         return lodHardQuestions;
     }
 
+    /**
+     * set  lod hard
+     */
     public void setLodHardQuestions(int lodHardQuestions) {
         this.lodHardQuestions = lodHardQuestions;
     }
 
+    /**
+     * get  total questions
+     * @return total questions
+     */
     public int getTotalQuestions() {
         return totalQuestions;
     }
+    
+    /**
+     * set  total questions
+     */
 
     public void setTotalQuestions(int totalQuestions) {
         this.totalQuestions = totalQuestions;
     }
 
-    public int getLodEasyCorrect() {
-        return lodEasyCorrect;
-    }
-
-    public void setLodEasyCorrect(int lodEasyCorrect) {
-        this.lodEasyCorrect = lodEasyCorrect;
-    }
-
-    public int getLodMediumCorrect() {
-        return lodMediumCorrect;
-    }
-
-    public void setLodMediumCorrect(int lodMediumCorrect) {
-        this.lodMediumCorrect = lodMediumCorrect;
-    }
-
-    public int getLodHardCorrect() {
-        return lodHardCorrect;
-    }
-
-    public void setLodHardCorrect(int lodHardCorrect) {
-        this.lodHardCorrect = lodHardCorrect;
-    }
-
-    public Date getTestDate() {
-        return testDate;
-    }
-
-    public void setTestDate(Date testDate) {
-        this.testDate = testDate;
-    }
-
     /**
-     * @return the totalCorrect
+     * get  total correct questions
+     * @return total correct questions
      */
     public int getTotalCorrect() {
         return totalCorrect;
     }
 
     /**
-     * @param totalCorrect the totalCorrect to set
+     * set  total correct questions
      */
     public void setTotalCorrect(int totalCorrect) {
         this.totalCorrect = totalCorrect;
     }
 
+    /**
+     * get  easy correct questions
+     * @return easyl correct questions
+     */
+    public int getLodEasyCorrect() {
+        return lodEasyCorrect;
+    }
+
+    /**
+     * set  easy correct questions
+     */
+    public void setLodEasyCorrect(int lodEasyCorrect) {
+        this.lodEasyCorrect = lodEasyCorrect;
+    }
+
+/**
+     * get  medium correct questions
+     * @return medium correct questions
+     */
+    public int getLodMediumCorrect() {
+        return lodMediumCorrect;
+    }
+/**
+     * set  medium correct questions
+     */
+    public void setLodMediumCorrect(int lodMediumCorrect) {
+        this.lodMediumCorrect = lodMediumCorrect;
+    }
+/**
+     * get  hard correct questions
+     * @return hard correct questions
+     */
+    public int getLodHardCorrect() {
+        return lodHardCorrect;
+    }
+/**
+     * set  hard correct questions
+     */
+    public void setLodHardCorrect(int lodHardCorrect) {
+        this.lodHardCorrect = lodHardCorrect;
+    }
+/**
+     * get  skipped questions
+     * @return skipped questions
+     */
+    public int getSkippedQuestions() {
+        return skippedQuestions;
+    }
+
+    /**
+     * set  skipped questions
+     */
+    public void setSkippedQuestions(int skippedQuestions) {
+        this.skippedQuestions = skippedQuestions;
+    }
+/**
+     * get  test date
+     * @return test date
+     */
+    public Date getTestDate() {
+        return testDate;
+    }
+/**
+     * set  test date
+     */
+    public void setTestDate(Date testDate) {
+        this.testDate = testDate;
+    }
+
+    
+    /**
+     * compares two objects with respect to date
+     * @param o
+     * @return 
+     */
     @Override
     public int compareTo(StudentResults o) {
         if (getTestDate() == null || o.getTestDate() == null) {
