@@ -11,12 +11,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="850" prefWidth="850" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.admin.view.UploadFileController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="202.0" layoutY="72.0" prefHeight="46.0" prefWidth="309.0" text="Upload File" textAlignment="JUSTIFY" textFill="#4210da">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="196.0" prefHeight="46.0" prefWidth="309.0" text="Upload File" textAlignment="JUSTIFY" textFill="#4210da">
             <font>
                 <Font size="36.0" />
             </font>
         </Label>
-        <HBox layoutX="102.0" layoutY="281.0" prefHeight="46.0" prefWidth="510.0">
+        <HBox layoutX="173.0" layoutY="425.0" prefHeight="46.0" prefWidth="505.0">
             <children>
                 <Label prefHeight="50.0" prefWidth="103.0" text="Upload File" />
                 <TextField fx:id="fileName" prefHeight="47.0" prefWidth="187.0" />
@@ -24,15 +24,15 @@
                 <Button mnemonicParsing="false" onAction="#onClickChooseFile" prefHeight="44.0" prefWidth="88.0" text="Browse" />
             </children>
         </HBox>
-        <HBox layoutX="202.0" layoutY="372.0" prefHeight="44.0" prefWidth="376.0">
+        <HBox layoutX="302.0" layoutY="540.0" prefHeight="44.0" prefWidth="291.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#onClickBackButton" prefHeight="44.0" prefWidth="88.0" text="Back" />
                 <Region prefHeight="44.0" prefWidth="59.0" />
                 <Button mnemonicParsing="false" onAction="#onClickFileUpload" prefHeight="44.0" prefWidth="88.0" text="Upload" />
             </children>
         </HBox>
-      <Button layoutX="558.0" layoutY="28.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
-      <Label layoutX="102.0" layoutY="213.0" prefHeight="20.0" prefWidth="362.0" text="Please Browse the file you want to Upload">
+      <Button layoutX="678.0" layoutY="27.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Label alignment="CENTER" layoutX="218.0" layoutY="341.0" prefHeight="20.0" prefWidth="362.0" text="Please Browse the file you want to Upload" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
