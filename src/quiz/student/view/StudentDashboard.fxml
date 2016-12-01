@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.StudentDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" styleClass="background" stylesheets="@../../login/view/Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.StudentDashboardController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="102.0" prefHeight="44.0" prefWidth="356.0" text="Dashboard" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
