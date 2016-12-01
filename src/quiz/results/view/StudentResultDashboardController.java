@@ -33,6 +33,10 @@ import quiz.StudentResults;
 public class StudentResultDashboardController implements Initializable {
 
     private QuizMain application;
+
+    /**
+     *
+     */
     public static ArrayList<StudentResults> testTaken = new ArrayList<>();
     @FXML
     private Hyperlink testResult1;
@@ -53,11 +57,17 @@ public class StudentResultDashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
 
+    /**
+     *
+     * @param application
+     */
     public void setApp(QuizMain application) {
         this.application = application;
         QuizDBImplementation qzImp = new QuizDBImplementation();
@@ -155,6 +165,11 @@ public class StudentResultDashboardController implements Initializable {
         application.gotoQuizSummaryPage(resultTest7, true);
     }
 
+    /**
+     *
+     * @param temp
+     * @return
+     */
     public int[] testResultArray(StudentResults temp) {
         int[] resultTest = new int[5];
         resultTest[0] = temp.getTotalQuestions();

@@ -73,12 +73,20 @@ public class QuizSummaryViewController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
+    /**
+     *
+     * @param application
+     * @param rltArray
+     * @param flag
+     */
     public void setApp(QuizMain application, int[] rltArray, boolean flag) {
         this.application = application;
         backResultDashboard.setVisible(flag);
@@ -136,6 +144,10 @@ public class QuizSummaryViewController implements Initializable {
         application.logoutAccount();
     }
 
+    /**
+     *
+     * @param e
+     */
     @FXML
     public void saveToPdf(ActionEvent e) {
         FileChooser chooser = new FileChooser();
