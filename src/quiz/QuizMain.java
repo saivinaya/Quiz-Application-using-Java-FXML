@@ -84,6 +84,8 @@ public class QuizMain extends Application {
                 stage.setMaximized(false);
         });
             //call the login page
+            QuizHelper qzhelp= new QuizHelper();
+            qzhelp.createTable();
             gotoLogin();
             primaryStage.show();
         } catch (Exception ex) {

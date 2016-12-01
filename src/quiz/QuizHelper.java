@@ -15,6 +15,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -179,4 +183,53 @@ public class QuizHelper {
         Path out = Paths.get(fileName);
         Files.write(out,content,Charset.defaultCharset(),StandardOpenOption.CREATE);
      }//end of method FileWriter
+    
+    public void createTable() throws SQLException
+    {
+        try{
+        Connection conn = QuizHelper.setConnection();
+        Statement statement = conn.createStatement();
+        DatabaseMetaData dbm = conn.getMetaData();
+            // check if "Quiz" table is there or not, if not there create the table if it is there do not recreate it again.
+            ResultSet tables = dbm.getTables(null, null, "QUESTION", null);
+            if (!tables.next()) 
+            {
+                statement.executeUpdate("create table QUESTION(QUESTION_TYPE VARCHAR(30),QUESTION_DESCRIPTION CLOB, DIFFICULTY_LEVEL VARCHAR(10), CHOICE_1 CLOB, CHOICE_2 CLOB, CHOICE_3 CLOB, CHOICE_4 CLOB, ANSWER_1 BOOLEAN, ANSWER_2 BOOLEAN, ANSWER_3 BOOLEAN, ANSWER_4 BOOLEAN, T_OR_F_ANSWER BOOLEAN, FIB_ANSWER VARCHAR(300))");
+            }
+            ResultSet tables1 = dbm.getTables(null, null, "TEST_RESULTS", null);
+            if (!tables1.next()) 
+            {   
+                statement.executeUpdate("create table TEST_RESULTS(LOGIN_NAME VARCHAR(30), LOD_EASY_QUESTIONS  INTEGER, LOD_MEDIUM_QUESTIONS  INTEGER, LOD_HARD_QUESTIONS  INTEGER, TOTAL_QUESTIONS INTEGER, LOD_EASY_CORRECT  INTEGER,  LOD_MEDIUM_CORRECT  INTEGER, LOD_HARD_CORRECT  INTEGER, SKIPPED_QUESTIONS  INTEGER, TEST_TAKEN_DATE DATE)");
+            }
+            ResultSet tables2 = dbm.getTables(null, null, "USERS", null);
+            if (!tables2.next()) 
+            {   statement.executeUpdate("create table USERS(LOGIN_NAME VARCHAR(30) PRIMARY KEY, USER_NAME VARCHAR(100), PASSWORD VARCHAR(30), UNI_ROLE VARCHAR(30))");
+                System.out.println("Before insert");
+                String query = "insert into USERS(select ?,?,?,? from SYSIBM.SYSDUMMY1 where not exists (select 1 from USERS inr where inr.login_name=?))";
+                PreparedStatement pstm = conn.prepareStatement(query);
+                pstm.setString(1,"admin");
+                pstm.setString(2,"Main Admin");
+                pstm.setString(3,"admin");
+                pstm.setString(4,"Admin");
+                pstm.setString(5,"admin");
+                pstm.executeUpdate();
+                conn.commit();
+            }
+            else
+            {
+                String query = "insert into USERS(select ?,?,?,? from SYSIBM.SYSDUMMY1 where not exists (select 1 from USERS inr where inr.login_name=?))";
+                PreparedStatement pstm = conn.prepareStatement(query);
+                pstm.setString(1,"admin");
+                pstm.setString(2,"Main Admin");
+                pstm.setString(3,"admin");
+                pstm.setString(4,"Admin");
+                pstm.setString(5,"admin");
+                pstm.executeUpdate();
+                conn.commit();
+            }
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }//end of QuizHelper
