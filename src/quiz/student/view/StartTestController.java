@@ -37,15 +37,43 @@ import quiz.QuizDBImplementation;
 public class StartTestController implements Initializable {
 
     private QuizMain application;
+
+    /**
+     *
+     */
     public QuizDBImplementation fetchQuestions;
+
+    /**
+     *
+     */
     public static ArrayList<Question> questionsForTest = new ArrayList<Question>();
+
+    /**
+     *
+     */
     public static int maxSkip = 0;
+
+    /**
+     *
+     */
     public static int numSkip = 0;
 
     ObservableList<String> diffLevelList = FXCollections.observableArrayList();
     ObservableList<Integer> numOfQuestionsList = FXCollections.observableArrayList();
+
+    /**
+     *
+     */
     public static int selectednumOfQuestions = 0;
+
+    /**
+     *
+     */
     public static String selectedDifficulty = null;
+
+    /**
+     *
+     */
     public static int questionCounter = 0;
     int noOfEasy;
     int noOfMedium;
@@ -72,6 +100,8 @@ public class StartTestController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -81,6 +111,10 @@ public class StartTestController implements Initializable {
         numOfQuestions.setDisable(true);
     }
 
+    /**
+     *
+     * @param application
+     */
     public void setApp(QuizMain application) {
         this.application = application;
         // getting how many questions are avaiable in each difficulty level

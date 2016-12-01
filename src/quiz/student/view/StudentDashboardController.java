@@ -31,6 +31,8 @@ public class StudentDashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,6 +50,10 @@ public class StudentDashboardController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param application
+     */
     public void setApp(QuizMain application) {
         this.application = application;
         loginName.setText(QuizMain.loginName);
