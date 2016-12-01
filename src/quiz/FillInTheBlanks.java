@@ -19,10 +19,8 @@ public class FillInTheBlanks extends Question {
     private String ans;
     private String userInput;
 
-    //default constructor
-
     /**
-     *
+     * //default constructor
      */
     public FillInTheBlanks() {
     }
