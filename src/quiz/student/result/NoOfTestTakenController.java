@@ -264,7 +264,8 @@ FileChooser chooser = new FileChooser();
     
     /**
      * User goes to login page
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void logout(ActionEvent event) {
