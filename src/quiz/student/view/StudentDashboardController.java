@@ -70,4 +70,9 @@ public class StudentDashboardController implements Initializable {
         application.logoutAccount();
     }
 
+    @FXML
+    private void ResultDashboard(ActionEvent event) {
+        application.goTOStudentStats();
+    }
+
 }
