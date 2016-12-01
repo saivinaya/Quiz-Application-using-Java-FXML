@@ -11,49 +11,106 @@ package quiz;
  */
 public abstract class Question {
 
+    /**
+     *
+     */
     protected String QuestionType;
+
+    /**
+     *
+     */
     protected String LevelOfDifficulty;
+
+    /**
+     *
+     */
     protected String Questiondesc;
+
+    /**
+     *
+     */
     protected boolean skipQuestion;
 
     //default constructor
+
+    /**
+     *
+     */
     public Question() {
     }
 
+    /**
+     *
+     * @param QuestionType the type of question
+     * @param LevelOfDifficulty the difficulty level of the question
+     * @param Questiondesc the question description
+     */
     public Question(String QuestionType, String LevelOfDifficulty, String Questiondesc) {
         this.QuestionType = QuestionType;
         this.LevelOfDifficulty = LevelOfDifficulty;
         this.Questiondesc = Questiondesc;
     }
 
+    /**
+     *
+     * @return the question type
+     */
     public String getQuestionType() {
         return QuestionType;
     }
 
+    /**
+     *
+     * @param QuestionType type of question
+     */
     public void setQuestionType(String QuestionType) {
         this.QuestionType = QuestionType;
     }
 
+    /**
+     *
+     * @return the difficulty level of the question
+     */
     public String getLevelOfDifficulty() {
         return LevelOfDifficulty;
     }
 
+    /**
+     *
+     * @param LevelOfDifficulty the difficulty level of the question
+     */
     public void setLevelOfDifficulty(String LevelOfDifficulty) {
         this.LevelOfDifficulty = LevelOfDifficulty;
     }
 
+    /**
+     *
+     * @return the question description
+     */
     public String getQuestiondesc() {
         return Questiondesc;
     }
 
+    /**
+     *
+     * @param Questiondesc the question description
+     */
     public void setQuestiondesc(String Questiondesc) {
         this.Questiondesc = Questiondesc;
     }
 
+    /**
+     *
+     * @return is to know if question has been skipped
+     */
     public boolean isSkipQuestion() {
         return skipQuestion;
     }
 
+    /**
+     *
+     * @param skipQuestion question skipped or not
+     */
     public void setSkipQuestion(boolean skipQuestion) {
         this.skipQuestion = skipQuestion;
     }
@@ -62,6 +119,11 @@ public abstract class Question {
     public String toString() {
         return "Question{" + "QuestionType=" + QuestionType + ", LevelOfDifficulty=" + LevelOfDifficulty + ", Questiondesc=" + Questiondesc + ", skipQuestion=" + skipQuestion + '}';
     }
+
+    /**
+     *
+     * @return
+     */
     public abstract boolean validateAnswer();
 
 }

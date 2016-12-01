@@ -20,26 +20,53 @@ public class FillInTheBlanks extends Question {
     private String userInput;
 
     //default constructor
+
+    /**
+     *
+     */
     public FillInTheBlanks() {
     }
 
+    /**
+     *
+     * @param QuestionType type of question
+     * @param LevelOfDifficulty difficulty level of the question
+     * @param Questiondesc description of the question
+     * @param ans answer for the question
+     */
     public FillInTheBlanks(String QuestionType, String LevelOfDifficulty, String Questiondesc, String ans) {
         super(QuestionType, LevelOfDifficulty, Questiondesc);
         this.ans = ans;
     }
 
+    /**
+     *
+     * @return answer for the question
+     */
     public String getAns() {
         return ans;
     }
 
+    /**
+     *
+     * @param ans answer for the question
+     */
     public void setAns(String ans) {
         this.ans = ans;
     }
 
+    /**
+     *
+     * @return user input for the question
+     */
     public String getUserInput() {
         return userInput;
     }
 
+    /**
+     *
+     * @param userInput user input for the question
+     */
     public void setUserInput(String userInput) {
         this.userInput = userInput;
     }

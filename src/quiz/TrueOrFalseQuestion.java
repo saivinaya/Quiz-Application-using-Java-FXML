@@ -21,34 +21,69 @@ public class TrueOrFalseQuestion extends Question {
     private boolean userInputFalse;
 
     //default constructor
+
+    /**
+     *
+     */
     public TrueOrFalseQuestion() {
     }
 
+    /**
+     *
+     * @param QuestionType type of the question
+     * @param LevelOfDifficulty difficulty level of the question
+     * @param Questiondesc question description
+     * @param ans answer for the question
+     */
     public TrueOrFalseQuestion(String QuestionType, String LevelOfDifficulty, String Questiondesc, boolean ans) {
         super(QuestionType, LevelOfDifficulty, Questiondesc);
         this.ans = ans;
     }
 
+    /**
+     *
+     * @return answer for the question
+     */
     public boolean isAns() {
         return ans;
     }
 
+    /**
+     *
+     * @param ans answer for the question
+     */
     public void setAns(boolean ans) {
         this.ans = ans;
     }
 
+    /**
+     *
+     * @return the user input for true choice
+     */
     public boolean isUserInputTrue() {
         return userInputTrue;
     }
 
+    /**
+     *
+     * @param userInputTrue the user input for true choice
+     */
     public void setUserInputTrue(boolean userInputTrue) {
         this.userInputTrue = userInputTrue;
     }
 
+    /**
+     *
+     * @return the user input for false choice
+     */
     public boolean isUserInputFalse() {
         return userInputFalse;
     }
 
+    /**
+     *
+     * @param userInputFalse the user input for false choice
+     */
     public void setUserInputFalse(boolean userInputFalse) {
         this.userInputFalse = userInputFalse;
     }
