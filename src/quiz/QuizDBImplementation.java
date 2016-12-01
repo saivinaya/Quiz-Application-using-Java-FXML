@@ -401,7 +401,6 @@ public class QuizDBImplementation implements QuizDBDAO {
      */
     public User selectUser(String loginName, String password) {
         User user = null;
-        System.out.println("loginName"+loginName+"password"+password);
         String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName + "' AND PASSWORD = '" + password + "'"; 
         try{
             Connection conn = QuizHelper.setConnection();
@@ -425,16 +424,13 @@ public class QuizDBImplementation implements QuizDBDAO {
     public boolean selectUser(String loginName) {
         User user = null;
         boolean returnFlag=true;//default flag
-        System.out.println("loginName"+loginName);
         String query = "SELECT * FROM USERS WHERE LOGIN_NAME = '" + loginName+"'"; 
-            System.out.println("query:"+query);
         try{
             Connection conn = QuizHelper.setConnection();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while(rs.next()){
                 //set the flag to false if data exists
-                System.out.println("data present");
                 returnFlag=false;
             }
             
