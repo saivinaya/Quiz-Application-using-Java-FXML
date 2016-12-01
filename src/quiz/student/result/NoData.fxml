@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.result.NoData">
+   <children>
+      <Pane fx:id="Statistics" prefHeight="850.0" prefWidth="1000.0" styleClass="background" stylesheets="@../../login/view/Login.css">
+         <children>
+            <Button fx:id="back" layoutX="95.0" layoutY="720.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="120.0" text="Back" />
+            <AnchorPane fx:id="Display" layoutX="12.0" layoutY="74.0" prefHeight="638.0" prefWidth="977.0">
+               <children>
+                  <Label fx:id="statsLabel" layoutX="78.0" layoutY="73.0" prefHeight="33.0" prefWidth="500.0" textAlignment="JUSTIFY" textFill="#f04141" />
+                  <Label contentDisplay="CENTER" layoutX="410.0" layoutY="226.0" prefHeight="120.0" prefWidth="157.0" text="No data to display!!!" textAlignment="CENTER" />
+                  <Label fx:id="statsMainLabel" alignment="CENTER" layoutX="377.0" layoutY="45.0" prefHeight="45.0" prefWidth="252.0" text="Student Statistics" textFill="#3c11c9" underline="true">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+         </children>
+      </Pane>
+      <Button layoutX="836.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+   </children>
+</AnchorPane>
