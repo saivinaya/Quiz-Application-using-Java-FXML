@@ -72,6 +72,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set login name
+     * @param loginName
      */
     public void setLoginName(String loginName) {
         this.loginName = loginName;
@@ -87,6 +88,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  lod easy
+     * @param lodEasyQuestions
      */
     public void setLodEasyQuestions(int lodEasyQuestions) {
         this.lodEasyQuestions = lodEasyQuestions;
@@ -102,6 +104,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  lod medium
+     * @param lodMediumQuestions
      */
     public void setLodMediumQuestions(int lodMediumQuestions) {
         this.lodMediumQuestions = lodMediumQuestions;
@@ -117,6 +120,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  lod hard
+     * @param lodHardQuestions
      */
     public void setLodHardQuestions(int lodHardQuestions) {
         this.lodHardQuestions = lodHardQuestions;
@@ -132,6 +136,7 @@ public class StudentResults implements Comparable<StudentResults> {
     
     /**
      * set  total questions
+     * @param totalQuestions
      */
 
     public void setTotalQuestions(int totalQuestions) {
@@ -148,6 +153,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  total correct questions
+     * @param totalCorrect
      */
     public void setTotalCorrect(int totalCorrect) {
         this.totalCorrect = totalCorrect;
@@ -155,7 +161,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * get  easy correct questions
-     * @return easyl correct questions
+     * @return easy correct questions
      */
     public int getLodEasyCorrect() {
         return lodEasyCorrect;
@@ -163,6 +169,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  easy correct questions
+     * @param lodEasyCorrect
      */
     public void setLodEasyCorrect(int lodEasyCorrect) {
         this.lodEasyCorrect = lodEasyCorrect;
@@ -177,6 +184,7 @@ public class StudentResults implements Comparable<StudentResults> {
     }
 /**
      * set  medium correct questions
+     * @param lodMediumCorrect
      */
     public void setLodMediumCorrect(int lodMediumCorrect) {
         this.lodMediumCorrect = lodMediumCorrect;
@@ -190,6 +198,7 @@ public class StudentResults implements Comparable<StudentResults> {
     }
 /**
      * set  hard correct questions
+     * @param lodHardCorrect
      */
     public void setLodHardCorrect(int lodHardCorrect) {
         this.lodHardCorrect = lodHardCorrect;
@@ -204,6 +213,7 @@ public class StudentResults implements Comparable<StudentResults> {
 
     /**
      * set  skipped questions
+     * @param skippedQuestions
      */
     public void setSkippedQuestions(int skippedQuestions) {
         this.skippedQuestions = skippedQuestions;
@@ -217,6 +227,7 @@ public class StudentResults implements Comparable<StudentResults> {
     }
 /**
      * set  test date
+     * @param testDate
      */
     public void setTestDate(Date testDate) {
         this.testDate = testDate;
