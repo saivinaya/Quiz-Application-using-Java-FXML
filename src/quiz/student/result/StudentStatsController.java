@@ -82,6 +82,7 @@ public class StudentStatsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -143,7 +144,7 @@ public class StudentStatsController implements Initializable {
     /**
      * This sets main application
      *
-     * @param application
+     * @param application main application
      */
     public void setApp(QuizMain application) {
         this.setApplication(application);
