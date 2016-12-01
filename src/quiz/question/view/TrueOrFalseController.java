@@ -143,7 +143,7 @@ public class TrueOrFalseController implements Initializable {
         // warning if more than 20% are skipped
         if (numSkip >= maxSkip)
         {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip manimum of maxSkip questions only.", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "You cannot skip any more questions. You can skip maximum of " + maxSkip + " questions only.", ButtonType.OK);
             alert.showAndWait();
         }
         // if the user gives an answer then need to throw a confirmation asking if he want to remove the answer and proceed or do not remove
