@@ -263,7 +263,12 @@ public class StudentStatsController implements Initializable {
      */
     @FXML
     public void goBack(ActionEvent event) {
+        if(QuizMain.role.equals("Admin"))
         getApplication().gotoAdminDashboard();
+        else{
+            getApplication().gotoStudentDashboard();
+        }
+            
     }
 
     /**
