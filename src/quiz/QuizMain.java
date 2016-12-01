@@ -73,9 +73,10 @@ public class QuizMain extends Application {
     public void start(Stage primaryStage) {
         try {
             stage = primaryStage;
-            stage.setTitle("Java Quiz");
+            stage.setTitle("Quiz");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+            stage.centerOnScreen();
             //call the login page
             gotoLogin();
             primaryStage.show();
@@ -393,6 +394,7 @@ public class QuizMain extends Application {
         Scene scene = new Scene(page, MINIMUM_WINDOW_WIDTH, MINIMUM_WINDOW_HEIGHT);
         stage.setScene(scene);
         stage.sizeToScene();
+        stage.setResizable(true);
         return (Initializable) loader.getController();
     }
 

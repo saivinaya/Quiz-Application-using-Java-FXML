@@ -16,7 +16,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="TOP" layoutX="157.0" layoutY="235.0" prefHeight="51.0" prefWidth="135.0" text="Welcome" textFill="#b51010" underline="true">
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="117.0" layoutY="235.0" prefHeight="51.0" prefWidth="135.0" text="Welcome" textFill="#b51010" underline="true">
          <font>
             <Font size="30.0" />
          </font>
@@ -39,7 +39,7 @@
          </padding>
       </VBox>
       <Button layoutX="697.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
-      <Label fx:id="loginName" contentDisplay="TOP" layoutX="295.0" layoutY="235.0" prefHeight="51.0" prefWidth="261.0" textFill="#b51010">
+      <Label fx:id="loginName" contentDisplay="TOP" layoutX="255.0" layoutY="235.0" prefHeight="51.0" prefWidth="356.0" textFill="#b51010">
          <font>
             <Font size="30.0" />
          </font>
