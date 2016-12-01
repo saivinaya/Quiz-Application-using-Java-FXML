@@ -59,7 +59,10 @@ public class NoData implements Initializable {
      */
     @FXML
     public void goBack() {
+        if(QuizMain.role.equals("Admin"))
         application.goTOStudentStats();
+        else
+        application.gotoStudentDashboard();
     }
 
     /**
