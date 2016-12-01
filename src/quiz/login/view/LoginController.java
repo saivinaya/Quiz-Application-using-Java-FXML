@@ -36,8 +36,6 @@ public class LoginController implements Initializable {
     private Label errorMessage;
     @FXML
     private Button signIn;
-    @FXML
-    ImageView image;
 
     /**
      * Initializes the controller class.
@@ -47,17 +45,7 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image im = new Image(getClass().getResource("CMU_Hamerschlag_Hall.jpg")
-                    .toString());
-          image.setImage(im);
-          image.setStyle("-fx-background-color: BLACK");
-          image.setFitWidth(100);
-         image.setPreserveRatio(true);
-         image.setSmooth(true);
-         image.setCache(true);
-         image.setFitHeight(850);
-image.setFitWidth(850);
-         
+
     }
 
     /**
