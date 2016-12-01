@@ -382,7 +382,7 @@ public class StudentStatsController implements Initializable {
         }
         int monthPass = 0, quarterPass = 0, yearPass = 0;
         for (int i = 0; i < getMonthly().size(); i++) {
-            if (((getMonthly().get(i).getTotalCorrect() * 10.0) / (getMonthly().get(i).getTotalQuestions() * 10.0)) > 0.4) {
+            if (((getMonthly().get(i).getTotalCorrect() * 10.0) / (getMonthly().get(i).getTotalQuestions() * 10.0)) >= 0.4) {
                 monthPass++;
             }
         }
@@ -390,7 +390,7 @@ public class StudentStatsController implements Initializable {
         failing[0] = monthly.size() - passing[0];
 
         for (int i = 0; i < getQuarterly().size(); i++) {
-            if (((getQuarterly().get(i).getTotalCorrect() * 10.0) / (getQuarterly().get(i).getTotalQuestions() * 10.0)) > 0.4) {
+            if (((getQuarterly().get(i).getTotalCorrect() * 10.0) / (getQuarterly().get(i).getTotalQuestions() * 10.0)) >= 0.4) {
                 quarterPass++;
             }
         }
@@ -398,7 +398,7 @@ public class StudentStatsController implements Initializable {
         failing[1] = quarterly.size() - passing[1];
 
         for (int i = 0; i < getYearly().size(); i++) {
-            if (((getYearly().get(i).getTotalCorrect() * 10.0) / (getYearly().get(i).getTotalQuestions() * 10.0)) > 0.4) {
+            if (((getYearly().get(i).getTotalCorrect() * 10.0) / (getYearly().get(i).getTotalQuestions() * 10.0)) >= 0.4) {
                 yearPass++;
             }
         }
