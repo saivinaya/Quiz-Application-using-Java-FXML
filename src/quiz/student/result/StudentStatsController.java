@@ -111,7 +111,11 @@ public class StudentStatsController implements Initializable {
         studDrop.setItems(studList);
 
     }
-
+    
+    /**
+     * This sets main application
+     * @param application 
+     */
     public void setApp(QuizMain application) {
         this.setApplication(application);
 
