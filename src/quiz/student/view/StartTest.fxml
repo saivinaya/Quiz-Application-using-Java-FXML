@@ -42,7 +42,7 @@
                   <ChoiceBox fx:id="diffLevel" layoutX="289.0" layoutY="81.0" onMouseClicked="#onDiffSelected" prefHeight="27.0" prefWidth="162.0" />
                </children>
             </Pane>
-            <Label fx:id="noQuestions" alignment="CENTER" layoutX="178.0" layoutY="159.0" prefHeight="18.0" prefWidth="345.0" text="No Questions Available to take a test." textFill="#3c11c9" visible="false">
+            <Label fx:id="noQuestions" alignment="CENTER" layoutX="339.0" layoutY="223.0" prefHeight="18.0" prefWidth="345.0" text="No Questions Available to take a test." textFill="#3c11c9" visible="false">
                <font>
                   <Font size="14.0" />
                </font>
