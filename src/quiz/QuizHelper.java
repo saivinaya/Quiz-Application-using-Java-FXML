@@ -164,20 +164,15 @@ public class QuizHelper {
         storeData.addStudentResults(result);
         return arrayCorrectQuestionType;
     }
-    
-        /**
-     * FileWriter: This method takes fileName and ArrayList of string as input
+     
+     /**
+      * FileWriter: This method takes fileName and ArrayList of string as input
      * and generates the output file
-     *
-     * @param fileName 
-     * @param1 Name of the file to print
-     * @param appendIndicator to append the data
-     * @throws FileNotFoundException 
-     * @throws IOException 
-     * @param2 Content to be printed
-     * @param1 Name of the file to print
-     * @param content to know the content
-     */
+      * @param fileName
+      * @param content
+      * @throws FileNotFoundException
+      * @throws IOException 
+      */
     public void FileWriter(String fileName, ArrayList<String> content) throws FileNotFoundException, IOException {
       //  File file = new java.io.File(fileName);
         Path out = Paths.get(fileName);

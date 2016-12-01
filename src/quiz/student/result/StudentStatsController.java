@@ -82,66 +82,69 @@ public class StudentStatsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        String loggerUser = QuizMain.loginName;
 
         getReport().setItems(getReportType());
         getPeriod().setItems(getPeriodList());
         report.setDisable(true);
         getPeriod().setDisable(true);
         getViewStats().setDisable(true);
-        QuizMain quizMain = new QuizMain();
-        if(quizMain.getLoggedUser().getUniRole().equals("admin")){
+
+        if (QuizMain.role.equals("Admin")) {
+
             QuizDBImplementation quiz = new QuizDBImplementation();
-        ArrayList<StudentResults> tempArr = new ArrayList<>();
-        tempArr = quiz.getStudentResults();
-        HashMap<String, Integer> student = new HashMap<>();
-        for (int i = 0; i < tempArr.size(); i++) {
-            if (student.containsKey(tempArr.get(i).getLoginName())) {
-                student.put(tempArr.get(i).getLoginName(), student.get(tempArr.get(i).getLoginName()) + 1);
-            } else {
-                student.put(tempArr.get(i).getLoginName(), 1);
+            ArrayList<StudentResults> tempArr = new ArrayList<>();
+            tempArr = quiz.getStudentResults();
+            HashMap<String, Integer> student = new HashMap<>();
+            for (int i = 0; i < tempArr.size(); i++) {
+                if (student.containsKey(tempArr.get(i).getLoginName())) {
+                    student.put(tempArr.get(i).getLoginName(), student.get(tempArr.get(i).getLoginName()) + 1);
+                } else {
+                    student.put(tempArr.get(i).getLoginName(), 1);
+                }
             }
-        }
 
-        studList.add(0, "All");
-        for (String s : student.keySet()) {
-            studList.add(s);
-        }
-
-        studDrop.setItems(studList);
-        }
-        else{
-        QuizDBImplementation quiz = new QuizDBImplementation();
-        ArrayList<StudentResults> tempArr = new ArrayList<>();
-        tempArr = quiz.getStudentResults();
-        HashMap<String, Integer> student = new HashMap<>();
-        for (int i = 0; i < tempArr.size(); i++) {
-            if(tempArr.get(i).getLoginName().equals(quizMain.getLoggedUser().getLoginName())){
-               if (student.containsKey(tempArr.get(i).getLoginName())) {
-                student.put(tempArr.get(i).getLoginName(), student.get(tempArr.get(i).getLoginName()) + 1);
-            } else {
-                student.put(tempArr.get(i).getLoginName(), 1);
-            } 
+            studList.add(0, "All");
+            for (String s : student.keySet()) {
+                studList.add(s);
             }
-            
-        }
-        
-        for (String s : student.keySet()) {
-            
-            studList.add(s);
-        }
 
-        studDrop.setItems(studList);
+            studDrop.setItems(studList);
+        } else {
+            QuizDBImplementation quiz = new QuizDBImplementation();
+            ArrayList<StudentResults> tempArr = new ArrayList<>();
+            tempArr = quiz.getStudentResults();
+            HashMap<String, Integer> student = new HashMap<>();
+            for (int i = 0; i < tempArr.size(); i++) {
+                if (tempArr.get(i).getLoginName().equals(loggerUser)) {
+                    if (student.containsKey(tempArr.get(i).getLoginName())) {
+                        student.put(tempArr.get(i).getLoginName(), student.get(tempArr.get(i).getLoginName()) + 1);
+                    } else {
+                        student.put(tempArr.get(i).getLoginName(), 1);
+                    }
+                }
+
+            }
+
+            for (String s : student.keySet()) {
+
+                studList.add(s);
+            }
+
+            studDrop.setItems(studList);
         }
-        
 
     }
-    
+
     /**
      * This sets main application
-     * @param application 
+     *
+     * @param application main application
      */
     public void setApp(QuizMain application) {
         this.setApplication(application);
@@ -237,20 +240,18 @@ public class StudentStatsController implements Initializable {
                 }
             }
         }
-        if(arr.size()==0){
+        if (arr.size() == 0) {
             application.noData();
-        }
-        else{
-        setArrayValues();
-        noOfSkippedQuestions();
-        noOfTestsTaken();
-        avgStudentScore();
-        scoresByLOD();
-        studentPassOrFail();
+        } else {
+            setArrayValues();
+            noOfSkippedQuestions();
+            noOfTestsTaken();
+            avgStudentScore();
+            scoresByLOD();
+            studentPassOrFail();
 
-        application.noOfTestsTaken();
+            application.noOfTestsTaken();
         }
-        
 
     }
 
@@ -792,10 +793,11 @@ public class StudentStatsController implements Initializable {
     public static void setSelectedPeriod(String aSelectedPeriod) {
         selectedPeriod = aSelectedPeriod;
     }
-    
+
     /**
      * User goes to login page
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void logout(ActionEvent event) {
