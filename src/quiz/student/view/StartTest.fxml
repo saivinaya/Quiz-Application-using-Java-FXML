@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.student.view.StartTestController">
    <children>
-      <Pane fx:id="allPane" prefHeight="850.0" prefWidth="1000.0">
+      <Pane fx:id="allPane" prefHeight="850.0" prefWidth="1000.0" styleClass="background" stylesheets="@../../login/view/Login.css">
          <children>
             <Label alignment="CENTER" layoutX="405.0" layoutY="122.0" prefHeight="13.0" prefWidth="190.0" text="Take Test" textFill="#3c11c9">
                <font>
