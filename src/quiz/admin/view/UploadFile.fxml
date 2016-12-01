@@ -31,7 +31,7 @@
                 <Button mnemonicParsing="false" onAction="#onClickFileUpload" prefHeight="44.0" prefWidth="88.0" text="Upload" />
             </children>
         </HBox>
-      <Button layoutX="802.0" layoutY="26.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
+      <Button layoutX="840.0" layoutY="41.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="120.0" text="Logout" />
       <Label alignment="CENTER" layoutX="293.0" layoutY="349.0" prefHeight="20.0" prefWidth="362.0" text="Please Browse the file you want to Upload" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
