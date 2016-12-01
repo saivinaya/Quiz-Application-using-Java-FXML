@@ -94,7 +94,7 @@ public class QuizSummaryViewController implements Initializable {
         totalScore.setText(Integer.toString((int) score));
         wrongAnswer.setText(Integer.toString((int) wrong));
         // passed if the student gets 40% marks
-        if ((double) (score / rltArray[0]) > 0.4) {
+        if ((double) (score / rltArray[0]) >= 0.4) {
             testResult.setText("Passed!");
         } else if ((double) (score / rltArray[0]) < 0.4) {
             testResult.setText("Failed!");
