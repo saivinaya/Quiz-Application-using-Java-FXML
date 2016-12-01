@@ -82,6 +82,7 @@ public class StudentStatsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -263,12 +264,12 @@ public class StudentStatsController implements Initializable {
      */
     @FXML
     public void goBack(ActionEvent event) {
-        if(QuizMain.role.equals("Admin"))
-        getApplication().gotoAdminDashboard();
-        else{
+        if (QuizMain.role.equals("Admin")) {
+            getApplication().gotoAdminDashboard();
+        } else {
             getApplication().gotoStudentDashboard();
         }
-            
+
     }
 
     /**
@@ -346,38 +347,83 @@ public class StudentStatsController implements Initializable {
             getAvgMedCorrect()[i] = 0;
             getAvgHardCorrect()[i] = 0;
         }
+        int[] easyTests = new int[3];
+        int[] medTests = new int[3];
+        int[] hardTests = new int[3];
         for (int i = 0; i < getMonthly().size(); i++) {
 
             getAvgEasyCorrect()[0] += getMonthly().get(i).getLodEasyCorrect();
+            if (getMonthly().get(i).getLodEasyCorrect() != 0) {
+                easyTests[0]++;
+            }
             getAvgMedCorrect()[0] += getMonthly().get(i).getLodMediumCorrect();
+            if (getMonthly().get(i).getLodMediumCorrect() != 0) {
+                medTests[0]++;
+            }
             getAvgHardCorrect()[0] += getMonthly().get(i).getLodHardCorrect();
+            if (getMonthly().get(i).getLodHardCorrect() != 0) {
+                hardTests[0]++;
+            }
         }
 
-        getAvgEasyCorrect()[0] = getAvgEasyCorrect()[0] / getMonthly().size();
-        getAvgMedCorrect()[0] = getAvgMedCorrect()[0] / getMonthly().size();
-        getAvgHardCorrect()[0] = getAvgHardCorrect()[0] / getMonthly().size();
-        
+        if (easyTests[0] != 0) {
+            getAvgEasyCorrect()[0] = getAvgEasyCorrect()[0] / easyTests[0];
+        }
+        if (medTests[0] != 0) {
+            getAvgMedCorrect()[0] = getAvgMedCorrect()[0] / medTests[0];
+        }
+        if (hardTests[0] != 0) {
+            getAvgHardCorrect()[0] = getAvgHardCorrect()[0] / hardTests[0];
+        }
+
         for (int i = 0; i < getQuarterly().size(); i++) {
 
             getAvgEasyCorrect()[1] += getQuarterly().get(i).getLodEasyCorrect();
+            if (getQuarterly().get(i).getLodEasyCorrect() != 0) {
+                easyTests[1]++;
+            }
             getAvgMedCorrect()[1] += getQuarterly().get(i).getLodMediumCorrect();
+            if (getQuarterly().get(i).getLodMediumCorrect() != 0) {
+                medTests[1]++;
+            }
             getAvgHardCorrect()[1] += getQuarterly().get(i).getLodHardCorrect();
+            if (getQuarterly().get(i).getLodHardCorrect() != 0) {
+                hardTests[1]++;
+            }
         }
-
-        getAvgEasyCorrect()[1] = getAvgEasyCorrect()[1] / getQuarterly().size();
-        getAvgMedCorrect()[1] = getAvgMedCorrect()[1] / getQuarterly().size();
-        getAvgHardCorrect()[1] = getAvgHardCorrect()[1] / getQuarterly().size();
+        if (easyTests[1] != 0) {
+            getAvgEasyCorrect()[1] = getAvgEasyCorrect()[1] / easyTests[1];
+        }
+        if (medTests[1] != 0) {
+            getAvgMedCorrect()[1] = getAvgMedCorrect()[1] / medTests[1];
+        }
+        if (hardTests[1] != 0) {
+            getAvgHardCorrect()[1] = getAvgHardCorrect()[1] / hardTests[1];
+        }
 
         for (int i = 0; i < getYearly().size(); i++) {
 
+            
             getAvgEasyCorrect()[2] += getYearly().get(i).getLodEasyCorrect();
+            if (getYearly().get(i).getLodEasyCorrect() != 0) {
+                easyTests[2]++;
+            }
             getAvgMedCorrect()[2] += getYearly().get(i).getLodMediumCorrect();
+            if (getYearly().get(i).getLodMediumCorrect() != 0) {
+                medTests[2]++;
+            }
             getAvgHardCorrect()[2] += getYearly().get(i).getLodHardCorrect();
+            if (getYearly().get(i).getLodHardCorrect() != 0) {
+                hardTests[2]++;
+            }
         }
 
-        getAvgEasyCorrect()[2] = getAvgEasyCorrect()[2] / getYearly().size();
-        getAvgMedCorrect()[2] = getAvgMedCorrect()[2] / getYearly().size();
-        getAvgHardCorrect()[2] = getAvgHardCorrect()[2] / getYearly().size();
+        if (easyTests[2] != 0)
+        getAvgEasyCorrect()[2] = getAvgEasyCorrect()[2] / easyTests[2];
+        if (medTests[2] != 0)
+        getAvgMedCorrect()[2] = getAvgMedCorrect()[2] / medTests[2];
+        if (hardTests[2] != 0)
+        getAvgHardCorrect()[2] = getAvgHardCorrect()[2] / hardTests[2];
 
     }
 
