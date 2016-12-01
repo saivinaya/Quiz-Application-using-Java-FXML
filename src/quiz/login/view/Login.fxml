@@ -11,21 +11,21 @@
 
 <AnchorPane id="AnchorPane" prefHeight="850" prefWidth="850" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.LoginController">
     <children>
-      <HBox layoutX="180.0" layoutY="243.0" prefHeight="46.0" prefWidth="510.0">
+      <HBox layoutX="260.0" layoutY="348.0" prefHeight="46.0" prefWidth="398.0">
          <children>
-            <Label prefHeight="50.0" prefWidth="103.0" text="Login Name" />
+            <Label prefHeight="46.0" prefWidth="104.0" text="Login Name" />
             <TextField fx:id="loginName" prefHeight="47.0" prefWidth="187.0" promptText="User ID" />
          </children>
       </HBox>
-      <HBox layoutX="182.0" layoutY="334.0" prefHeight="46.0" prefWidth="510.0">
+      <HBox layoutX="260.0" layoutY="427.0" prefHeight="46.0" prefWidth="377.0">
          <children>
             <Label prefHeight="50.0" prefWidth="103.0" text="Password" />
             <PasswordField fx:id="password" prefHeight="45.0" prefWidth="187.0" promptText="Password" />
          </children>
       </HBox>
-      <Button fx:id="signIn" layoutX="269.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSignIn" onDragEntered="#onClickSignIn" prefHeight="35.0" prefWidth="75.0" text="Sign In" />
-      <Button fx:id="signup" layoutX="397.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="75.0" text="Sign Up" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="64.0" prefHeight="44.0" prefWidth="356.0" text="Quiz" textAlignment="CENTER" textFill="#4310da" underline="true">
+      <Button fx:id="signIn" layoutX="320.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickSignIn" onDragEntered="#onClickSignIn" prefHeight="35.0" prefWidth="75.0" text="Sign In" />
+      <Button fx:id="signup" layoutX="477.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="75.0" text="Sign Up" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="210.0" prefHeight="44.0" prefWidth="356.0" text="Quiz" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
             <Font size="36.0" />
          </font>

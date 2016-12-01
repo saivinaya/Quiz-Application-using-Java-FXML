@@ -12,14 +12,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="850" prefWidth="850" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.login.view.SignUpController">
     <children>
-       <Button layoutX="263.0" layoutY="547.0" mnemonicParsing="false" onAction="#onClickGotoLogin" prefHeight="36.0" prefWidth="67.0" text="Back" />
-        <Button layoutX="406.0" layoutY="547.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="88.0" text="Sign Up" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="64.0" prefHeight="44.0" prefWidth="356.0" text="Sign Up - New User" textAlignment="CENTER" textFill="#4310da" underline="true">
+       <Button layoutX="323.0" layoutY="695.0" mnemonicParsing="false" onAction="#onClickGotoLogin" prefHeight="35.0" prefWidth="88.0" text="Back" />
+        <Button layoutX="466.0" layoutY="694.0" mnemonicParsing="false" onAction="#onClickSignUp" prefHeight="35.0" prefWidth="88.0" text="Sign Up" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="110.0" prefHeight="44.0" prefWidth="356.0" text="Sign Up - New User" textAlignment="CENTER" textFill="#4310da" underline="true">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="115.0" layoutY="154.0" prefHeight="356.0" prefWidth="491.0" spacing="30.0">
+      <VBox layoutX="161.0" layoutY="212.0" prefHeight="436.0" prefWidth="567.0" spacing="30.0">
          <children>
               <HBox prefHeight="46.0" prefWidth="510.0">
                   <children>
