@@ -85,14 +85,18 @@ public class StudentStatsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        String loggerUser = QuizMain.loginName;
+        
         getReport().setItems(getReportType());
         getPeriod().setItems(getPeriodList());
         report.setDisable(true);
         getPeriod().setDisable(true);
         getViewStats().setDisable(true);
-        QuizMain quizMain = new QuizMain();
-        if(quizMain.getLoggedUser().getUniRole().equals("admin")){
+        
+        
+        if(QuizMain.role.equals("Admin")){
+            
             QuizDBImplementation quiz = new QuizDBImplementation();
         ArrayList<StudentResults> tempArr = new ArrayList<>();
         tempArr = quiz.getStudentResults();
@@ -118,7 +122,7 @@ public class StudentStatsController implements Initializable {
         tempArr = quiz.getStudentResults();
         HashMap<String, Integer> student = new HashMap<>();
         for (int i = 0; i < tempArr.size(); i++) {
-            if(tempArr.get(i).getLoginName().equals(quizMain.getLoggedUser().getLoginName())){
+            if(tempArr.get(i).getLoginName().equals(loggerUser)){
                if (student.containsKey(tempArr.get(i).getLoginName())) {
                 student.put(tempArr.get(i).getLoginName(), student.get(tempArr.get(i).getLoginName()) + 1);
             } else {
