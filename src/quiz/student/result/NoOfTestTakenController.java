@@ -10,7 +10,6 @@ import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
@@ -69,18 +68,18 @@ public class NoOfTestTakenController implements Initializable {
         if (StudentStatsController.getSelectedReport().equals("No Of Tests Taken")) {
 
             barChart.getData().add(viewNoOfTests());
-            barChart.setCategoryGap(200);
+            barChart.setCategoryGap(600);
         } else if (StudentStatsController.getSelectedReport().equals("Average Student Scores")) {
 
             barChart.getData().add(viewAvgScores());
-            barChart.setCategoryGap(200);
+            barChart.setCategoryGap(600);
         } else if (StudentStatsController.getSelectedReport().equals("Scores by LOD")) {
 
             barChart.getData().add(scoresByLOD());
         }else if (StudentStatsController.getSelectedReport().equals("No of Skipped Questions")) {
 
             barChart.getData().add(viewNoOfSkippedQuestions());
-            barChart.setCategoryGap(200);
+            barChart.setCategoryGap(600);
         } else {
             barChart.getData().add(passAndFail());
         }
@@ -261,6 +260,16 @@ FileChooser chooser = new FileChooser();
         }
 
         return series1;
+    }
+    
+    /**
+     * User goes to login page
+     * @param event 
+     */
+    @FXML
+    private void logout(ActionEvent event) {
+        // call the logoutAccount() to logout of the application
+        application.logoutAccount();
     }
 
 }
