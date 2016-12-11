@@ -185,8 +185,11 @@ public class QuizHelper {
      */
     public void createTable() throws SQLException
     {
+        String url = "jdbc:derby://localhost:1527/QuizDB;create=true";
+        String username = "app";
+        String password = "app";
         try{
-        Connection conn = QuizHelper.setConnection();
+        Connection conn = DriverManager.getConnection(url, username, password);
         Statement statement = conn.createStatement();
         DatabaseMetaData dbm = conn.getMetaData();
             // check if "Quiz" table is there or not, if not there create the table if it is there do not recreate it again.
