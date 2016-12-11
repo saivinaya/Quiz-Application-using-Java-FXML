@@ -19,5 +19,20 @@ Specific Requirements:
 • A well-designed GUI must be included. Java FX is the preferred option and it includes charts and other features.
 • Questions that are imported must be added to the database. Student information and quizzes taken (including performance in each quiz) should be recorded in the database). It is preferable to use the database in embedded mode for this project. However testing is easier in network mode.
 • The system should have a login screen which supports 2 types of login:
- Instructor (Allowed to import csv and provides information on question bank, show performance of students in a dashboard, produce a report in pdf)
- Student (Take a test, Choice of how many and types of questions, Record answers in the Database, Assess performance, record grade, correct and incorrect answers, produce a report with grade incorrect and correct questions, show one chart)
+      Instructor (Allowed to import csv and provides information on question bank, show performance of students in a dashboard, produce a report in pdf)
+      Student (Take a test, Choice of how many and types of questions, Record answers in the Database, Assess performance, record grade, correct and incorrect answers, produce a report with grade incorrect and correct questions, show one chart)
+
+CSV File and Quiz Question Format:
+(see sample on BB)
+Column 1 — Enter an abbreviation representing the question format. See the table of question types & abbreviations.
+Column 2 — Enter the question description.
+Column 3 — For MC,MA: Enter the text of a potential answer. For TF: Enter the answer, either "true" or "false". For FIB: Enter the text before the first blank.
+Column 4 — For MC,MA: Enter the validity of the answer, either "incorrect" or "correct". For FIB: Enter the solution to the first blank.
+Additional Columns — For MC,MA: Repeat Column 3 & 4 as necessary.
+
+Question Types & Abbreviations      
+Abbreviation                        Question Type                       
+MC                                  Multiple Choice                     
+MA                                  Multiple Answer                     
+TF                                  True/False                          
+FIB                                 Fill in the Blank
